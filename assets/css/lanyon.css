@@ -51,7 +51,13 @@ h1, h2, h3, h4, h5, h6 {
   letter-spacing: -.025rem;
 }
 
-
+.footnotes {
+  font-family: "PT Serif", Georgia, "Times New Roman", serif;
+  font-size: 75%;
+  padding-top: 0.3rem;
+  padding-bottom: 0.3rem;
+  border-top: 1px solid #eee;
+}
 /*
  * Wrapper
  *
