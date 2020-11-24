@@ -1,17 +1,24 @@
 # Setup
 title:               Blog Needs a Name
-description:         'Gautham writes about his programming?'
+description:         ''
 url:                 'https://ahgamut.github.io'
 baseurl:             ''
 paginate:            5
 permalink:           pretty
+markdown:            kramdown
 
-# About/contact
 author:
   name:              Gautham Venkatasubramanian
   url:               https://github.com/ahgamut
 
-# Gems
 plugins:
   - jekyll-paginate
   - jekyll-minifier
+
+kramdown:
+  math_engine: katex
+  math_engine_opts: {}
+
+exclude:
+  - LICENSE.md
+  - README.md

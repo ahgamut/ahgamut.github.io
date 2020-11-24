@@ -1,0 +1,712 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg class="main-svg" style="" viewBox="0 0 900 1000" xmlns="http://www.w3.org/2000/svg">
+<rect width="900" height="1e3" fill="#fff"/>
+<defs>
+<g class="clips">
+<clipPath id="b" class="plotclip">
+<rect width="315" height="128.12"/>
+</clipPath>
+<clipPath id="h" class="plotclip">
+<rect width="315" height="128.12"/>
+</clipPath>
+<clipPath id="g" class="plotclip">
+<rect width="315" height="128.12"/>
+</clipPath>
+<clipPath id="f" class="plotclip">
+<rect width="315" height="128.12"/>
+</clipPath>
+<clipPath id="e" class="plotclip">
+<rect width="315" height="128.12"/>
+</clipPath>
+<clipPath id="d" class="plotclip">
+<rect width="315" height="128.12"/>
+</clipPath>
+<clipPath id="c" class="plotclip">
+<rect width="315" height="128.12"/>
+</clipPath>
+</g>
+</defs>
+<g class="bglayer" fill="#e5ecf6" stroke-width="0">
+<rect class="bg" x="80" y="100" width="315" height="128.12"/>
+<rect class="bg" x="465" y="100" width="315" height="128.12"/>
+<rect class="bg" x="80" y="330.62" width="315" height="128.12"/>
+<rect class="bg" x="465" y="330.62" width="315" height="128.12"/>
+<rect class="bg" x="80" y="561.25" width="315" height="128.12"/>
+<rect class="bg" x="465" y="561.25" width="315" height="128.12"/>
+<rect class="bg" x="80" y="791.88" width="315" height="128.12"/>
+</g>
+<g class="layer-below"/>
+<g class="cartesianlayer">
+<g class="subplot xy">
+<g class="layer-subplot"/>
+<g class="gridlayer">
+<g class="x" stroke="#fff" stroke-width="1px">
+<path class="xgrid crisp" transform="translate(95.23)" d="m0 100v128.12"/>
+<path class="xgrid crisp" transform="translate(110.84)" d="m0 100v128.12"/>
+<path class="xgrid crisp" transform="translate(126.44)" d="m0 100v128.12"/>
+<path class="xgrid crisp" transform="translate(142.04)" d="m0 100v128.12"/>
+<path class="xgrid crisp" transform="translate(157.65)" d="m0 100v128.12"/>
+<path class="xgrid crisp" transform="translate(173.25)" d="m0 100v128.12"/>
+<path class="xgrid crisp" transform="translate(188.86)" d="m0 100v128.12"/>
+<path class="xgrid crisp" transform="translate(204.46)" d="m0 100v128.12"/>
+<path class="xgrid crisp" transform="translate(220.07)" d="m0 100v128.12"/>
+<path class="xgrid crisp" transform="translate(235.67)" d="m0 100v128.12"/>
+<path class="xgrid crisp" transform="translate(251.27)" d="m0 100v128.12"/>
+<path class="xgrid crisp" transform="translate(266.88)" d="m0 100v128.12"/>
+<path class="xgrid crisp" transform="translate(282.48)" d="m0 100v128.12"/>
+<path class="xgrid crisp" transform="translate(298.09)" d="m0 100v128.12"/>
+<path class="xgrid crisp" transform="translate(313.69)" d="m0 100v128.12"/>
+<path class="xgrid crisp" transform="translate(329.3)" d="m0 100v128.12"/>
+<path class="xgrid crisp" transform="translate(344.9)" d="m0 100v128.12"/>
+<path class="xgrid crisp" transform="translate(360.5)" d="m0 100v128.12"/>
+<path class="xgrid crisp" transform="translate(376.11)" d="m0 100v128.12"/>
+<path class="xgrid crisp" transform="translate(391.71)" d="m0 100v128.12"/>
+</g>
+</g>
+<g class="plot" transform="translate(80 100)" clip-path="url(#b)">
+<g class="boxlayer mlayer">
+<g class="trace boxes" opacity=".7">
+<path class="box" d="m192.02 121.59v-12.56m-5.48 12.56v-12.56h11.13v12.56zm0-6.28h-10.34m21.47 0h5.31m-26.78 3.14v-6.28m26.78 6.28v-6.28" fill="#1f77b4" stroke="#000" stroke-width=".7px" vector-effect="non-scaling-stroke"/>
+<path class="box" d="m272.92 95.97v-12.56m-18.95 12.56v-12.56h27.9v12.56zm0-6.28h-40.02m67.92 0h7.09m-75.01 3.14v-6.28m75.01 6.28v-6.28" fill="#ff7f0e" stroke="#000" stroke-width=".7px" vector-effect="non-scaling-stroke"/>
+<path class="box" d="m273.81 70.34v-12.56m-22.2 12.56v-12.56h32.37v12.56zm0-6.28h-28.39m60.76 0h2.78m-63.54 3.14v-6.28m63.54 6.28v-6.28" fill="#2ca02c" stroke="#000" stroke-width=".7px" vector-effect="non-scaling-stroke"/>
+<path class="box" d="m240.48 44.72v-12.56m-16.86 12.56v-12.56h35.99v12.56zm0-6.28h-51.47m87.46 0h19.56m-107.02 3.14v-6.28m107.02 6.28v-6.28" fill="#d62728" stroke="#000" stroke-width=".7px" vector-effect="non-scaling-stroke"/>
+<g class="points">
+<path class="point" transform="translate(101.72,38.44)" d="M1.5,0A1.5,1.5 0 1,1 0,-1.5A1.5,1.5 0 0,1 1.5,0Z" opacity=".8" stroke-width="0px"/>
+</g>
+<path class="box" d="m257.46 19.09v-12.56m-23.3 12.56v-12.56h28.2v12.56zm0-6.28h-37.69m65.89 0h19.3m-85.19 3.14v-6.28m85.19 6.28v-6.28" fill="#9467bd" stroke="#000" stroke-width=".7px" vector-effect="non-scaling-stroke"/>
+<g class="points">
+<path class="point" transform="translate(183.14,12.81)" d="M1.5,0A1.5,1.5 0 1,1 0,-1.5A1.5,1.5 0 0,1 1.5,0Z" opacity=".8" stroke-width="0px"/>
+</g>
+</g>
+</g>
+</g>
+<path class="xlines-above crisp" d="m0 0" fill="none"/>
+<path class="ylines-above crisp" d="m0 0" fill="none"/>
+<g class="xaxislayer-above">
+<g class="xtick" fill="rgb(42, 63, 95)" font-family="'PT Serif'" font-size="12px">
+<text transform="translate(95.23) rotate(90 0 235.12)" y="241.125" style="white-space:pre">0.8</text>
+<text transform="translate(110.84) rotate(90 0 235.12)" y="241.125" style="white-space:pre">0.81</text>
+<text transform="translate(126.44) rotate(90 0 235.12)" y="241.125" style="white-space:pre">0.82</text>
+<text transform="translate(142.04) rotate(90 0 235.12)" y="241.125" style="white-space:pre">0.83</text>
+<text transform="translate(157.65) rotate(90 0 235.12)" y="241.125" style="white-space:pre">0.84</text>
+<text transform="translate(173.25) rotate(90 0 235.12)" y="241.125" style="white-space:pre">0.85</text>
+<text transform="translate(188.86) rotate(90 0 235.12)" y="241.125" style="white-space:pre">0.86</text>
+<text transform="translate(204.46) rotate(90 0 235.12)" y="241.125" style="white-space:pre">0.87</text>
+<text transform="translate(220.07) rotate(90 0 235.12)" y="241.125" style="white-space:pre">0.88</text>
+<text transform="translate(235.67) rotate(90 0 235.12)" y="241.125" style="white-space:pre">0.89</text>
+<text transform="translate(251.27) rotate(90 0 235.12)" y="241.125" style="white-space:pre">0.9</text>
+<text transform="translate(266.88) rotate(90 0 235.12)" y="241.125" style="white-space:pre">0.91</text>
+<text transform="translate(282.48) rotate(90 0 235.12)" y="241.125" style="white-space:pre">0.92</text>
+<text transform="translate(298.09) rotate(90 0 235.12)" y="241.125" style="white-space:pre">0.93</text>
+<text transform="translate(313.69) rotate(90 0 235.12)" y="241.125" style="white-space:pre">0.94</text>
+<text transform="translate(329.3) rotate(90 0 235.12)" y="241.125" style="white-space:pre">0.95</text>
+<text transform="translate(344.9) rotate(90 0 235.12)" y="241.125" style="white-space:pre">0.96</text>
+<text transform="translate(360.5) rotate(90 0 235.12)" y="241.125" style="white-space:pre">0.97</text>
+<text transform="translate(376.11) rotate(90 0 235.12)" y="241.125" style="white-space:pre">0.98</text>
+<text transform="translate(391.71) rotate(90 0 235.12)" y="241.125" style="white-space:pre">0.99</text>
+</g>
+</g>
+<g class="yaxislayer-above">
+<g class="ytick" fill="rgb(42, 63, 95)" font-family="'PT Serif'" font-size="12px" text-anchor="end">
+<text transform="translate(0,215.31)" x="79" y="4.199999999999999" style="white-space:pre">None</text>
+<text transform="translate(0,189.69)" x="79" y="4.199999999999999" style="white-space:pre">ReLU</text>
+<text transform="translate(0,164.06)" x="79" y="4.199999999999999" style="white-space:pre">SELU</text>
+<text transform="translate(0,138.44)" x="79" y="4.199999999999999" style="white-space:pre">Sigmoid</text>
+<text transform="translate(0,112.81)" x="79" y="4.199999999999999" style="white-space:pre">Tanh</text>
+</g>
+</g>
+</g>
+<g class="subplot x2y2">
+<g class="layer-subplot"/>
+<g class="gridlayer">
+<g class="x2" stroke="#fff" stroke-width="1px">
+<path class="x2grid crisp" transform="translate(477.5)" d="m0 100v128.12"/>
+<path class="x2grid crisp" transform="translate(495.47)" d="m0 100v128.12"/>
+<path class="x2grid crisp" transform="translate(513.44)" d="m0 100v128.12"/>
+<path class="x2grid crisp" transform="translate(531.42)" d="m0 100v128.12"/>
+<path class="x2grid crisp" transform="translate(549.39)" d="m0 100v128.12"/>
+<path class="x2grid crisp" transform="translate(567.36)" d="m0 100v128.12"/>
+<path class="x2grid crisp" transform="translate(585.34)" d="m0 100v128.12"/>
+<path class="x2grid crisp" transform="translate(603.31)" d="m0 100v128.12"/>
+<path class="x2grid crisp" transform="translate(621.28)" d="m0 100v128.12"/>
+<path class="x2grid crisp" transform="translate(639.26)" d="m0 100v128.12"/>
+<path class="x2grid crisp" transform="translate(657.23)" d="m0 100v128.12"/>
+<path class="x2grid crisp" transform="translate(675.21)" d="m0 100v128.12"/>
+<path class="x2grid crisp" transform="translate(693.18)" d="m0 100v128.12"/>
+<path class="x2grid crisp" transform="translate(711.15)" d="m0 100v128.12"/>
+<path class="x2grid crisp" transform="translate(729.13)" d="m0 100v128.12"/>
+<path class="x2grid crisp" transform="translate(747.1)" d="m0 100v128.12"/>
+<path class="x2grid crisp" transform="translate(765.07)" d="m0 100v128.12"/>
+</g>
+</g>
+<g class="plot" transform="translate(465 100)" clip-path="url(#h)">
+<g class="boxlayer mlayer">
+<g class="trace boxes" opacity=".7">
+<path class="box" d="m157.4 121.59v-12.56m-7.96 12.56v-12.56h15.29v12.56zm0-6.28h-21.14m36.43 0h12.16m-48.59 3.14v-6.28m48.59 6.28v-6.28" fill="#1f77b4" stroke="#000" stroke-width=".7px" vector-effect="non-scaling-stroke"/>
+<g class="points">
+<path class="point" transform="translate(126.4,115.31)" d="M1.5,0A1.5,1.5 0 1,1 0,-1.5A1.5,1.5 0 0,1 1.5,0Z" opacity=".8" stroke-width="0px"/>
+</g>
+<path class="box" d="m278.62 95.97v-12.56m-6.73 12.56v-12.56h12.97v12.56zm0-6.28h-16.68m29.65 0h6.93m-36.58 3.14v-6.28m36.58 6.28v-6.28" fill="#ff7f0e" stroke="#000" stroke-width=".7px" vector-effect="non-scaling-stroke"/>
+<g class="points" stroke-width="0px">
+<path class="point" transform="translate(179.43,89.69)" d="M1.5,0A1.5,1.5 0 1,1 0,-1.5A1.5,1.5 0 0,1 1.5,0Z" opacity=".8"/>
+<path class="point" transform="translate(184.63,89.69)" d="M1.5,0A1.5,1.5 0 1,1 0,-1.5A1.5,1.5 0 0,1 1.5,0Z" opacity=".8"/>
+<path class="point" transform="translate(185.85,89.69)" d="M1.5,0A1.5,1.5 0 1,1 0,-1.5A1.5,1.5 0 0,1 1.5,0Z" opacity=".8"/>
+</g>
+<path class="box" d="m270.9 70.34v-12.56m-5.24 12.56v-12.56h8.13v12.56zm0-6.28h-1.11m9.24 0h8.05m-17.29 3.14v-6.28m17.29 6.28v-6.28" fill="#2ca02c" stroke="#000" stroke-width=".7px" vector-effect="non-scaling-stroke"/>
+<g class="points" stroke-width="0px">
+<path class="point" transform="translate(226.73,64.06)" d="M1.5,0A1.5,1.5 0 1,1 0,-1.5A1.5,1.5 0 0,1 1.5,0Z" opacity=".8"/>
+<path class="point" transform="translate(250.12,64.06)" d="M1.5,0A1.5,1.5 0 1,1 0,-1.5A1.5,1.5 0 0,1 1.5,0Z" opacity=".8"/>
+<path class="point" transform="translate(252.92,64.06)" d="M1.5,0A1.5,1.5 0 1,1 0,-1.5A1.5,1.5 0 0,1 1.5,0Z" opacity=".8"/>
+</g>
+<path class="box" d="m256.13 44.72v-12.56m-11.11 12.56v-12.56h19.19v12.56zm0-6.28h-22.76m41.95 0h11.9m-53.85 3.14v-6.28m53.85 6.28v-6.28" fill="#d62728" stroke="#000" stroke-width=".7px" vector-effect="non-scaling-stroke"/>
+<g class="points">
+<path class="point" transform="translate(194.53,38.44)" d="M1.5,0A1.5,1.5 0 1,1 0,-1.5A1.5,1.5 0 0,1 1.5,0Z" opacity=".8" stroke-width="0px"/>
+</g>
+<path class="box" d="m259.29 19.09v-12.56m-6.16 12.56v-12.56h14.09v12.56zm0-6.28h-14.29m28.38 0h9.54m-37.92 3.14v-6.28m37.92 6.28v-6.28" fill="#9467bd" stroke="#000" stroke-width=".7px" vector-effect="non-scaling-stroke"/>
+<g class="points">
+<path class="point" transform="translate(218.5,12.81)" d="M1.5,0A1.5,1.5 0 1,1 0,-1.5A1.5,1.5 0 0,1 1.5,0Z" opacity=".8" stroke-width="0px"/>
+</g>
+</g>
+</g>
+</g>
+<path class="xlines-above crisp" d="m0 0" fill="none"/>
+<path class="ylines-above crisp" d="m0 0" fill="none"/>
+<g class="xaxislayer-above">
+<g class="x2tick" fill="rgb(42, 63, 95)" font-family="'PT Serif'" font-size="12px">
+<text transform="translate(477.5) rotate(90 0 235.12)" y="241.125" style="white-space:pre">0.83</text>
+<text transform="translate(495.47) rotate(90 0 235.12)" y="241.125" style="white-space:pre">0.84</text>
+<text transform="translate(513.44) rotate(90 0 235.12)" y="241.125" style="white-space:pre">0.85</text>
+<text transform="translate(531.42) rotate(90 0 235.12)" y="241.125" style="white-space:pre">0.86</text>
+<text transform="translate(549.39) rotate(90 0 235.12)" y="241.125" style="white-space:pre">0.87</text>
+<text transform="translate(567.36) rotate(90 0 235.12)" y="241.125" style="white-space:pre">0.88</text>
+<text transform="translate(585.34) rotate(90 0 235.12)" y="241.125" style="white-space:pre">0.89</text>
+<text transform="translate(603.31) rotate(90 0 235.12)" y="241.125" style="white-space:pre">0.9</text>
+<text transform="translate(621.28) rotate(90 0 235.12)" y="241.125" style="white-space:pre">0.91</text>
+<text transform="translate(639.26) rotate(90 0 235.12)" y="241.125" style="white-space:pre">0.92</text>
+<text transform="translate(657.23) rotate(90 0 235.12)" y="241.125" style="white-space:pre">0.93</text>
+<text transform="translate(675.21) rotate(90 0 235.12)" y="241.125" style="white-space:pre">0.94</text>
+<text transform="translate(693.18) rotate(90 0 235.12)" y="241.125" style="white-space:pre">0.95</text>
+<text transform="translate(711.15) rotate(90 0 235.12)" y="241.125" style="white-space:pre">0.96</text>
+<text transform="translate(729.13) rotate(90 0 235.12)" y="241.125" style="white-space:pre">0.97</text>
+<text transform="translate(747.1) rotate(90 0 235.12)" y="241.125" style="white-space:pre">0.98</text>
+<text transform="translate(765.07) rotate(90 0 235.12)" y="241.125" style="white-space:pre">0.99</text>
+</g>
+</g>
+</g>
+<g class="subplot x3y3">
+<g class="layer-subplot"/>
+<g class="gridlayer">
+<g class="x3" stroke="#fff" stroke-width="1px">
+<path class="x3grid crisp" transform="translate(95.23)" d="m0 330.62v128.12"/>
+<path class="x3grid crisp" transform="translate(110.84)" d="m0 330.62v128.12"/>
+<path class="x3grid crisp" transform="translate(126.44)" d="m0 330.62v128.12"/>
+<path class="x3grid crisp" transform="translate(142.04)" d="m0 330.62v128.12"/>
+<path class="x3grid crisp" transform="translate(157.65)" d="m0 330.62v128.12"/>
+<path class="x3grid crisp" transform="translate(173.25)" d="m0 330.62v128.12"/>
+<path class="x3grid crisp" transform="translate(188.86)" d="m0 330.62v128.12"/>
+<path class="x3grid crisp" transform="translate(204.46)" d="m0 330.62v128.12"/>
+<path class="x3grid crisp" transform="translate(220.07)" d="m0 330.62v128.12"/>
+<path class="x3grid crisp" transform="translate(235.67)" d="m0 330.62v128.12"/>
+<path class="x3grid crisp" transform="translate(251.27)" d="m0 330.62v128.12"/>
+<path class="x3grid crisp" transform="translate(266.88)" d="m0 330.62v128.12"/>
+<path class="x3grid crisp" transform="translate(282.48)" d="m0 330.62v128.12"/>
+<path class="x3grid crisp" transform="translate(298.09)" d="m0 330.62v128.12"/>
+<path class="x3grid crisp" transform="translate(313.69)" d="m0 330.62v128.12"/>
+<path class="x3grid crisp" transform="translate(329.3)" d="m0 330.62v128.12"/>
+<path class="x3grid crisp" transform="translate(344.9)" d="m0 330.62v128.12"/>
+<path class="x3grid crisp" transform="translate(360.5)" d="m0 330.62v128.12"/>
+<path class="x3grid crisp" transform="translate(376.11)" d="m0 330.62v128.12"/>
+<path class="x3grid crisp" transform="translate(391.71)" d="m0 330.62v128.12"/>
+</g>
+</g>
+<g class="plot" transform="translate(80 330.62)" clip-path="url(#g)">
+<g class="boxlayer mlayer">
+<g class="trace boxes" opacity=".7">
+<path class="box" d="m185.76 121.59v-12.56m-12.55 12.56v-12.56h20.2v12.56zm0-6.28h-10.46m30.66 0h11.38m-42.04 3.14v-6.28m42.04 6.28v-6.28" fill="#1f77b4" stroke="#000" stroke-width=".7px" vector-effect="non-scaling-stroke"/>
+<path class="box" d="m292.99 95.97v-12.56m-23.5 12.56v-12.56h26.26v12.56zm0-6.28h-11.14m37.4 0h9.79m-47.19 3.14v-6.28m47.19 6.28v-6.28" fill="#ff7f0e" stroke="#000" stroke-width=".7px" vector-effect="non-scaling-stroke"/>
+<g class="points">
+<path class="point" transform="translate(216.03,89.69)" d="M1.5,0A1.5,1.5 0 1,1 0,-1.5A1.5,1.5 0 0,1 1.5,0Z" opacity=".8" stroke-width="0px"/>
+</g>
+<path class="box" d="m273.83 70.34v-12.56m-28.33 12.56v-12.56h44.66v12.56zm0-6.28h-37.7m82.36 0h4.47m-86.83 3.14v-6.28m86.83 6.28v-6.28" fill="#2ca02c" stroke="#000" stroke-width=".7px" vector-effect="non-scaling-stroke"/>
+<path class="box" d="m226.64 44.72v-12.56m-44.74 12.56v-12.56h107.58v12.56zm0-6.28h-25.71m133.29 0h10.75m-144.04 3.14v-6.28m144.04 6.28v-6.28" fill="#d62728" stroke="#000" stroke-width=".7px" vector-effect="non-scaling-stroke"/>
+<path class="box" d="m274.37 19.09v-12.56m-66.58 12.56v-12.56h78.3v12.56zm0-6.28h-72.6m150.9 0h14.37m-165.27 3.14v-6.28m165.27 6.28v-6.28" fill="#9467bd" stroke="#000" stroke-width=".7px" vector-effect="non-scaling-stroke"/>
+</g>
+</g>
+</g>
+<path class="xlines-above crisp" d="m0 0" fill="none"/>
+<path class="ylines-above crisp" d="m0 0" fill="none"/>
+<g class="xaxislayer-above">
+<g class="x3tick" fill="rgb(42, 63, 95)" font-family="'PT Serif'" font-size="12px">
+<text transform="translate(95.23) rotate(90 0 465.75)" y="471.75" style="white-space:pre">0.8</text>
+<text transform="translate(110.84) rotate(90 0 465.75)" y="471.75" style="white-space:pre">0.81</text>
+<text transform="translate(126.44) rotate(90 0 465.75)" y="471.75" style="white-space:pre">0.82</text>
+<text transform="translate(142.04) rotate(90 0 465.75)" y="471.75" style="white-space:pre">0.83</text>
+<text transform="translate(157.65) rotate(90 0 465.75)" y="471.75" style="white-space:pre">0.84</text>
+<text transform="translate(173.25) rotate(90 0 465.75)" y="471.75" style="white-space:pre">0.85</text>
+<text transform="translate(188.86) rotate(90 0 465.75)" y="471.75" style="white-space:pre">0.86</text>
+<text transform="translate(204.46) rotate(90 0 465.75)" y="471.75" style="white-space:pre">0.87</text>
+<text transform="translate(220.07) rotate(90 0 465.75)" y="471.75" style="white-space:pre">0.88</text>
+<text transform="translate(235.67) rotate(90 0 465.75)" y="471.75" style="white-space:pre">0.89</text>
+<text transform="translate(251.27) rotate(90 0 465.75)" y="471.75" style="white-space:pre">0.9</text>
+<text transform="translate(266.88) rotate(90 0 465.75)" y="471.75" style="white-space:pre">0.91</text>
+<text transform="translate(282.48) rotate(90 0 465.75)" y="471.75" style="white-space:pre">0.92</text>
+<text transform="translate(298.09) rotate(90 0 465.75)" y="471.75" style="white-space:pre">0.93</text>
+<text transform="translate(313.69) rotate(90 0 465.75)" y="471.75" style="white-space:pre">0.94</text>
+<text transform="translate(329.3) rotate(90 0 465.75)" y="471.75" style="white-space:pre">0.95</text>
+<text transform="translate(344.9) rotate(90 0 465.75)" y="471.75" style="white-space:pre">0.96</text>
+<text transform="translate(360.5) rotate(90 0 465.75)" y="471.75" style="white-space:pre">0.97</text>
+<text transform="translate(376.11) rotate(90 0 465.75)" y="471.75" style="white-space:pre">0.98</text>
+<text transform="translate(391.71) rotate(90 0 465.75)" y="471.75" style="white-space:pre">0.99</text>
+</g>
+</g>
+<g class="yaxislayer-above">
+<g class="y3tick" fill="rgb(42, 63, 95)" font-family="'PT Serif'" font-size="12px" text-anchor="end">
+<text transform="translate(0 445.94)" x="79" y="4.199999999999999" style="white-space:pre">None</text>
+<text transform="translate(0 420.32)" x="79" y="4.199999999999999" style="white-space:pre">ReLU</text>
+<text transform="translate(0 394.68)" x="79" y="4.199999999999999" style="white-space:pre">SELU</text>
+<text transform="translate(0 369.06)" x="79" y="4.199999999999999" style="white-space:pre">Sigmoid</text>
+<text transform="translate(0 343.44)" x="79" y="4.199999999999999" style="white-space:pre">Tanh</text>
+</g>
+</g>
+</g>
+<g class="subplot x4y4">
+<g class="layer-subplot"/>
+<g class="gridlayer">
+<g class="x4" stroke="#fff" stroke-width="1px">
+<path class="x4grid crisp" transform="translate(477.5)" d="m0 330.62v128.12"/>
+<path class="x4grid crisp" transform="translate(495.47)" d="m0 330.62v128.12"/>
+<path class="x4grid crisp" transform="translate(513.44)" d="m0 330.62v128.12"/>
+<path class="x4grid crisp" transform="translate(531.42)" d="m0 330.62v128.12"/>
+<path class="x4grid crisp" transform="translate(549.39)" d="m0 330.62v128.12"/>
+<path class="x4grid crisp" transform="translate(567.36)" d="m0 330.62v128.12"/>
+<path class="x4grid crisp" transform="translate(585.34)" d="m0 330.62v128.12"/>
+<path class="x4grid crisp" transform="translate(603.31)" d="m0 330.62v128.12"/>
+<path class="x4grid crisp" transform="translate(621.28)" d="m0 330.62v128.12"/>
+<path class="x4grid crisp" transform="translate(639.26)" d="m0 330.62v128.12"/>
+<path class="x4grid crisp" transform="translate(657.23)" d="m0 330.62v128.12"/>
+<path class="x4grid crisp" transform="translate(675.21)" d="m0 330.62v128.12"/>
+<path class="x4grid crisp" transform="translate(693.18)" d="m0 330.62v128.12"/>
+<path class="x4grid crisp" transform="translate(711.15)" d="m0 330.62v128.12"/>
+<path class="x4grid crisp" transform="translate(729.13)" d="m0 330.62v128.12"/>
+<path class="x4grid crisp" transform="translate(747.1)" d="m0 330.62v128.12"/>
+<path class="x4grid crisp" transform="translate(765.07)" d="m0 330.62v128.12"/>
+</g>
+</g>
+<g class="plot" transform="translate(465 330.62)" clip-path="url(#f)">
+<g class="boxlayer mlayer">
+<g class="trace boxes" opacity=".7">
+<path class="box" d="m148.09 121.59v-12.56m-9.43 12.56v-12.56h14.78v12.56zm0-6.28h-16.13m30.91 0h19.37m-50.28 3.14v-6.28m50.28 6.28v-6.28" fill="#1f77b4" stroke="#000" stroke-width=".7px" vector-effect="non-scaling-stroke"/>
+<path class="box" d="m266.39 95.97v-12.56m-17.74 12.56v-12.56h22.17v12.56zm0-6.28h-32.11m54.28 0h6.07m-60.35 3.14v-6.28m60.35 6.28v-6.28" fill="#ff7f0e" stroke="#000" stroke-width=".7px" vector-effect="non-scaling-stroke"/>
+<g class="points">
+<path class="point" transform="translate(211.54,89.69)" d="M1.5,0A1.5,1.5 0 1,1 0,-1.5A1.5,1.5 0 0,1 1.5,0Z" opacity=".8" stroke-width="0px"/>
+</g>
+<path class="box" d="m252.45 70.34v-12.56m-10.13 12.56v-12.56h19.47v12.56zm0-6.28h-23.13m42.6 0h11.13m-53.73 3.14v-6.28m53.73 6.28v-6.28" fill="#2ca02c" stroke="#000" stroke-width=".7px" vector-effect="non-scaling-stroke"/>
+<g class="points">
+<path class="point" transform="translate(187.16,64.06)" d="M1.5,0A1.5,1.5 0 1,1 0,-1.5A1.5,1.5 0 0,1 1.5,0Z" opacity=".8" stroke-width="0px"/>
+</g>
+<path class="box" d="m249.69 44.72v-12.56m-9.89 12.56v-12.56h20.51v12.56zm0-6.28h-30.66m51.17 0h11.33m-62.5 3.14v-6.28m62.5 6.28v-6.28" fill="#d62728" stroke="#000" stroke-width=".7px" vector-effect="non-scaling-stroke"/>
+<g class="points">
+<path class="point" transform="translate(183.33,38.44)" d="M1.5,0A1.5,1.5 0 1,1 0,-1.5A1.5,1.5 0 0,1 1.5,0Z" opacity=".8" stroke-width="0px"/>
+</g>
+<path class="box" d="m255.2 19.09v-12.56m-19.86 12.56v-12.56h23.3v12.56zm0-6.28h-29.85m53.15 0h12.94m-66.09 3.14v-6.28m66.09 6.28v-6.28" fill="#9467bd" stroke="#000" stroke-width=".7px" vector-effect="non-scaling-stroke"/>
+<g class="points">
+<path class="point" transform="translate(175,12.81)" d="M1.5,0A1.5,1.5 0 1,1 0,-1.5A1.5,1.5 0 0,1 1.5,0Z" opacity=".8" stroke-width="0px"/>
+</g>
+</g>
+</g>
+</g>
+<path class="xlines-above crisp" d="m0 0" fill="none"/>
+<path class="ylines-above crisp" d="m0 0" fill="none"/>
+<g class="xaxislayer-above">
+<g class="x4tick" fill="rgb(42, 63, 95)" font-family="'PT Serif'" font-size="12px">
+<text transform="translate(477.5) rotate(90 0 465.75)" y="471.75" style="white-space:pre">0.83</text>
+<text transform="translate(495.47) rotate(90 0 465.75)" y="471.75" style="white-space:pre">0.84</text>
+<text transform="translate(513.44) rotate(90 0 465.75)" y="471.75" style="white-space:pre">0.85</text>
+<text transform="translate(531.42) rotate(90 0 465.75)" y="471.75" style="white-space:pre">0.86</text>
+<text transform="translate(549.39) rotate(90 0 465.75)" y="471.75" style="white-space:pre">0.87</text>
+<text transform="translate(567.36) rotate(90 0 465.75)" y="471.75" style="white-space:pre">0.88</text>
+<text transform="translate(585.34) rotate(90 0 465.75)" y="471.75" style="white-space:pre">0.89</text>
+<text transform="translate(603.31) rotate(90 0 465.75)" y="471.75" style="white-space:pre">0.9</text>
+<text transform="translate(621.28) rotate(90 0 465.75)" y="471.75" style="white-space:pre">0.91</text>
+<text transform="translate(639.26) rotate(90 0 465.75)" y="471.75" style="white-space:pre">0.92</text>
+<text transform="translate(657.23) rotate(90 0 465.75)" y="471.75" style="white-space:pre">0.93</text>
+<text transform="translate(675.21) rotate(90 0 465.75)" y="471.75" style="white-space:pre">0.94</text>
+<text transform="translate(693.18) rotate(90 0 465.75)" y="471.75" style="white-space:pre">0.95</text>
+<text transform="translate(711.15) rotate(90 0 465.75)" y="471.75" style="white-space:pre">0.96</text>
+<text transform="translate(729.13) rotate(90 0 465.75)" y="471.75" style="white-space:pre">0.97</text>
+<text transform="translate(747.1) rotate(90 0 465.75)" y="471.75" style="white-space:pre">0.98</text>
+<text transform="translate(765.07) rotate(90 0 465.75)" y="471.75" style="white-space:pre">0.99</text>
+</g>
+</g>
+</g>
+<g class="subplot x5y5">
+<g class="layer-subplot"/>
+<g class="gridlayer">
+<g class="x5" stroke="#fff" stroke-width="1px">
+<path class="x5grid crisp" transform="translate(95.23)" d="m0 561.25v128.12"/>
+<path class="x5grid crisp" transform="translate(110.84)" d="m0 561.25v128.12"/>
+<path class="x5grid crisp" transform="translate(126.44)" d="m0 561.25v128.12"/>
+<path class="x5grid crisp" transform="translate(142.04)" d="m0 561.25v128.12"/>
+<path class="x5grid crisp" transform="translate(157.65)" d="m0 561.25v128.12"/>
+<path class="x5grid crisp" transform="translate(173.25)" d="m0 561.25v128.12"/>
+<path class="x5grid crisp" transform="translate(188.86)" d="m0 561.25v128.12"/>
+<path class="x5grid crisp" transform="translate(204.46)" d="m0 561.25v128.12"/>
+<path class="x5grid crisp" transform="translate(220.07)" d="m0 561.25v128.12"/>
+<path class="x5grid crisp" transform="translate(235.67)" d="m0 561.25v128.12"/>
+<path class="x5grid crisp" transform="translate(251.27)" d="m0 561.25v128.12"/>
+<path class="x5grid crisp" transform="translate(266.88)" d="m0 561.25v128.12"/>
+<path class="x5grid crisp" transform="translate(282.48)" d="m0 561.25v128.12"/>
+<path class="x5grid crisp" transform="translate(298.09)" d="m0 561.25v128.12"/>
+<path class="x5grid crisp" transform="translate(313.69)" d="m0 561.25v128.12"/>
+<path class="x5grid crisp" transform="translate(329.3)" d="m0 561.25v128.12"/>
+<path class="x5grid crisp" transform="translate(344.9)" d="m0 561.25v128.12"/>
+<path class="x5grid crisp" transform="translate(360.5)" d="m0 561.25v128.12"/>
+<path class="x5grid crisp" transform="translate(376.11)" d="m0 561.25v128.12"/>
+<path class="x5grid crisp" transform="translate(391.71)" d="m0 561.25v128.12"/>
+</g>
+</g>
+<g class="plot" transform="translate(80 561.25)" clip-path="url(#e)">
+<g class="boxlayer mlayer">
+<g class="trace boxes" opacity=".7">
+<path class="box" d="m187.61 121.59v-12.56m-6.14 12.56v-12.56h12.45v12.56zm0-6.28h-9.98m22.43 0h5.74m-28.17 3.14v-6.28m28.17 6.28v-6.28" fill="#1f77b4" stroke="#000" stroke-width=".7px" vector-effect="non-scaling-stroke"/>
+<path class="box" d="m273.2 95.97v-12.56m-19.48 12.56v-12.56h34.69v12.56zm0-6.28h-30.29m64.98 0h5.45m-70.43 3.14v-6.28m70.43 6.28v-6.28" fill="#ff7f0e" stroke="#000" stroke-width=".7px" vector-effect="non-scaling-stroke"/>
+<path class="box" d="m271.18 70.34v-12.56m-4.44 12.56v-12.56h14.29v12.56zm0-6.28h-18.37m32.66 0h11.15m-43.81 3.14v-6.28m43.81 6.28v-6.28" fill="#2ca02c" stroke="#000" stroke-width=".7px" vector-effect="non-scaling-stroke"/>
+<path class="box" d="m239.3 44.72v-12.56m-19.08 12.56v-12.56h53.28v12.56zm0-6.28h-36.8m90.08 0h14.98m-105.06 3.14v-6.28m105.06 6.28v-6.28" fill="#d62728" stroke="#000" stroke-width=".7px" vector-effect="non-scaling-stroke"/>
+<g class="points" stroke-width="0px">
+<path class="point" transform="translate(78.24,38.44)" d="M1.5,0A1.5,1.5 0 1,1 0,-1.5A1.5,1.5 0 0,1 1.5,0Z" opacity=".8"/>
+<path class="point" transform="translate(115.15,38.44)" d="M1.5,0A1.5,1.5 0 1,1 0,-1.5A1.5,1.5 0 0,1 1.5,0Z" opacity=".8"/>
+</g>
+<path class="box" d="m208.96 19.09v-12.56m-56.95 12.56v-12.56h122.44v12.56zm0-6.28h-136.54m258.98 0h14.77m-273.75 3.14v-6.28m273.75 6.28v-6.28" fill="#9467bd" stroke="#000" stroke-width=".7px" vector-effect="non-scaling-stroke"/>
+</g>
+</g>
+</g>
+<path class="xlines-above crisp" d="m0 0" fill="none"/>
+<path class="ylines-above crisp" d="m0 0" fill="none"/>
+<g class="xaxislayer-above">
+<g class="x5tick" fill="rgb(42, 63, 95)" font-family="'PT Serif'" font-size="12px">
+<text transform="translate(95.23) rotate(90 0 696.38)" y="702.375" style="white-space:pre">0.8</text>
+<text transform="translate(110.84) rotate(90 0 696.38)" y="702.375" style="white-space:pre">0.81</text>
+<text transform="translate(126.44) rotate(90 0 696.38)" y="702.375" style="white-space:pre">0.82</text>
+<text transform="translate(142.04) rotate(90 0 696.38)" y="702.375" style="white-space:pre">0.83</text>
+<text transform="translate(157.65) rotate(90 0 696.38)" y="702.375" style="white-space:pre">0.84</text>
+<text transform="translate(173.25) rotate(90 0 696.38)" y="702.375" style="white-space:pre">0.85</text>
+<text transform="translate(188.86) rotate(90 0 696.38)" y="702.375" style="white-space:pre">0.86</text>
+<text transform="translate(204.46) rotate(90 0 696.38)" y="702.375" style="white-space:pre">0.87</text>
+<text transform="translate(220.07) rotate(90 0 696.38)" y="702.375" style="white-space:pre">0.88</text>
+<text transform="translate(235.67) rotate(90 0 696.38)" y="702.375" style="white-space:pre">0.89</text>
+<text transform="translate(251.27) rotate(90 0 696.38)" y="702.375" style="white-space:pre">0.9</text>
+<text transform="translate(266.88) rotate(90 0 696.38)" y="702.375" style="white-space:pre">0.91</text>
+<text transform="translate(282.48) rotate(90 0 696.38)" y="702.375" style="white-space:pre">0.92</text>
+<text transform="translate(298.09) rotate(90 0 696.38)" y="702.375" style="white-space:pre">0.93</text>
+<text transform="translate(313.69) rotate(90 0 696.38)" y="702.375" style="white-space:pre">0.94</text>
+<text transform="translate(329.3) rotate(90 0 696.38)" y="702.375" style="white-space:pre">0.95</text>
+<text transform="translate(344.9) rotate(90 0 696.38)" y="702.375" style="white-space:pre">0.96</text>
+<text transform="translate(360.5) rotate(90 0 696.38)" y="702.375" style="white-space:pre">0.97</text>
+<text transform="translate(376.11) rotate(90 0 696.38)" y="702.375" style="white-space:pre">0.98</text>
+<text transform="translate(391.71) rotate(90 0 696.38)" y="702.375" style="white-space:pre">0.99</text>
+</g>
+</g>
+<g class="yaxislayer-above">
+<g class="y5tick" fill="rgb(42, 63, 95)" font-family="'PT Serif'" font-size="12px" text-anchor="end">
+<text transform="translate(0,676.56)" x="79" y="4.199999999999999" style="white-space:pre">None</text>
+<text transform="translate(0,650.94)" x="79" y="4.199999999999999" style="white-space:pre">ReLU</text>
+<text transform="translate(0,625.31)" x="79" y="4.199999999999999" style="white-space:pre">SELU</text>
+<text transform="translate(0,599.69)" x="79" y="4.199999999999999" style="white-space:pre">Sigmoid</text>
+<text transform="translate(0,574.06)" x="79" y="4.199999999999999" style="white-space:pre">Tanh</text>
+</g>
+</g>
+</g>
+<g class="subplot x6y6">
+<g class="layer-subplot"/>
+<g class="gridlayer">
+<g class="x6" stroke="#fff" stroke-width="1px">
+<path class="x6grid crisp" transform="translate(477.5)" d="m0 561.25v128.12"/>
+<path class="x6grid crisp" transform="translate(495.47)" d="m0 561.25v128.12"/>
+<path class="x6grid crisp" transform="translate(513.44)" d="m0 561.25v128.12"/>
+<path class="x6grid crisp" transform="translate(531.42)" d="m0 561.25v128.12"/>
+<path class="x6grid crisp" transform="translate(549.39)" d="m0 561.25v128.12"/>
+<path class="x6grid crisp" transform="translate(567.36)" d="m0 561.25v128.12"/>
+<path class="x6grid crisp" transform="translate(585.34)" d="m0 561.25v128.12"/>
+<path class="x6grid crisp" transform="translate(603.31)" d="m0 561.25v128.12"/>
+<path class="x6grid crisp" transform="translate(621.28)" d="m0 561.25v128.12"/>
+<path class="x6grid crisp" transform="translate(639.26)" d="m0 561.25v128.12"/>
+<path class="x6grid crisp" transform="translate(657.23)" d="m0 561.25v128.12"/>
+<path class="x6grid crisp" transform="translate(675.21)" d="m0 561.25v128.12"/>
+<path class="x6grid crisp" transform="translate(693.18)" d="m0 561.25v128.12"/>
+<path class="x6grid crisp" transform="translate(711.15)" d="m0 561.25v128.12"/>
+<path class="x6grid crisp" transform="translate(729.13)" d="m0 561.25v128.12"/>
+<path class="x6grid crisp" transform="translate(747.1)" d="m0 561.25v128.12"/>
+<path class="x6grid crisp" transform="translate(765.07)" d="m0 561.25v128.12"/>
+</g>
+</g>
+<g class="plot" transform="translate(465 561.25)" clip-path="url(#d)">
+<g class="boxlayer mlayer">
+<g class="trace boxes" opacity=".7">
+<path class="box" d="m142.03 121.59v-12.56m-11.65 12.56v-12.56h30.49v12.56zm0-6.28h-25.43m55.92 0h16.28m-72.2 3.14v-6.28m72.2 6.28v-6.28" fill="#1f77b4" stroke="#000" stroke-width=".7px" vector-effect="non-scaling-stroke"/>
+<path class="box" d="m274.04 95.97v-12.56m-14.03 12.56v-12.56h19.51v12.56zm0-6.28h-19.2m38.71 0h19.73m-58.44 3.14v-6.28m58.44 6.28v-6.28" fill="#ff7f0e" stroke="#000" stroke-width=".7px" vector-effect="non-scaling-stroke"/>
+<g class="points">
+<path class="point" transform="translate(226.97,89.69)" d="M1.5,0A1.5,1.5 0 1,1 0,-1.5A1.5,1.5 0 0,1 1.5,0Z" opacity=".8" stroke-width="0px"/>
+</g>
+<path class="box" d="m266.47 70.34v-12.56m-11.05 12.56v-12.56h18.12v12.56zm0-6.28h-23.08m41.2 0h18.15m-59.35 3.14v-6.28m59.35 6.28v-6.28" fill="#2ca02c" stroke="#000" stroke-width=".7px" vector-effect="non-scaling-stroke"/>
+<g class="points" stroke-width="0px">
+<path class="point" transform="translate(211.81,64.06)" d="M1.5,0A1.5,1.5 0 1,1 0,-1.5A1.5,1.5 0 0,1 1.5,0Z" opacity=".8"/>
+<path class="point" transform="translate(223.47,64.06)" d="M1.5,0A1.5,1.5 0 1,1 0,-1.5A1.5,1.5 0 0,1 1.5,0Z" opacity=".8"/>
+</g>
+<path class="box" d="m262.04 44.72v-12.56m-52.59 12.56v-12.56h65.99v12.56zm0-6.28h-18.14m84.13 0h9.66m-93.79 3.14v-6.28m93.79 6.28v-6.28" fill="#d62728" stroke="#000" stroke-width=".7px" vector-effect="non-scaling-stroke"/>
+<g class="points" stroke-width="0px">
+<path class="point" transform="translate(15.75,38.44)" d="M1.5,0A1.5,1.5 0 1,1 0,-1.5A1.5,1.5 0 0,1 1.5,0Z" opacity=".8"/>
+<path class="point" transform="translate(99.27,38.44)" d="M1.5,0A1.5,1.5 0 1,1 0,-1.5A1.5,1.5 0 0,1 1.5,0Z" opacity=".8"/>
+<path class="point" transform="translate(108.04,38.44)" d="M1.5,0A1.5,1.5 0 1,1 0,-1.5A1.5,1.5 0 0,1 1.5,0Z" opacity=".8"/>
+</g>
+<path class="box" d="m267.82 19.09v-12.56m-16.89 12.56v-12.56h22.33v12.56zm0-6.28h-11.4m33.73 0h11.22m-44.95 3.14v-6.28m44.95 6.28v-6.28" fill="#9467bd" stroke="#000" stroke-width=".7px" vector-effect="non-scaling-stroke"/>
+<g class="points" stroke-width="0px">
+<path class="point" transform="translate(112.99,12.81)" d="M1.5,0A1.5,1.5 0 1,1 0,-1.5A1.5,1.5 0 0,1 1.5,0Z" opacity=".8"/>
+<path class="point" transform="translate(188.55,12.81)" d="M1.5,0A1.5,1.5 0 1,1 0,-1.5A1.5,1.5 0 0,1 1.5,0Z" opacity=".8"/>
+</g>
+</g>
+</g>
+</g>
+<path class="xlines-above crisp" d="m0 0" fill="none"/>
+<path class="ylines-above crisp" d="m0 0" fill="none"/>
+<g class="xaxislayer-above">
+<g class="x6tick" fill="rgb(42, 63, 95)" font-family="'PT Serif'" font-size="12px">
+<text transform="translate(477.5) rotate(90 0 696.38)" y="702.375" style="white-space:pre">0.83</text>
+<text transform="translate(495.47) rotate(90 0 696.38)" y="702.375" style="white-space:pre">0.84</text>
+<text transform="translate(513.44) rotate(90 0 696.38)" y="702.375" style="white-space:pre">0.85</text>
+<text transform="translate(531.42) rotate(90 0 696.38)" y="702.375" style="white-space:pre">0.86</text>
+<text transform="translate(549.39) rotate(90 0 696.38)" y="702.375" style="white-space:pre">0.87</text>
+<text transform="translate(567.36) rotate(90 0 696.38)" y="702.375" style="white-space:pre">0.88</text>
+<text transform="translate(585.34) rotate(90 0 696.38)" y="702.375" style="white-space:pre">0.89</text>
+<text transform="translate(603.31) rotate(90 0 696.38)" y="702.375" style="white-space:pre">0.9</text>
+<text transform="translate(621.28) rotate(90 0 696.38)" y="702.375" style="white-space:pre">0.91</text>
+<text transform="translate(639.26) rotate(90 0 696.38)" y="702.375" style="white-space:pre">0.92</text>
+<text transform="translate(657.23) rotate(90 0 696.38)" y="702.375" style="white-space:pre">0.93</text>
+<text transform="translate(675.21) rotate(90 0 696.38)" y="702.375" style="white-space:pre">0.94</text>
+<text transform="translate(693.18) rotate(90 0 696.38)" y="702.375" style="white-space:pre">0.95</text>
+<text transform="translate(711.15) rotate(90 0 696.38)" y="702.375" style="white-space:pre">0.96</text>
+<text transform="translate(729.13) rotate(90 0 696.38)" y="702.375" style="white-space:pre">0.97</text>
+<text transform="translate(747.1) rotate(90 0 696.38)" y="702.375" style="white-space:pre">0.98</text>
+<text transform="translate(765.07) rotate(90 0 696.38)" y="702.375" style="white-space:pre">0.99</text>
+</g>
+</g>
+</g>
+<g class="subplot x7y7">
+<g class="layer-subplot"/>
+<g class="gridlayer">
+<g class="x7" stroke="#fff" stroke-width="1px">
+<path class="x7grid crisp" transform="translate(95.23)" d="m0 791.88v128.12"/>
+<path class="x7grid crisp" transform="translate(110.84)" d="m0 791.88v128.12"/>
+<path class="x7grid crisp" transform="translate(126.44)" d="m0 791.88v128.12"/>
+<path class="x7grid crisp" transform="translate(142.04)" d="m0 791.88v128.12"/>
+<path class="x7grid crisp" transform="translate(157.65)" d="m0 791.88v128.12"/>
+<path class="x7grid crisp" transform="translate(173.25)" d="m0 791.88v128.12"/>
+<path class="x7grid crisp" transform="translate(188.86)" d="m0 791.88v128.12"/>
+<path class="x7grid crisp" transform="translate(204.46)" d="m0 791.88v128.12"/>
+<path class="x7grid crisp" transform="translate(220.07)" d="m0 791.88v128.12"/>
+<path class="x7grid crisp" transform="translate(235.67)" d="m0 791.88v128.12"/>
+<path class="x7grid crisp" transform="translate(251.27)" d="m0 791.88v128.12"/>
+<path class="x7grid crisp" transform="translate(266.88)" d="m0 791.88v128.12"/>
+<path class="x7grid crisp" transform="translate(282.48)" d="m0 791.88v128.12"/>
+<path class="x7grid crisp" transform="translate(298.09)" d="m0 791.88v128.12"/>
+<path class="x7grid crisp" transform="translate(313.69)" d="m0 791.88v128.12"/>
+<path class="x7grid crisp" transform="translate(329.3)" d="m0 791.88v128.12"/>
+<path class="x7grid crisp" transform="translate(344.9)" d="m0 791.88v128.12"/>
+<path class="x7grid crisp" transform="translate(360.5)" d="m0 791.88v128.12"/>
+<path class="x7grid crisp" transform="translate(376.11)" d="m0 791.88v128.12"/>
+<path class="x7grid crisp" transform="translate(391.71)" d="m0 791.88v128.12"/>
+</g>
+</g>
+<g class="plot" transform="translate(80 791.88)" clip-path="url(#c)">
+<g class="boxlayer mlayer">
+<g class="trace boxes" opacity=".7">
+<path class="box" d="m194.29 121.59v-12.56m-7.84 12.56v-12.56h14.75v12.56zm0-6.28h-8.64m23.39 0h7.4m-30.79 3.14v-6.28m30.79 6.28v-6.28" fill="#1f77b4" stroke="#000" stroke-width=".7px" vector-effect="non-scaling-stroke"/>
+<path class="box" d="m278.2 95.97v-12.56m-28.95 12.56v-12.56h40.76v12.56zm0-6.28h-56m96.76 0h6.94m-103.7 3.14v-6.28m103.7 6.28v-6.28" fill="#ff7f0e" stroke="#000" stroke-width=".7px" vector-effect="non-scaling-stroke"/>
+<path class="box" d="m273.59 70.34v-12.56m-4.47 12.56v-12.56h14.19v12.56zm0-6.28h-18.82m33.01 0h11.02m-44.03 3.14v-6.28m44.03 6.28v-6.28" fill="#2ca02c" stroke="#000" stroke-width=".7px" vector-effect="non-scaling-stroke"/>
+<g class="points">
+<path class="point" transform="translate(221.22,64.06)" d="M1.5,0A1.5,1.5 0 1,1 0,-1.5A1.5,1.5 0 0,1 1.5,0Z" opacity=".8" stroke-width="0px"/>
+</g>
+<path class="box" d="m262.51 44.72v-12.56m-26.56 12.56v-12.56h46.22v12.56zm0-6.28h-41.83m88.05 0h11.11m-99.16 3.14v-6.28m99.16 6.28v-6.28" fill="#d62728" stroke="#000" stroke-width=".7px" vector-effect="non-scaling-stroke"/>
+<g class="points" stroke-width="0px">
+<path class="point" transform="translate(23.39,38.44)" d="M1.5,0A1.5,1.5 0 1,1 0,-1.5A1.5,1.5 0 0,1 1.5,0Z" opacity=".8"/>
+<path class="point" transform="translate(136.97,38.44)" d="M1.5,0A1.5,1.5 0 1,1 0,-1.5A1.5,1.5 0 0,1 1.5,0Z" opacity=".8"/>
+</g>
+<path class="box" d="m235.29 19.09v-12.56m-37.74 12.56v-12.56h72.81v12.56zm0-6.28h-98.47m171.28 0h18.26m-189.54 3.14v-6.28m189.54 6.28v-6.28" fill="#9467bd" stroke="#000" stroke-width=".7px" vector-effect="non-scaling-stroke"/>
+</g>
+</g>
+</g>
+<path class="xlines-above crisp" d="m0 0" fill="none"/>
+<path class="ylines-above crisp" d="m0 0" fill="none"/>
+<g class="xaxislayer-above">
+<g class="x7tick" fill="rgb(42, 63, 95)" font-family="'PT Serif'" font-size="12px">
+<text transform="translate(95.23) rotate(90 0 927)" y="933" style="white-space:pre">0.8</text>
+<text transform="translate(110.84) rotate(90 0 927)" y="933" style="white-space:pre">0.81</text>
+<text transform="translate(126.44) rotate(90 0 927)" y="933" style="white-space:pre">0.82</text>
+<text transform="translate(142.04) rotate(90 0 927)" y="933" style="white-space:pre">0.83</text>
+<text transform="translate(157.65) rotate(90 0 927)" y="933" style="white-space:pre">0.84</text>
+<text transform="translate(173.25) rotate(90 0 927)" y="933" style="white-space:pre">0.85</text>
+<text transform="translate(188.86) rotate(90 0 927)" y="933" style="white-space:pre">0.86</text>
+<text transform="translate(204.46) rotate(90 0 927)" y="933" style="white-space:pre">0.87</text>
+<text transform="translate(220.07) rotate(90 0 927)" y="933" style="white-space:pre">0.88</text>
+<text transform="translate(235.67) rotate(90 0 927)" y="933" style="white-space:pre">0.89</text>
+<text transform="translate(251.27) rotate(90 0 927)" y="933" style="white-space:pre">0.9</text>
+<text transform="translate(266.88) rotate(90 0 927)" y="933" style="white-space:pre">0.91</text>
+<text transform="translate(282.48) rotate(90 0 927)" y="933" style="white-space:pre">0.92</text>
+<text transform="translate(298.09) rotate(90 0 927)" y="933" style="white-space:pre">0.93</text>
+<text transform="translate(313.69) rotate(90 0 927)" y="933" style="white-space:pre">0.94</text>
+<text transform="translate(329.3) rotate(90 0 927)" y="933" style="white-space:pre">0.95</text>
+<text transform="translate(344.9) rotate(90 0 927)" y="933" style="white-space:pre">0.96</text>
+<text transform="translate(360.5) rotate(90 0 927)" y="933" style="white-space:pre">0.97</text>
+<text transform="translate(376.11) rotate(90 0 927)" y="933" style="white-space:pre">0.98</text>
+<text transform="translate(391.71) rotate(90 0 927)" y="933" style="white-space:pre">0.99</text>
+</g>
+</g>
+<g class="yaxislayer-above">
+<g class="y7tick" fill="rgb(42, 63, 95)" font-family="'PT Serif'" font-size="12px" text-anchor="end">
+<text transform="translate(0 907.18)" x="79" y="4.199999999999999" style="white-space:pre">None</text>
+<text transform="translate(0 881.56)" x="79" y="4.199999999999999" style="white-space:pre">ReLU</text>
+<text transform="translate(0 855.94)" x="79" y="4.199999999999999" style="white-space:pre">SELU</text>
+<text transform="translate(0 830.32)" x="79" y="4.199999999999999" style="white-space:pre">Sigmoid</text>
+<text transform="translate(0 804.68)" x="79" y="4.199999999999999" style="white-space:pre">Tanh</text>
+</g>
+</g>
+</g>
+</g>
+<defs>
+<clipPath id="a">
+<rect width="94" height="145"/>
+</clipPath>
+</defs>
+<g class="layer-above"/>
+<g class="infolayer">
+<g class="legend" transform="translate(794 100)" pointer-events="all">
+<rect class="bg" width="94" height="145" fill="#fff" shape-rendering="crispEdges" stroke-width="0px"/>
+<g class="scrollbox" transform="translate(0)" clip-path="url(#a)">
+<g class="groups" transform="translate(0)">
+<g class="traces" transform="translate(0 14.5)">
+<text class="legendtext" x="40" y="4.680000000000001" fill="rgb(42, 63, 95)" font-family="'PT Serif'" font-size="12px" style="white-space:pre">None</text>
+<g class="layers" opacity=".7">
+<g class="legendsymbols">
+<g class="legendpoints">
+<path class="legendbox" transform="translate(20)" d="M6,6H-6V-6H6Z" fill="#1f77b4" stroke="#000" stroke-width=".7px"/>
+</g>
+</g>
+</g>
+<rect class="legendtoggle" y="-9.5" width="89" height="19" fill-opacity="0"/>
+</g>
+</g>
+<g class="groups" transform="translate(0 10)">
+<g class="traces" transform="translate(0 33.5)">
+<text class="legendtext" x="40" y="4.680000000000001" fill="rgb(42, 63, 95)" font-family="'PT Serif'" font-size="12px" style="white-space:pre">ReLU</text>
+<g class="layers" opacity=".7">
+<g class="legendsymbols">
+<g class="legendpoints">
+<path class="legendbox" transform="translate(20)" d="M6,6H-6V-6H6Z" fill="#ff7f0e" stroke="#000" stroke-width=".7px"/>
+</g>
+</g>
+</g>
+<rect class="legendtoggle" y="-9.5" width="89" height="19" fill-opacity="0"/>
+</g>
+</g>
+<g class="groups" transform="translate(0 20)">
+<g class="traces" transform="translate(0 52.5)">
+<text class="legendtext" x="40" y="4.680000000000001" fill="rgb(42, 63, 95)" font-family="'PT Serif'" font-size="12px" style="white-space:pre">SELU</text>
+<g class="layers" opacity=".7">
+<g class="legendsymbols">
+<g class="legendpoints">
+<path class="legendbox" transform="translate(20)" d="M6,6H-6V-6H6Z" fill="#2ca02c" stroke="#000" stroke-width=".7px"/>
+</g>
+</g>
+</g>
+<rect class="legendtoggle" y="-9.5" width="89" height="19" fill-opacity="0"/>
+</g>
+</g>
+<g class="groups" transform="translate(0 30)">
+<g class="traces" transform="translate(0 71.5)">
+<text class="legendtext" x="40" y="4.680000000000001" fill="rgb(42, 63, 95)" font-family="'PT Serif'" font-size="12px" style="white-space:pre">Sigmoid</text>
+<g class="layers" opacity=".7">
+<g class="legendsymbols">
+<g class="legendpoints">
+<path class="legendbox" transform="translate(20)" d="M6,6H-6V-6H6Z" fill="#d62728" stroke="#000" stroke-width=".7px"/>
+</g>
+</g>
+</g>
+<rect class="legendtoggle" y="-9.5" width="89" height="19" fill-opacity="0"/>
+</g>
+</g>
+<g class="groups" transform="translate(0 40)">
+<g class="traces" transform="translate(0 90.5)">
+<text class="legendtext" x="40" y="4.680000000000001" fill="rgb(42, 63, 95)" font-family="'PT Serif'" font-size="12px" style="white-space:pre">Tanh</text>
+<g class="layers" opacity=".7">
+<g class="legendsymbols">
+<g class="legendpoints">
+<path class="legendbox" transform="translate(20)" d="M6,6H-6V-6H6Z" fill="#9467bd" stroke="#000" stroke-width=".7px"/>
+</g>
+</g>
+</g>
+<rect class="legendtoggle" y="-9.5" width="89" height="19" fill-opacity="0"/>
+</g>
+</g>
+</g>
+<rect class="scrollbar" width="0" height="0" rx="20" ry="3" fill="#808ba4"/>
+</g>
+<g class="g-gtitle">
+<text class="gtitle" x="45" y="50" dy="0em" fill="rgb(42, 63, 95)" font-family="'PT Serif'" font-size="17px" style="white-space:pre">Accuracy across activations</text>
+</g>
+<g class="annotation" data-index="0">
+<g class="annotation-text-g" transform="rotate(0,237.5,88.5)">
+<g class="cursor-pointer" transform="translate(206 77)">
+<rect class="bg" x=".5" y=".5" width="63" height="22" fill-opacity="0" stroke-opacity="0"/>
+<text class="annotation-text" x="32" y="17" fill="rgb(42, 63, 95)" font-family="'PT Serif'" font-size="16px" text-anchor="middle" style="white-space:pre">Conv1d</text>
+</g>
+</g>
+</g>
+<g class="annotation" data-index="1">
+<g class="annotation-text-g" transform="rotate(0,622.5,88.5)">
+<g class="cursor-pointer" transform="translate(546 77)">
+<rect class="bg" x=".5" y=".5" width="153" height="22" fill-opacity="0" stroke-opacity="0"/>
+<text class="annotation-text" x="77" y="17" fill="rgb(42, 63, 95)" font-family="'PT Serif'" font-size="16px" text-anchor="middle" style="white-space:pre">Conv1dThenLinear</text>
+</g>
+</g>
+</g>
+<g class="annotation" data-index="2">
+<g class="annotation-text-g" transform="rotate(0 237.5 319.12)">
+<g class="cursor-pointer" transform="translate(206 308)">
+<rect class="bg" x=".5" y=".5" width="63" height="22" fill-opacity="0" stroke-opacity="0"/>
+<text class="annotation-text" x="32" y="17" fill="rgb(42, 63, 95)" font-family="'PT Serif'" font-size="16px" text-anchor="middle" style="white-space:pre">Conv2d</text>
+</g>
+</g>
+</g>
+<g class="annotation" data-index="3">
+<g class="annotation-text-g" transform="rotate(0 622.5 319.12)">
+<g class="cursor-pointer" transform="translate(546 308)">
+<rect class="bg" x=".5" y=".5" width="153" height="22" fill-opacity="0" stroke-opacity="0"/>
+<text class="annotation-text" x="77" y="17" fill="rgb(42, 63, 95)" font-family="'PT Serif'" font-size="16px" text-anchor="middle" style="white-space:pre">Conv2dThenLinear</text>
+</g>
+</g>
+</g>
+<g class="annotation" data-index="4">
+<g class="annotation-text-g" transform="rotate(0,237.5,549.75)">
+<g class="cursor-pointer" transform="translate(206 538)">
+<rect class="bg" x=".5" y=".5" width="63" height="22" fill-opacity="0" stroke-opacity="0"/>
+<text class="annotation-text" x="32" y="17" fill="rgb(42, 63, 95)" font-family="'PT Serif'" font-size="16px" text-anchor="middle" style="white-space:pre">Conv3d</text>
+</g>
+</g>
+</g>
+<g class="annotation" data-index="5">
+<g class="annotation-text-g" transform="rotate(0,622.5,549.75)">
+<g class="cursor-pointer" transform="translate(546 538)">
+<rect class="bg" x=".5" y=".5" width="153" height="22" fill-opacity="0" stroke-opacity="0"/>
+<text class="annotation-text" x="77" y="17" fill="rgb(42, 63, 95)" font-family="'PT Serif'" font-size="16px" text-anchor="middle" style="white-space:pre">Conv3dThenLinear</text>
+</g>
+</g>
+</g>
+<g class="annotation" data-index="6">
+<g class="annotation-text-g" transform="rotate(0 237.5 780.38)">
+<g class="cursor-pointer" transform="translate(211 769)">
+<rect class="bg" x=".5" y=".5" width="53" height="22" fill-opacity="0" stroke-opacity="0"/>
+<text class="annotation-text" x="27" y="17" fill="rgb(42, 63, 95)" font-family="'PT Serif'" font-size="16px" text-anchor="middle" style="white-space:pre">Linear</text>
+</g>
+</g>
+</g>
+</g>
+</svg>

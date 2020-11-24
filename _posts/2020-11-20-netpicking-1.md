@@ -1,0 +1,216 @@
+---
+layout: post
+title: "Netpicking Part 1: Hello MNIST"
+date: 2020-11-20 19:23
+categories: machine-learning
+---
+
+
+The `Hello World!` introduction to many neural network libraries has the user write a small network for the
+[MNIST][MNIST] dataset, train it, test it, get 90% accuracy or more, and thereby get a feel for how the
+library works.  When I started using [PyTorch][pytorch], I followed such a tutorial on their website, but I
+wondered why the particular network (with `Conv2d` and `ReLU`) was picked in the tutorial. Why not a different
+convolution layer, or a `Linear` layer with a `Sigmoid` activation?
+
+When someone designs a neural network, why do they pick a particular architecture?  Obviously, some
+conventions have set in, but the primary reason is performance: Network *A* got a higher accuracy (or whatever
+metric) than Network *B*, so we use *A*. What additional information can I use when making this decision?
+Let's look at a bunch of networks and find out.
+
+## Measurements and Baselines
+
+Comparing a bunch of networks seems similar to a programming contest:
+
+| A regular program's | is somewhat like a neural net's |
+|---------------------|---------------------------------|
+| Accuracy on test cases | Accuracy on test set |
+| Compilation Time  | Training Time | 
+| Binary size | Number of parameters |
+| Memory usage | Memory required to process a single input |
+| Algorithm Complexity | number of `ops` in the computation |
+
+I designed `Basic`, a simple[^basic] model with bias, as the baseline for the metrics.  I trained it for
+`4` epochs, and this is how it performs:
+
+| network | weights | memory usage | training time | number of ops | accuracy |
+|---------|---------|--------------|---------------|---------------|----------|
+| `Basic` | 7850 | 1588 | 52.14s | 4 | 0.912 |
+
+
+## Getting a bunch of networks
+
+I [generated][part2] 1000 sequential neural networks, in PyTorch, to test on the MNIST dataset. The networks
+are classified along two axes: computation layer, and activation layer. The networks are distributed as per
+the below table:
+
+|   ↓ Computation / Activation →  | `None` | `ReLU` | `SELU` | `Sigmoid` | `Tanh` |
+| `Linear` | 55 | 23 | 24 | 25 | 23 |
+| `Conv1d` | 59 | 23 | 24 | 21 | 23 |
+| `Conv2d` | 61 | 23 | 23 | 20 | 23 |
+| `Conv3d` | 57 | 23 | 23 | 22 | 25 |
+| `Conv1dThenLinear` | 34 | 17 | 17 | 17 | 15 |
+| `Conv2dThenLinear` | 38 | 14 | 16 | 16 | 16 |
+| `Conv3dThenLinear` | 33 | 18 | 16 | 18 | 15 |
+| `ResNetStyle`[^resnet] | 0 | 100 | 0 | 0 | 0 |
+
+For example, there are `23` networks where the computation layer is `Conv2d` and the activation layer is
+`ReLU`.  
+
+That makes it 1001 networks overall. The test set for MNIST contains 10000 examples, and a prediction of each
+example has 10 scores.  Additionally, each snapshot generated a bunch of summary metrics, say 20 per snapshot.
+Now I have a raw dataset of size `(1001, 4, 10000, 10)`, and a summary dataset of size `(1001, 4, 20)`. Time
+to [crunch the numbers!][watert]
+
+## Picking the "best" network
+
+Let's use the below analogy:
+
+> There are 1000 students writing the MNIST exam. The exam has 10000 questions, multiple choice.  The
+> students use approved study material, which contains 60000 practice questions. Each student has taken the
+> test 4 times. I have also written this exam, and I have a `Basic` idea of what a good score is.  I want to
+> hire one or more students who perform well on this exam.
+
+The following ten are just some of the queries that can be posed:
+
+1. How did the students perform over 4 attempts?
+
+    | Attempt\# | $$\geq$$ 80% | $$\geq$$ 90%| $$\geq$$ 95% | $$\geq$$ 99%| $$\geq$$ 100% |
+    | 1 | 983 | 792 | 352 | 0 | 0 |
+    | 2 | 990 | 879 | 461 | 0 | 0 |
+    | 3 | 990 | 907 | 509 | 0 | 0 |
+    | 4 | 993 | 924 | 527 | 5 | 0 |
+
+   So the exam was easy, but very few got close to a perfect score.  Let's just consider the "good" students:
+   those that got above 80% in all 4 test attempts.
+
+
+2. I know the students studied together and developed common strategies. Which strategy led to more students
+   scoring high marks?
+
+   ![score1]({% link assets/images/netpicking1/2.svg %})
+
+   Okay, `ResNetStyle` is first[^limit], but what about everyone else?
+
+   ![score2]({% link assets/images/netpicking1/2b.svg %})
+
+3. (training time) With the `Basic` strategy, I spent only `52` seconds studying for the test. How about the
+   others?
+
+   ![time]({% link assets/images/netpicking1/3.svg %})
+
+4. (number of weights) With the `Basic` strategy, I had only `7850` keywords as part of my notes. How about the others?
+
+   ![params]({% link assets/images/netpicking1/4.svg %})
+
+5. (memory usage) With the `Basic` strategy, I used only `1588` pages for rough work. How about the others?
+
+   ![mem]({% link assets/images/netpicking1/5.svg %})
+
+6. (number of ops) With the `Basic` strategy, I needed only `4` steps to get an answer every time.
+   How about the others?
+
+   ![ops]({% link assets/images/netpicking1/6.svg %})
+
+7. Every student took the test 4 times. How did the scores change over each attempt?
+
+   ![changes]({% link assets/images/netpicking1/7.svg %})
+
+8. How many questions were easy, weird, or confusing?
+
+    * An easy question is one where every student got the correct answer.
+    * A weird question is likely to be one where most of the students agree on the answer, but are wrong.
+    * A confusing question is likely to be one where most students disagree on the answer.
+
+    Out of the 10000 samples in the test set,
+
+    * **4247** samples were easy questions. All the networks predicted these correctly, so it is impossible to
+        distinguish between the networks using any of these samples.
+
+    * **8** samples were weird questions. More than 90% of networks predicted these *incorrectly*, but all of
+        them agreed got the *same* incorrect answer.
+
+        ![weird]({% link assets/images/netpicking1/8.svg %})
+
+    * **5** samples were confusing questions. There was no clear agreement among the networks as to what the
+        answer was.
+        
+        ![confusing]({% link assets/images/netpicking1/8b.svg %})
+
+9. Let's take the student with the best score. Is this person the *best overall*?
+
+    The network with the highest accuracy is `ResNetStyle_75`, with an accuracy of 99.1%. To be the best
+    overall, it should have the highest accuracy for each class of inputs, so let's look at the *percentile*
+    of `ResNetStyle_75` at predicting each digit correctly:
+
+    | name | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 |
+    |------|---|---|---|---|---|---|---|---|---|---|
+    | `ResNetStyle_75` | 99.19 | 94.06 | 98.59 | 99.09 | 90.33 | 96.27 | 96.68 | 100.00 | 94.56 | 97.58 |
+
+    So there are some networks that are more accurate than `ResNetStyle_75` at predicting individual classes.
+    `ResNetStyle_75` has the worst percentile at predicting `4`s correctly. 
+
+
+10. How does the best student compare to the `Basic` method?
+
+    | network | weights | memory usage | training time | number of ops | accuracy |
+    |---------|---------|--------------|---------------|---------------|----------|
+    | `ResNetStyle_75` | 531605 | 254083 | 577.6s | 28 | 0.991 |
+    | `Basic` | 7850 | 1588 | 52.14s | 4 | 0.912 |
+    | Ratio | 67.7 | 160 | 11.07 | 7.0 | 1.08 |
+
+    For an 8% increase in accuracy, `ResNetStyle_75` required 67x weights, 160x memory, and 11x training time.
+    How many members should an *ensemble* of `Basic` networks have to get a similar accuracy combined? 11? 67?
+    160?
+
+## Closing Notes
+
+Picking the best neural network, not surprisingly, depends on the definition of best (questions 3, 4, 5, and
+6). Some use cases may value resource efficiency: a simple network with few parameters, that can be fast and
+error-prone, would be easier to use in a constrained environment. Other cases may have heavy consequences
+attached to a wrong prediction, and so will use a large, overparametrized network, located in a server with
+multiple GPUs, to avoid error at all costs. Maybe the two extremes could work in tandem: the small network can
+be provide a quick prediction, which can be checked by requesting the large network for a prediction if
+needed.
+
+* Comparing a bunch of neural networks could also reveal some features about the dataset (question 8) that is
+    being used: if many networks are wrong for a given subset of the data, is the data labeled incorrectly?
+    Is the training set not large/representative enough of the underlying distribution? Do all the networks
+    suffer from a common issue?
+
+* Designing a bunch of neural networks may give an idea towards the importance of a particular design
+  (questions 1 and 2): do networks with similar designs get the same inputs wrong? It may also point to the
+  relative benefit of training a network for more epochs (question 7).
+
+* Designing a bunch of neural networks may also show the trade-offs involved in picking a particular network
+  (questions 9 and 10). Is an ensemble of shallow networks "better" than a single deep network?
+
+<p markdown="1" class="message">
+Thanks for reading! You may like [Part 2][part2] of this series.
+</p>
+
+[^basic]:
+
+    The network is just a `784x10` matrix multiplication, adding a bias vector, and a `Softmax` layer.
+
+[^limit]:
+
+    I realized after running all the networks that I could've modified the `BasicBlock` to use different
+    activations instead of just `ReLU`, which would've given a nice square matrix of subplots, and info about
+    how the `BasicBlock` architecture is affected by different activations.
+
+[^resnet]: 
+	
+    The computation layer is a [ResNet `BasicBlock`][resblock].
+
+[^mnistk]:
+    
+    The code for training/testing is in my Github repo [`mnistk`](https://github.com/ahgamut/mnistk). 
+
+
+[MNIST]: https://en.wikipedia.org/wiki/MNIST_database
+[watert]: https://www.youtube.com/watch?v=LPDn0PC6zFE
+[resblock]: https://github.com/pytorch/vision/blob/master/torchvision/models/resnet.py
+[pytorch]: https://pytorch.org/tutorials/beginner/deep_learning_60min_blitz.html
+[part2]: {{ site.baseurl }}{% link _posts/2020-11-24-netpicking-2.md %}
+
+
