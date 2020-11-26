@@ -5,7 +5,7 @@ date: 2020-11-24 19:24
 categories: machine-learning
 ---
 
-In [Netpicking Part 1][part1], I described a dilemma in picking a neural network for MNIST, and went through
+In [Netpicking Part 1][part1], I described a dilemma in picking a neural network for MNIST. I went through
 summary stats for 1001 different generated networks. This post explains how I generated these networks. 
 
 ## Representing a Neural Network ##
@@ -14,8 +14,8 @@ The MNIST problem requires finding a function
 
 $$ \mathit{f} : \R^{784} \rightarrow \{0,1,2,3,4,5,6,7,8,9\} $$ 
 
-such that $$ \mathit{f} $$ performs well on a target dataset. We can solve this as a **multi-class classification
-problem** using neural networks, and constrain the space of functions $$ \mathit{f} $$:
+such that $$ \mathit{f} $$ performs well on a target dataset. I can solve this as a **multi-class
+classification problem** using neural networks, and constrain the space of functions $$ \mathit{f} $$:
 
 1. Every $$ \mathit{f} $$ must accept an input of size `784`
 2. Every $$ \mathit{f} $$ must provide an output of size `10` for each input
@@ -23,12 +23,12 @@ problem** using neural networks, and constrain the space of functions $$ \mathit
 
 A neural network can be represented as:
 
-* a parameterized function (mathematical notation), which is used in textbooks when teaching the theory
-* a *directed acyclic graph*, or DAG, which provides a visually friendly representation of the flow of
+* a parameterized function, used in textbooks when teaching the theory
+* a *directed acyclic graph* or DAG, which provides a visually friendly representation of the flow of
     operations
 * *text obeying a particular grammar*, which is how neural nets are described in a programming language
 
-For example, in PyTorch, a sample function $$ \mathit{f} $$ satisfying the above constraints is represented like this:
+For example, in PyTorch, a sample $$ \mathit{f} $$ satisfying the above constraints is represented like this:
 
 ```python
 class Basic(nn.Module):
@@ -46,7 +46,7 @@ class Basic(nn.Module):
         return x
 ```
 
-How about a function $$ \mathit{f} $$ using 2D convolutions?
+How about a sample using 2D convolutions?
 
 ```python
 class Conv2dReLU_12(nn.Module):
@@ -75,8 +75,8 @@ class Conv2dReLU_12(nn.Module):
         return x
 ```
 
-Now, a leap of faith: every function $$ \mathit{f} $$ that satisfies the above constraints will follow the
-below template:
+Now, a leap of faith generalization.  Every function $$ \mathit{f} $$ that satisfies the above constraints
+will follow the below template:
 
 ```python
 class Network(nn.Module):
@@ -94,10 +94,10 @@ class Network(nn.Module):
         return x
 ```
 
-Having networks follow this template would save a lot of time when writing boilerplate code for
-train/validation/test cycles.  Let's add another simplifying constraint: the neural network DAG should be
-representable as a *sequence* of function calls. This means the function calls in the above `forward` method
-can be in <u>the same order</u> as the declarations.
+Having networks follow this template would save time when writing boilerplate code for train/validation/test
+cycles. Let's add another simplifying constraint: if the neural network DAG is forced to be a straight line,
+the function calls in the `forward` method can be in <u>the same order</u> as the declarations.  How do I
+start designing such a template?
 
 ### `Jinja2`
 
@@ -108,8 +108,8 @@ From the `Jinja2` [website][Jinja2] (emphasis mine):
 
 Any text-based format, so the above Python code block also applies. The `Jinja2` templating language provides
 mathematical operators, logical operators, `if-else`, and `for` statements. If I create a template similar to
-the `Network` class above, ~~instantiating~~ rendering that template with different parameters should get me
-the 1000 networks. Each network must have:
+the `Network` class above, ~~instantiating~~[^cpp] rendering that template with different parameters should
+get the 1000 networks. Each network must have:
 
 1. (**Constraint 1**): an `input_shape` member, which can be used to shape the input.[^shaping]
 2. **a sequence of declarations**. Naming the layers is simple (a loop with `self.f1`, `self.f2` ...), 
@@ -118,9 +118,18 @@ the 1000 networks. Each network must have:
 4. (**Constraint 2**): its output shape cast to `x,10` after the all the function calls.
 5. (**Constraint 3**): a `LogSoftmax` layer after the template declarations, and call it last.
 
-Upon closer inspection, every layer declaration string looks to printing an instance of a
-[`collections.namedtuple`][namedtuple] which has parameters with the same names as the arguments to the layer
-declaration. Maybe it's possible to use that.
+Is declaring a layer really that complex? Let's look at it again:
+
+```python
+   self.f5 = nn.Conv2d(in_channels=22, out_channels=10, kernel_size=(14, 14),)
+```
+
+Suppose I had an object `x` of type `Conv2d`, such that `str(x)` returned `"Conv2d(in_channels=22,
+out_channels=10)"`?  Are there classes like this?
+
+The Python standard library provides [`collections.namedtuple`][namedtuple], which has the right format for
+stringified output.  But then I need to write `namedtuple` equivalents for so many classes! I wonder if there
+is a way to examine (or inspect) the methods of a class to produce a `namedtuple`.
 
 ### `inspect`
 
@@ -254,5 +263,8 @@ the networks for [`mnistk`][mnistk] (you can see the difference between [generat
 [mnistk-manual]: https://github.com/ahgamut/mnistk/blob/master/src/mnistk/run/trainer.py
 [Jinja2]: https://jinja.palletsprojects.com/en/2.11.x/
 [part1]: {{ site.baseurl }}{% link _posts/2020-11-20-netpicking-1.md %}
+[^cpp]:
+    
+    Too much time around `C++` templates and the mountain of errors I generate using them.
 
 

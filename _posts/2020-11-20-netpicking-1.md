@@ -6,16 +6,16 @@ categories: machine-learning
 ---
 
 
-The `Hello World!` introduction to many neural network libraries has the user write a small network for the
+The `Hello World!` introduction to neural network libraries has the user write a small network for the
 [MNIST][MNIST] dataset, train it, test it, get 90% accuracy or more, and thereby get a feel for how the
-library works.  When I started using [PyTorch][pytorch], I followed such a tutorial on their website, but I
-wondered why the particular network (with `Conv2d` and `ReLU`) was picked in the tutorial. Why not a different
-convolution layer, or a `Linear` layer with a `Sigmoid` activation?
+library works.  When I started using [PyTorch][pytorch], I followed such a tutorial on their website. But I
+wondered why a network with `Conv2d` and `ReLU` was picked in the tutorial. Why not a different convolution or
+a `Linear` layer with a `Sigmoid` activation?
 
 When someone designs a neural network, why do they pick a particular architecture?  Obviously, some
-conventions have set in, but the primary reason is performance: Network *A* got a higher accuracy (or whatever
-metric) than Network *B*, so we use *A*. What additional information can I use when making this decision?
-Let's look at a bunch of networks and find out.
+conventions have set in, but the primary reason is performance: Network *A* got a higher accuracy (or AUC)
+than Network *B*, so use *A*. Is there more information I can use when making this decision?  Let's look at a
+bunch of networks and find out.
 
 ## Measurements and Baselines
 
@@ -29,19 +29,20 @@ Comparing a bunch of networks seems similar to a programming contest:
 | Memory usage | Memory required to process a single input |
 | Algorithm Complexity | number of `ops` in the computation |
 
-I designed `Basic`, a simple[^basic] model with bias, as the baseline for the metrics.  I trained it for
-`4` epochs, and this is how it performs:
+I designed `Basic`, a simple[^basic] model with bias as the baseline for the metrics.  I trained it for `4`
+epochs, with the resulting performance:
 
 | network | weights | memory usage | training time | number of ops | accuracy |
 |---------|---------|--------------|---------------|---------------|----------|
 | `Basic` | 7850 | 1588 | 52.14s | 4 | 0.912 |
 
+The next step is design a bunch of "similar" networks and obtain their performance metrics.
 
 ## Getting a bunch of networks
 
-I [generated][part2] 1000 sequential neural networks, in PyTorch, to test on the MNIST dataset. The networks
-are classified along two axes: computation layer, and activation layer. The networks are distributed as per
-the below table:
+I quickly got bored writing different-yet-similar neural nets manually. [Yak shaving][yaks] to the rescue! I
+ended up [generating][part2] 1000 neural networks following a sequential template. The networks are classified
+along two axes: computation layer, and activation layer. The networks are distributed as per the below table:
 
 |   ↓ Computation / Activation →  | `None` | `ReLU` | `SELU` | `Sigmoid` | `Tanh` |
 | `Linear` | 55 | 23 | 24 | 25 | 23 |
@@ -56,10 +57,9 @@ the below table:
 For example, there are `23` networks where the computation layer is `Conv2d` and the activation layer is
 `ReLU`.  
 
-That makes it 1001 networks overall. The test set for MNIST contains 10000 examples, and a prediction of each
-example has 10 scores.  Additionally, each snapshot generated a bunch of summary metrics, say 20 per snapshot.
-Now I have a raw dataset of size `(1001, 4, 10000, 10)`, and a summary dataset of size `(1001, 4, 20)`. Time
-to [crunch the numbers!][watert]
+So 1001 networks. Each trained for 4 epochs. The MNIST test set contains 10000 samples. A prediction of each
+input has 10 scores.  That gives a raw dataset of size `(1001, 4, 10000, 10)`, and a summary dataset of size
+`(1001, 4, 20)`. Time to [crunch the numbers!][watert]
 
 ## Picking the "best" network
 
@@ -81,7 +81,8 @@ The following ten are just some of the queries that can be posed:
     | 4 | 993 | 924 | 527 | 5 | 0 |
 
    So the exam was easy, but very few got close to a perfect score.  Let's just consider the "good" students:
-   those that got above 80% in all 4 test attempts.
+   those that got above 80% in all 4 test attempts. Of these, the "really good" students are those that got
+   above 98% in their last test attempts, and they get a gold star.
 
 
 2. I know the students studied together and developed common strategies. Which strategy led to more students
@@ -89,37 +90,67 @@ The following ten are just some of the queries that can be posed:
 
    ![score1]({% link assets/images/netpicking1/2.svg %})
 
-   Okay, `ResNetStyle` is first[^limit], but what about everyone else?
+   Okay, `ResNetStyle` is first[^limit] (deeper networks better, skip connections are magic, blah blah), but
+   what about everyone else? Unsurprisingly, `Conv2d` networks are second-best, but `Conv3d` networks seem to
+   do an equally good job (lower maximum, but higher median and smaller spread). Adding `Linear` layers after
+   convolution layers does not seem to be beneficial, perhaps the networks didn't have enough training epochs.
 
    ![score2]({% link assets/images/netpicking1/2b.svg %})
 
-3. (training time) With the `Basic` strategy, I spent only `52` seconds studying for the test. How about the
-   others?
+   * Argh! The move to consider networks without any activation was useless. Networks without
+       activations are just linear functions; combining each network's weights would produce a matrix that is
+       effectively equal to the one used in `Basic`.
+
+   * As expected, networks that use the `ReLU` activation have a higher accuracy on average than any of the
+       others.
+
+   * Networks that use `SELU` activation are not as good as those with `ReLU`, but are more consistent.
+
+   * `Sigmoid` and `Tanh` activations are both risky choices.
+
+3. With the `Basic` strategy, I spent only `52` seconds studying for the test. How about the others?
 
    ![time]({% link assets/images/netpicking1/3.svg %})
 
-4. (number of weights) With the `Basic` strategy, I had only `7850` keywords as part of my notes. How about the others?
+   * The `Conv1d`, `Linear`, and `Conv1dThenLinear` networks take similar amounts of time to train. Does this
+       mean that the `reshape` operation is slow? The other networks use 2D-convolutions or higher.
+
+   * The gold stars are all across the board for `ResNetStyle` networks, and generally on the higher end for the
+       others. However, the gold star in `Conv3dThenLinear` takes the *least* amount of training time in its
+       class; are `Conv3d` networks slower to train?
+
+4. With the `Basic` strategy, I had only `7850` keywords as part of my notes. How about the others?
 
    ![params]({% link assets/images/netpicking1/4.svg %})
 
-5. (memory usage) With the `Basic` strategy, I used only `1588` pages for rough work. How about the others?
+   Again, the gold stars are on the higher end of the distributions. This could imply deeper or wider networks
+   though.
+
+5. With the `Basic` strategy, I used only `1588` pages for rough work. How about the others?
 
    ![mem]({% link assets/images/netpicking1/5.svg %})
 
-6. (number of ops) With the `Basic` strategy, I needed only `4` steps to get an answer every time.
+   This plot is similar to the previous one. The memory required to hold the intermediate tensors is related
+   to the layers that output these tensors, examining the gold stars individually may give some information.
+
+6. With the `Basic` strategy, I needed only `4` steps to get an answer every time.
    How about the others?
 
    ![ops]({% link assets/images/netpicking1/6.svg %})
+
+   Since all the networks are sequential, more operations means deeper networks. Now "deeper networks are
+   better" can be seen: the higher ends have the gold stars, but not all of them.
 
 7. Every student took the test 4 times. How did the scores change over each attempt?
 
    ![changes]({% link assets/images/netpicking1/7.svg %})
 
-8. How many questions were easy, weird, or confusing?
+   This graph doesn't tell much. It makes a case for early stopping: in most cases, the first two
+   epochs are sufficient to pick the best-trained network. There should be a better way to understand this
+   data; are there any networks that were horrible in the first two epochs, and then suddenly found a
+   wonderful local optimum?
 
-    * An easy question is one where every student got the correct answer.
-    * A weird question is likely to be one where most of the students agree on the answer, but are wrong.
-    * A confusing question is likely to be one where most students disagree on the answer.
+8. How many questions were easy, weird, or confusing?
 
     Out of the 10000 samples in the test set,
 
@@ -212,5 +243,5 @@ Thanks for reading! You may like [Part 2][part2] of this series.
 [resblock]: https://github.com/pytorch/vision/blob/master/torchvision/models/resnet.py
 [pytorch]: https://pytorch.org/tutorials/beginner/deep_learning_60min_blitz.html
 [part2]: {{ site.baseurl }}{% link _posts/2020-11-24-netpicking-2.md %}
-
+[yaks]: https://en.wiktionary.org/wiki/yak_shaving
 
