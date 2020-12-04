@@ -2,6 +2,7 @@
 layout: post
 title: "Netpicking Part 1: Hello MNIST"
 date: 2020-11-20 19:23
+katex: true
 categories: machine-learning
 ---
 

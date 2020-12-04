@@ -150,7 +150,7 @@ abbr[title] {
 /* Code */
 code,
 pre {
-  font-family: Menlo, Monaco, "Courier New", monospace;
+  font-family: "San Francisco Mono", Menlo, Monaco, "Consolas", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Courier New", monospace;
 }
 code {
   padding: .25em .5em;
@@ -193,7 +193,7 @@ pre code {
 
 /* Gist via GitHub Pages */
 .gist .gist-file {
-  font-family: Menlo, Monaco, "Courier New", monospace !important;
+  font-family: "San Francisco Mono", Menlo, Monaco, "Consolas", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Courier New", monospace;
 }
 .gist .markdown-body {
   padding: 15px;
@@ -249,11 +249,6 @@ th {
   padding: .25rem .5rem;
   border: 1px solid #e5e5e5;
 }
-tbody tr:nth-child(odd) td,
-tbody tr:nth-child(odd) th {
-  background-color: #f9f9f9;
-}
-
 
 /*
  * Custom type

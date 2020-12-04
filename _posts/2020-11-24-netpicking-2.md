@@ -2,6 +2,7 @@
 layout: post
 title: "Netpicking Part 2: Generating the networks"
 date: 2020-11-24 19:24
+katex: true
 categories: machine-learning
 ---
 
