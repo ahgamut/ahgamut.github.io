@@ -2,7 +2,6 @@
 layout: post
 title: "Netpicking Part 1: Hello MNIST"
 date: 2020-11-20 19:23
-katex: true
 categories: machine-learning
 ---
 
@@ -75,7 +74,7 @@ The following ten are just some of the queries that can be posed:
 
 1. How did the students perform over 4 attempts?
 
-    | Attempt\# | $$\geq$$ 80% | $$\geq$$ 90%| $$\geq$$ 95% | $$\geq$$ 99%| $$\geq$$ 100% |
+    | Attempt\# | ≥ 80% | ≥ 90%|  ≥ 95% | ≥ 99% | ≥ 100% |
     | 1 | 983 | 792 | 352 | 0 | 0 |
     | 2 | 990 | 879 | 461 | 0 | 0 |
     | 3 | 990 | 907 | 509 | 0 | 0 |
