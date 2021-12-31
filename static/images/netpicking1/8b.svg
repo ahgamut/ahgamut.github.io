@@ -1,0 +1,426 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg class="main-svg" style="" viewBox="0 0 600 800" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<rect width="600" height="800" fill="#fff"/>
+<defs>
+<g class="clips">
+<clipPath id="a" class="plotclip">
+<rect width="198" height="96.875"/>
+</clipPath>
+<clipPath id="d" class="plotclip">
+<rect width="198" height="96.875"/>
+</clipPath>
+<clipPath id="c" class="plotclip">
+<rect width="198" height="96.875"/>
+</clipPath>
+<clipPath id="b" class="plotclip">
+<rect width="198" height="96.875"/>
+</clipPath>
+</g>
+</defs>
+<g class="bglayer" fill="#e5ecf6" stroke-width="0">
+<rect class="bg" x="80" y="100" width="198" height="96.875"/>
+<rect class="bg" x="80" y="274.38" width="198" height="96.875"/>
+<rect class="bg" x="80" y="448.75" width="198" height="96.875"/>
+<rect class="bg" x="80" y="623.12" width="198" height="96.875"/>
+</g>
+<g class="layer-below"/>
+<g class="cartesianlayer">
+<g class="subplot xy">
+<g class="layer-subplot"/>
+<g class="gridlayer" stroke="#fff" stroke-width="1px">
+<g class="x">
+<path class="xgrid crisp" transform="translate(154.25)" d="m0 100v96.875"/>
+<path class="xgrid crisp" transform="translate(224.96)" d="m0 100v96.875"/>
+</g>
+<g class="y">
+<path class="ygrid crisp" transform="translate(0,160.55)" d="m80 0h198"/>
+<path class="ygrid crisp" transform="translate(0,125.95)" d="m80 0h198"/>
+</g>
+</g>
+<g class="zerolinelayer" stroke="#fff" stroke-width="2px">
+<path class="xzl zl crisp" transform="translate(83.54)" d="m0 100v96.875"/>
+<path class="yzl zl crisp" transform="translate(0,195.15)" d="m80 0h198"/>
+</g>
+<g class="plot" transform="translate(80 100)" clip-path="url(#a)">
+<g class="heatmaplayer mlayer">
+<g class="hm">
+<image width="198" height="97" preserveAspectRatio="none" xlink:href="data:image/png;base64,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" xmlns="http://www.w3.org/2000/svg"/>
+</g>
+</g>
+</g>
+<path class="xlines-above crisp" d="m0 0" fill="none"/>
+<path class="ylines-above crisp" d="m0 0" fill="none"/>
+<g class="xaxislayer-above">
+<g class="xtick" fill="rgb(42, 63, 95)" font-family="'PT Serif'" font-size="12px" text-anchor="middle">
+<text transform="translate(83.54)" y="209.875" style="white-space:pre">0</text>
+<text transform="translate(154.25)" y="209.875" style="white-space:pre">10</text>
+<text transform="translate(224.96)" y="209.875" style="white-space:pre">20</text>
+</g>
+</g>
+<g class="yaxislayer-above">
+<g class="ytick" fill="rgb(42, 63, 95)" font-family="'PT Serif'" font-size="12px" text-anchor="end">
+<text transform="translate(0,195.15)" x="79" y="4.199999999999999" style="white-space:pre">0</text>
+<text transform="translate(0,160.55)" x="79" y="4.199999999999999" style="white-space:pre">10</text>
+<text transform="translate(0,125.95)" x="79" y="4.199999999999999" style="white-space:pre">20</text>
+</g>
+</g>
+</g>
+<g class="subplot x2y2">
+<g class="layer-subplot"/>
+<g class="gridlayer" stroke="#fff" stroke-width="1px">
+<g class="x2">
+<path class="x2grid crisp" transform="translate(154.25)" d="m0 274.38v96.875"/>
+<path class="x2grid crisp" transform="translate(224.96)" d="m0 274.38v96.875"/>
+</g>
+<g class="y2">
+<path class="y2grid crisp" transform="translate(0 334.92)" d="m80 0h198"/>
+<path class="y2grid crisp" transform="translate(0 300.32)" d="m80 0h198"/>
+</g>
+</g>
+<g class="zerolinelayer" stroke="#fff" stroke-width="2px">
+<path class="x2zl zl crisp" transform="translate(83.54)" d="m0 274.38v96.875"/>
+<path class="y2zl zl crisp" transform="translate(0 369.52)" d="m80 0h198"/>
+</g>
+<g class="plot" transform="translate(80 274.38)" clip-path="url(#d)">
+<g class="heatmaplayer mlayer">
+<g class="hm">
+<image width="198" height="97" preserveAspectRatio="none" xlink:href="data:image/png;base64,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" xmlns="http://www.w3.org/2000/svg"/>
+</g>
+</g>
+</g>
+<path class="xlines-above crisp" d="m0 0" fill="none"/>
+<path class="ylines-above crisp" d="m0 0" fill="none"/>
+<g class="xaxislayer-above">
+<g class="x2tick" fill="rgb(42, 63, 95)" font-family="'PT Serif'" font-size="12px" text-anchor="middle">
+<text transform="translate(83.54)" y="384.25" style="white-space:pre">0</text>
+<text transform="translate(154.25)" y="384.25" style="white-space:pre">10</text>
+<text transform="translate(224.96)" y="384.25" style="white-space:pre">20</text>
+</g>
+</g>
+<g class="yaxislayer-above">
+<g class="y2tick" fill="rgb(42, 63, 95)" font-family="'PT Serif'" font-size="12px" text-anchor="end">
+<text transform="translate(0 369.52)" x="79" y="4.199999999999999" style="white-space:pre">0</text>
+<text transform="translate(0 334.92)" x="79" y="4.199999999999999" style="white-space:pre">10</text>
+<text transform="translate(0 300.32)" x="79" y="4.199999999999999" style="white-space:pre">20</text>
+</g>
+</g>
+</g>
+<g class="subplot x3y3">
+<g class="layer-subplot"/>
+<g class="gridlayer" stroke="#fff" stroke-width="1px">
+<g class="x3">
+<path class="x3grid crisp" transform="translate(154.25)" d="m0 448.75v96.875"/>
+<path class="x3grid crisp" transform="translate(224.96)" d="m0 448.75v96.875"/>
+</g>
+<g class="y3">
+<path class="y3grid crisp" transform="translate(0,509.3)" d="m80 0h198"/>
+<path class="y3grid crisp" transform="translate(0,474.7)" d="m80 0h198"/>
+</g>
+</g>
+<g class="zerolinelayer" stroke="#fff" stroke-width="2px">
+<path class="x3zl zl crisp" transform="translate(83.54)" d="m0 448.75v96.875"/>
+<path class="y3zl zl crisp" transform="translate(0,543.9)" d="m80 0h198"/>
+</g>
+<g class="plot" transform="translate(80 448.75)" clip-path="url(#c)">
+<g class="heatmaplayer mlayer">
+<g class="hm">
+<image width="198" height="97" preserveAspectRatio="none" xlink:href="data:image/png;base64,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" xmlns="http://www.w3.org/2000/svg"/>
+</g>
+</g>
+</g>
+<path class="xlines-above crisp" d="m0 0" fill="none"/>
+<path class="ylines-above crisp" d="m0 0" fill="none"/>
+<g class="xaxislayer-above">
+<g class="x3tick" fill="rgb(42, 63, 95)" font-family="'PT Serif'" font-size="12px" text-anchor="middle">
+<text transform="translate(83.54)" y="558.625" style="white-space:pre">0</text>
+<text transform="translate(154.25)" y="558.625" style="white-space:pre">10</text>
+<text transform="translate(224.96)" y="558.625" style="white-space:pre">20</text>
+</g>
+</g>
+<g class="yaxislayer-above">
+<g class="y3tick" fill="rgb(42, 63, 95)" font-family="'PT Serif'" font-size="12px" text-anchor="end">
+<text transform="translate(0,543.9)" x="79" y="4.199999999999999" style="white-space:pre">0</text>
+<text transform="translate(0,509.3)" x="79" y="4.199999999999999" style="white-space:pre">10</text>
+<text transform="translate(0,474.7)" x="79" y="4.199999999999999" style="white-space:pre">20</text>
+</g>
+</g>
+</g>
+<g class="subplot x4y4">
+<g class="layer-subplot"/>
+<g class="gridlayer" stroke="#fff" stroke-width="1px">
+<g class="x4">
+<path class="x4grid crisp" transform="translate(154.25)" d="m0 623.12v96.875"/>
+<path class="x4grid crisp" transform="translate(224.96)" d="m0 623.12v96.875"/>
+</g>
+<g class="y4">
+<path class="y4grid crisp" transform="translate(0 683.68)" d="m80 0h198"/>
+<path class="y4grid crisp" transform="translate(0 649.08)" d="m80 0h198"/>
+</g>
+</g>
+<g class="zerolinelayer" stroke="#fff" stroke-width="2px">
+<path class="x4zl zl crisp" transform="translate(83.54)" d="m0 623.12v96.875"/>
+<path class="y4zl zl crisp" transform="translate(0 718.28)" d="m80 0h198"/>
+</g>
+<g class="plot" transform="translate(80 623.12)" clip-path="url(#b)">
+<g class="heatmaplayer mlayer">
+<g class="hm">
+<image width="198" height="97" preserveAspectRatio="none" xlink:href="data:image/png;base64,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" xmlns="http://www.w3.org/2000/svg"/>
+</g>
+</g>
+</g>
+<path class="xlines-above crisp" d="m0 0" fill="none"/>
+<path class="ylines-above crisp" d="m0 0" fill="none"/>
+<g class="xaxislayer-above">
+<g class="x4tick" fill="rgb(42, 63, 95)" font-family="'PT Serif'" font-size="12px" text-anchor="middle">
+<text transform="translate(83.54)" y="733" style="white-space:pre">0</text>
+<text transform="translate(154.25)" y="733" style="white-space:pre">10</text>
+<text transform="translate(224.96)" y="733" style="white-space:pre">20</text>
+</g>
+</g>
+<g class="yaxislayer-above">
+<g class="y4tick" fill="rgb(42, 63, 95)" font-family="'PT Serif'" font-size="12px" text-anchor="end">
+<text transform="translate(0 718.28)" x="79" y="4.199999999999999" style="white-space:pre">0</text>
+<text transform="translate(0 683.68)" x="79" y="4.199999999999999" style="white-space:pre">10</text>
+<text transform="translate(0 649.08)" x="79" y="4.199999999999999" style="white-space:pre">20</text>
+</g>
+</g>
+</g>
+</g>
+<g class="pielayer">
+<g class="trace" stroke-linejoin="round">
+<g class="slice">
+<path class="surface" d="m421 148.44v-48.438a48.438 48.438 0 0 1 48.366 45.804z" fill="#636efa" pointer-events="all" stroke-width="0"/>
+<g class="slicetext">
+<text class="slicetext" transform="translate(440.74 123.79)" fill="rgb(255, 255, 255)" font-family="'PT Serif'" font-size="12px" text-anchor="middle" style="white-space:pre" data-notex="1"><tspan class="line" x="0" y="0" dy="0em">8</tspan><tspan class="line" x="0" y="0" dy="1.3em">237</tspan></text>
+</g>
+<path class="surface" d="m421 148.44-48.229-4.4874a48.438 48.438 0 0 1 48.229-43.95z" fill="#ef553b" pointer-events="all" stroke-width="0"/>
+<g class="slicetext">
+<text class="slicetext" transform="translate(401.51 123.24)" fill="rgb(68, 68, 68)" font-family="'PT Serif'" font-size="12px" text-anchor="middle" style="white-space:pre" data-notex="1"><tspan class="line" x="0" y="0" dy="0em">9</tspan><tspan class="line" x="0" y="0" dy="1.3em">231</tspan></text>
+</g>
+<path class="surface" d="m421 148.44-11.36 47.086a48.438 48.438 0 0 1-36.869-51.574z" fill="#00cc96" pointer-events="all" stroke-width="0"/>
+<g class="slicetext">
+<text class="slicetext" transform="translate(397.18 161.66)" fill="rgb(68, 68, 68)" font-family="'PT Serif'" font-size="12px" text-anchor="middle" style="white-space:pre" data-notex="1"><tspan class="line" x="0" y="0" dy="0em">1</tspan><tspan class="line" x="0" y="0" dy="1.3em">223</tspan></text>
+</g>
+<path class="surface" d="m421 148.44 33.419 35.062a48.438 48.438 0 0 1-44.779 12.024z" fill="#ab63fa" pointer-events="all" stroke-width="0"/>
+<g class="slicetext">
+<text class="slicetext" transform="translate(429.5 176.95) scale(.82272)" fill="rgb(68, 68, 68)" font-family="'PT Serif'" font-size="12px" text-anchor="middle" style="white-space:pre" data-notex="1"><tspan class="line" x="0" y="0" dy="0em">2</tspan><tspan class="line" x="0" y="0" dy="1.3em">156</tspan></text>
+</g>
+<path class="surface" d="m421 148.44 47.577 9.0885a48.438 48.438 0 0 1-14.158 25.974z" fill="#ffa15a" pointer-events="all" stroke-width="0"/>
+<g class="slicetext">
+<text class="slicetext" transform="translate(449.09 163.75) scale(.76968) rotate(-61.405)" fill="rgb(68, 68, 68)" font-family="'PT Serif'" font-size="12px" text-anchor="middle" style="white-space:pre" data-notex="1"><tspan class="line" x="0" y="0" dy="0em">7</tspan><tspan class="line" x="0" y="0" dy="1.3em">97</tspan></text>
+</g>
+<path class="surface" d="m421 148.44 48.366-2.633a48.438 48.438 0 0 1-0.78867 11.721z" fill="#19d3f3" pointer-events="all" stroke-width="0"/>
+<g class="slicetext">
+<text class="slicetext" transform="translate(459.97 151.06) scale(.44471) rotate(-86.151)" fill="rgb(68, 68, 68)" font-family="'PT Serif'" font-size="12px" text-anchor="middle" style="white-space:pre" data-notex="1"><tspan class="line" x="0" y="0" dy="0em">3</tspan><tspan class="line" x="0" y="0" dy="1.3em">38</tspan></text>
+</g>
+<path class="surface" d="m421 148.44 48.366-2.633z" fill="#ff6692" pointer-events="all" stroke-width="0"/>
+<g class="slicetext">
+<text class="slicetext" transform="translate(421,100)scale(0)" fill="rgb(68, 68, 68)" font-family="'PT Serif'" font-size="12px" text-anchor="middle" style="white-space:pre" data-notex="1"><tspan class="line" x="0" y="0" dy="0em">0</tspan><tspan class="line" x="0" y="0" dy="1.3em">0</tspan></text>
+</g>
+<path class="surface" d="m421 148.44 48.366-2.633z" fill="#b6e880" pointer-events="all" stroke-width="0"/>
+<g class="slicetext">
+<text class="slicetext" transform="translate(421,100)scale(0)" fill="rgb(68, 68, 68)" font-family="'PT Serif'" font-size="12px" text-anchor="middle" style="white-space:pre" data-notex="1"><tspan class="line" x="0" y="0" dy="0em">4</tspan><tspan class="line" x="0" y="0" dy="1.3em">0</tspan></text>
+</g>
+<path class="surface" d="m421 148.44 48.366-2.633z" fill="#ff97ff" pointer-events="all" stroke-width="0"/>
+<g class="slicetext">
+<text class="slicetext" transform="translate(421,100)scale(0)" fill="rgb(68, 68, 68)" font-family="'PT Serif'" font-size="12px" text-anchor="middle" style="white-space:pre" data-notex="1"><tspan class="line" x="0" y="0" dy="0em">5</tspan><tspan class="line" x="0" y="0" dy="1.3em">0</tspan></text>
+</g>
+<path class="surface" d="m421 148.44 48.366-2.633z" fill="#fecb52" pointer-events="all" stroke-width="0"/>
+<g class="slicetext">
+<text class="slicetext" transform="translate(421,100)scale(0)" fill="rgb(68, 68, 68)" font-family="'PT Serif'" font-size="12px" text-anchor="middle" style="white-space:pre" data-notex="1"><tspan class="line" x="0" y="0" dy="0em">6</tspan><tspan class="line" x="0" y="0" dy="1.3em">0</tspan></text>
+</g>
+<path class="surface" d="m421 322.81v-48.438a48.438 48.438 0 0 1 46.487 62.043z" fill="#636efa" pointer-events="all" stroke-width="0"/>
+<g class="slicetext">
+<text class="slicetext" transform="translate(442.53 302.87)" fill="rgb(255, 255, 255)" font-family="'PT Serif'" font-size="12px" text-anchor="middle" style="white-space:pre" data-notex="1"><tspan class="line" x="0" y="0" dy="0em">8</tspan><tspan class="line" x="0" y="0" dy="1.3em">290</tspan></text>
+</g>
+<path class="surface" d="m421 322.81-46.658-13.01a48.438 48.438 0 0 1 46.658-35.428z" fill="#ffa15a" pointer-events="all" stroke-width="0"/>
+<g class="slicetext">
+<text class="slicetext" transform="translate(402.75 295.13) scale(.95782)" fill="rgb(68, 68, 68)" font-family="'PT Serif'" font-size="12px" text-anchor="middle" style="white-space:pre" data-notex="1"><tspan class="line" x="0" y="0" dy="0em">7</tspan><tspan class="line" x="0" y="0" dy="1.3em">203</tspan></text>
+</g>
+<path class="surface" d="m421 322.81-31.816 36.523a48.438 48.438 0 0 1-14.842-49.533z" fill="#00cc96" pointer-events="all" stroke-width="0"/>
+<g class="slicetext">
+<text class="slicetext" transform="translate(390.75 328.51) scale(.88454)" fill="rgb(68, 68, 68)" font-family="'PT Serif'" font-size="12px" text-anchor="middle" style="white-space:pre" data-notex="1"><tspan class="line" x="0" y="0" dy="0em">1</tspan><tspan class="line" x="0" y="0" dy="1.3em">176</tspan></text>
+</g>
+<path class="surface" d="m421 322.81 17.566 45.14a48.438 48.438 0 0 1-49.381-8.6168z" fill="#ab63fa" pointer-events="all" stroke-width="0"/>
+<g class="slicetext">
+<text class="slicetext" transform="translate(415.51 350.96) scale(.86671)" fill="rgb(68, 68, 68)" font-family="'PT Serif'" font-size="12px" text-anchor="middle" style="white-space:pre" data-notex="1"><tspan class="line" x="0" y="0" dy="0em">2</tspan><tspan class="line" x="0" y="0" dy="1.3em">170</tspan></text>
+</g>
+<path class="surface" d="m421 322.81 32.967 35.487a48.438 48.438 0 0 1-15.402 9.6531z" fill="#19d3f3" pointer-events="all" stroke-width="0"/>
+<g class="slicetext">
+<text class="slicetext" transform="translate(440.08 353.25) scale(.58995) rotate(-32.077)" fill="rgb(68, 68, 68)" font-family="'PT Serif'" font-size="12px" text-anchor="middle" style="white-space:pre" data-notex="1"><tspan class="line" x="0" y="0" dy="0em">3</tspan><tspan class="line" x="0" y="0" dy="1.3em">59</tspan></text>
+</g>
+<path class="surface" d="m421 322.81 41.844 24.397a48.438 48.438 0 0 1-8.8769 11.09z" fill="#ef553b" pointer-events="all" stroke-width="0"/>
+<g class="slicetext">
+<text class="slicetext" transform="translate(450.47 346.41) scale(.50545) rotate(-51.324)" fill="rgb(68, 68, 68)" font-family="'PT Serif'" font-size="12px" text-anchor="middle" style="white-space:pre" data-notex="1"><tspan class="line" x="0" y="0" dy="0em">9</tspan><tspan class="line" x="0" y="0" dy="1.3em">46</tspan></text>
+</g>
+<path class="surface" d="m421 322.81 46.399 13.903a48.438 48.438 0 0 1-4.5549 10.494z" fill="#b6e880" pointer-events="all" stroke-width="0"/>
+<g class="slicetext">
+<text class="slicetext" transform="translate(456.99 338.43) scale(.43657) rotate(-66.538)" fill="rgb(68, 68, 68)" font-family="'PT Serif'" font-size="12px" text-anchor="middle" style="white-space:pre" data-notex="1"><tspan class="line" x="0" y="0" dy="0em">4</tspan><tspan class="line" x="0" y="0" dy="1.3em">37</tspan></text>
+</g>
+<path class="surface" d="m421 322.81 46.487 13.606a48.438 48.438 0 0 1-0.088006 0.29716z" fill="#ff6692" pointer-events="all" stroke-width="0"/>
+<g class="slicetext">
+<text class="slicetext" transform="translate(466.79 336.37) scale(.033156) rotate(-73.503)" fill="rgb(68, 68, 68)" font-family="'PT Serif'" font-size="12px" text-anchor="middle" style="white-space:pre" data-notex="1"><tspan class="line" x="0" y="0" dy="0em">0</tspan><tspan class="line" x="0" y="0" dy="1.3em">1</tspan></text>
+</g>
+<path class="surface" d="m421 322.81 46.487 13.606z" fill="#ff97ff" pointer-events="all" stroke-width="0"/>
+<g class="slicetext">
+<text class="slicetext" transform="translate(421,274.375)scale(0)" fill="rgb(68, 68, 68)" font-family="'PT Serif'" font-size="12px" text-anchor="middle" style="white-space:pre" data-notex="1"><tspan class="line" x="0" y="0" dy="0em">5</tspan><tspan class="line" x="0" y="0" dy="1.3em">0</tspan></text>
+</g>
+<path class="surface" d="m421 322.81 46.487 13.606z" fill="#fecb52" pointer-events="all" stroke-width="0"/>
+<g class="slicetext">
+<text class="slicetext" transform="translate(421,274.375)scale(0)" fill="rgb(68, 68, 68)" font-family="'PT Serif'" font-size="12px" text-anchor="middle" style="white-space:pre" data-notex="1"><tspan class="line" x="0" y="0" dy="0em">6</tspan><tspan class="line" x="0" y="0" dy="1.3em">0</tspan></text>
+</g>
+<path class="surface" d="m421 497.19v-48.438a48.438 48.438 0 0 1 45.522 64.988z" fill="#636efa" pointer-events="all" stroke-width="0"/>
+<g class="slicetext">
+<text class="slicetext" transform="translate(442.81 478.11)" fill="rgb(255, 255, 255)" font-family="'PT Serif'" font-size="12px" text-anchor="middle" style="white-space:pre" data-notex="1"><tspan class="line" x="0" y="0" dy="0em">8</tspan><tspan class="line" x="0" y="0" dy="1.3em">300</tspan></text>
+</g>
+<path class="surface" d="m421 497.19-48.099 5.7201a48.438 48.438 0 0 1 48.099-54.158z" fill="#19d3f3" pointer-events="all" stroke-width="0"/>
+<g class="slicetext">
+<text class="slicetext" transform="translate(400.28 474.98)" fill="rgb(68, 68, 68)" font-family="'PT Serif'" font-size="12px" text-anchor="middle" style="white-space:pre" data-notex="1"><tspan class="line" x="0" y="0" dy="0em">3</tspan><tspan class="line" x="0" y="0" dy="1.3em">264</tspan></text>
+</g>
+<path class="surface" d="m421 497.19 4.9501 48.184a48.438 48.438 0 0 1-53.049-42.464z" fill="#ef553b" pointer-events="all" stroke-width="0"/>
+<g class="slicetext">
+<text class="slicetext" transform="translate(403.21 515.61)" fill="rgb(68, 68, 68)" font-family="'PT Serif'" font-size="12px" text-anchor="middle" style="white-space:pre" data-notex="1"><tspan class="line" x="0" y="0" dy="0em">9</tspan><tspan class="line" x="0" y="0" dy="1.3em">243</tspan></text>
+</g>
+<path class="surface" d="m421 497.19 41.206 25.46a48.438 48.438 0 0 1-36.256 22.724z" fill="#ff97ff" pointer-events="all" stroke-width="0"/>
+<g class="slicetext">
+<text class="slicetext" transform="translate(438.84 522.69) scale(.7787)" fill="rgb(68, 68, 68)" font-family="'PT Serif'" font-size="12px" text-anchor="middle" style="white-space:pre" data-notex="1"><tspan class="line" x="0" y="0" dy="0em">5</tspan><tspan class="line" x="0" y="0" dy="1.3em">143</tspan></text>
+</g>
+<path class="surface" d="m421 497.19 43.319 21.672a48.438 48.438 0 0 1-2.1124 3.7883z" fill="#ff6692" pointer-events="all" stroke-width="0"/>
+<g class="slicetext">
+<text class="slicetext" transform="translate(459.59 518.71) scale(.20377) rotate(-60.855)" fill="rgb(68, 68, 68)" font-family="'PT Serif'" font-size="12px" text-anchor="middle" style="white-space:pre" data-notex="1"><tspan class="line" x="0" y="0" dy="0em">0</tspan><tspan class="line" x="0" y="0" dy="1.3em">14</tspan></text>
+</g>
+<path class="surface" d="m421 497.19 44.736 18.572a48.438 48.438 0 0 1-1.4168 3.1z" fill="#ffa15a" pointer-events="all" stroke-width="0"/>
+<g class="slicetext">
+<text class="slicetext" transform="translate(461.92 515.89) scale(.16514) rotate(-65.438)" fill="rgb(68, 68, 68)" font-family="'PT Serif'" font-size="12px" text-anchor="middle" style="white-space:pre" data-notex="1"><tspan class="line" x="0" y="0" dy="0em">7</tspan><tspan class="line" x="0" y="0" dy="1.3em">11</tspan></text>
+</g>
+<path class="surface" d="m421 497.19 45.196 17.421a48.438 48.438 0 0 1-0.46062 1.1509z" fill="#00cc96" pointer-events="all" stroke-width="0"/>
+<g class="slicetext">
+<text class="slicetext" transform="translate(463.58 514.23) scale(.12402) rotate(-68.187)" fill="rgb(68, 68, 68)" font-family="'PT Serif'" font-size="12px" text-anchor="middle" style="white-space:pre" data-notex="1"><tspan class="line" x="0" y="0" dy="0em">1</tspan><tspan class="line" x="0" y="0" dy="1.3em">4</tspan></text>
+</g>
+<path class="surface" d="m421 497.19 45.522 16.55a48.438 48.438 0 0 1-0.32605 0.8707z" fill="#ab63fa" pointer-events="all" stroke-width="0"/>
+<g class="slicetext">
+<text class="slicetext" transform="translate(464.52 513.48) scale(.095069) rotate(-69.47)" fill="rgb(68, 68, 68)" font-family="'PT Serif'" font-size="12px" text-anchor="middle" style="white-space:pre" data-notex="1"><tspan class="line" x="0" y="0" dy="0em">2</tspan><tspan class="line" x="0" y="0" dy="1.3em">3</tspan></text>
+</g>
+<path class="surface" d="m421 497.19 45.522 16.55z" fill="#b6e880" pointer-events="all" stroke-width="0"/>
+<g class="slicetext">
+<text class="slicetext" transform="translate(421,448.75)scale(0)" fill="rgb(68, 68, 68)" font-family="'PT Serif'" font-size="12px" text-anchor="middle" style="white-space:pre" data-notex="1"><tspan class="line" x="0" y="0" dy="0em">4</tspan><tspan class="line" x="0" y="0" dy="1.3em">0</tspan></text>
+</g>
+<path class="surface" d="m421 497.19 45.522 16.55z" fill="#fecb52" pointer-events="all" stroke-width="0"/>
+<g class="slicetext">
+<text class="slicetext" transform="translate(421,448.75)scale(0)" fill="rgb(68, 68, 68)" font-family="'PT Serif'" font-size="12px" text-anchor="middle" style="white-space:pre" data-notex="1"><tspan class="line" x="0" y="0" dy="0em">6</tspan><tspan class="line" x="0" y="0" dy="1.3em">0</tspan></text>
+</g>
+<path class="surface" d="m421 671.56v-48.438a48.438 48.438 0 0 1 45.415 65.279z" fill="#636efa" pointer-events="all" stroke-width="0"/>
+<g class="slicetext">
+<text class="slicetext" transform="translate(442.84 652.57)" fill="rgb(255, 255, 255)" font-family="'PT Serif'" font-size="12px" text-anchor="middle" style="white-space:pre" data-notex="1"><tspan class="line" x="0" y="0" dy="0em">8</tspan><tspan class="line" x="0" y="0" dy="1.3em">301</tspan></text>
+</g>
+<path class="surface" d="m421 671.56-47.457 9.6965a48.438 48.438 0 0 1 47.457-58.134z" fill="#19d3f3" pointer-events="all" stroke-width="0"/>
+<g class="slicetext">
+<text class="slicetext" transform="translate(399.86 650.5)" fill="rgb(68, 68, 68)" font-family="'PT Serif'" font-size="12px" text-anchor="middle" style="white-space:pre" data-notex="1"><tspan class="line" x="0" y="0" dy="0em">3</tspan><tspan class="line" x="0" y="0" dy="1.3em">277</tspan></text>
+</g>
+<path class="surface" d="m421 671.56 15.527 45.881a48.438 48.438 0 0 1-62.984-36.185z" fill="#ef553b" pointer-events="all" stroke-width="0"/>
+<g class="slicetext">
+<text class="slicetext" transform="translate(407.21 691.76)" fill="rgb(68, 68, 68)" font-family="'PT Serif'" font-size="12px" text-anchor="middle" style="white-space:pre" data-notex="1"><tspan class="line" x="0" y="0" dy="0em">9</tspan><tspan class="line" x="0" y="0" dy="1.3em">265</tspan></text>
+</g>
+<path class="surface" d="m421 671.56 44.119 19.993a48.438 48.438 0 0 1-28.592 25.888z" fill="#ff97ff" pointer-events="all" stroke-width="0"/>
+<g class="slicetext">
+<text class="slicetext" transform="translate(442.75 695.58) scale(.72557) rotate(-42.159)" fill="rgb(68, 68, 68)" font-family="'PT Serif'" font-size="12px" text-anchor="middle" style="white-space:pre" data-notex="1"><tspan class="line" x="0" y="0" dy="0em">5</tspan><tspan class="line" x="0" y="0" dy="1.3em">128</tspan></text>
+</g>
+<path class="surface" d="m421 671.56 45.307 17.132a48.438 48.438 0 0 1-1.1881 2.8619z" fill="#ffa15a" pointer-events="all" stroke-width="0"/>
+<g class="slicetext">
+<text class="slicetext" transform="translate(462.82 688.92) scale(.15172) rotate(-67.454)" fill="rgb(68, 68, 68)" font-family="'PT Serif'" font-size="12px" text-anchor="middle" style="white-space:pre" data-notex="1"><tspan class="line" x="0" y="0" dy="0em">7</tspan><tspan class="line" x="0" y="0" dy="1.3em">10</tspan></text>
+</g>
+<path class="surface" d="m421 671.56 45.415 16.841a48.438 48.438 0 0 1-0.10869 0.29024z" fill="#00cc96" pointer-events="all" stroke-width="0"/>
+<g class="slicetext">
+<text class="slicetext" transform="translate(465.72 688.31) scale(.033156) rotate(-69.47)" fill="rgb(68, 68, 68)" font-family="'PT Serif'" font-size="12px" text-anchor="middle" style="white-space:pre" data-notex="1"><tspan class="line" x="0" y="0" dy="0em">1</tspan><tspan class="line" x="0" y="0" dy="1.3em">1</tspan></text>
+</g>
+<path class="surface" d="m421 671.56 45.415 16.841z" fill="#ff6692" pointer-events="all" stroke-width="0"/>
+<g class="slicetext">
+<text class="slicetext" transform="translate(421,623.125)scale(0)" fill="rgb(68, 68, 68)" font-family="'PT Serif'" font-size="12px" text-anchor="middle" style="white-space:pre" data-notex="1"><tspan class="line" x="0" y="0" dy="0em">0</tspan><tspan class="line" x="0" y="0" dy="1.3em">0</tspan></text>
+</g>
+<path class="surface" d="m421 671.56 45.415 16.841z" fill="#ab63fa" pointer-events="all" stroke-width="0"/>
+<g class="slicetext">
+<text class="slicetext" transform="translate(421,623.125)scale(0)" fill="rgb(68, 68, 68)" font-family="'PT Serif'" font-size="12px" text-anchor="middle" style="white-space:pre" data-notex="1"><tspan class="line" x="0" y="0" dy="0em">2</tspan><tspan class="line" x="0" y="0" dy="1.3em">0</tspan></text>
+</g>
+<path class="surface" d="m421 671.56 45.415 16.841z" fill="#b6e880" pointer-events="all" stroke-width="0"/>
+<g class="slicetext">
+<text class="slicetext" transform="translate(421,623.125)scale(0)" fill="rgb(68, 68, 68)" font-family="'PT Serif'" font-size="12px" text-anchor="middle" style="white-space:pre" data-notex="1"><tspan class="line" x="0" y="0" dy="0em">4</tspan><tspan class="line" x="0" y="0" dy="1.3em">0</tspan></text>
+</g>
+<path class="surface" d="m421 671.56 45.415 16.841z" fill="#fecb52" pointer-events="all" stroke-width="0"/>
+<g class="slicetext">
+<text class="slicetext" transform="translate(421,623.125)scale(0)" fill="rgb(68, 68, 68)" font-family="'PT Serif'" font-size="12px" text-anchor="middle" style="white-space:pre" data-notex="1"><tspan class="line" x="0" y="0" dy="0em">6</tspan><tspan class="line" x="0" y="0" dy="1.3em">0</tspan></text>
+</g>
+</g>
+</g>
+</g>
+<defs/>
+<g class="layer-above"/>
+<g class="infolayer">
+<g class="g-gtitle">
+<text class="gtitle" x="30" y="50" dy="0em" fill="rgb(42, 63, 95)" font-family="'PT Serif'" font-size="17px" style="white-space:pre">Confusing Questions</text>
+</g>
+<g class="annotation" data-index="0">
+<g class="annotation-text-g" transform="rotate(0,179,88.5)">
+<g class="cursor-pointer" transform="translate(140 77)">
+<rect class="bg" x=".5" y=".5" width="78" height="22" fill-opacity="0" stroke-opacity="0"/>
+<text class="annotation-text" x="40" y="17" fill="rgb(42, 63, 95)" font-family="'PT Serif'" font-size="16px" text-anchor="middle" style="white-space:pre">Truth = 2</text>
+</g>
+</g>
+</g>
+<g class="annotation" data-index="1">
+<g class="annotation-text-g" transform="rotate(0,421,88.5)">
+<g class="cursor-pointer" transform="translate(375 77)">
+<rect class="bg" x=".5" y=".5" width="91" height="22" fill-opacity="0" stroke-opacity="0"/>
+<text class="annotation-text" x="46" y="17" fill="rgb(42, 63, 95)" font-family="'PT Serif'" font-size="16px" text-anchor="middle" style="white-space:pre">Predictions</text>
+</g>
+</g>
+</g>
+<g class="annotation" data-index="2">
+<g class="annotation-text-g" transform="rotate(0 179 262.88)">
+<g class="cursor-pointer" transform="translate(140 251)">
+<rect class="bg" x=".5" y=".5" width="78" height="22" fill-opacity="0" stroke-opacity="0"/>
+<text class="annotation-text" x="40" y="17" fill="rgb(42, 63, 95)" font-family="'PT Serif'" font-size="16px" text-anchor="middle" style="white-space:pre">Truth = 7</text>
+</g>
+</g>
+</g>
+<g class="annotation" data-index="3">
+<g class="annotation-text-g" transform="rotate(0 421 262.88)">
+<g class="cursor-pointer" transform="translate(375 251)">
+<rect class="bg" x=".5" y=".5" width="91" height="22" fill-opacity="0" stroke-opacity="0"/>
+<text class="annotation-text" x="46" y="17" fill="rgb(42, 63, 95)" font-family="'PT Serif'" font-size="16px" text-anchor="middle" style="white-space:pre">Predictions</text>
+</g>
+</g>
+</g>
+<g class="annotation" data-index="4">
+<g class="annotation-text-g" transform="rotate(0,179,437.25)">
+<g class="cursor-pointer" transform="translate(140 426)">
+<rect class="bg" x=".5" y=".5" width="78" height="22" fill-opacity="0" stroke-opacity="0"/>
+<text class="annotation-text" x="40" y="17" fill="rgb(42, 63, 95)" font-family="'PT Serif'" font-size="16px" text-anchor="middle" style="white-space:pre">Truth = 3</text>
+</g>
+</g>
+</g>
+<g class="annotation" data-index="5">
+<g class="annotation-text-g" transform="rotate(0,421,437.25)">
+<g class="cursor-pointer" transform="translate(375 426)">
+<rect class="bg" x=".5" y=".5" width="91" height="22" fill-opacity="0" stroke-opacity="0"/>
+<text class="annotation-text" x="46" y="17" fill="rgb(42, 63, 95)" font-family="'PT Serif'" font-size="16px" text-anchor="middle" style="white-space:pre">Predictions</text>
+</g>
+</g>
+</g>
+<g class="annotation" data-index="6">
+<g class="annotation-text-g" transform="rotate(0 179 611.62)">
+<g class="cursor-pointer" transform="translate(140 600)">
+<rect class="bg" x=".5" y=".5" width="78" height="22" fill-opacity="0" stroke-opacity="0"/>
+<text class="annotation-text" x="40" y="17" fill="rgb(42, 63, 95)" font-family="'PT Serif'" font-size="16px" text-anchor="middle" style="white-space:pre">Truth = 3</text>
+</g>
+</g>
+</g>
+<g class="annotation" data-index="7">
+<g class="annotation-text-g" transform="rotate(0 421 611.62)">
+<g class="cursor-pointer" transform="translate(375 600)">
+<rect class="bg" x=".5" y=".5" width="91" height="22" fill-opacity="0" stroke-opacity="0"/>
+<text class="annotation-text" x="46" y="17" fill="rgb(42, 63, 95)" font-family="'PT Serif'" font-size="16px" text-anchor="middle" style="white-space:pre">Predictions</text>
+</g>
+</g>
+</g>
+</g>
+</svg>

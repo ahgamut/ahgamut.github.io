@@ -1,0 +1,7 @@
+# generated site is in public
+public/
+resources/_gen/
+
+# 
+.hugo_build.lock
+.*.s[a-z][a-z]

@@ -1,0 +1,32 @@
+baseURL: https://ahgamut.github.io
+languageCode: 'en-us'
+title: 'Blog Needs a Name'
+theme: "etch"
+
+frontmatter:
+  date:
+    - :filename
+    - date
+    - publishDate
+
+permalinks:
+  posts: /:year/:month/:day/:slug
+
+
+enableInlineShortcodes: true
+pygmentsUseClasses: true
+pygmentsCodeFences: true
+
+params:
+  highlight: true
+  dark: "auto"
+  description: "Gautham's Blog"
+  copyright: "Copyright © 2022 Gautham Venkatasubramanian"
+
+menu:
+  main:
+    - identifier: "About"
+      name: "About"
+      title: "About"
+      url: "/about/"
+      weight: 30

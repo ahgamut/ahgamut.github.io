@@ -1,0 +1,30 @@
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {{ with .Site.Params.description -}}
+    <meta name="description" content="{{ . }}">
+    {{ end }}
+
+    {{ with .OutputFormats.Get "rss" -}}
+        {{ printf `<link rel="%s" type="%s" href="%s" title="%s">` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
+    {{ end -}}
+
+    {{ $resources := slice -}}
+
+    {{ $resources = $resources | append (resources.Get "css/main.css") -}}
+    {{ $resources = $resources | append (resources.Get "css/min770px.css") -}}
+    {{ if .Site.Params.highlight -}}
+        {{ $resources = $resources | append (resources.Get "css/syntax.css") -}}
+    {{ end -}}
+ 
+    {{ $dark := .Site.Params.dark | default "auto" -}}
+    {{ if not (eq $dark "off") -}}
+        {{ $resources = $resources | append (resources.Get "css/dark.css" | resources.ExecuteAsTemplate "dark.css" .) -}}
+    {{ end -}}
+   
+    {{ $css := $resources | resources.Concat "css/style.css" | minify }}
+    {{ printf `<link rel="stylesheet" href="%s">` $css.RelPermalink | safeHTML }}
+
+    {{ if .Params.katex }}{{ partial "katex.html" . }}{{ end }}
+    <title>{{ .Title }}</title>
+</head>

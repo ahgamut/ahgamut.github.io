@@ -1,0 +1,1211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg class="main-svg" style="" viewBox="0 0 700 500" xmlns="http://www.w3.org/2000/svg">
+<rect width="700" height="500" fill="#fff"/>
+<defs>
+<g class="clips">
+<clipPath id="b" class="plotclip">
+<rect width="441" height="292"/>
+</clipPath>
+</g>
+</defs>
+<g class="bglayer">
+<rect class="bg" x="80" y="100" width="441" height="292" fill="#e5ecf6" stroke-width="0"/>
+</g>
+<g class="layer-below"/>
+<g class="cartesianlayer">
+<g class="subplot xy">
+<g class="layer-subplot"/>
+<g class="gridlayer">
+<g class="y" stroke="#fff" stroke-width="1px">
+<path class="ygrid crisp" transform="translate(0,364.53)" d="m80 0h441"/>
+<path class="ygrid crisp" transform="translate(0,323.88)" d="m80 0h441"/>
+<path class="ygrid crisp" transform="translate(0,293.14)" d="m80 0h441"/>
+<path class="ygrid crisp" transform="translate(0,262.39)" d="m80 0h441"/>
+<path class="ygrid crisp" transform="translate(0,221.75)" d="m80 0h441"/>
+<path class="ygrid crisp" transform="translate(0,191)" d="m80 0h441"/>
+<path class="ygrid crisp" transform="translate(0,160.25)" d="m80 0h441"/>
+<path class="ygrid crisp" transform="translate(0,119.61)" d="m80 0h441"/>
+</g>
+</g>
+<g class="plot" transform="translate(80 100)" clip-path="url(#b)">
+<g class="boxlayer mlayer">
+<g class="trace boxes" opacity=".6" stroke="#000" stroke-width=".8px">
+<path class="box" d="m14.03 243.84h26.96m-26.96 11.98h26.96v-28.45h-26.96zm13.48 0v17.62m0-46.07v-43.29m-6.74 89.36h13.48m-13.48-89.36h13.48" fill="#1f77b4" vector-effect="non-scaling-stroke"/>
+<path class="box" d="m69.06 245.48h26.96m-26.96 11.04h26.96v-29.25h-26.96zm13.48 0v16.7m0-45.95v-38.56m-6.74 84.51h13.48m-13.48-84.51h13.48" fill="#ff7f0e" vector-effect="non-scaling-stroke"/>
+<path class="box" d="m124.09 181.63h26.96m-26.96 46.55h26.96v-85.31h-26.96zm13.48 0v45.26m0-130.57v-59.14m-6.74 189.71h13.48m-13.48-189.71h13.48" fill="#2ca02c" vector-effect="non-scaling-stroke"/>
+<path class="box" d="m179.11 188.48h26.96m-26.96 54h26.96v-92.26h-26.96zm13.48 0v31.23m0-123.49v-77.14m-6.74 200.63h13.48m-13.48-200.63h13.48" fill="#d62728" vector-effect="non-scaling-stroke"/>
+<path class="box" d="m234.14 174.91h26.96m-26.96 44.11h26.96v-76.08h-26.96zm13.48 0v49.74m0-125.82v-59.98m-6.74 185.8h13.48m-13.48-185.8h13.48" fill="#9467bd" vector-effect="non-scaling-stroke"/>
+<path class="box" d="m289.17 177.68h26.96m-26.96 50.3h26.96v-91.25h-26.96zm13.48 0v43.29m0-134.54v-54.47m-6.74 189.01h13.48m-13.48-189.01h13.48" fill="#8c564b" vector-effect="non-scaling-stroke"/>
+<path class="box" d="m344.19 270.61h26.96m-26.96 1.4h26.96v-3.21h-26.96zm13.48 0v2.39m0-5.6v-9.89m-6.74 15.49h13.48m-13.48-15.49h13.48" fill="#e377c2" vector-effect="non-scaling-stroke"/>
+<path class="box" d="m399.22 96.4h26.96m-26.96 26.95h26.96v-49.95h-26.96zm13.48 0v54.62m0-104.57v-52.55m-6.74 157.12h13.48m-13.48-157.12h13.48" fill="#7f7f7f" vector-effect="non-scaling-stroke"/>
+</g>
+</g>
+<g class="scatterlayer mlayer" stroke-miterlimit="2">
+<g class="trace scatter trace816cb0" opacity=".7">
+<g class="points" fill="#ffd700" stroke="#fff" stroke-width="1px">
+<path class="point" transform="translate(27.51,238.23)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,212.74)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,248.82)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,268.98)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,218.09)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,240.23)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,250.13)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,259.58)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,243.88)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,253.06)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,249.83)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,255.82)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,256.04)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,235.5)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,230.23)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,262.53)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,219.14)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,200.52)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,260.38)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,225.27)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,247.65)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,220.29)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,224.47)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,243.76)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,214.3)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,237.57)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,233.31)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,240.52)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,241.12)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,223.88)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,249.23)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,228.5)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,225.18)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,209.09)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,227.8)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,247.2)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,264.44)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,273.44)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,209.89)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,246.94)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,270.28)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,230.06)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,231.89)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,250.61)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,260.99)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,248.11)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,254.79)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,222.14)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,245.05)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,213.62)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,256.48)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,233.19)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,267.27)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,207.96)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,258.89)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,252.84)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,267.49)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,240.95)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,193.85)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,252.62)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,229.2)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,247.29)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,249.07)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,252.18)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,265.68)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,264.31)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,234.93)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,245.99)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,210.82)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,198.43)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,214.48)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,255.36)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,240.98)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,223.76)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,184.08)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,257.75)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,251.51)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,260.87)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,217.96)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,239.63)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,230.29)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,262.75)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,233.58)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,243.81)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,206.93)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,263.83)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,246.4)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,222.52)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,226.15)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,248.06)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,200.48)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,248.48)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,236.21)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,232.88)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,273.06)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,210.45)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,271.48)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,236.93)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,223.62)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,249.76)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,244.8)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,238.96)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,229.61)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,256.02)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,247.05)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,235.16)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,222.18)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,268.98)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,216.41)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,251.83)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,249.52)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,227.03)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,262.41)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,243.42)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,260.02)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,227.83)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,263.78)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,271.74)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,237.61)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,246.15)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,263.76)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,216.93)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,237.43)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,248.87)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,210.51)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,264.44)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,260.91)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,239.08)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,255.82)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,267.18)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,241.58)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,231.32)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,213.03)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,245.69)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,259.7)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,249.57)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,200.99)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,253.63)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,206.95)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,227.37)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,235.1)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,225.81)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,230.94)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,266.2)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,246.72)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,265.4)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,267.94)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,249.64)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,270.05)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(27.51,265.79)" d="m0 0z" opacity=".9"/>
+</g>
+</g>
+<g class="trace scatter trace1a2129" opacity=".7">
+<g class="points" fill="#ffd700" stroke="#fff" stroke-width="1px">
+<path class="point" transform="translate(82.54,227.28)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(82.54,268.45)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(82.54,233.83)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(82.54,213.37)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(82.54,264.98)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(82.54,240.42)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(82.54,238.55)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(82.54,224.28)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(82.54,218.86)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(82.54,256.22)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(82.54,268.88)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(82.54,244.62)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(82.54,255.2)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(82.54,249.86)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(82.54,273.01)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(82.54,220.72)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(82.54,217.93)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(82.54,256.81)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(82.54,251.51)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(82.54,238.6)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(82.54,245.91)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(82.54,227.26)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(82.54,250.63)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(82.54,225.81)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(82.54,250.24)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(82.54,262.37)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(82.54,270.76)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(82.54,247.62)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(82.54,251.61)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(82.54,269.1)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(82.54,254.81)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(82.54,269.5)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(82.54,261.78)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(82.54,249.73)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(82.54,260.71)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(82.54,217.5)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(82.54,225.56)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(82.54,249.79)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(82.54,266.53)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(82.54,247.79)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(82.54,240.42)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(82.54,207.35)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(82.54,234.34)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(82.54,225.16)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(82.54,238.41)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(82.54,243.1)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(82.54,235.33)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(82.54,243.39)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(82.54,221.32)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(82.54,254.56)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(82.54,244.53)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(82.54,255.24)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(82.54,257.98)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(82.54,236.09)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(82.54,205.42)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(82.54,257.26)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(82.54,266.76)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(82.54,227.41)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(82.54,248.65)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(82.54,261.9)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(82.54,262.18)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(82.54,213.38)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(82.54,255.93)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(82.54,264.4)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(82.54,188.71)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(82.54,273.22)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(82.54,266.39)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(82.54,254.31)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(82.54,209.46)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(82.54,272.96)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(82.54,237.36)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(82.54,246.57)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(82.54,205.14)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(82.54,239.66)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(82.54,245.06)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(82.54,250.27)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(82.54,229.39)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(82.54,241.97)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(82.54,242.34)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(82.54,254.49)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(82.54,221.74)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(82.54,224.64)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(82.54,243.63)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(82.54,247.41)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(82.54,265.9)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(82.54,218.32)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(82.54,262.53)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(82.54,225.79)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(82.54,241.99)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(82.54,272.9)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(82.54,252.99)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(82.54,221.56)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(82.54,234.8)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(82.54,223.64)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(82.54,212.36)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(82.54,261.16)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(82.54,236.41)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(82.54,251.98)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(82.54,256.07)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(82.54,224.91)" d="m0 0z" opacity=".9"/>
+</g>
+</g>
+<g class="trace scatter tracef43897" opacity=".7">
+<g class="points" fill="#ffd700" stroke="#fff" stroke-width="1px">
+<path class="point" transform="translate(137.57,261.97)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,193.15)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,210.94)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,128.21)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,270.86)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,204.38)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,165.98)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,155.82)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,136.08)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,156.99)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,252.05)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,228.18)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,195.8)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,110.32)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,195.81)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,245.09)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,228.58)" d="M1.58,-2.16H6.66L2.54,0.83L4.12,5.66L0,2.67L-4.12,5.66L-2.54,0.83L-6.66,-2.16H-1.58L0,-7Z" opacity=".9"/>
+<path class="point" transform="translate(137.57,149.75)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,135.01)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,207.51)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,252.18)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,176.28)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,158.66)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,132.97)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,179.09)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,142.59)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,135.56)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,159.5)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,112.97)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,113.8)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,221.44)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,223.61)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,212.51)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,128.81)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,152.85)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,165.88)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,237.6)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,166.93)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,219.81)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,154.33)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,111.26)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,162.72)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,111.11)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,211.43)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,273.44)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,186.22)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,160.86)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,126.62)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,166.93)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,182.02)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,240.61)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,232.88)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,272.93)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,182.32)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,189.88)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,117.63)" d="M1.58,-2.16H6.66L2.54,0.83L4.12,5.66L0,2.67L-4.12,5.66L-2.54,0.83L-6.66,-2.16H-1.58L0,-7Z" opacity=".9"/>
+<path class="point" transform="translate(137.57,260.46)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,158.11)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,139.22)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,99.26)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,245.84)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,193.64)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,132.59)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,183.32)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,130.22)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,179.92)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,222.08)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,84.97)" d="M1.58,-2.16H6.66L2.54,0.83L4.12,5.66L0,2.67L-4.12,5.66L-2.54,0.83L-6.66,-2.16H-1.58L0,-7Z" opacity=".9"/>
+<path class="point" transform="translate(137.57,199.05)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,244.56)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,194)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,174.7)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,271.58)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,174.86)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,103.48)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,180.87)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,236.78)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,113.27)" d="M1.58,-2.16H6.66L2.54,0.83L4.12,5.66L0,2.67L-4.12,5.66L-2.54,0.83L-6.66,-2.16H-1.58L0,-7Z" opacity=".9"/>
+<path class="point" transform="translate(137.57,240.13)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,224.69)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,181.24)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,131.96)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,171.84)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,238.78)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,259.38)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,145.87)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,267.51)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,157.6)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,173.88)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,124.04)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,131.48)" d="M1.58,-2.16H6.66L2.54,0.83L4.12,5.66L0,2.67L-4.12,5.66L-2.54,0.83L-6.66,-2.16H-1.58L0,-7Z" opacity=".9"/>
+<path class="point" transform="translate(137.57,225.71)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,272.21)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,183.83)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,142.87)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,109.06)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,83.73)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,175.5)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,195.23)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,92.43)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,264.93)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,256.55)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,198.19)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,182.16)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,253.93)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,230.29)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,159.36)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,124.5)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,220.49)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,247.05)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,187.15)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,183.88)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,165.85)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,270.96)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,128.98)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,191.32)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,264.73)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,253.58)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,189.96)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,180.29)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,139.7)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,203.39)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,146.96)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,158.14)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,260.83)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,136.22)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,208.51)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,126.77)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,132.91)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,113.21)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,267.32)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,148.2)" d="M1.58,-2.16H6.66L2.54,0.83L4.12,5.66L0,2.67L-4.12,5.66L-2.54,0.83L-6.66,-2.16H-1.58L0,-7Z" opacity=".9"/>
+<path class="point" transform="translate(137.57,271.92)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,188.72)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,244.18)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,231.99)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,195.17)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,263.89)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,152.76)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,181.25)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,256.81)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,171.2)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,194.48)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,158.78)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,131.12)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(137.57,135.59)" d="m0 0z" opacity=".9"/>
+</g>
+</g>
+<g class="trace scatter tracee77ccd" opacity=".7">
+<g class="points" fill="#ffd700" stroke="#fff" stroke-width="1px">
+<path class="point" transform="translate(192.59,189.62)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(192.59,213.44)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(192.59,267.46)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(192.59,266.95)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(192.59,161.28)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(192.59,137.72)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(192.59,134.59)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(192.59,150.22)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(192.59,273.01)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(192.59,176.8)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(192.59,173.98)" d="M1.58,-2.16H6.66L2.54,0.83L4.12,5.66L0,2.67L-4.12,5.66L-2.54,0.83L-6.66,-2.16H-1.58L0,-7Z" opacity=".9"/>
+<path class="point" transform="translate(192.59,242.48)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(192.59,113.9)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(192.59,139.74)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(192.59,167.42)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(192.59,197.59)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(192.59,261.22)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(192.59,260.14)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(192.59,261.57)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(192.59,133.69)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(192.59,270.1)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(192.59,271.9)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(192.59,117.92)" d="M1.58,-2.16H6.66L2.54,0.83L4.12,5.66L0,2.67L-4.12,5.66L-2.54,0.83L-6.66,-2.16H-1.58L0,-7Z" opacity=".9"/>
+<path class="point" transform="translate(192.59,127.9)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(192.59,90.82)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(192.59,229.17)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(192.59,265.34)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(192.59,201.2)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(192.59,119.27)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(192.59,193.08)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(192.59,138)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(192.59,206.15)" d="M1.58,-2.16H6.66L2.54,0.83L4.12,5.66L0,2.67L-4.12,5.66L-2.54,0.83L-6.66,-2.16H-1.58L0,-7Z" opacity=".9"/>
+<path class="point" transform="translate(192.59,239.25)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(192.59,264.33)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(192.59,209.42)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(192.59,178.28)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(192.59,233.17)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(192.59,186.65)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(192.59,168.35)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(192.59,240.13)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(192.59,171.89)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(192.59,197.32)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(192.59,164.16)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(192.59,249.13)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(192.59,73.08)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(192.59,138.62)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(192.59,167.5)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(192.59,199.6)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(192.59,156.33)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(192.59,166.77)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(192.59,261.94)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(192.59,269.06)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(192.59,182.3)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(192.59,251.32)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(192.59,157.35)" d="M1.58,-2.16H6.66L2.54,0.83L4.12,5.66L0,2.67L-4.12,5.66L-2.54,0.83L-6.66,-2.16H-1.58L0,-7Z" opacity=".9"/>
+<path class="point" transform="translate(192.59,185.08)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(192.59,247.83)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(192.59,173.13)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(192.59,174.3)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(192.59,140.19)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(192.59,232.22)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(192.59,139.61)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(192.59,201.63)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(192.59,167.47)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(192.59,132.33)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(192.59,95.27)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(192.59,146.35)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(192.59,187.37)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(192.59,238.98)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(192.59,130.23)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(192.59,152.87)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(192.59,222.21)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(192.59,202.15)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(192.59,220.44)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(192.59,244.27)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(192.59,272.05)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(192.59,218.52)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(192.59,185.7)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(192.59,143.54)" d="M1.58,-2.16H6.66L2.54,0.83L4.12,5.66L0,2.67L-4.12,5.66L-2.54,0.83L-6.66,-2.16H-1.58L0,-7Z" opacity=".9"/>
+<path class="point" transform="translate(192.59,200.35)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(192.59,238.01)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(192.59,237.37)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(192.59,266.43)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(192.59,245.84)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(192.59,266.8)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(192.59,260.5)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(192.59,118.27)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(192.59,121.67)" d="M1.58,-2.16H6.66L2.54,0.83L4.12,5.66L0,2.67L-4.12,5.66L-2.54,0.83L-6.66,-2.16H-1.58L0,-7Z" opacity=".9"/>
+<path class="point" transform="translate(192.59,141.53)" d="M1.58,-2.16H6.66L2.54,0.83L4.12,5.66L0,2.67L-4.12,5.66L-2.54,0.83L-6.66,-2.16H-1.58L0,-7Z" opacity=".9"/>
+<path class="point" transform="translate(192.59,272.11)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(192.59,171.17)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(192.59,273.71)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(192.59,116.04)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(192.59,185.46)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(192.59,243.56)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(192.59,122.94)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(192.59,173.78)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(192.59,229.68)" d="m0 0z" opacity=".9"/>
+</g>
+</g>
+<g class="trace scatter tracebb2239" opacity=".7">
+<g class="points" fill="#ffd700" stroke="#fff" stroke-width="1px">
+<path class="point" transform="translate(247.62,184.31)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,142.94)" d="M1.58,-2.16H6.66L2.54,0.83L4.12,5.66L0,2.67L-4.12,5.66L-2.54,0.83L-6.66,-2.16H-1.58L0,-7Z" opacity=".9"/>
+<path class="point" transform="translate(247.62,134.79)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,215.49)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,186.18)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,185.41)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,224.64)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,142.26)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,91.53)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,255.75)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,178.88)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,87.12)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,261.36)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,156.57)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,169.46)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,170.34)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,209.93)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,234.57)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,268.76)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,201.64)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,140.71)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,97.72)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,159.33)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,227.22)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,130.84)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,99.19)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,160.59)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,161.89)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,174.12)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,259.15)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,242.07)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,191.71)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,222.14)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,172.53)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,157.53)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,221.08)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,230.29)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,173.21)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,218.87)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,181.86)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,158.15)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,158.09)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,104.97)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,129.21)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,242.21)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,155.52)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,154.32)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,130.73)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,134.82)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,260.34)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,260.34)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,183.6)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,244.83)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,222.47)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,130.54)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,222.09)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,200.07)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,186.82)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,162.51)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,204.42)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,261.99)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,174.69)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,237.12)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,119.69)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,91.75)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,224.98)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,161.37)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,95.79)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,253.27)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,82.96)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,205.97)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,243.32)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,159.02)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,216.9)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,255.02)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,151.04)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,137.62)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,261.82)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,219.02)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,127.86)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,256.11)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,115.22)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,128.57)" d="M1.58,-2.16H6.66L2.54,0.83L4.12,5.66L0,2.67L-4.12,5.66L-2.54,0.83L-6.66,-2.16H-1.58L0,-7Z" opacity=".9"/>
+<path class="point" transform="translate(247.62,189.35)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,193.61)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,148.44)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,218.86)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,179.49)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,141.67)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,249.01)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,162.33)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,194.31)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,188.9)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,123.15)" d="M1.58,-2.16H6.66L2.54,0.83L4.12,5.66L0,2.67L-4.12,5.66L-2.54,0.83L-6.66,-2.16H-1.58L0,-7Z" opacity=".9"/>
+<path class="point" transform="translate(247.62,257.79)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,210.55)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,240.24)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,174.45)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,209.64)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,115.08)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,234.03)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,215.81)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,190.26)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,222.13)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,182.08)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,121.59)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,116.56)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,249.32)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,129.61)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,178.15)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,173.49)" d="M1.58,-2.16H6.66L2.54,0.83L4.12,5.66L0,2.67L-4.12,5.66L-2.54,0.83L-6.66,-2.16H-1.58L0,-7Z" opacity=".9"/>
+<path class="point" transform="translate(247.62,167.81)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,196.37)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,133.41)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,191.89)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,131.5)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,203.9)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,155.7)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,251.41)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,172.14)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,169.3)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,150.25)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,216.06)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,124.53)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,206.2)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,169.95)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,175.13)" d="M1.58,-2.16H6.66L2.54,0.83L4.12,5.66L0,2.67L-4.12,5.66L-2.54,0.83L-6.66,-2.16H-1.58L0,-7Z" opacity=".9"/>
+<path class="point" transform="translate(247.62,155.11)" d="M1.58,-2.16H6.66L2.54,0.83L4.12,5.66L0,2.67L-4.12,5.66L-2.54,0.83L-6.66,-2.16H-1.58L0,-7Z" opacity=".9"/>
+<path class="point" transform="translate(247.62,234.79)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,130.55)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,246.28)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,129.09)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,166.23)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,137.55)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,146.32)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,161.91)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,190.83)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,167.27)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,123.97)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,113.88)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,103.29)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,156.93)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,244.83)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,141.02)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,171.85)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,263.91)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,262.41)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,149.11)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,184.24)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(247.62,202.61)" d="m0 0z" opacity=".9"/>
+</g>
+</g>
+<g class="trace scatter trace6e820d" opacity=".7">
+<g class="points" fill="#ffd700" stroke="#fff" stroke-width="1px">
+<path class="point" transform="translate(302.65,111.39)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(302.65,123.53)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(302.65,99.14)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(302.65,179.71)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(302.65,247.64)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(302.65,195.81)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(302.65,111.68)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(302.65,191.35)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(302.65,109.41)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(302.65,109.16)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(302.65,129.68)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(302.65,101.67)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(302.65,132.21)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(302.65,164.21)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(302.65,263.05)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(302.65,112.8)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(302.65,178.63)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(302.65,137.48)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(302.65,239.76)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(302.65,250.21)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(302.65,164.93)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(302.65,177.85)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(302.65,132.3)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(302.65,141.9)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(302.65,211.42)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(302.65,183.64)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(302.65,162.04)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(302.65,164.47)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(302.65,82.26)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(302.65,161.87)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(302.65,153.78)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(302.65,177.2)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(302.65,258.93)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(302.65,198.15)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(302.65,125.71)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(302.65,256.68)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(302.65,91.53)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(302.65,187.29)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(302.65,126.09)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(302.65,189.46)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(302.65,164.19)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(302.65,261.45)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(302.65,157.02)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(302.65,108.97)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(302.65,258.76)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(302.65,269.75)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(302.65,210.64)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(302.65,195.18)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(302.65,205.73)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(302.65,255.93)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(302.65,238.06)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(302.65,271.27)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(302.65,254.49)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(302.65,125.94)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(302.65,253.79)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(302.65,140.22)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(302.65,254.84)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(302.65,250.69)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(302.65,116.92)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(302.65,196.98)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(302.65,222.01)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(302.65,173.28)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(302.65,228.08)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(302.65,176.24)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(302.65,180.94)" d="M1.58,-2.16H6.66L2.54,0.83L4.12,5.66L0,2.67L-4.12,5.66L-2.54,0.83L-6.66,-2.16H-1.58L0,-7Z" opacity=".9"/>
+<path class="point" transform="translate(302.65,173.39)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(302.65,116.33)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(302.65,247.68)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(302.65,251.75)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(302.65,243.9)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(302.65,257.19)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(302.65,243.79)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(302.65,249.79)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(302.65,167.32)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(302.65,196)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(302.65,98.61)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(302.65,177.74)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(302.65,177.28)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(302.65,173.95)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(302.65,132.11)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(302.65,204)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(302.65,157.53)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(302.65,169.45)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(302.65,250.37)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(302.65,167.53)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(302.65,141.01)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(302.65,180.31)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(302.65,247.38)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(302.65,177.62)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(302.65,221.3)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(302.65,227.89)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(302.65,135.99)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(302.65,220.95)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(302.65,160.86)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(302.65,222.94)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(302.65,183.13)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(302.65,110.64)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(302.65,116.09)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(302.65,164.97)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(302.65,88.8)" d="m0 0z" opacity=".9"/>
+</g>
+</g>
+<g class="trace scatter trace364993" opacity=".7">
+<g class="points" fill="#ffd700" stroke="#fff" stroke-width="1px">
+<path class="point" transform="translate(357.67,271.22)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,271.07)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,272)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,269.5)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,271.9)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,269.25)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,266.99)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,268.91)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,271.12)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,269.2)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,273.82)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,272.48)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,271.9)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,268.76)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,272.37)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,269.45)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,271.37)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,269.43)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,273.09)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,272.9)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,269.45)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,269.06)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,269.23)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,270.81)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,268.93)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,270.66)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,268.18)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,269.55)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,268.93)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,272.18)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,269.2)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,274.21)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,269.43)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,264.6)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,270.25)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,273.22)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,264.46)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,268.13)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,272.48)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,271.48)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,270.63)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,264.26)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,266.53)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,273.49)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,268.32)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,274.15)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,270.1)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,266.9)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,267.32)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,267.18)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,273.49)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,271.84)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,271.66)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,269.47)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,267.04)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,268.86)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,272.11)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,271.79)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,274.26)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,272.24)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,270.61)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,270.23)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,271.9)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,271.45)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,263.37)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,273.33)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,269.45)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,270.1)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,270.3)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,266.8)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,272.74)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,271.61)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,273.28)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,271.12)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,266.16)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,271.01)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,271.82)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,274.4)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,271.07)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,273.09)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,271.69)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,262.75)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,272.96)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,272.16)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,260.87)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,269.62)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,270.3)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,272.26)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,269.72)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,266.76)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,271.56)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,270.91)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,271.56)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,270.86)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,268.81)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,264.84)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,274.18)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,265.86)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,258.91)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,269.01)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,272.08)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,271.97)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,267.53)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,273.44)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,266.92)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,272.61)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,269.25)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,272.85)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,268.37)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,269.35)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,272.5)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,265.31)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,269.85)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,269.03)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,271.12)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,270.99)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,272.87)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,271.4)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,267.02)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,273.31)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,270.78)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,264.95)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,274.32)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,272.05)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,267.7)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,268.25)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,268.93)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,273.28)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,271.09)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,264.75)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,270.73)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,270.45)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,272.79)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,267.13)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,270.61)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,271.07)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,272.13)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,270.3)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,269.06)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,268.62)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,268.23)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,272.4)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,269.77)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,267.53)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,268.11)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,267.25)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,271.12)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,269.85)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(357.67,271.69)" d="m0 0z" opacity=".9"/>
+</g>
+</g>
+<g class="trace scatter traceb59c78" opacity=".7">
+<g class="points" fill="#ffd700" stroke="#fff" stroke-width="1px">
+<path class="point" transform="translate(412.7,51.23)" d="M1.58,-2.16H6.66L2.54,0.83L4.12,5.66L0,2.67L-4.12,5.66L-2.54,0.83L-6.66,-2.16H-1.58L0,-7Z" opacity=".9"/>
+<path class="point" transform="translate(412.7,42.17)" d="M1.58,-2.16H6.66L2.54,0.83L4.12,5.66L0,2.67L-4.12,5.66L-2.54,0.83L-6.66,-2.16H-1.58L0,-7Z" opacity=".9"/>
+<path class="point" transform="translate(412.7,147.26)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(412.7,39.99)" d="M1.58,-2.16H6.66L2.54,0.83L4.12,5.66L0,2.67L-4.12,5.66L-2.54,0.83L-6.66,-2.16H-1.58L0,-7Z" opacity=".9"/>
+<path class="point" transform="translate(412.7,157.91)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(412.7,64.92)" d="M1.58,-2.16H6.66L2.54,0.83L4.12,5.66L0,2.67L-4.12,5.66L-2.54,0.83L-6.66,-2.16H-1.58L0,-7Z" opacity=".9"/>
+<path class="point" transform="translate(412.7,113.08)" d="M1.58,-2.16H6.66L2.54,0.83L4.12,5.66L0,2.67L-4.12,5.66L-2.54,0.83L-6.66,-2.16H-1.58L0,-7Z" opacity=".9"/>
+<path class="point" transform="translate(412.7,49.63)" d="M1.58,-2.16H6.66L2.54,0.83L4.12,5.66L0,2.67L-4.12,5.66L-2.54,0.83L-6.66,-2.16H-1.58L0,-7Z" opacity=".9"/>
+<path class="point" transform="translate(412.7,83.47)" d="M1.58,-2.16H6.66L2.54,0.83L4.12,5.66L0,2.67L-4.12,5.66L-2.54,0.83L-6.66,-2.16H-1.58L0,-7Z" opacity=".9"/>
+<path class="point" transform="translate(412.7,94.94)" d="M1.58,-2.16H6.66L2.54,0.83L4.12,5.66L0,2.67L-4.12,5.66L-2.54,0.83L-6.66,-2.16H-1.58L0,-7Z" opacity=".9"/>
+<path class="point" transform="translate(412.7,97.5)" d="M1.58,-2.16H6.66L2.54,0.83L4.12,5.66L0,2.67L-4.12,5.66L-2.54,0.83L-6.66,-2.16H-1.58L0,-7Z" opacity=".9"/>
+<path class="point" transform="translate(412.7,82.21)" d="M1.58,-2.16H6.66L2.54,0.83L4.12,5.66L0,2.67L-4.12,5.66L-2.54,0.83L-6.66,-2.16H-1.58L0,-7Z" opacity=".9"/>
+<path class="point" transform="translate(412.7,53.33)" d="M1.58,-2.16H6.66L2.54,0.83L4.12,5.66L0,2.67L-4.12,5.66L-2.54,0.83L-6.66,-2.16H-1.58L0,-7Z" opacity=".9"/>
+<path class="point" transform="translate(412.7,63.69)" d="M1.58,-2.16H6.66L2.54,0.83L4.12,5.66L0,2.67L-4.12,5.66L-2.54,0.83L-6.66,-2.16H-1.58L0,-7Z" opacity=".9"/>
+<path class="point" transform="translate(412.7,76.32)" d="M1.58,-2.16H6.66L2.54,0.83L4.12,5.66L0,2.67L-4.12,5.66L-2.54,0.83L-6.66,-2.16H-1.58L0,-7Z" opacity=".9"/>
+<path class="point" transform="translate(412.7,85.33)" d="M1.58,-2.16H6.66L2.54,0.83L4.12,5.66L0,2.67L-4.12,5.66L-2.54,0.83L-6.66,-2.16H-1.58L0,-7Z" opacity=".9"/>
+<path class="point" transform="translate(412.7,109.12)" d="M1.58,-2.16H6.66L2.54,0.83L4.12,5.66L0,2.67L-4.12,5.66L-2.54,0.83L-6.66,-2.16H-1.58L0,-7Z" opacity=".9"/>
+<path class="point" transform="translate(412.7,96.4)" d="M1.58,-2.16H6.66L2.54,0.83L4.12,5.66L0,2.67L-4.12,5.66L-2.54,0.83L-6.66,-2.16H-1.58L0,-7Z" opacity=".9"/>
+<path class="point" transform="translate(412.7,79.05)" d="M1.58,-2.16H6.66L2.54,0.83L4.12,5.66L0,2.67L-4.12,5.66L-2.54,0.83L-6.66,-2.16H-1.58L0,-7Z" opacity=".9"/>
+<path class="point" transform="translate(412.7,76.3)" d="M1.58,-2.16H6.66L2.54,0.83L4.12,5.66L0,2.67L-4.12,5.66L-2.54,0.83L-6.66,-2.16H-1.58L0,-7Z" opacity=".9"/>
+<path class="point" transform="translate(412.7,130.56)" d="M1.58,-2.16H6.66L2.54,0.83L4.12,5.66L0,2.67L-4.12,5.66L-2.54,0.83L-6.66,-2.16H-1.58L0,-7Z" opacity=".9"/>
+<path class="point" transform="translate(412.7,115.62)" d="M1.58,-2.16H6.66L2.54,0.83L4.12,5.66L0,2.67L-4.12,5.66L-2.54,0.83L-6.66,-2.16H-1.58L0,-7Z" opacity=".9"/>
+<path class="point" transform="translate(412.7,21.93)" d="M1.58,-2.16H6.66L2.54,0.83L4.12,5.66L0,2.67L-4.12,5.66L-2.54,0.83L-6.66,-2.16H-1.58L0,-7Z" opacity=".9"/>
+<path class="point" transform="translate(412.7,59.54)" d="M1.58,-2.16H6.66L2.54,0.83L4.12,5.66L0,2.67L-4.12,5.66L-2.54,0.83L-6.66,-2.16H-1.58L0,-7Z" opacity=".9"/>
+<path class="point" transform="translate(412.7,92.35)" d="M1.58,-2.16H6.66L2.54,0.83L4.12,5.66L0,2.67L-4.12,5.66L-2.54,0.83L-6.66,-2.16H-1.58L0,-7Z" opacity=".9"/>
+<path class="point" transform="translate(412.7,107.86)" d="M1.58,-2.16H6.66L2.54,0.83L4.12,5.66L0,2.67L-4.12,5.66L-2.54,0.83L-6.66,-2.16H-1.58L0,-7Z" opacity=".9"/>
+<path class="point" transform="translate(412.7,156.95)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(412.7,20.85)" d="M1.58,-2.16H6.66L2.54,0.83L4.12,5.66L0,2.67L-4.12,5.66L-2.54,0.83L-6.66,-2.16H-1.58L0,-7Z" opacity=".9"/>
+<path class="point" transform="translate(412.7,125.69)" d="M1.58,-2.16H6.66L2.54,0.83L4.12,5.66L0,2.67L-4.12,5.66L-2.54,0.83L-6.66,-2.16H-1.58L0,-7Z" opacity=".9"/>
+<path class="point" transform="translate(412.7,98.71)" d="M1.58,-2.16H6.66L2.54,0.83L4.12,5.66L0,2.67L-4.12,5.66L-2.54,0.83L-6.66,-2.16H-1.58L0,-7Z" opacity=".9"/>
+<path class="point" transform="translate(412.7,52.22)" d="M1.58,-2.16H6.66L2.54,0.83L4.12,5.66L0,2.67L-4.12,5.66L-2.54,0.83L-6.66,-2.16H-1.58L0,-7Z" opacity=".9"/>
+<path class="point" transform="translate(412.7,96.06)" d="M1.58,-2.16H6.66L2.54,0.83L4.12,5.66L0,2.67L-4.12,5.66L-2.54,0.83L-6.66,-2.16H-1.58L0,-7Z" opacity=".9"/>
+<path class="point" transform="translate(412.7,65.99)" d="M1.58,-2.16H6.66L2.54,0.83L4.12,5.66L0,2.67L-4.12,5.66L-2.54,0.83L-6.66,-2.16H-1.58L0,-7Z" opacity=".9"/>
+<path class="point" transform="translate(412.7,113.6)" d="M1.58,-2.16H6.66L2.54,0.83L4.12,5.66L0,2.67L-4.12,5.66L-2.54,0.83L-6.66,-2.16H-1.58L0,-7Z" opacity=".9"/>
+<path class="point" transform="translate(412.7,140.54)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(412.7,128.85)" d="M1.58,-2.16H6.66L2.54,0.83L4.12,5.66L0,2.67L-4.12,5.66L-2.54,0.83L-6.66,-2.16H-1.58L0,-7Z" opacity=".9"/>
+<path class="point" transform="translate(412.7,38.62)" d="M1.58,-2.16H6.66L2.54,0.83L4.12,5.66L0,2.67L-4.12,5.66L-2.54,0.83L-6.66,-2.16H-1.58L0,-7Z" opacity=".9"/>
+<path class="point" transform="translate(412.7,93.73)" d="M1.58,-2.16H6.66L2.54,0.83L4.12,5.66L0,2.67L-4.12,5.66L-2.54,0.83L-6.66,-2.16H-1.58L0,-7Z" opacity=".9"/>
+<path class="point" transform="translate(412.7,74.63)" d="M1.58,-2.16H6.66L2.54,0.83L4.12,5.66L0,2.67L-4.12,5.66L-2.54,0.83L-6.66,-2.16H-1.58L0,-7Z" opacity=".9"/>
+<path class="point" transform="translate(412.7,93.52)" d="M1.58,-2.16H6.66L2.54,0.83L4.12,5.66L0,2.67L-4.12,5.66L-2.54,0.83L-6.66,-2.16H-1.58L0,-7Z" opacity=".9"/>
+<path class="point" transform="translate(412.7,82.13)" d="M1.58,-2.16H6.66L2.54,0.83L4.12,5.66L0,2.67L-4.12,5.66L-2.54,0.83L-6.66,-2.16H-1.58L0,-7Z" opacity=".9"/>
+<path class="point" transform="translate(412.7,147.8)" d="M1.58,-2.16H6.66L2.54,0.83L4.12,5.66L0,2.67L-4.12,5.66L-2.54,0.83L-6.66,-2.16H-1.58L0,-7Z" opacity=".9"/>
+<path class="point" transform="translate(412.7,73.85)" d="M1.58,-2.16H6.66L2.54,0.83L4.12,5.66L0,2.67L-4.12,5.66L-2.54,0.83L-6.66,-2.16H-1.58L0,-7Z" opacity=".9"/>
+<path class="point" transform="translate(412.7,150.91)" d="M1.58,-2.16H6.66L2.54,0.83L4.12,5.66L0,2.67L-4.12,5.66L-2.54,0.83L-6.66,-2.16H-1.58L0,-7Z" opacity=".9"/>
+<path class="point" transform="translate(412.7,142.07)" d="M1.58,-2.16H6.66L2.54,0.83L4.12,5.66L0,2.67L-4.12,5.66L-2.54,0.83L-6.66,-2.16H-1.58L0,-7Z" opacity=".9"/>
+<path class="point" transform="translate(412.7,105.09)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(412.7,78.09)" d="M1.58,-2.16H6.66L2.54,0.83L4.12,5.66L0,2.67L-4.12,5.66L-2.54,0.83L-6.66,-2.16H-1.58L0,-7Z" opacity=".9"/>
+<path class="point" transform="translate(412.7,123.63)" d="M1.58,-2.16H6.66L2.54,0.83L4.12,5.66L0,2.67L-4.12,5.66L-2.54,0.83L-6.66,-2.16H-1.58L0,-7Z" opacity=".9"/>
+<path class="point" transform="translate(412.7,135.39)" d="M1.58,-2.16H6.66L2.54,0.83L4.12,5.66L0,2.67L-4.12,5.66L-2.54,0.83L-6.66,-2.16H-1.58L0,-7Z" opacity=".9"/>
+<path class="point" transform="translate(412.7,114.09)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(412.7,80.15)" d="M1.58,-2.16H6.66L2.54,0.83L4.12,5.66L0,2.67L-4.12,5.66L-2.54,0.83L-6.66,-2.16H-1.58L0,-7Z" opacity=".9"/>
+<path class="point" transform="translate(412.7,68.27)" d="M1.58,-2.16H6.66L2.54,0.83L4.12,5.66L0,2.67L-4.12,5.66L-2.54,0.83L-6.66,-2.16H-1.58L0,-7Z" opacity=".9"/>
+<path class="point" transform="translate(412.7,103.89)" d="M1.58,-2.16H6.66L2.54,0.83L4.12,5.66L0,2.67L-4.12,5.66L-2.54,0.83L-6.66,-2.16H-1.58L0,-7Z" opacity=".9"/>
+<path class="point" transform="translate(412.7,52.26)" d="M1.58,-2.16H6.66L2.54,0.83L4.12,5.66L0,2.67L-4.12,5.66L-2.54,0.83L-6.66,-2.16H-1.58L0,-7Z" opacity=".9"/>
+<path class="point" transform="translate(412.7,102.44)" d="M1.58,-2.16H6.66L2.54,0.83L4.12,5.66L0,2.67L-4.12,5.66L-2.54,0.83L-6.66,-2.16H-1.58L0,-7Z" opacity=".9"/>
+<path class="point" transform="translate(412.7,61.47)" d="M1.58,-2.16H6.66L2.54,0.83L4.12,5.66L0,2.67L-4.12,5.66L-2.54,0.83L-6.66,-2.16H-1.58L0,-7Z" opacity=".9"/>
+<path class="point" transform="translate(412.7,89.82)" d="M1.58,-2.16H6.66L2.54,0.83L4.12,5.66L0,2.67L-4.12,5.66L-2.54,0.83L-6.66,-2.16H-1.58L0,-7Z" opacity=".9"/>
+<path class="point" transform="translate(412.7,115.79)" d="M1.58,-2.16H6.66L2.54,0.83L4.12,5.66L0,2.67L-4.12,5.66L-2.54,0.83L-6.66,-2.16H-1.58L0,-7Z" opacity=".9"/>
+<path class="point" transform="translate(412.7,70.28)" d="M1.58,-2.16H6.66L2.54,0.83L4.12,5.66L0,2.67L-4.12,5.66L-2.54,0.83L-6.66,-2.16H-1.58L0,-7Z" opacity=".9"/>
+<path class="point" transform="translate(412.7,122.52)" d="M1.58,-2.16H6.66L2.54,0.83L4.12,5.66L0,2.67L-4.12,5.66L-2.54,0.83L-6.66,-2.16H-1.58L0,-7Z" opacity=".9"/>
+<path class="point" transform="translate(412.7,140.95)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(412.7,177.97)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(412.7,73.25)" d="M1.58,-2.16H6.66L2.54,0.83L4.12,5.66L0,2.67L-4.12,5.66L-2.54,0.83L-6.66,-2.16H-1.58L0,-7Z" opacity=".9"/>
+<path class="point" transform="translate(412.7,123.72)" d="M1.58,-2.16H6.66L2.54,0.83L4.12,5.66L0,2.67L-4.12,5.66L-2.54,0.83L-6.66,-2.16H-1.58L0,-7Z" opacity=".9"/>
+<path class="point" transform="translate(412.7,147.23)" d="M1.58,-2.16H6.66L2.54,0.83L4.12,5.66L0,2.67L-4.12,5.66L-2.54,0.83L-6.66,-2.16H-1.58L0,-7Z" opacity=".9"/>
+<path class="point" transform="translate(412.7,140.65)" d="M1.58,-2.16H6.66L2.54,0.83L4.12,5.66L0,2.67L-4.12,5.66L-2.54,0.83L-6.66,-2.16H-1.58L0,-7Z" opacity=".9"/>
+<path class="point" transform="translate(412.7,116.33)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(412.7,155.24)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(412.7,84.93)" d="M1.58,-2.16H6.66L2.54,0.83L4.12,5.66L0,2.67L-4.12,5.66L-2.54,0.83L-6.66,-2.16H-1.58L0,-7Z" opacity=".9"/>
+<path class="point" transform="translate(412.7,97.82)" d="M1.58,-2.16H6.66L2.54,0.83L4.12,5.66L0,2.67L-4.12,5.66L-2.54,0.83L-6.66,-2.16H-1.58L0,-7Z" opacity=".9"/>
+<path class="point" transform="translate(412.7,128.54)" d="M1.58,-2.16H6.66L2.54,0.83L4.12,5.66L0,2.67L-4.12,5.66L-2.54,0.83L-6.66,-2.16H-1.58L0,-7Z" opacity=".9"/>
+<path class="point" transform="translate(412.7,88.26)" d="M1.58,-2.16H6.66L2.54,0.83L4.12,5.66L0,2.67L-4.12,5.66L-2.54,0.83L-6.66,-2.16H-1.58L0,-7Z" opacity=".9"/>
+<path class="point" transform="translate(412.7,148.02)" d="M1.58,-2.16H6.66L2.54,0.83L4.12,5.66L0,2.67L-4.12,5.66L-2.54,0.83L-6.66,-2.16H-1.58L0,-7Z" opacity=".9"/>
+<path class="point" transform="translate(412.7,103.49)" d="M1.58,-2.16H6.66L2.54,0.83L4.12,5.66L0,2.67L-4.12,5.66L-2.54,0.83L-6.66,-2.16H-1.58L0,-7Z" opacity=".9"/>
+<path class="point" transform="translate(412.7,63.09)" d="M1.58,-2.16H6.66L2.54,0.83L4.12,5.66L0,2.67L-4.12,5.66L-2.54,0.83L-6.66,-2.16H-1.58L0,-7Z" opacity=".9"/>
+<path class="point" transform="translate(412.7,105.18)" d="M1.58,-2.16H6.66L2.54,0.83L4.12,5.66L0,2.67L-4.12,5.66L-2.54,0.83L-6.66,-2.16H-1.58L0,-7Z" opacity=".9"/>
+<path class="point" transform="translate(412.7,94.74)" d="M1.58,-2.16H6.66L2.54,0.83L4.12,5.66L0,2.67L-4.12,5.66L-2.54,0.83L-6.66,-2.16H-1.58L0,-7Z" opacity=".9"/>
+<path class="point" transform="translate(412.7,107)" d="M1.58,-2.16H6.66L2.54,0.83L4.12,5.66L0,2.67L-4.12,5.66L-2.54,0.83L-6.66,-2.16H-1.58L0,-7Z" opacity=".9"/>
+<path class="point" transform="translate(412.7,97.03)" d="M1.58,-2.16H6.66L2.54,0.83L4.12,5.66L0,2.67L-4.12,5.66L-2.54,0.83L-6.66,-2.16H-1.58L0,-7Z" opacity=".9"/>
+<path class="point" transform="translate(412.7,96.19)" d="M1.58,-2.16H6.66L2.54,0.83L4.12,5.66L0,2.67L-4.12,5.66L-2.54,0.83L-6.66,-2.16H-1.58L0,-7Z" opacity=".9"/>
+<path class="point" transform="translate(412.7,154.84)" d="m0 0z" opacity=".9"/>
+<path class="point" transform="translate(412.7,96.61)" d="M1.58,-2.16H6.66L2.54,0.83L4.12,5.66L0,2.67L-4.12,5.66L-2.54,0.83L-6.66,-2.16H-1.58L0,-7Z" opacity=".9"/>
+<path class="point" transform="translate(412.7,68.36)" d="M1.58,-2.16H6.66L2.54,0.83L4.12,5.66L0,2.67L-4.12,5.66L-2.54,0.83L-6.66,-2.16H-1.58L0,-7Z" opacity=".9"/>
+<path class="point" transform="translate(412.7,70.61)" d="M1.58,-2.16H6.66L2.54,0.83L4.12,5.66L0,2.67L-4.12,5.66L-2.54,0.83L-6.66,-2.16H-1.58L0,-7Z" opacity=".9"/>
+<path class="point" transform="translate(412.7,60.33)" d="M1.58,-2.16H6.66L2.54,0.83L4.12,5.66L0,2.67L-4.12,5.66L-2.54,0.83L-6.66,-2.16H-1.58L0,-7Z" opacity=".9"/>
+<path class="point" transform="translate(412.7,134.62)" d="M1.58,-2.16H6.66L2.54,0.83L4.12,5.66L0,2.67L-4.12,5.66L-2.54,0.83L-6.66,-2.16H-1.58L0,-7Z" opacity=".9"/>
+<path class="point" transform="translate(412.7,55.09)" d="M1.58,-2.16H6.66L2.54,0.83L4.12,5.66L0,2.67L-4.12,5.66L-2.54,0.83L-6.66,-2.16H-1.58L0,-7Z" opacity=".9"/>
+<path class="point" transform="translate(412.7,109.8)" d="M1.58,-2.16H6.66L2.54,0.83L4.12,5.66L0,2.67L-4.12,5.66L-2.54,0.83L-6.66,-2.16H-1.58L0,-7Z" opacity=".9"/>
+<path class="point" transform="translate(412.7,111.93)" d="M1.58,-2.16H6.66L2.54,0.83L4.12,5.66L0,2.67L-4.12,5.66L-2.54,0.83L-6.66,-2.16H-1.58L0,-7Z" opacity=".9"/>
+<path class="point" transform="translate(412.7,157.28)" d="M1.58,-2.16H6.66L2.54,0.83L4.12,5.66L0,2.67L-4.12,5.66L-2.54,0.83L-6.66,-2.16H-1.58L0,-7Z" opacity=".9"/>
+<path class="point" transform="translate(412.7,96.13)" d="M1.58,-2.16H6.66L2.54,0.83L4.12,5.66L0,2.67L-4.12,5.66L-2.54,0.83L-6.66,-2.16H-1.58L0,-7Z" opacity=".9"/>
+<path class="point" transform="translate(412.7,105.78)" d="M1.58,-2.16H6.66L2.54,0.83L4.12,5.66L0,2.67L-4.12,5.66L-2.54,0.83L-6.66,-2.16H-1.58L0,-7Z" opacity=".9"/>
+<path class="point" transform="translate(412.7,71.09)" d="M1.58,-2.16H6.66L2.54,0.83L4.12,5.66L0,2.67L-4.12,5.66L-2.54,0.83L-6.66,-2.16H-1.58L0,-7Z" opacity=".9"/>
+<path class="point" transform="translate(412.7,154.42)" d="M1.58,-2.16H6.66L2.54,0.83L4.12,5.66L0,2.67L-4.12,5.66L-2.54,0.83L-6.66,-2.16H-1.58L0,-7Z" opacity=".9"/>
+<path class="point" transform="translate(412.7,96.39)" d="M1.58,-2.16H6.66L2.54,0.83L4.12,5.66L0,2.67L-4.12,5.66L-2.54,0.83L-6.66,-2.16H-1.58L0,-7Z" opacity=".9"/>
+<path class="point" transform="translate(412.7,71.88)" d="M1.58,-2.16H6.66L2.54,0.83L4.12,5.66L0,2.67L-4.12,5.66L-2.54,0.83L-6.66,-2.16H-1.58L0,-7Z" opacity=".9"/>
+<path class="point" transform="translate(412.7,78.26)" d="M1.58,-2.16H6.66L2.54,0.83L4.12,5.66L0,2.67L-4.12,5.66L-2.54,0.83L-6.66,-2.16H-1.58L0,-7Z" opacity=".9"/>
+<path class="point" transform="translate(412.7,163.06)" d="M1.58,-2.16H6.66L2.54,0.83L4.12,5.66L0,2.67L-4.12,5.66L-2.54,0.83L-6.66,-2.16H-1.58L0,-7Z" opacity=".9"/>
+<path class="point" transform="translate(412.7,111.53)" d="M1.58,-2.16H6.66L2.54,0.83L4.12,5.66L0,2.67L-4.12,5.66L-2.54,0.83L-6.66,-2.16H-1.58L0,-7Z" opacity=".9"/>
+</g>
+</g>
+</g>
+</g>
+<path class="xlines-above crisp" d="m0 0" fill="none"/>
+<path class="ylines-above crisp" d="m0 0" fill="none"/>
+<g class="xaxislayer-above">
+<g class="xtick" fill="rgb(42, 63, 95)" font-family="'PT Serif'" font-size="12px">
+<text transform="translate(107.51) rotate(30 0 399)" y="405" style="white-space:pre">Conv1d</text>
+<text transform="translate(162.54) rotate(30 0 399)" y="405" style="white-space:pre">Conv1dThenLinear</text>
+<text transform="translate(217.57) rotate(30 0 399)" y="405" style="white-space:pre">Conv2d</text>
+<text transform="translate(272.59) rotate(30 0 399)" y="405" style="white-space:pre">Conv2dThenLinear</text>
+<text transform="translate(327.62) rotate(30 0 399)" y="405" style="white-space:pre">Conv3d</text>
+<text transform="translate(382.65) rotate(30 0 399)" y="405" style="white-space:pre">Conv3dThenLinear</text>
+<text transform="translate(437.67) rotate(30 0 399)" y="405" style="white-space:pre">Linear</text>
+<text transform="translate(492.7) rotate(30 0 399)" y="405" style="white-space:pre">ResNet</text>
+</g>
+</g>
+<g class="yaxislayer-above">
+<g class="ytick" fill="rgb(42, 63, 95)" font-family="'PT Serif'" text-anchor="end">
+<text transform="translate(0,364.53)" x="79" y="3.15" font-size="9px" style="white-space:pre">2</text>
+<text transform="translate(0,323.88)" x="79" y="3.15" font-size="9px" style="white-space:pre">5</text>
+<text transform="translate(0,293.14)" x="79" y="4.199999999999999" font-size="12px" style="white-space:pre">10k</text>
+<text transform="translate(0,262.39)" x="79" y="3.15" font-size="9px" style="white-space:pre">2</text>
+<text transform="translate(0,221.75)" x="79" y="3.15" font-size="9px" style="white-space:pre">5</text>
+<text transform="translate(0,191)" x="79" y="4.199999999999999" font-size="12px" style="white-space:pre">100k</text>
+<text transform="translate(0,160.25)" x="79" y="3.15" font-size="9px" style="white-space:pre">2</text>
+<text transform="translate(0,119.61)" x="79" y="3.15" font-size="9px" style="white-space:pre">5</text>
+</g>
+</g>
+</g>
+</g>
+<defs>
+<clipPath id="a">
+<rect width="158" height="162"/>
+</clipPath>
+</defs>
+<g class="layer-above"/>
+<g class="infolayer">
+<g class="legend" transform="translate(529.82 100)" pointer-events="all">
+<rect class="bg" width="158" height="162" fill="#fff" shape-rendering="crispEdges" stroke-width="0px"/>
+<g class="scrollbox" transform="translate(0)" clip-path="url(#a)">
+<g class="groups">
+<g class="traces" transform="translate(0 14.5)">
+<text class="legendtext" x="40" y="4.680000000000001" fill="rgb(42, 63, 95)" font-family="'PT Serif'" font-size="12px" style="white-space:pre">Conv1d</text>
+<g class="layers" opacity=".6">
+<g class="legendsymbols">
+<g class="legendpoints">
+<path class="legendbox" transform="translate(20)" d="M6,6H-6V-6H6Z" fill="#1f77b4" stroke="#000" stroke-width=".8px"/>
+</g>
+</g>
+</g>
+<rect class="legendtoggle" y="-9.5" width="153" height="19" fill-opacity="0"/>
+</g>
+<g class="traces" transform="translate(0 33.5)">
+<text class="legendtext" x="40" y="4.680000000000001" fill="rgb(42, 63, 95)" font-family="'PT Serif'" font-size="12px" style="white-space:pre">Conv1dThenLinear</text>
+<g class="layers" opacity=".6">
+<g class="legendsymbols">
+<g class="legendpoints">
+<path class="legendbox" transform="translate(20)" d="M6,6H-6V-6H6Z" fill="#ff7f0e" stroke="#000" stroke-width=".8px"/>
+</g>
+</g>
+</g>
+<rect class="legendtoggle" y="-9.5" width="153" height="19" fill-opacity="0"/>
+</g>
+<g class="traces" transform="translate(0 52.5)">
+<text class="legendtext" x="40" y="4.680000000000001" fill="rgb(42, 63, 95)" font-family="'PT Serif'" font-size="12px" style="white-space:pre">Conv2d</text>
+<g class="layers" opacity=".6">
+<g class="legendsymbols">
+<g class="legendpoints">
+<path class="legendbox" transform="translate(20)" d="M6,6H-6V-6H6Z" fill="#2ca02c" stroke="#000" stroke-width=".8px"/>
+</g>
+</g>
+</g>
+<rect class="legendtoggle" y="-9.5" width="153" height="19" fill-opacity="0"/>
+</g>
+<g class="traces" transform="translate(0 71.5)">
+<text class="legendtext" x="40" y="4.680000000000001" fill="rgb(42, 63, 95)" font-family="'PT Serif'" font-size="12px" style="white-space:pre">Conv2dThenLinear</text>
+<g class="layers" opacity=".6">
+<g class="legendsymbols">
+<g class="legendpoints">
+<path class="legendbox" transform="translate(20)" d="M6,6H-6V-6H6Z" fill="#d62728" stroke="#000" stroke-width=".8px"/>
+</g>
+</g>
+</g>
+<rect class="legendtoggle" y="-9.5" width="153" height="19" fill-opacity="0"/>
+</g>
+<g class="traces" transform="translate(0 90.5)">
+<text class="legendtext" x="40" y="4.680000000000001" fill="rgb(42, 63, 95)" font-family="'PT Serif'" font-size="12px" style="white-space:pre">Conv3d</text>
+<g class="layers" opacity=".6">
+<g class="legendsymbols">
+<g class="legendpoints">
+<path class="legendbox" transform="translate(20)" d="M6,6H-6V-6H6Z" fill="#9467bd" stroke="#000" stroke-width=".8px"/>
+</g>
+</g>
+</g>
+<rect class="legendtoggle" y="-9.5" width="153" height="19" fill-opacity="0"/>
+</g>
+<g class="traces" transform="translate(0 109.5)">
+<text class="legendtext" x="40" y="4.680000000000001" fill="rgb(42, 63, 95)" font-family="'PT Serif'" font-size="12px" style="white-space:pre">Conv3dThenLinear</text>
+<g class="layers" opacity=".6">
+<g class="legendsymbols">
+<g class="legendpoints">
+<path class="legendbox" transform="translate(20)" d="M6,6H-6V-6H6Z" fill="#8c564b" stroke="#000" stroke-width=".8px"/>
+</g>
+</g>
+</g>
+<rect class="legendtoggle" y="-9.5" width="153" height="19" fill-opacity="0"/>
+</g>
+<g class="traces" transform="translate(0 128.5)">
+<text class="legendtext" x="40" y="4.680000000000001" fill="rgb(42, 63, 95)" font-family="'PT Serif'" font-size="12px" style="white-space:pre">Linear</text>
+<g class="layers" opacity=".6">
+<g class="legendsymbols">
+<g class="legendpoints">
+<path class="legendbox" transform="translate(20)" d="M6,6H-6V-6H6Z" fill="#e377c2" stroke="#000" stroke-width=".8px"/>
+</g>
+</g>
+</g>
+<rect class="legendtoggle" y="-9.5" width="153" height="19" fill-opacity="0"/>
+</g>
+<g class="traces" transform="translate(0 147.5)">
+<text class="legendtext" x="40" y="4.680000000000001" fill="rgb(42, 63, 95)" font-family="'PT Serif'" font-size="12px" style="white-space:pre">ResNet</text>
+<g class="layers" opacity=".6">
+<g class="legendsymbols">
+<g class="legendpoints">
+<path class="legendbox" transform="translate(20)" d="M6,6H-6V-6H6Z" fill="#7f7f7f" stroke="#000" stroke-width=".8px"/>
+</g>
+</g>
+</g>
+<rect class="legendtoggle" y="-9.5" width="153" height="19" fill-opacity="0"/>
+</g>
+</g>
+</g>
+<rect class="scrollbar" width="0" height="0" rx="20" ry="3" fill="#808ba4"/>
+</g>
+<g class="g-gtitle">
+<text class="gtitle" x="35" y="50" dy="0em" fill="rgb(42, 63, 95)" font-family="'PT Serif'" font-size="17px" style="white-space:pre">Memory Usage per Net Type</text>
+</g>
+<g class="g-xtitle">
+<text class="xtitle" x="300.5" y="488.0939453125" fill="rgb(42, 63, 95)" font-family="'PT Serif'" font-size="14px" text-anchor="middle" style="white-space:pre">Network Type</text>
+</g>
+<g class="g-ytitle">
+<text class="ytitle" transform="rotate(-90 23.2 246)" x="23.200000000000003" y="246" fill="rgb(42, 63, 95)" font-family="'PT Serif'" font-size="14px" text-anchor="middle" style="white-space:pre">Memory Usage (bytes)</text>
+</g>
+</g>
+</svg>

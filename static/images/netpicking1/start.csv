@@ -1,0 +1,9 @@
+,None,ReLU,SELU,Sigmoid,Tanh
+Linear,55,23,24,25,23
+ResNet,0,100,0,0,0
+Conv3d,57,23,23,22,25
+Conv2dThenLinear,38,14,16,16,16
+Conv1d,59,23,24,21,23
+Conv1dThenLinear,34,17,17,17,15
+Conv2d,61,23,23,20,23
+Conv3dThenLinear,33,18,16,18,15
