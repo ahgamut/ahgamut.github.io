@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg class="main-svg" style="" viewBox="0 0 700 500" xmlns="http://www.w3.org/2000/svg">
+<rect width="700" height="500" fill="#fff"/>
+<defs>
+<g class="clips">
+<clipPath id="b" class="plotclip">
+<rect width="504" height="292"/>
+</clipPath>
+</g>
+</defs>
+<g class="bglayer">
+<rect class="bg" x="80" y="100" width="504" height="292" fill="#e5ecf6" stroke-width="0"/>
+</g>
+<g class="layer-below"/>
+<g class="cartesianlayer">
+<g class="subplot xy">
+<g class="layer-subplot"/>
+<g class="gridlayer">
+<g class="y" stroke="#fff" stroke-width="1px">
+<path class="ygrid crisp" transform="translate(0,377.61)" d="m80 0h504"/>
+<path class="ygrid crisp" transform="translate(0,308.82)" d="m80 0h504"/>
+<path class="ygrid crisp" transform="translate(0,240.03)" d="m80 0h504"/>
+<path class="ygrid crisp" transform="translate(0,171.24)" d="m80 0h504"/>
+<path class="ygrid crisp" transform="translate(0,102.45)" d="m80 0h504"/>
+</g>
+</g>
+<g class="plot" transform="translate(80 100)" clip-path="url(#b)">
+<g class="boxlayer mlayer">
+<g class="trace boxes" opacity=".7">
+<path class="box" d="m12.54 118.19h7.67m-7.67 14.92h7.67v-50.75h-7.67zm3.83 0v46.1m0-96.85v-28.58m-1.91 125.43h3.83m-3.83-125.43h3.83" fill="#1f77b4" stroke="#000" stroke-width=".7px" vector-effect="non-scaling-stroke"/>
+<path class="box" d="m75.16 33.49h7.67m-7.67 5.52h7.67v-9.4h-7.67zm3.84 0v13.15m0-22.55v-5.08m-1.92 27.63h3.84m-3.84-27.63h3.84" fill="#1f77b4" stroke="#000" stroke-width=".7px" vector-effect="non-scaling-stroke"/>
+<path class="box" d="m137.79 97.72h7.67m-7.67 36.74h7.67v-79.47h-7.67zm3.83 0v47.38m0-126.85v-23.5m-1.91 150.35h3.83m-3.83-150.35h3.83" fill="#1f77b4" stroke="#000" stroke-width=".7px" vector-effect="non-scaling-stroke"/>
+<path class="box" d="m200.41 121.45h7.67m-7.67 20.71h7.67v-76.62h-7.67zm3.84 0v100.78m0-177.4v-33.14m-1.92 210.54h3.84m-3.84-210.54h3.84" fill="#1f77b4" stroke="#000" stroke-width=".7px" vector-effect="non-scaling-stroke"/>
+<path class="box" d="m263.04 104.25h7.67m-7.67 36.63h7.67v-69.08h-7.67zm3.83 0v66.73m0-135.81v-26.65m-1.91 162.46h3.83m-3.83-162.46h3.83" fill="#1f77b4" stroke="#000" stroke-width=".7px" vector-effect="non-scaling-stroke"/>
+<path class="box" d="m325.66 112.67h7.67m-7.67 19.84h7.67v-51.74h-7.67zm3.84 0v64.8m0-116.54v-36.27m-1.92 152.81h3.84m-3.84-152.81h3.84" fill="#1f77b4" stroke="#000" stroke-width=".7px" vector-effect="non-scaling-stroke"/>
+<path class="box" d="m388.29 95.05h7.67m-7.67 54.41h7.67v-93.95h-7.67zm3.83 0v65.06m0-159.01v-31.18m-1.91 190.19h3.83m-3.83-190.19h3.83" fill="#1f77b4" stroke="#000" stroke-width=".7px" vector-effect="non-scaling-stroke"/>
+<path class="box" d="m450.91 114.98h7.67m-7.67 19.28h7.67v-59.22h-7.67zm3.84 0v88.05m0-147.27v-34.73m-1.92 182h3.84m-3.84-182h3.84" fill="#1f77b4" stroke="#000" stroke-width=".7px" vector-effect="non-scaling-stroke"/>
+<g class="points" stroke-width="0px">
+<path class="point" transform="translate(16.37,270.4)" d="M1.5,0A1.5,1.5 0 1,1 0,-1.5A1.5,1.5 0 0,1 1.5,0Z" opacity=".7"/>
+<path class="point" transform="translate(79,61.4)" d="M1.5,0A1.5,1.5 0 1,1 0,-1.5A1.5,1.5 0 0,1 1.5,0Z" opacity=".7"/>
+<path class="point" transform="translate(79,60.86)" d="M1.5,0A1.5,1.5 0 1,1 0,-1.5A1.5,1.5 0 0,1 1.5,0Z" opacity=".7"/>
+<path class="point" transform="translate(79,55.73)" d="M1.5,0A1.5,1.5 0 1,1 0,-1.5A1.5,1.5 0 0,1 1.5,0Z" opacity=".7"/>
+<path class="point" transform="translate(79,54.07)" d="M1.5,0A1.5,1.5 0 1,1 0,-1.5A1.5,1.5 0 0,1 1.5,0Z" opacity=".7"/>
+<path class="point" transform="translate(204.25,259.24)" d="M1.5,0A1.5,1.5 0 1,1 0,-1.5A1.5,1.5 0 0,1 1.5,0Z" opacity=".7"/>
+<path class="point" transform="translate(329.5,270.75)" d="M1.5,0A1.5,1.5 0 1,1 0,-1.5A1.5,1.5 0 0,1 1.5,0Z" opacity=".7"/>
+<path class="point" transform="translate(329.5,237.85)" d="M1.5,0A1.5,1.5 0 1,1 0,-1.5A1.5,1.5 0 0,1 1.5,0Z" opacity=".7"/>
+<path class="point" transform="translate(454.75,254.86)" d="M1.5,0A1.5,1.5 0 1,1 0,-1.5A1.5,1.5 0 0,1 1.5,0Z" opacity=".7"/>
+<path class="point" transform="translate(454.75,230.04)" d="M1.5,0A1.5,1.5 0 1,1 0,-1.5A1.5,1.5 0 0,1 1.5,0Z" opacity=".7"/>
+<path class="point" transform="translate(454.75,225.22)" d="M1.5,0A1.5,1.5 0 1,1 0,-1.5A1.5,1.5 0 0,1 1.5,0Z" opacity=".7"/>
+</g>
+<path class="box" d="m23.5 103.1h7.67m-7.67 22.07h7.67v-57.2h-7.67zm3.83 0v76.79m0-133.99v-24.43m-1.92 158.42h3.84m-3.84-158.42h3.84" fill="#ff7f0e" stroke="#000" stroke-width=".7px" vector-effect="non-scaling-stroke"/>
+<path class="box" d="m86.12 27.46h7.67m-7.67 4.08h7.67v-6.72h-7.67zm3.84 0v9.05m0-15.77v-5.7m-1.92 21.47h3.84m-3.84-21.47h3.84" fill="#ff7f0e" stroke="#000" stroke-width=".7px" vector-effect="non-scaling-stroke"/>
+<path class="box" d="m148.75 69.1h7.67m-7.67 58.11h7.67v-79.53h-7.67zm3.83 0v34.77m0-114.3v-22.47m-1.92 136.77h3.84m-3.84-136.77h3.84" fill="#ff7f0e" stroke="#000" stroke-width=".7px" vector-effect="non-scaling-stroke"/>
+<path class="box" d="m211.37 115.29h7.67m-7.67 16.38h7.67v-82.71h-7.67zm3.84 0v57.79m0-140.5v-20.55m-1.92 161.05h3.84m-3.84-161.05h3.84" fill="#ff7f0e" stroke="#000" stroke-width=".7px" vector-effect="non-scaling-stroke"/>
+<path class="box" d="m274 82.54h7.67m-7.67 53.25h7.67v-78.55h-7.67zm3.83 0v37.67m0-116.22v-24.38m-1.92 140.6h3.84m-3.84-140.6h3.84" fill="#ff7f0e" stroke="#000" stroke-width=".7px" vector-effect="non-scaling-stroke"/>
+<path class="box" d="m336.62 99.67h7.67m-7.67 29.15h7.67v-67.25h-7.67zm3.84 0v97.86m0-165.11v-22.79m-1.92 187.9h3.84m-3.84-187.9h3.84" fill="#ff7f0e" stroke="#000" stroke-width=".7px" vector-effect="non-scaling-stroke"/>
+<path class="box" d="m399.25 76.19h7.67m-7.67 66.03h7.67v-96.27h-7.67zm3.83 0v63.82m0-160.09v-25.09m-1.92 185.18h3.84m-3.84-185.18h3.84" fill="#ff7f0e" stroke="#000" stroke-width=".7px" vector-effect="non-scaling-stroke"/>
+<path class="box" d="m461.87 92.64h7.67m-7.67 33.05h7.67v-65.84h-7.67zm3.84 0v96.28m0-162.12v-24.11m-1.92 186.23h3.84m-3.84-186.23h3.84" fill="#ff7f0e" stroke="#000" stroke-width=".7px" vector-effect="non-scaling-stroke"/>
+<g class="points" stroke-width="0px">
+<path class="point" transform="translate(89.96,67.81)" d="M1.5,0A1.5,1.5 0 1,1 0,-1.5A1.5,1.5 0 0,1 1.5,0Z" opacity=".7"/>
+<path class="point" transform="translate(89.96,50.72)" d="M1.5,0A1.5,1.5 0 1,1 0,-1.5A1.5,1.5 0 0,1 1.5,0Z" opacity=".7"/>
+<path class="point" transform="translate(89.96,46.64)" d="M1.5,0A1.5,1.5 0 1,1 0,-1.5A1.5,1.5 0 0,1 1.5,0Z" opacity=".7"/>
+<path class="point" transform="translate(89.96,44.47)" d="M1.5,0A1.5,1.5 0 1,1 0,-1.5A1.5,1.5 0 0,1 1.5,0Z" opacity=".7"/>
+<path class="point" transform="translate(89.96,42.5)" d="M1.5,0A1.5,1.5 0 1,1 0,-1.5A1.5,1.5 0 0,1 1.5,0Z" opacity=".7"/>
+<path class="point" transform="translate(89.96,42.33)" d="M1.5,0A1.5,1.5 0 1,1 0,-1.5A1.5,1.5 0 0,1 1.5,0Z" opacity=".7"/>
+<path class="point" transform="translate(340.46,239.36)" d="M1.5,0A1.5,1.5 0 1,1 0,-1.5A1.5,1.5 0 0,1 1.5,0Z" opacity=".7"/>
+<path class="point" transform="translate(465.71,243.97)" d="M1.5,0A1.5,1.5 0 1,1 0,-1.5A1.5,1.5 0 0,1 1.5,0Z" opacity=".7"/>
+</g>
+<path class="box" d="m34.46 93.72h7.67m-7.67 27.73h7.67v-59.53h-7.67zm3.83 0v24.16m0-83.69v-23.52m-1.92 107.21h3.84m-3.84-107.21h3.84" fill="#2ca02c" stroke="#000" stroke-width=".7px" vector-effect="non-scaling-stroke"/>
+<path class="box" d="m97.08 23.8h7.67m-7.67 5.65h7.67v-8.43h-7.67zm3.84 0v11.9m0-20.33v-4.6m-1.92 24.93h3.84m-3.84-24.93h3.84" fill="#2ca02c" stroke="#000" stroke-width=".7px" vector-effect="non-scaling-stroke"/>
+<path class="box" d="m159.71 58.99h7.67m-7.67 65.28h7.67v-83h-7.67zm3.83 0v24.33m0-107.33v-15.44m-1.92 122.77h3.84m-3.84-122.77h3.84" fill="#2ca02c" stroke="#000" stroke-width=".7px" vector-effect="non-scaling-stroke"/>
+<path class="box" d="m222.33 111.11h7.67m-7.67 17.07h7.67v-85.24h-7.67zm3.84 0v62.31m0-147.55v-16.71m-1.92 164.26h3.84m-3.84-164.26h3.84" fill="#2ca02c" stroke="#000" stroke-width=".7px" vector-effect="non-scaling-stroke"/>
+<path class="box" d="m284.96 72.16h7.67m-7.67 60.29h7.67v-80.89h-7.67zm3.83 0v29.67m0-110.56v-18.33m-1.92 128.89h3.84m-3.84-128.89h3.84" fill="#2ca02c" stroke="#000" stroke-width=".7px" vector-effect="non-scaling-stroke"/>
+<path class="box" d="m347.58 91.04h7.67m-7.67 35.75h7.67v-71.01h-7.67zm3.84 0v96.47m0-167.48v-25m-1.92 192.48h3.84m-3.84-192.48h3.84" fill="#2ca02c" stroke="#000" stroke-width=".7px" vector-effect="non-scaling-stroke"/>
+<path class="box" d="m410.21 67.6h7.67m-7.67 65.27h7.67v-90.53h-7.67zm3.83 0v52.05m0-142.58v-24.89m-1.92 167.47h3.84m-3.84-167.47h3.84" fill="#2ca02c" stroke="#000" stroke-width=".7px" vector-effect="non-scaling-stroke"/>
+<path class="box" d="m472.83 85.31h7.67m-7.67 39.61h7.67v-74.07h-7.67zm3.84 0v108.36m0-182.43v-20.48m-1.92 202.91h3.84m-3.84-202.91h3.84" fill="#2ca02c" stroke="#000" stroke-width=".7px" vector-effect="non-scaling-stroke"/>
+<g class="points" stroke-width="0px">
+<path class="point" transform="translate(38.29,224.71)" d="M1.5,0A1.5,1.5 0 1,1 0,-1.5A1.5,1.5 0 0,1 1.5,0Z" opacity=".7"/>
+<path class="point" transform="translate(100.92,54.6)" d="M1.5,0A1.5,1.5 0 1,1 0,-1.5A1.5,1.5 0 0,1 1.5,0Z" opacity=".7"/>
+<path class="point" transform="translate(100.92,48.69)" d="M1.5,0A1.5,1.5 0 1,1 0,-1.5A1.5,1.5 0 0,1 1.5,0Z" opacity=".7"/>
+</g>
+<path class="box" d="m45.42 86.92h7.67m-7.67 32.69h7.67v-62.58h-7.67zm3.83 0v81.74m0-144.32v-20.76m-1.92 165.08h3.84m-3.84-165.08h3.84" fill="#d62728" stroke="#000" stroke-width=".7px" vector-effect="non-scaling-stroke"/>
+<path class="box" d="m108.04 21.76h7.67m-7.67 4.25h7.67v-7.78h-7.67zm3.84 0v10.88m0-18.66v-3.63m-1.92 22.29h3.83m-3.83-22.29h3.83" fill="#d62728" stroke="#000" stroke-width=".7px" vector-effect="non-scaling-stroke"/>
+<path class="box" d="m170.67 55.88h7.67m-7.67 67.19h7.67v-83.83h-7.67zm3.83 0v26.07m0-109.9v-16.69m-1.92 126.59h3.84m-3.84-126.59h3.84" fill="#d62728" stroke="#000" stroke-width=".7px" vector-effect="non-scaling-stroke"/>
+<path class="box" d="m233.29 107.02h7.67m-7.67 19.48h7.67v-88.51h-7.67zm3.84 0v45.34m0-133.85v-16.34m-1.92 150.19h3.83m-3.83-150.19h3.83" fill="#d62728" stroke="#000" stroke-width=".7px" vector-effect="non-scaling-stroke"/>
+<path class="box" d="m295.92 67h7.67m-7.67 62.3h7.67v-80.28h-7.67zm3.83 0v22.81m0-103.09v-15.07m-1.92 118.16h3.84m-3.84-118.16h3.84" fill="#d62728" stroke="#000" stroke-width=".7px" vector-effect="non-scaling-stroke"/>
+<path class="box" d="m358.54 89.46h7.67m-7.67 35.32h7.67v-74.47h-7.67zm3.84 0v97.27m0-171.74v-18.37m-1.92 190.11h3.83m-3.83-190.11h3.83" fill="#d62728" stroke="#000" stroke-width=".7px" vector-effect="non-scaling-stroke"/>
+<path class="box" d="m421.17 62.47h7.67m-7.67 73.66h7.67v-96.17h-7.67zm3.83 0v97.71m0-193.88v-23.12m-1.92 217h3.84m-3.84-217h3.84" fill="#d62728" stroke="#000" stroke-width=".7px" vector-effect="non-scaling-stroke"/>
+<path class="box" d="m483.79 82.71h7.67m-7.67 36.64h7.67v-71.16h-7.67zm3.84 0v84.33m0-155.49v-18.97m-1.92 174.46h3.83m-3.83-174.46h3.83" fill="#d62728" stroke="#000" stroke-width=".7px" vector-effect="non-scaling-stroke"/>
+<g class="points" stroke-width="0px">
+<path class="point" transform="translate(111.88,38.39)" d="M1.5,0A1.5,1.5 0 1,1 0,-1.5A1.5,1.5 0 0,1 1.5,0Z" opacity=".7"/>
+<path class="point" transform="translate(362.38,277.4)" d="M1.5,0A1.5,1.5 0 1,1 0,-1.5A1.5,1.5 0 0,1 1.5,0Z" opacity=".7"/>
+<path class="point" transform="translate(487.63,270.42)" d="M1.5,0A1.5,1.5 0 1,1 0,-1.5A1.5,1.5 0 0,1 1.5,0Z" opacity=".7"/>
+</g>
+</g>
+</g>
+</g>
+<path class="xlines-above crisp" d="m0 0" fill="none"/>
+<path class="ylines-above crisp" d="m0 0" fill="none"/>
+<g class="xaxislayer-above">
+<g class="xtick" fill="rgb(42, 63, 95)" font-family="'PT Serif'" font-size="12px">
+<text transform="translate(112.81) rotate(30 0 399)" y="405" style="white-space:pre">Linear</text>
+<text transform="translate(175.44) rotate(30 0 399)" y="405" style="white-space:pre">ResNet</text>
+<text transform="translate(238.06) rotate(30 0 399)" y="405" style="white-space:pre">Conv3d</text>
+<text transform="translate(300.69) rotate(30 0 399)" y="405" style="white-space:pre">Conv2dThenLinear</text>
+<text transform="translate(363.31) rotate(30 0 399)" y="405" style="white-space:pre">Conv1d</text>
+<text transform="translate(425.94) rotate(30 0 399)" y="405" style="white-space:pre">Conv1dThenLinear</text>
+<text transform="translate(488.56) rotate(30 0 399)" y="405" style="white-space:pre">Conv2d</text>
+<text transform="translate(551.19) rotate(30 0 399)" y="405" style="white-space:pre">Conv3dThenLinear</text>
+</g>
+</g>
+<g class="yaxislayer-above">
+<g class="ytick" fill="rgb(42, 63, 95)" font-family="'PT Serif'" font-size="12px" text-anchor="end">
+<text transform="translate(0,377.61)" x="79" y="4.199999999999999" style="white-space:pre">0.8</text>
+<text transform="translate(0,308.82)" x="79" y="4.199999999999999" style="white-space:pre">0.85</text>
+<text transform="translate(0,240.03)" x="79" y="4.199999999999999" style="white-space:pre">0.9</text>
+<text transform="translate(0,171.24)" x="79" y="4.199999999999999" style="white-space:pre">0.95</text>
+<text transform="translate(0,102.45)" x="79" y="4.199999999999999" style="white-space:pre">1</text>
+</g>
+</g>
+</g>
+</g>
+<defs>
+<clipPath id="a">
+<rect width="94" height="86"/>
+</clipPath>
+</defs>
+<g class="layer-above"/>
+<g class="infolayer">
+<g class="legend" transform="translate(594.08 100)" pointer-events="all">
+<rect class="bg" width="94" height="86" fill="#fff" shape-rendering="crispEdges" stroke-width="0px"/>
+<g class="scrollbox" transform="translate(0)" clip-path="url(#a)">
+<g class="groups">
+<g class="traces" transform="translate(0 14.5)">
+<text class="legendtext" x="40" y="4.680000000000001" fill="rgb(42, 63, 95)" font-family="'PT Serif'" font-size="12px" style="white-space:pre">epoch 1</text>
+<g class="layers" opacity=".7">
+<g class="legendsymbols">
+<g class="legendpoints">
+<path class="legendbox" transform="translate(20)" d="M6,6H-6V-6H6Z" fill="#1f77b4" stroke="#000" stroke-width=".7px"/>
+</g>
+</g>
+</g>
+<rect class="legendtoggle" y="-9.5" width="89" height="19" fill-opacity="0"/>
+</g>
+<g class="traces" transform="translate(0 33.5)">
+<text class="legendtext" x="40" y="4.680000000000001" fill="rgb(42, 63, 95)" font-family="'PT Serif'" font-size="12px" style="white-space:pre">epoch 2</text>
+<g class="layers" opacity=".7">
+<g class="legendsymbols">
+<g class="legendpoints">
+<path class="legendbox" transform="translate(20)" d="M6,6H-6V-6H6Z" fill="#ff7f0e" stroke="#000" stroke-width=".7px"/>
+</g>
+</g>
+</g>
+<rect class="legendtoggle" y="-9.5" width="89" height="19" fill-opacity="0"/>
+</g>
+<g class="traces" transform="translate(0 52.5)">
+<text class="legendtext" x="40" y="4.680000000000001" fill="rgb(42, 63, 95)" font-family="'PT Serif'" font-size="12px" style="white-space:pre">epoch 3</text>
+<g class="layers" opacity=".7">
+<g class="legendsymbols">
+<g class="legendpoints">
+<path class="legendbox" transform="translate(20)" d="M6,6H-6V-6H6Z" fill="#2ca02c" stroke="#000" stroke-width=".7px"/>
+</g>
+</g>
+</g>
+<rect class="legendtoggle" y="-9.5" width="89" height="19" fill-opacity="0"/>
+</g>
+<g class="traces" transform="translate(0 71.5)">
+<text class="legendtext" x="40" y="4.680000000000001" fill="rgb(42, 63, 95)" font-family="'PT Serif'" font-size="12px" style="white-space:pre">epoch 4</text>
+<g class="layers" opacity=".7">
+<g class="legendsymbols">
+<g class="legendpoints">
+<path class="legendbox" transform="translate(20)" d="M6,6H-6V-6H6Z" fill="#d62728" stroke="#000" stroke-width=".7px"/>
+</g>
+</g>
+</g>
+<rect class="legendtoggle" y="-9.5" width="89" height="19" fill-opacity="0"/>
+</g>
+</g>
+</g>
+<rect class="scrollbar" width="0" height="0" rx="20" ry="3" fill="#808ba4"/>
+</g>
+<g class="g-gtitle">
+<text class="gtitle" x="35" y="50" dy="0em" fill="rgb(42, 63, 95)" font-family="'PT Serif'" font-size="17px" style="white-space:pre">Accuracy improvement across epochs</text>
+</g>
+<g class="g-xtitle">
+<text class="xtitle" x="332" y="488.0939453125" fill="rgb(42, 63, 95)" font-family="'PT Serif'" font-size="14px" text-anchor="middle" style="white-space:pre">Network Type</text>
+</g>
+<g class="g-ytitle">
+<text class="ytitle" transform="rotate(-90 26.2 246)" x="26.200000000000003" y="246" fill="rgb(42, 63, 95)" font-family="'PT Serif'" font-size="14px" text-anchor="middle" style="white-space:pre">Accuracy</text>
+</g>
+</g>
+</svg>

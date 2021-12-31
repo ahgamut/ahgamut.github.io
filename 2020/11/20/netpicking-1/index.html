@@ -1,0 +1,460 @@
+<!doctype html><html><head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta name=description content="Gautham's Blog">
+<link rel=stylesheet href=/css/style.min.css>
+<title>Netpicking Part 1: Hello MNIST</title>
+</head>
+<body><header id=banner>
+<h2><a href=https://ahgamut.github.io>Blog Needs a Name</a></h2>
+<nav>
+<ul>
+<li>
+<a href=/about/ title=About>About</a>
+</li>
+</ul>
+</nav>
+</header>
+<main id=content>
+<article>
+<header id=post-header>
+<h1>Netpicking Part 1: Hello MNIST</h1>
+<div>
+<time>November 20, 2020</time>
+</div>
+</header><p>The <code>Hello World!</code> introduction to neural network libraries has the user write a small network for the
+<a href=https://en.wikipedia.org/wiki/MNIST_database>MNIST</a> dataset, train it, test it, get 90% accuracy or more, and thereby get a feel for how the
+library works. When I started using <a href=https://pytorch.org/tutorials/beginner/deep_learning_60min_blitz.html>PyTorch</a>, I followed such a tutorial on their website. But I
+wondered why a network with <code>Conv2d</code> and <code>ReLU</code> was picked in the tutorial. Why not a different convolution or
+a <code>Linear</code> layer with a <code>Sigmoid</code> activation?</p>
+<p>When someone designs a neural network, why do they pick a particular architecture? Obviously, some
+conventions have set in, but the primary reason is performance: Network <em>A</em> got a higher accuracy (or AUC)
+than Network <em>B</em>, so use <em>A</em>. Is there more information I can use when making this decision? Let&rsquo;s look at a
+bunch of networks and find out.</p>
+<h2 id=measurements-and-baselines>Measurements and Baselines</h2>
+<p>Comparing a bunch of networks seems similar to a programming contest:</p>
+<table>
+<thead>
+<tr>
+<th>A regular program&rsquo;s</th>
+<th>is somewhat like a neural net&rsquo;s</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Accuracy on test cases</td>
+<td>Accuracy on test set</td>
+</tr>
+<tr>
+<td>Compilation Time</td>
+<td>Training Time</td>
+</tr>
+<tr>
+<td>Binary size</td>
+<td>Number of parameters</td>
+</tr>
+<tr>
+<td>Memory usage</td>
+<td>Memory required to process a single input</td>
+</tr>
+<tr>
+<td>Algorithm Complexity</td>
+<td>number of <code>ops</code> in the computation</td>
+</tr>
+</tbody>
+</table>
+<p>I designed <code>Basic</code>, a simple<sup id=fnref:1><a href=#fn:1 class=footnote-ref role=doc-noteref>1</a></sup> model with bias as the baseline for the metrics. I trained it for <code>4</code>
+epochs, with the resulting performance:</p>
+<table>
+<thead>
+<tr>
+<th>network</th>
+<th>weights</th>
+<th>memory usage</th>
+<th>training time</th>
+<th>number of ops</th>
+<th>accuracy</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Basic</code></td>
+<td>7850</td>
+<td>1588</td>
+<td>52.14s</td>
+<td>4</td>
+<td>0.912</td>
+</tr>
+</tbody>
+</table>
+<p>The next step is design a bunch of &ldquo;similar&rdquo; networks and obtain their performance metrics.</p>
+<h2 id=getting-a-bunch-of-networks>Getting a bunch of networks</h2>
+<p>I quickly got bored writing different-yet-similar neural nets manually. <a href=https://en.wiktionary.org/wiki/yak_shaving>Yak shaving</a> to the rescue! I
+ended up <a href=/2020/11/24/netpicking-2/>generating</a> 1000 neural networks following a sequential template. The networks are classified
+along two axes: computation layer, and activation layer. The networks are distributed as per the below table:</p>
+<table>
+<thead>
+<tr>
+<th>↓ Computation / Activation →</th>
+<th><code>None</code></th>
+<th><code>ReLU</code></th>
+<th><code>SELU</code></th>
+<th><code>Sigmoid</code></th>
+<th><code>Tanh</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Linear</code></td>
+<td>55</td>
+<td>23</td>
+<td>24</td>
+<td>25</td>
+<td>23</td>
+</tr>
+<tr>
+<td><code>Conv1d</code></td>
+<td>59</td>
+<td>23</td>
+<td>24</td>
+<td>21</td>
+<td>23</td>
+</tr>
+<tr>
+<td><code>Conv2d</code></td>
+<td>61</td>
+<td>23</td>
+<td>23</td>
+<td>20</td>
+<td>23</td>
+</tr>
+<tr>
+<td><code>Conv3d</code></td>
+<td>57</td>
+<td>23</td>
+<td>23</td>
+<td>22</td>
+<td>25</td>
+</tr>
+<tr>
+<td><code>Conv1dThenLinear</code></td>
+<td>34</td>
+<td>17</td>
+<td>17</td>
+<td>17</td>
+<td>15</td>
+</tr>
+<tr>
+<td><code>Conv2dThenLinear</code></td>
+<td>38</td>
+<td>14</td>
+<td>16</td>
+<td>16</td>
+<td>16</td>
+</tr>
+<tr>
+<td><code>Conv3dThenLinear</code></td>
+<td>33</td>
+<td>18</td>
+<td>16</td>
+<td>18</td>
+<td>15</td>
+</tr>
+<tr>
+<td><code>ResNetStyle</code><sup id=fnref:2><a href=#fn:2 class=footnote-ref role=doc-noteref>2</a></sup></td>
+<td>0</td>
+<td>100</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p>For example, there are <code>23</code> networks where the computation layer is <code>Conv2d</code> and the activation layer is
+<code>ReLU</code>.</p>
+<p>So 1001 networks. Each trained for 4 epochs. The MNIST test set contains 10000 samples. A prediction of each
+input has 10 scores. That gives a raw dataset of size <code>(1001, 4, 10000, 10)</code>, and a summary dataset of size
+<code>(1001, 4, 20)</code>. Time to <a href="https://www.youtube.com/watch?v=LPDn0PC6zFE">crunch the numbers!</a></p>
+<h2 id=picking-the-best-network>Picking the &ldquo;best&rdquo; network</h2>
+<p>Let&rsquo;s use the below analogy:</p>
+<blockquote>
+<p>There are 1000 students writing the MNIST exam. The exam has 10000 questions, multiple choice. The
+students use approved study material, which contains 60000 practice questions. Each student has taken the
+test 4 times. I have also written this exam, and I have a <code>Basic</code> idea of what a good score is. I want to
+hire one or more students who perform well on this exam.</p>
+</blockquote>
+<p>The following ten are just some of the queries that can be posed:</p>
+<ol>
+<li>
+<p>How did the students perform over 4 attempts?</p>
+<table>
+<thead>
+<tr>
+<th>Attempt#</th>
+<th>≥ 80%</th>
+<th>≥ 90%</th>
+<th>≥ 95%</th>
+<th>≥ 99%</th>
+<th>≥ 100%</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>983</td>
+<td>792</td>
+<td>352</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>2</td>
+<td>990</td>
+<td>879</td>
+<td>461</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>3</td>
+<td>990</td>
+<td>907</td>
+<td>509</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>4</td>
+<td>993</td>
+<td>924</td>
+<td>527</td>
+<td>5</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p>So the exam was easy, but very few got close to a perfect score. Let&rsquo;s just consider the &ldquo;good&rdquo; students:
+those that got above 80% in all 4 test attempts. Of these, the &ldquo;really good&rdquo; students are those that got
+above 98% in their last test attempts, and they get a gold star.</p>
+</li>
+<li>
+<p>I know the students studied together and developed common strategies. Which strategy led to more students
+scoring high marks?</p>
+<p><img src=/images/netpicking1/2.svg alt=score1></p>
+<p>Okay, <code>ResNetStyle</code> is first<sup id=fnref:3><a href=#fn:3 class=footnote-ref role=doc-noteref>3</a></sup> (deeper networks better, skip connections are magic, blah blah), but
+what about everyone else? Unsurprisingly, <code>Conv2d</code> networks are second-best, but <code>Conv3d</code> networks seem to
+do an equally good job (lower maximum, but higher median and smaller spread). Adding <code>Linear</code> layers after
+convolution layers does not seem to be beneficial, perhaps the networks didn&rsquo;t have enough training epochs.</p>
+<p><img src=/images/netpicking1/2b.svg alt=score2></p>
+<ul>
+<li>
+<p>Argh! The move to consider networks without any activation was useless. Networks without
+activations are just linear functions; combining each network&rsquo;s weights would produce a matrix that is
+effectively equal to the one used in <code>Basic</code>.</p>
+</li>
+<li>
+<p>As expected, networks that use the <code>ReLU</code> activation have a higher accuracy on average than any of the
+others.</p>
+</li>
+<li>
+<p>Networks that use <code>SELU</code> activation are not as good as those with <code>ReLU</code>, but are more consistent.</p>
+</li>
+<li>
+<p><code>Sigmoid</code> and <code>Tanh</code> activations are both risky choices.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>With the <code>Basic</code> strategy, I spent only <code>52</code> seconds studying for the test. How about the others?</p>
+<p><img src=/images/netpicking1/3.svg alt=time></p>
+<ul>
+<li>
+<p>The <code>Conv1d</code>, <code>Linear</code>, and <code>Conv1dThenLinear</code> networks take similar amounts of time to train. Does this
+mean that the <code>reshape</code> operation is slow? The other networks use 2D-convolutions or higher.</p>
+</li>
+<li>
+<p>The gold stars are all across the board for <code>ResNetStyle</code> networks, and generally on the higher end for the
+others. However, the gold star in <code>Conv3dThenLinear</code> takes the <em>least</em> amount of training time in its
+class; are <code>Conv3d</code> networks slower to train?</p>
+</li>
+</ul>
+</li>
+<li>
+<p>With the <code>Basic</code> strategy, I had only <code>7850</code> keywords as part of my notes. How about the others?</p>
+<p><img src=/images/netpicking1/4.svg alt=params></p>
+<p>Again, the gold stars are on the higher end of the distributions. This could imply deeper or wider networks
+though.</p>
+</li>
+<li>
+<p>With the <code>Basic</code> strategy, I used only <code>1588</code> pages for rough work. How about the others?</p>
+<p><img src=/images/netpicking1/5.svg alt=mem></p>
+<p>This plot is similar to the previous one. The memory required to hold the intermediate tensors is related
+to the layers that output these tensors, examining the gold stars individually may give some information.</p>
+</li>
+<li>
+<p>With the <code>Basic</code> strategy, I needed only <code>4</code> steps to get an answer every time.
+How about the others?</p>
+<p><img src=/images/netpicking1/6.svg alt=ops></p>
+<p>Since all the networks are sequential, more operations means deeper networks. Now &ldquo;deeper networks are
+better&rdquo; can be seen: the higher ends have the gold stars, but not all of them.</p>
+</li>
+<li>
+<p>Every student took the test 4 times. How did the scores change over each attempt?</p>
+<p><img src=/images/netpicking1/7.svg alt=changes></p>
+<p>This graph doesn&rsquo;t tell much. It makes a case for early stopping: in most cases, the first two
+epochs are sufficient to pick the best-trained network. There should be a better way to understand this
+data; are there any networks that were horrible in the first two epochs, and then suddenly found a
+wonderful local optimum?</p>
+</li>
+<li>
+<p>How many questions were easy, weird, or confusing?</p>
+<p>Out of the 10000 samples in the test set,</p>
+<ul>
+<li>
+<p><strong>4247</strong> samples were easy questions. All the networks predicted these correctly, so it is impossible to
+distinguish between the networks using any of these samples.</p>
+</li>
+<li>
+<p><strong>8</strong> samples were weird questions. More than 90% of networks predicted these <em>incorrectly</em>, but all of
+them agreed got the <em>same</em> incorrect answer.</p>
+<p><img src=/images/netpicking1/8.svg alt=weird></p>
+</li>
+<li>
+<p><strong>5</strong> samples were confusing questions. There was no clear agreement among the networks as to what the
+answer was.</p>
+<p><img src=/images/netpicking1/8b.svg alt=confusing></p>
+</li>
+</ul>
+</li>
+<li>
+<p>Let&rsquo;s take the student with the best score. Is this person the <em>best overall</em>?</p>
+<p>The network with the highest accuracy is <code>ResNetStyle_75</code>, with an accuracy of 99.1%. To be the best
+overall, it should have the highest accuracy for each class of inputs, so let&rsquo;s look at the <em>percentile</em>
+of <code>ResNetStyle_75</code> at predicting each digit correctly:</p>
+<table>
+<thead>
+<tr>
+<th>name</th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+<th>8</th>
+<th>9</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ResNetStyle_75</code></td>
+<td>99.19</td>
+<td>94.06</td>
+<td>98.59</td>
+<td>99.09</td>
+<td>90.33</td>
+<td>96.27</td>
+<td>96.68</td>
+<td>100.00</td>
+<td>94.56</td>
+<td>97.58</td>
+</tr>
+</tbody>
+</table>
+<p>So there are some networks that are more accurate than <code>ResNetStyle_75</code> at predicting individual classes.
+<code>ResNetStyle_75</code> has the worst percentile at predicting <code>4</code>s correctly.</p>
+</li>
+<li>
+<p>How does the best student compare to the <code>Basic</code> method?</p>
+<table>
+<thead>
+<tr>
+<th>network</th>
+<th>weights</th>
+<th>memory usage</th>
+<th>training time</th>
+<th>number of ops</th>
+<th>accuracy</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ResNetStyle_75</code></td>
+<td>531605</td>
+<td>254083</td>
+<td>577.6s</td>
+<td>28</td>
+<td>0.991</td>
+</tr>
+<tr>
+<td><code>Basic</code></td>
+<td>7850</td>
+<td>1588</td>
+<td>52.14s</td>
+<td>4</td>
+<td>0.912</td>
+</tr>
+<tr>
+<td>Ratio</td>
+<td>67.7</td>
+<td>160</td>
+<td>11.07</td>
+<td>7.0</td>
+<td>1.08</td>
+</tr>
+</tbody>
+</table>
+<p>For an 8% increase in accuracy, <code>ResNetStyle_75</code> required 67x weights, 160x memory, and 11x training time.
+How many members should an <em>ensemble</em> of <code>Basic</code> networks have to get a similar accuracy combined? 11? 67?
+160?</p>
+</li>
+</ol>
+<h2 id=closing-notes>Closing Notes</h2>
+<p>Picking the best neural network, not surprisingly, depends on the definition of best (questions 3, 4, 5, and
+6). Some use cases may value resource efficiency: a simple network with few parameters, that can be fast and
+error-prone, would be easier to use in a constrained environment. Other cases may have heavy consequences
+attached to a wrong prediction, and so will use a large, overparametrized network, located in a server with
+multiple GPUs, to avoid error at all costs. Maybe the two extremes could work in tandem: the small network can
+be provide a quick prediction, which can be checked by requesting the large network for a prediction if
+needed.</p>
+<ul>
+<li>
+<p>Comparing a bunch of neural networks could also reveal some features about the dataset (question 8) that is
+being used: if many networks are wrong for a given subset of the data, is the data labeled incorrectly?
+Is the training set not large/representative enough of the underlying distribution? Do all the networks
+suffer from a common issue?</p>
+</li>
+<li>
+<p>Designing a bunch of neural networks may give an idea towards the importance of a particular design
+(questions 1 and 2): do networks with similar designs get the same inputs wrong? It may also point to the
+relative benefit of training a network for more epochs (question 7).</p>
+</li>
+<li>
+<p>Designing a bunch of neural networks may also show the trade-offs involved in picking a particular network
+(questions 9 and 10). Is an ensemble of shallow networks &ldquo;better&rdquo; than a single deep network?</p>
+</li>
+</ul>
+<section class=footnotes role=doc-endnotes>
+<hr>
+<ol>
+<li id=fn:1 role=doc-endnote>
+<p>The network is just a <code>784x10</code> matrix multiplication, adding a bias vector, and a <code>Softmax</code> layer.&#160;<a href=#fnref:1 class=footnote-backref role=doc-backlink>&#8617;&#xfe0e;</a></p>
+</li>
+<li id=fn:2 role=doc-endnote>
+<p>The computation layer is a <a href=https://github.com/pytorch/vision/blob/master/torchvision/models/resnet.py>ResNet <code>BasicBlock</code></a>.&#160;<a href=#fnref:2 class=footnote-backref role=doc-backlink>&#8617;&#xfe0e;</a></p>
+</li>
+<li id=fn:3 role=doc-endnote>
+<p>I realized after running all the networks that I could&rsquo;ve modified the <code>BasicBlock</code> to use different
+activations instead of just <code>ReLU</code>, which would&rsquo;ve given a nice square matrix of subplots, and info about
+how the <code>BasicBlock</code> architecture is affected by different activations.&#160;<a href=#fnref:3 class=footnote-backref role=doc-backlink>&#8617;&#xfe0e;</a></p>
+</li>
+</ol>
+</section>
+</article>
+</main><footer id=footer>
+Copyright © 2022 Gautham Venkatasubramanian
+</footer>
+</body>
+</html>

@@ -1,0 +1,260 @@
+<!doctype html><html><head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta name=description content="Gautham's Blog">
+<link rel=stylesheet href=/css/style.min.css>
+<link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css crossorigin=anonymous>
+<script defer src=https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js crossorigin=anonymous></script>
+<script defer src=https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/auto-render.min.js crossorigin=anonymous onload=renderMathInElement(document.body)></script>
+<script>document.addEventListener("DOMContentLoaded",function(){renderMathInElement(document.body,{delimiters:[{left:"$$",right:"$$",display:!0},{left:"\\[",right:"\\]",display:!0},{left:"$",right:"$",display:!1},{left:"\\(",right:"\\)",display:!1}]})})</script>
+<title>Netpicking Part 2: Generating the networks</title>
+</head>
+<body><header id=banner>
+<h2><a href=https://ahgamut.github.io>Blog Needs a Name</a></h2>
+<nav>
+<ul>
+<li>
+<a href=/about/ title=About>About</a>
+</li>
+</ul>
+</nav>
+</header>
+<main id=content>
+<article>
+<header id=post-header>
+<h1>Netpicking Part 2: Generating the networks</h1>
+<div>
+<time>November 24, 2020</time>
+</div>
+</header><p>In <a href=/2020/11/20/netpicking-1/>Netpicking Part 1</a>, I described a dilemma in picking a neural network for MNIST. I went through
+summary stats for 1001 different generated networks. This post explains how I generated these networks.</p>
+<h2 id=representing-a-neural-network>Representing a Neural Network</h2>
+<p>The MNIST problem requires finding a function</p>
+<p>$$ \mathit{f} : \R^{784} \rightarrow {0,1,2,3,4,5,6,7,8,9} $$</p>
+<p>such that $ \mathit{f} $ performs well on a target dataset. I can solve this as a <strong>multi-class
+classification problem</strong> using neural networks, and constrain the space of functions $ \mathit{f} $:</p>
+<ol>
+<li>Every $ \mathit{f} $ must accept an input of size <code>784</code></li>
+<li>Every $ \mathit{f} $ must provide an output of size <code>10</code> for each input</li>
+<li>$ \mathit{f} $ is trained using cross-entropy loss i.e. the output goes through a <code>SoftMax</code> layer</li>
+</ol>
+<p>A neural network can be represented as:</p>
+<ul>
+<li>a parameterized function, used in textbooks when teaching the theory</li>
+<li>a <em>directed acyclic graph</em> or DAG, which provides a visually friendly representation of the flow of
+operations</li>
+<li><em>text obeying a particular grammar</em>, which is how neural nets are described in a programming language</li>
+</ul>
+<p>For example, in PyTorch, a sample $ \mathit{f} $ satisfying the above constraints is represented like this:</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=k>class</span> <span class=nc>Basic</span><span class=p>(</span><span class=n>nn</span><span class=o>.</span><span class=n>Module</span><span class=p>):</span>
+    <span class=k>def</span> <span class=fm>__init__</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
+        <span class=n>nn</span><span class=o>.</span><span class=n>Module</span><span class=o>.</span><span class=fm>__init__</span><span class=p>(</span><span class=bp>self</span><span class=p>)</span>
+        <span class=bp>self</span><span class=o>.</span><span class=n>l1</span> <span class=o>=</span> <span class=n>nn</span><span class=o>.</span><span class=n>Linear</span><span class=p>(</span><span class=n>in_features</span><span class=o>=</span><span class=mi>784</span><span class=p>,</span> <span class=c1># constraint 1</span>
+                            <span class=n>out_features</span><span class=o>=</span><span class=mi>10</span><span class=p>,</span> <span class=c1># constraint 2</span>
+                            <span class=n>bias</span><span class=o>=</span><span class=kc>True</span><span class=p>)</span>
+        <span class=bp>self</span><span class=o>.</span><span class=n>ac</span> <span class=o>=</span> <span class=n>nn</span><span class=o>.</span><span class=n>LogSoftmax</span><span class=p>(</span><span class=n>dim</span><span class=o>=</span><span class=mi>1</span><span class=p>)</span> <span class=c1># constraint 3</span>
+
+    <span class=k>def</span> <span class=nf>forward</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>x</span><span class=p>):</span>
+        <span class=c1># DAG represented in text as function calls.</span>
+        <span class=n>x</span> <span class=o>=</span> <span class=bp>self</span><span class=o>.</span><span class=n>l1</span><span class=p>(</span><span class=n>x</span><span class=p>)</span>
+        <span class=n>x</span> <span class=o>=</span> <span class=bp>self</span><span class=o>.</span><span class=n>ac</span><span class=p>(</span><span class=n>x</span><span class=p>)</span>
+        <span class=k>return</span> <span class=n>x</span>
+</code></pre></div><p>How about a sample using 2D convolutions?</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=k>class</span> <span class=nc>Conv2dReLU_12</span><span class=p>(</span><span class=n>nn</span><span class=o>.</span><span class=n>Module</span><span class=p>):</span>
+    <span class=k>def</span> <span class=fm>__init__</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
+        <span class=n>nn</span><span class=o>.</span><span class=n>Module</span><span class=o>.</span><span class=fm>__init__</span><span class=p>(</span><span class=bp>self</span><span class=p>)</span>
+        <span class=bp>self</span><span class=o>.</span><span class=n>f0</span> <span class=o>=</span> <span class=n>nn</span><span class=o>.</span><span class=n>Conv2d</span><span class=p>(</span><span class=n>in_channels</span><span class=o>=</span><span class=mi>1</span><span class=p>,</span> <span class=n>out_channels</span><span class=o>=</span><span class=mi>62</span><span class=p>,</span> <span class=n>kernel_size</span><span class=o>=</span><span class=p>(</span><span class=mi>1</span><span class=p>,</span> <span class=mi>1</span><span class=p>),</span> <span class=n>bias</span><span class=o>=</span><span class=kc>True</span><span class=p>)</span>
+        <span class=bp>self</span><span class=o>.</span><span class=n>f1</span> <span class=o>=</span> <span class=n>nn</span><span class=o>.</span><span class=n>ReLU</span><span class=p>()</span>
+        <span class=bp>self</span><span class=o>.</span><span class=n>f2</span> <span class=o>=</span> <span class=n>nn</span><span class=o>.</span><span class=n>Conv2d</span><span class=p>(</span><span class=n>in_channels</span><span class=o>=</span><span class=mi>62</span><span class=p>,</span> <span class=n>out_channels</span><span class=o>=</span><span class=mi>18</span><span class=p>,</span> <span class=n>kernel_size</span><span class=o>=</span><span class=p>(</span><span class=mi>5</span><span class=p>,</span> <span class=mi>5</span><span class=p>),)</span>
+        <span class=bp>self</span><span class=o>.</span><span class=n>f3</span> <span class=o>=</span> <span class=n>nn</span><span class=o>.</span><span class=n>Conv2d</span><span class=p>(</span><span class=n>in_channels</span><span class=o>=</span><span class=mi>18</span><span class=p>,</span> <span class=n>out_channels</span><span class=o>=</span><span class=mi>22</span><span class=p>,</span> <span class=n>kernel_size</span><span class=o>=</span><span class=p>(</span><span class=mi>11</span><span class=p>,</span> <span class=mi>11</span><span class=p>),</span> <span class=n>bias</span><span class=o>=</span><span class=kc>True</span><span class=p>)</span>
+        <span class=bp>self</span><span class=o>.</span><span class=n>f4</span> <span class=o>=</span> <span class=n>nn</span><span class=o>.</span><span class=n>ReLU</span><span class=p>()</span>
+        <span class=bp>self</span><span class=o>.</span><span class=n>f5</span> <span class=o>=</span> <span class=n>nn</span><span class=o>.</span><span class=n>Conv2d</span><span class=p>(</span><span class=n>in_channels</span><span class=o>=</span><span class=mi>22</span><span class=p>,</span> <span class=n>out_channels</span><span class=o>=</span><span class=mi>10</span><span class=p>,</span> <span class=n>kernel_size</span><span class=o>=</span><span class=p>(</span><span class=mi>14</span><span class=p>,</span> <span class=mi>14</span><span class=p>),)</span>
+        <span class=bp>self</span><span class=o>.</span><span class=n>f6</span> <span class=o>=</span> <span class=n>nn</span><span class=o>.</span><span class=n>LogSoftmax</span><span class=p>(</span><span class=n>dim</span><span class=o>=</span><span class=mi>1</span><span class=p>)</span> <span class=c1># constraint 3</span>
+
+    <span class=k>def</span> <span class=nf>forward</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=o>*</span><span class=n>inputs</span><span class=p>):</span>
+        <span class=n>x</span> <span class=o>=</span> <span class=n>inputs</span><span class=p>[</span><span class=mi>0</span><span class=p>]</span>
+        <span class=n>x</span> <span class=o>=</span> <span class=n>x</span><span class=o>.</span><span class=n>view</span><span class=p>(</span><span class=n>x</span><span class=o>.</span><span class=n>shape</span><span class=p>[</span><span class=mi>0</span><span class=p>],</span> <span class=mi>1</span><span class=p>,</span> <span class=mi>28</span><span class=p>,</span> <span class=mi>28</span><span class=p>)</span> <span class=c1># constraint 1</span>
+        <span class=c1># DAG represented in function calls.</span>
+        <span class=n>x</span> <span class=o>=</span> <span class=bp>self</span><span class=o>.</span><span class=n>f0</span><span class=p>(</span><span class=n>x</span><span class=p>)</span>
+        <span class=n>x</span> <span class=o>=</span> <span class=bp>self</span><span class=o>.</span><span class=n>f1</span><span class=p>(</span><span class=n>x</span><span class=p>)</span>
+        <span class=n>x</span> <span class=o>=</span> <span class=bp>self</span><span class=o>.</span><span class=n>f2</span><span class=p>(</span><span class=n>x</span><span class=p>)</span>
+        <span class=n>x</span> <span class=o>=</span> <span class=bp>self</span><span class=o>.</span><span class=n>f3</span><span class=p>(</span><span class=n>x</span><span class=p>)</span>
+        <span class=n>x</span> <span class=o>=</span> <span class=bp>self</span><span class=o>.</span><span class=n>f4</span><span class=p>(</span><span class=n>x</span><span class=p>)</span>
+        <span class=n>x</span> <span class=o>=</span> <span class=bp>self</span><span class=o>.</span><span class=n>f5</span><span class=p>(</span><span class=n>x</span><span class=p>)</span>
+        <span class=n>x</span> <span class=o>=</span> <span class=n>x</span><span class=o>.</span><span class=n>view</span><span class=p>(</span><span class=n>x</span><span class=o>.</span><span class=n>shape</span><span class=p>[</span><span class=mi>0</span><span class=p>],</span> <span class=mi>10</span><span class=p>)</span> <span class=c1># constraint 2</span>
+        <span class=n>x</span> <span class=o>=</span> <span class=bp>self</span><span class=o>.</span><span class=n>f6</span><span class=p>(</span><span class=n>x</span><span class=p>)</span>
+        <span class=k>return</span> <span class=n>x</span>
+</code></pre></div><p>Now, a leap of faith generalization. Every function $ \mathit{f} $ that satisfies the above constraints
+will follow the below template:</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=k>class</span> <span class=nc>Network</span><span class=p>(</span><span class=n>nn</span><span class=o>.</span><span class=n>Module</span><span class=p>):</span>
+    <span class=k>def</span> <span class=fm>__init__</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span> <span class=c1># possibly some args, kwargs</span>
+        <span class=n>nn</span><span class=o>.</span><span class=n>Module</span><span class=o>.</span><span class=fm>__init__</span><span class=p>(</span><span class=bp>self</span><span class=p>)</span>
+        <span class=c1># a sequence of layer declarations</span>
+        <span class=bp>self</span><span class=o>.</span><span class=n>activation</span> <span class=o>=</span> <span class=n>nn</span><span class=o>.</span><span class=n>LogSoftmax</span><span class=p>(</span><span class=n>dim</span><span class=o>=</span><span class=mi>1</span><span class=p>)</span>
+
+    <span class=k>def</span> <span class=nf>forward</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=o>*</span><span class=n>inputs</span><span class=p>):</span>
+        <span class=n>x</span> <span class=o>=</span> <span class=n>inputs</span><span class=p>[</span><span class=mi>0</span><span class=p>]</span>
+        <span class=c1># check constraint 1</span>
+        <span class=c1># represent DAG in function calls</span>
+        <span class=c1># check constraint 2</span>
+        <span class=n>x</span> <span class=o>=</span> <span class=bp>self</span><span class=o>.</span><span class=n>activation</span><span class=p>(</span><span class=n>x</span><span class=p>)</span> <span class=c1># check constraint 3</span>
+        <span class=k>return</span> <span class=n>x</span>
+</code></pre></div><p>Having networks follow this template would save time when writing boilerplate code for train/validation/test
+cycles. Let&rsquo;s add another simplifying constraint: if the neural network DAG is forced to be a straight line,
+the function calls in the <code>forward</code> method can be in the same order as the declarations. How do I
+start designing such a template?</p>
+<h3 id=jinja2><code>Jinja2</code></h3>
+<p>From the <code>Jinja2</code> <a href=https://jinja.palletsprojects.com/en/2.11.x/>website</a> (emphasis mine):</p>
+<blockquote>
+<p>Jinja is a modern and designer-friendly templating language for Python, modelled after Django&rsquo;s templates.
+[&mldr;] A Jinja template is simply a text file. Jinja can generate <em>any text-based format</em>.</p>
+</blockquote>
+<p>Any text-based format, so the above Python code block also applies. The <code>Jinja2</code> templating language provides
+mathematical operators, logical operators, <code>if-else</code>, and <code>for</code> statements. If I create a template similar to
+the <code>Network</code> class above, <del>instantiating</del><sup id=fnref:1><a href=#fn:1 class=footnote-ref role=doc-noteref>1</a></sup> rendering that template with different parameters should
+get the 1000 networks. Each network must have:</p>
+<ol>
+<li>(<strong>Constraint 1</strong>): an <code>input_shape</code> member, which can be used to shape the input.<sup id=fnref:2><a href=#fn:2 class=footnote-ref role=doc-noteref>2</a></sup></li>
+<li><strong>a sequence of declarations</strong>. Naming the layers is simple (a loop with <code>self.f1</code>, <code>self.f2</code> &mldr;),
+but generating the layer declaration on the RHS seems complicated.</li>
+<li><strong>a sequence of function calls</strong> (the simplified DAG) in the <code>forward</code> method. A loop with <code>x = self.f{{ i }}(x)</code>.</li>
+<li>(<strong>Constraint 2</strong>): its output shape cast to <code>x,10</code> after the all the function calls.</li>
+<li>(<strong>Constraint 3</strong>): a <code>LogSoftmax</code> layer after the template declarations, and call it last.</li>
+</ol>
+<p>Is declaring a layer really that complex? Let&rsquo;s look at it again:</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python>   <span class=bp>self</span><span class=o>.</span><span class=n>f5</span> <span class=o>=</span> <span class=n>nn</span><span class=o>.</span><span class=n>Conv2d</span><span class=p>(</span><span class=n>in_channels</span><span class=o>=</span><span class=mi>22</span><span class=p>,</span> <span class=n>out_channels</span><span class=o>=</span><span class=mi>10</span><span class=p>,</span> <span class=n>kernel_size</span><span class=o>=</span><span class=p>(</span><span class=mi>14</span><span class=p>,</span> <span class=mi>14</span><span class=p>),)</span>
+</code></pre></div><p>Suppose I had an object <code>x</code> of type <code>Conv2d</code>, such that <code>str(x)</code> returned <code>"Conv2d(in_channels=22, out_channels=10)"</code>? Are there classes like this?</p>
+<p>The Python standard library provides <a href=https://docs.python.org/3.6/library/collections.html#collections.namedtuple><code>collections.namedtuple</code></a>, which has the right format for
+stringified output. But then I need to write <code>namedtuple</code> equivalents for so many classes! I wonder if there
+is a way to examine (or inspect) the methods of a class to produce a <code>namedtuple</code>.</p>
+<h3 id=inspect><code>inspect</code></h3>
+<p>From the <a href=https://docs.python.org/3.6/library/inspect.html>documentation</a>, the <code>inspect</code> module in the Python standard library allows one to (emphasis
+mine):</p>
+<blockquote>
+<p>[&mldr;] get information about live objects such as modules, classes, methods, functions, tracebacks, frame
+objects, and code objects [&mldr;] <em>examine the contents of a class</em>, retrieve the source code of a method,
+<em>extract and format the argument list for a function</em>, or get all the information needed to display a
+detailed traceback.</p>
+</blockquote>
+<p>For a class <code>A</code>, I&rsquo;d like to get a <code>namedtuple</code> that has the same arguments and defaults as <code>A.__init__</code> , so
+that I can generate a string <code>A(par1=val1, par2=val2)</code>. <code>inspect</code> is perfect for this.</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=kn>from</span> <span class=nn>collections</span> <span class=kn>import</span> <span class=n>namedtuple</span>
+<span class=kn>import</span> <span class=nn>inspect</span>
+
+<span class=k>def</span> <span class=nf>get_namedtuple</span><span class=p>(</span><span class=n>obj</span><span class=p>):</span>
+    <span class=n>klass</span> <span class=o>=</span> <span class=n>obj</span> <span class=k>if</span> <span class=n>inspect</span><span class=o>.</span><span class=n>isclass</span><span class=p>(</span><span class=n>obj</span><span class=p>)</span> <span class=k>else</span> <span class=nb>type</span><span class=p>(</span><span class=n>obj</span><span class=p>)</span>
+    <span class=n>sig</span> <span class=o>=</span> <span class=n>inspect</span><span class=o>.</span><span class=n>signature</span><span class=p>(</span><span class=n>klass</span><span class=o>.</span><span class=fm>__init__</span><span class=p>)</span>
+    <span class=n>params</span> <span class=o>=</span> <span class=p>{}</span>
+    <span class=k>for</span> <span class=n>name</span><span class=p>,</span> <span class=n>par</span> <span class=ow>in</span> <span class=n>sig</span><span class=o>.</span><span class=n>parameters</span><span class=o>.</span><span class=n>items</span><span class=p>():</span>
+        <span class=k>if</span> <span class=n>name</span> <span class=ow>in</span> <span class=p>(</span><span class=s2>&#34;self&#34;</span><span class=p>,</span> <span class=s2>&#34;*args&#34;</span><span class=p>,</span> <span class=s2>&#34;**kwargs&#34;</span><span class=p>):</span>
+            <span class=k>continue</span>
+        <span class=n>params</span><span class=p>[</span><span class=n>name</span><span class=p>]</span> <span class=o>=</span> <span class=s2>&#34;&#34;</span>
+        <span class=k>if</span> <span class=n>par</span><span class=o>.</span><span class=n>default</span> <span class=o>!=</span> <span class=n>inspect</span><span class=o>.</span><span class=n>Parameter</span><span class=o>.</span><span class=n>empty</span><span class=p>:</span>
+            <span class=n>param</span><span class=p>[</span><span class=n>name</span><span class=p>]</span> <span class=o>=</span> <span class=n>par</span><span class=o>.</span><span class=n>default</span>
+    <span class=n>tmpl_string</span> <span class=o>=</span> <span class=n>namedtuple</span><span class=p>(</span><span class=n>klass</span><span class=o>.</span><span class=vm>__name__</span><span class=p>,</span> <span class=nb>tuple</span><span class=p>(</span><span class=n>params</span><span class=o>.</span><span class=n>keys</span><span class=p>()))</span>
+    <span class=n>tmpl_string</span><span class=o>.</span><span class=fm>__new__</span><span class=o>.</span><span class=vm>__defaults__</span><span class=o>=</span> <span class=nb>tuple</span><span class=p>(</span><span class=n>params</span><span class=o>.</span><span class=n>values</span><span class=p>()))</span>
+    <span class=k>return</span> <span class=n>tmpl_string</span>
+
+<span class=nb>print</span><span class=p>(</span><span class=n>get_namedtuple</span><span class=p>(</span><span class=n>nn</span><span class=o>.</span><span class=n>ReLU</span><span class=p>)(</span><span class=n>inplace</span><span class=o>=</span><span class=kc>True</span><span class=p>))</span>
+<span class=c1># ReLU(inplace=True)</span>
+<span class=nb>print</span><span class=p>(</span><span class=n>get_namedtuple</span><span class=p>(</span><span class=n>nn</span><span class=o>.</span><span class=n>Linear</span><span class=p>)(</span><span class=n>in_features</span><span class=o>=</span><span class=mi>2</span><span class=p>,</span> <span class=n>out_features</span><span class=o>=</span><span class=mi>3</span><span class=p>))</span>
+<span class=c1># Linear(in_features=2, out_features=3, bias=True)</span>
+</code></pre></div><p>Good enough; with the appropriate parameters, I can instantiate a <code>namedtuple</code> that prints the exact layer
+declaration I want.<sup id=fnref:3><a href=#fn:3 class=footnote-ref role=doc-noteref>3</a></sup></p>
+<h2 id=generating-the-1000-neural-networks>Generating the 1000 Neural Networks</h2>
+<p>Though <a href=https://en.wikipedia.org/wiki/Automated_machine_learning>AutoML</a> has been around for <a href=https://github.com/hibayesian/awesome-automl-papers>quite some time</a>, I didn&rsquo;t want to generate networks for
+this exercise with any optimization in mind. The aim was to have 1000 networks obeying the 4 constraints; I
+decided to use random parameters while instantiating each layer.</p>
+<ul>
+<li><code>bool</code> parameters are <code>True</code> with a probability in $ [0, 1] $.</li>
+<li><code>int</code>/<code>float</code> parameters are randomly chosen from a given range with uniform probability.</li>
+<li>shape parameters like <code>kernel_size</code> are square i.e. only one random <code>int</code> selected.</li>
+</ul>
+<p>Armed with the <code>inspect</code>/<code>Jinja2</code> combo, I wrote a <a href=https://github.com/ahgamut/randonet/blob/master/driver.py>generation script</a> that would:</p>
+<ol>
+<li>
+<p>Select the number of layers in the network.</p>
+</li>
+<li>
+<p>Select a computation layer (<code>Conv1d</code>, <code>Conv2d</code>, <code>Conv3d</code>, <code>Linear</code>, or <code>BasicBlock</code>).</p>
+</li>
+<li>
+<p>Select an activation layer (None, <code>ReLU</code>, <code>SeLU</code>, <code>Sigmoid</code>, <code>Tanh</code>).</p>
+</li>
+<li>
+<p>Generate each layers of the network one by one with random parameters, using a <code>namedtuple</code> template.</p>
+<ol>
+<li>Check that the generated layer can accept the input shape</li>
+<li>Precompute the output shape of the layer based on the input shape</li>
+</ol>
+</li>
+<li>
+<p>Ensure the generated network satisfies all constraints.</p>
+</li>
+<li>
+<p>Repeat to generate 1000 networks across different kinds of computation/activation combinations.</p>
+</li>
+</ol>
+<p>The majority of debugging the script was in step 4: the input tensor would pass through a particular layer,
+change shape, and would then be incompatible as input for the next layer. This was particularly annoying with
+the inputs for ResNet <code>BasicBlock</code> layers, which require an input of <em>larger than</em> a particular size, which is
+not obvious from the declaration.</p>
+<p>On the same note, look at the <code>Conv2dReLU_12</code> code block again: Suppose it is known that the input is of shape <code>(1, 1, 28, 28)</code>, and the DAG of the neural network is provided in text. It should be possible to tell what the
+shape of the output is at any point in the DAG <em>before</em> running the script to train/test the network. I know
+the <a href=https://pytorch.org/docs/stable/generated/torch.nn.Conv2d.html#torch.nn.Conv2d><code>Conv2d</code> documentation</a> includes the calculation of output shape from input shape, but having an IDE
+plugin to provide the shapes would save a lot of time. Alternatively, type-checking the shapes before running
+the network could help as well.<sup id=fnref:4><a href=#fn:4 class=footnote-ref role=doc-noteref>4</a></sup></p>
+<h2 id=closing-notes>Closing notes</h2>
+<p>&ldquo;Dumb&rdquo; AutoML can be realized by generating neural nets following a flexible template, followed to selecting
+one with the &ldquo;best&rdquo; performance characteristics. The <a href=https://github.com/ahgamut/randonet><code>randonet</code></a> package (currently version 0.0.1)
+contains the code involved to generate networks according to the ideas described above. I used it to generate
+the networks for <a href=https://github.com/ahgamut/mnistk><code>mnistk</code></a> (you can see the difference between <a href=https://github.com/ahgamut/mnistk/blob/master/src/mnistk/networks/conv1drelu_20.py>generated code</a> and the
+<a href=https://github.com/ahgamut/mnistk/blob/master/src/mnistk/run/trainer.py>handwritten code</a>).</p>
+<ul>
+<li>
+<p>Writing neural network programs involves boilerplate/scaffolding code, which can be offset with some
+templating (design patterns?) tailored to the specific problem at hand. I know wrapper packages exist, but
+when I last tried them I got lost between the abstractions and my customizations.</p>
+</li>
+<li>
+<p>The <code>inspect</code>/<code>Jinja2</code> combo has potential, especially for use cases involving the generation of contextual
+information from objects/function in a package: it can possibly be used for generating documentation or
+boilerplate code.</p>
+</li>
+<li>
+<p>Randomly generating a valid neural net program involves a lot of constraints, some of which are not
+apparent until the program is run. Removing some constraints would lead to wackier network architectures
+(an unconstrained DAG instead of a line graph, rectangular/cuboidal convolutions).</p>
+</li>
+</ul>
+<section class=footnotes role=doc-endnotes>
+<hr>
+<ol>
+<li id=fn:1 role=doc-endnote>
+<p>Too much time around <code>C++</code> templates and the mountain of errors I generate using them.&#160;<a href=#fnref:1 class=footnote-backref role=doc-backlink>&#8617;&#xfe0e;</a></p>
+</li>
+<li id=fn:2 role=doc-endnote>
+<p>I added another simplification here: <code>Conv2d</code>/<code>ResNetStyle</code> networks have an input of shape <code>(N, 1, 28, 28)</code>, <code>Conv1d</code> networks have <code>(N, 28, 28)</code> (yes, 28 channels), <code>Conv3d</code> networks have <code>(N, 16, 7, 7)</code>, and
+<code>Linear</code> networks have <code>(N, 784)</code>. I realized later that another layer of randomness could be added by
+listing all 2-factor and 3-factor combinations of 784, but by then I had gotten bored of debugging
+templated Python code.&#160;<a href=#fnref:2 class=footnote-backref role=doc-backlink>&#8617;&#xfe0e;</a></p>
+</li>
+<li id=fn:3 role=doc-endnote>
+<p>Of course, there were too many classes in <code>torch.nn</code> to call this function class by class, so I wrote
+<a href=https://github.com/ahgamut/randonet/blob/master/src/randonet/generator/factory_gen.py>another script</a> to generate the <code>namedtuple</code>s corresponding to each class, instantiate
+with the appropriate random values, and write the rendered templates to a file. Debugging that was
+horrible: I had to typecheck the parameter defaults (PyTorch has an <code>int</code> as default for <code>kernel_size</code>
+instead of a <code>tuple</code>) generate the <code>namedtuple</code>s, check if I could generate text using them in the
+template, and <em>then</em> check if the generated text was valid Python code.&#160;<a href=#fnref:3 class=footnote-backref role=doc-backlink>&#8617;&#xfe0e;</a></p>
+</li>
+<li id=fn:4 role=doc-endnote>
+<p>Can the shape of input/output tensor be provided as a type annotation? How would that even work in Python?&#160;<a href=#fnref:4 class=footnote-backref role=doc-backlink>&#8617;&#xfe0e;</a></p>
+</li>
+</ol>
+</section>
+</article>
+</main><footer id=footer>
+Copyright © 2022 Gautham Venkatasubramanian
+</footer>
+</body>
+</html>

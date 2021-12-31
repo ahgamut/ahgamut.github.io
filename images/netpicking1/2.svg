@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg class="main-svg" style="" viewBox="0 0 700 500" xmlns="http://www.w3.org/2000/svg">
+<rect width="700" height="500" fill="#fff"/>
+<defs>
+<g class="clips">
+<clipPath id="b" class="plotclip">
+<rect width="441" height="292"/>
+</clipPath>
+</g>
+</defs>
+<g class="bglayer">
+<rect class="bg" x="80" y="100" width="441" height="292" fill="#e5ecf6" stroke-width="0"/>
+</g>
+<g class="cartesianlayer">
+<g class="subplot xy">
+<g class="gridlayer">
+<g class="y" stroke="#fff" stroke-width="1px">
+<path class="ygrid crisp" transform="translate(0,377.61)" d="m80 0h441"/>
+<path class="ygrid crisp" transform="translate(0,308.82)" d="m80 0h441"/>
+<path class="ygrid crisp" transform="translate(0,240.03)" d="m80 0h441"/>
+<path class="ygrid crisp" transform="translate(0,171.24)" d="m80 0h441"/>
+<path class="ygrid crisp" transform="translate(0,102.45)" d="m80 0h441"/>
+</g>
+</g>
+<g class="plot" transform="translate(80 100)" clip-path="url(#b)">
+<g class="boxlayer mlayer">
+<g class="trace boxes" opacity=".6" stroke="#000" stroke-width=".8px">
+<path class="box" d="m14.06 67h27.01m-27.01 62.3h27.01v-80.28h-27.01zm13.5 0v22.81m0-103.09v-15.07m-6.75 118.16h13.51m-13.51-118.16h13.51" fill="#1f77b4" vector-effect="non-scaling-stroke"/>
+<path class="box" d="m69.18 89.46h27.01m-27.01 35.32h27.01v-74.47h-27.01zm13.51 0v152.62m0-227.09v-18.37m-6.76 245.46h13.51m-13.51-245.46h13.51" fill="#ff7f0e" vector-effect="non-scaling-stroke"/>
+<path class="box" d="m124.31 62.47h27.01m-27.01 73.66h27.01v-96.17h-27.01zm13.5 0v97.71m0-193.88v-23.12m-6.75 217h13.51m-13.51-217h13.51" fill="#2ca02c" vector-effect="non-scaling-stroke"/>
+<path class="box" d="m179.43 107.02h27.01m-27.01 19.48h27.01v-88.51h-27.01zm13.51 0v45.34m0-133.85v-16.34m-6.76 150.19h13.51m-13.51-150.19h13.51" fill="#d62728" vector-effect="non-scaling-stroke"/>
+<path class="box" d="m234.56 55.88h27.01m-27.01 67.19h27.01v-83.83h-27.01zm13.5 0v26.07m0-109.9v-16.69m-6.75 126.59h13.51m-13.51-126.59h13.51" fill="#9467bd" vector-effect="non-scaling-stroke"/>
+<path class="box" d="m289.68 82.71h27.01m-27.01 36.64h27.01v-71.16h-27.01zm13.51 0v151.07m0-222.23v-18.97m-6.76 241.2h13.51m-13.51-241.2h13.51" fill="#8c564b" vector-effect="non-scaling-stroke"/>
+<path class="box" d="m344.81 86.92h27.01m-27.01 32.69h27.01v-62.58h-27.01zm13.5 0v81.74m0-144.32v-20.76m-6.75 165.08h13.51m-13.51-165.08h13.51" fill="#e377c2" vector-effect="non-scaling-stroke"/>
+<path class="box" d="m399.93 21.76h27.01m-27.01 4.25h27.01v-7.78h-27.01zm13.51 0v12.38m0-20.16v-3.63m-6.76 23.79h13.51m-13.51-23.79h13.51" fill="#7f7f7f" vector-effect="non-scaling-stroke"/>
+</g>
+</g>
+</g>
+<path class="xlines-above crisp" d="m0 0" fill="none"/>
+<path class="ylines-above crisp" d="m0 0" fill="none"/>
+<g class="xaxislayer-above">
+<g class="xtick" fill="#2a3f5f" font-family="'PT Serif'" font-size="12px">
+<text transform="translate(107.56) rotate(30 0 399)" y="405" style="white-space:pre">Conv1d</text>
+<text transform="translate(162.69) rotate(30 0 399)" y="405" style="white-space:pre">Conv1dThenLinear</text>
+<text transform="translate(217.81) rotate(30 0 399)" y="405" style="white-space:pre">Conv2d</text>
+<text transform="translate(272.94) rotate(30 0 399)" y="405" style="white-space:pre">Conv2dThenLinear</text>
+<text transform="translate(328.06) rotate(30 0 399)" y="405" style="white-space:pre">Conv3d</text>
+<text transform="translate(383.19) rotate(30 0 399)" y="405" style="white-space:pre">Conv3dThenLinear</text>
+<text transform="translate(438.31) rotate(30 0 399)" y="405" style="white-space:pre">Linear</text>
+<text transform="translate(493.44) rotate(30 0 399)" y="405" style="white-space:pre">ResNet</text>
+</g>
+</g>
+<g class="yaxislayer-above">
+<g class="ytick" fill="#2a3f5f" font-family="'PT Serif'" font-size="12px" text-anchor="end">
+<text transform="translate(0,377.61)" x="79" y="4.199999999999999" style="white-space:pre">0.8</text>
+<text transform="translate(0,308.82)" x="79" y="4.199999999999999" style="white-space:pre">0.85</text>
+<text transform="translate(0,240.03)" x="79" y="4.199999999999999" style="white-space:pre">0.9</text>
+<text transform="translate(0,171.24)" x="79" y="4.199999999999999" style="white-space:pre">0.95</text>
+<text transform="translate(0,102.45)" x="79" y="4.199999999999999" style="white-space:pre">1</text>
+</g>
+</g>
+</g>
+</g>
+<defs>
+<clipPath id="a">
+<rect width="158" height="162"/>
+</clipPath>
+</defs>
+<g class="infolayer">
+<g class="legend" transform="translate(529.82 100)" pointer-events="all">
+<rect class="bg" width="158" height="162" fill="#fff" shape-rendering="crispEdges" stroke-width="0px"/>
+<g class="scrollbox" transform="translate(0)" clip-path="url(#a)">
+<g class="groups">
+<g class="traces" transform="translate(0 14.5)">
+<text class="legendtext" x="40" y="4.680000000000001" fill="rgb(42, 63, 95)" font-family="'PT Serif'" font-size="12px" style="white-space:pre">Conv1d</text>
+<g class="layers" opacity=".6">
+<g class="legendsymbols">
+<g class="legendpoints">
+<path class="legendbox" transform="translate(20)" d="M6,6H-6V-6H6Z" fill="#1f77b4" stroke="#000" stroke-width=".8px"/>
+</g>
+</g>
+</g>
+<rect class="legendtoggle" y="-9.5" width="153" height="19" fill-opacity="0"/>
+</g>
+<g class="traces" transform="translate(0 33.5)">
+<text class="legendtext" x="40" y="4.680000000000001" fill="rgb(42, 63, 95)" font-family="'PT Serif'" font-size="12px" style="white-space:pre">Conv1dThenLinear</text>
+<g class="layers" opacity=".6">
+<g class="legendsymbols">
+<g class="legendpoints">
+<path class="legendbox" transform="translate(20)" d="M6,6H-6V-6H6Z" fill="#ff7f0e" stroke="#000" stroke-width=".8px"/>
+</g>
+</g>
+</g>
+<rect class="legendtoggle" y="-9.5" width="153" height="19" fill-opacity="0"/>
+</g>
+<g class="traces" transform="translate(0 52.5)">
+<text class="legendtext" x="40" y="4.680000000000001" fill="rgb(42, 63, 95)" font-family="'PT Serif'" font-size="12px" style="white-space:pre">Conv2d</text>
+<g class="layers" opacity=".6">
+<g class="legendsymbols">
+<g class="legendpoints">
+<path class="legendbox" transform="translate(20)" d="M6,6H-6V-6H6Z" fill="#2ca02c" stroke="#000" stroke-width=".8px"/>
+</g>
+</g>
+</g>
+<rect class="legendtoggle" y="-9.5" width="153" height="19" fill-opacity="0"/>
+</g>
+<g class="traces" transform="translate(0 71.5)">
+<text class="legendtext" x="40" y="4.680000000000001" fill="rgb(42, 63, 95)" font-family="'PT Serif'" font-size="12px" style="white-space:pre">Conv2dThenLinear</text>
+<g class="layers" opacity=".6">
+<g class="legendsymbols">
+<g class="legendpoints">
+<path class="legendbox" transform="translate(20)" d="M6,6H-6V-6H6Z" fill="#d62728" stroke="#000" stroke-width=".8px"/>
+</g>
+</g>
+</g>
+<rect class="legendtoggle" y="-9.5" width="153" height="19" fill-opacity="0"/>
+</g>
+<g class="traces" transform="translate(0 90.5)">
+<text class="legendtext" x="40" y="4.680000000000001" fill="rgb(42, 63, 95)" font-family="'PT Serif'" font-size="12px" style="white-space:pre">Conv3d</text>
+<g class="layers" opacity=".6">
+<g class="legendsymbols">
+<g class="legendpoints">
+<path class="legendbox" transform="translate(20)" d="M6,6H-6V-6H6Z" fill="#9467bd" stroke="#000" stroke-width=".8px"/>
+</g>
+</g>
+</g>
+<rect class="legendtoggle" y="-9.5" width="153" height="19" fill-opacity="0"/>
+</g>
+<g class="traces" transform="translate(0 109.5)">
+<text class="legendtext" x="40" y="4.680000000000001" fill="rgb(42, 63, 95)" font-family="'PT Serif'" font-size="12px" style="white-space:pre">Conv3dThenLinear</text>
+<g class="layers" opacity=".6">
+<g class="legendsymbols">
+<g class="legendpoints">
+<path class="legendbox" transform="translate(20)" d="M6,6H-6V-6H6Z" fill="#8c564b" stroke="#000" stroke-width=".8px"/>
+</g>
+</g>
+</g>
+<rect class="legendtoggle" y="-9.5" width="153" height="19" fill-opacity="0"/>
+</g>
+<g class="traces" transform="translate(0 128.5)">
+<text class="legendtext" x="40" y="4.680000000000001" fill="rgb(42, 63, 95)" font-family="'PT Serif'" font-size="12px" style="white-space:pre">Linear</text>
+<g class="layers" opacity=".6">
+<g class="legendsymbols">
+<g class="legendpoints">
+<path class="legendbox" transform="translate(20)" d="M6,6H-6V-6H6Z" fill="#e377c2" stroke="#000" stroke-width=".8px"/>
+</g>
+</g>
+</g>
+<rect class="legendtoggle" y="-9.5" width="153" height="19" fill-opacity="0"/>
+</g>
+<g class="traces" transform="translate(0 147.5)">
+<text class="legendtext" x="40" y="4.680000000000001" fill="rgb(42, 63, 95)" font-family="'PT Serif'" font-size="12px" style="white-space:pre">ResNet</text>
+<g class="layers" opacity=".6">
+<g class="legendsymbols">
+<g class="legendpoints">
+<path class="legendbox" transform="translate(20)" d="M6,6H-6V-6H6Z" fill="#7f7f7f" stroke="#000" stroke-width=".8px"/>
+</g>
+</g>
+</g>
+<rect class="legendtoggle" y="-9.5" width="153" height="19" fill-opacity="0"/>
+</g>
+</g>
+</g>
+<rect class="scrollbar" width="0" height="0" rx="20" ry="3" fill="#808ba4"/>
+</g>
+<g class="g-gtitle">
+<text class="gtitle" x="35" y="50" dy="0em" fill="rgb(42, 63, 95)" font-family="'PT Serif'" font-size="17px" style="white-space:pre">Performance per Net type</text>
+</g>
+<g class="g-xtitle">
+<text class="xtitle" x="300.5" y="488.0939453125" fill="rgb(42, 63, 95)" font-family="'PT Serif'" font-size="14px" text-anchor="middle" style="white-space:pre">Network Type</text>
+</g>
+<g class="g-ytitle">
+<text class="ytitle" transform="rotate(-90 26.2 246)" x="26.200000000000003" y="246" fill="rgb(42, 63, 95)" font-family="'PT Serif'" font-size="14px" text-anchor="middle" style="white-space:pre">Accuracy</text>
+</g>
+</g>
+</svg>

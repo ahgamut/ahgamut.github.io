@@ -1,0 +1,738 @@
+<!doctype html><html><head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta name=description content="Gautham's Blog">
+<link rel=stylesheet href=/css/style.min.css>
+<link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css crossorigin=anonymous>
+<script defer src=https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js crossorigin=anonymous></script>
+<script defer src=https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/auto-render.min.js crossorigin=anonymous onload=renderMathInElement(document.body)></script>
+<script>document.addEventListener("DOMContentLoaded",function(){renderMathInElement(document.body,{delimiters:[{left:"$$",right:"$$",display:!0},{left:"\\[",right:"\\]",display:!0},{left:"$",right:"$",display:!1},{left:"\\(",right:"\\)",display:!1}]})})</script>
+<title>Netpicking Part 3: Prediction Sets</title>
+</head>
+<body><header id=banner>
+<h2><a href=https://ahgamut.github.io>Blog Needs a Name</a></h2>
+<nav>
+<ul>
+<li>
+<a href=/about/ title=About>About</a>
+</li>
+</ul>
+</nav>
+</header>
+<main id=content>
+<article>
+<header id=post-header>
+<h1>Netpicking Part 3: Prediction Sets</h1>
+<div>
+<time>November 24, 2021</time>
+</div>
+</header><p>It&rsquo;s been a while since I looked at <code>mnistk</code>. Recently, I came across this
+<a href=https://arxiv.org/abs/2009.14193>interesting paper</a> which describes something
+called <em>Regularized Adaptive Prediction Sets</em> (RAPS), a technique for
+uncertainty estimation. The RAPS algorithm wraps a model&rsquo;s prediction scores to
+output a set that contains the true value with high probability for a given
+confidence level $\alpha$. Basically, instead of getting a single class output
+(&ldquo;this image is a squirrel&rdquo;), we can now get a set. See the example from the
+paper:</p>
+<p><img src=/images/raps-paper.png alt="example of prediction sets"></p>
+<p>My original <code>mnistk</code> post used the analogy of an exam to select the best
+network. Let&rsquo;s continue with that here. If a single output is like filling in a
+bubble in a multiple-choice test, then a prediction set output is like &mldr;
+shoddily filling in multiple bubbles.</p>
+<p><img src=/images/raps-bubbles.png alt="would&rsquo;ve filled more bubbles if I knew about prediction sets back then"></p>
+<p>This post is about using RAPS to help me choose the best network from <code>mnistk</code>.</p>
+<h2 id=getting-the-data>Getting the data</h2>
+<p>I implemented the RAPS algorithm for <code>mnistk</code> <a href=https://github.com/ahgamut/mnistk/tree/master>a while
+back</a>, but I didn&rsquo;t get the time
+to test it out. The RAPS algorithm requires a <em>calibration dataset</em> when
+initializing the wrapper logic. I used the first 10000 samples from the <a href=https://github.com/facebookresearch/qmnist>QMNIST
+dataset</a> for calibration, and the
+remaining 50000 samples as test data to obtain prediction sets. The original
+<code>mnistk</code> networks had 1001 networks and 12 snapshots per network. That gives
+1001 x 12 x 50000 = 600.6 million prediction set data to look at.</p>
+<p>It took around 20 hours (on some AWS EC2 <code>torch</code> <code>cpuonly</code> system) to get this
+data. I found that my implementation of the RAPS algorithm got a <a href=https://github.com/ahgamut/mnistk/tree/raps-vectorize>2x
+speedup</a> if I did all the
+<code>torch</code> neural network stuff first, and then used numpy vectorization to process
+the scores for calibration and testing.</p>
+<h2 id=plotting-helps--but-not-much>Plotting helps &mldr; but not much</h2>
+<p>Simple things first, let&rsquo;s look at how prediction set size is related to accuracy:</p>
+<p><img src=/images/raps-scatter.png alt=score1></p>
+<p>Okay, prediction set size seems to follow a linear-ish relationship to the accuracy
+of the network. I did a bunch of other plots similar to the ones in <a href=/2020/11/20/netpicking-1/>Part 1</a>
+which showed similar group characteristics. But these plots aren&rsquo;t helping me as
+much with what I want: I want some metric to help me pick the best network.</p>
+<h2 id=looking-at-the-top-10>Looking at the top 10</h2>
+<p>Let&rsquo;s look at the top 10 networks in terms of accuracy: I&rsquo;ll use <code>num_c</code>, the
+number of correct answers (out of 50000). For simplicity, I picked the best
+performing snapshot for each network, leaving us with 1001 entries.</p>
+<table>
+<thead>
+<tr>
+<th style=text-align:left>name</th>
+<th style=text-align:right>accuracy_rank</th>
+<th style=text-align:right>num_c</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style=text-align:left>ResNetStyle_85</td>
+<td style=text-align:right>1</td>
+<td style=text-align:right>49636</td>
+</tr>
+<tr>
+<td style=text-align:left>ResNetStyle_71</td>
+<td style=text-align:right>2</td>
+<td style=text-align:right>49610</td>
+</tr>
+<tr>
+<td style=text-align:left>ResNetStyle_56</td>
+<td style=text-align:right>3</td>
+<td style=text-align:right>49599</td>
+</tr>
+<tr>
+<td style=text-align:left>ResNetStyle_58</td>
+<td style=text-align:right>4</td>
+<td style=text-align:right>49597</td>
+</tr>
+<tr>
+<td style=text-align:left>ResNetStyle_69</td>
+<td style=text-align:right>5</td>
+<td style=text-align:right>49582</td>
+</tr>
+<tr>
+<td style=text-align:left>ResNetStyle_81</td>
+<td style=text-align:right>6</td>
+<td style=text-align:right>49572</td>
+</tr>
+<tr>
+<td style=text-align:left>ResNetStyle_89</td>
+<td style=text-align:right>7</td>
+<td style=text-align:right>49569</td>
+</tr>
+<tr>
+<td style=text-align:left>Conv2dReLU_14</td>
+<td style=text-align:right>8</td>
+<td style=text-align:right>49558</td>
+</tr>
+<tr>
+<td style=text-align:left>ResNetStyle_66</td>
+<td style=text-align:right>9</td>
+<td style=text-align:right>49552</td>
+</tr>
+<tr>
+<td style=text-align:left>ResNetStyle_83</td>
+<td style=text-align:right>10</td>
+<td style=text-align:right>49544</td>
+</tr>
+</tbody>
+</table>
+<p>As expected, <code>ResnetStyle</code> models dominate. But the above scatterplot said
+prediction set sizes are closely related to accuracy. Let&rsquo;s call a prediction
+with only one element in the prediction set as a <em>sure</em> prediction. Let&rsquo;s look
+at the top 10 networks in terms of <code>num_s</code> the number of predictions about which
+they are sure:</p>
+<table>
+<thead>
+<tr>
+<th style=text-align:left>name</th>
+<th style=text-align:right>accuracy_rank</th>
+<th style=text-align:right>num_s</th>
+<th style=text-align:right>num_c</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style=text-align:left>Conv2dSELU_6</td>
+<td style=text-align:right>136</td>
+<td style=text-align:right>49568</td>
+<td style=text-align:right>49212</td>
+</tr>
+<tr>
+<td style=text-align:left>ResNetStyle_58</td>
+<td style=text-align:right>4</td>
+<td style=text-align:right>49498</td>
+<td style=text-align:right>49597</td>
+</tr>
+<tr>
+<td style=text-align:left>ResNetStyle_71</td>
+<td style=text-align:right>2</td>
+<td style=text-align:right>49442</td>
+<td style=text-align:right>49610</td>
+</tr>
+<tr>
+<td style=text-align:left>ResNetStyle_56</td>
+<td style=text-align:right>3</td>
+<td style=text-align:right>49440</td>
+<td style=text-align:right>49599</td>
+</tr>
+<tr>
+<td style=text-align:left>ResNetStyle_81</td>
+<td style=text-align:right>6</td>
+<td style=text-align:right>49425</td>
+<td style=text-align:right>49572</td>
+</tr>
+<tr>
+<td style=text-align:left>Conv2dReLU_14</td>
+<td style=text-align:right>8</td>
+<td style=text-align:right>49383</td>
+<td style=text-align:right>49558</td>
+</tr>
+<tr>
+<td style=text-align:left>ResNetStyle_85</td>
+<td style=text-align:right>1</td>
+<td style=text-align:right>49379</td>
+<td style=text-align:right>49636</td>
+</tr>
+<tr>
+<td style=text-align:left>ResNetStyle_47</td>
+<td style=text-align:right>11</td>
+<td style=text-align:right>49337</td>
+<td style=text-align:right>49541</td>
+</tr>
+<tr>
+<td style=text-align:left>ResNetStyle_89</td>
+<td style=text-align:right>7</td>
+<td style=text-align:right>49321</td>
+<td style=text-align:right>49569</td>
+</tr>
+<tr>
+<td style=text-align:left>ResNetStyle_88</td>
+<td style=text-align:right>33</td>
+<td style=text-align:right>49319</td>
+<td style=text-align:right>49497</td>
+</tr>
+</tbody>
+</table>
+<p>Where did <code>Conv2dSELU_6</code> come from!? Somehow it is dominating in terms of
+minimal prediction set size. If I deployed this model in the real world, I would
+rarely see any uncertainty reported along with its predictions. But it is not in
+the top 10 for accuracy; in fact its rank is <code>136</code>, nowhere close to the top, so
+from where is it getting all that confidence?</p>
+<p>Alright, best of both worlds. I want a model that not only gets a lot of answers
+correct, but also is sure (highly confident) about the correct answers it gets.
+Let&rsquo;s look at the top 10 networks in terms of <code>num_cs</code>, the number of correct
+answers in which they are sure:</p>
+<table>
+<thead>
+<tr>
+<th style=text-align:left>name</th>
+<th style=text-align:right>accuracy_rank</th>
+<th style=text-align:right>num_c</th>
+<th style=text-align:right>num_s</th>
+<th style=text-align:right>num_cs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style=text-align:left>ResNetStyle_58</td>
+<td style=text-align:right>4</td>
+<td style=text-align:right>49597</td>
+<td style=text-align:right>49498</td>
+<td style=text-align:right>49306</td>
+</tr>
+<tr>
+<td style=text-align:left>ResNetStyle_56</td>
+<td style=text-align:right>3</td>
+<td style=text-align:right>49599</td>
+<td style=text-align:right>49440</td>
+<td style=text-align:right>49260</td>
+</tr>
+<tr>
+<td style=text-align:left>ResNetStyle_71</td>
+<td style=text-align:right>2</td>
+<td style=text-align:right>49610</td>
+<td style=text-align:right>49442</td>
+<td style=text-align:right>49258</td>
+</tr>
+<tr>
+<td style=text-align:left>ResNetStyle_85</td>
+<td style=text-align:right>1</td>
+<td style=text-align:right>49636</td>
+<td style=text-align:right>49379</td>
+<td style=text-align:right>49237</td>
+</tr>
+<tr>
+<td style=text-align:left>ResNetStyle_81</td>
+<td style=text-align:right>6</td>
+<td style=text-align:right>49572</td>
+<td style=text-align:right>49425</td>
+<td style=text-align:right>49211</td>
+</tr>
+<tr>
+<td style=text-align:left>Conv2dReLU_14</td>
+<td style=text-align:right>8</td>
+<td style=text-align:right>49558</td>
+<td style=text-align:right>49383</td>
+<td style=text-align:right>49181</td>
+</tr>
+<tr>
+<td style=text-align:left>ResNetStyle_47</td>
+<td style=text-align:right>11</td>
+<td style=text-align:right>49541</td>
+<td style=text-align:right>49337</td>
+<td style=text-align:right>49128</td>
+</tr>
+<tr>
+<td style=text-align:left>ResNetStyle_89</td>
+<td style=text-align:right>7</td>
+<td style=text-align:right>49569</td>
+<td style=text-align:right>49321</td>
+<td style=text-align:right>49127</td>
+</tr>
+<tr>
+<td style=text-align:left>ResNetStyle_92</td>
+<td style=text-align:right>20</td>
+<td style=text-align:right>49526</td>
+<td style=text-align:right>49272</td>
+<td style=text-align:right>49090</td>
+</tr>
+<tr>
+<td style=text-align:left>ResNetStyle_88</td>
+<td style=text-align:right>33</td>
+<td style=text-align:right>49497</td>
+<td style=text-align:right>49319</td>
+<td style=text-align:right>49087</td>
+</tr>
+</tbody>
+</table>
+<p>Now the top 10 is seeing some shakeups! The original &ldquo;best&rdquo; network is sometimes
+not sure when being correct, so it falls down the rankings. What happens when
+the model&rsquo;s predictions are <em>wrong</em> (don&rsquo;t match with ground truth) or the model
+is <em>unsure</em> about the predictions (set size is greater than 1)?</p>
+<p>Each prediction made by the model can fall into one of four classes:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>sure</th>
+<th>unsure</th>
+<th>total</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>correct</td>
+<td><code>num_cs</code></td>
+<td><code>num_cu</code></td>
+<td><code>num_c</code></td>
+</tr>
+<tr>
+<td>wrong</td>
+<td><code>num_ws</code></td>
+<td><code>num_wu</code></td>
+<td><code>num_w</code></td>
+</tr>
+<tr>
+<td>total</td>
+<td><code>num_s</code></td>
+<td><code>num_u</code></td>
+<td>50000</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><code>num_cs</code> -> the model guessed correctly, and prediction size is 1. Ideally, all the model&rsquo;s predictions would be here.</li>
+<li><code>num_cu</code> -> the model guessed correctly, but the prediction set size is greater than 1. This means the model&rsquo;s prediction still has a nonzero chance of being something else. These predictions are okay, but not as reassuring as <code>num_cs</code>, and may require a second look. Ideally, <code>num_cs</code> would be zero, a high value indicates this model needs confirmation checks quite frequently.</li>
+<li><code>num_ws</code> -> the model guessed wrongly, and prediction size is 1. This means the model is sure about a prediction that does not match the ground truth. These predictions are bad, because the confidence means the prediction will not be second-guessed. Ideally, <code>num_ws</code> would be zero, but a non-zero value may indicate some difficult samples or incorrectly labeled data.</li>
+<li><code>num_wu</code> -> the model guessed wrongly, the prediction set size is greater than 1, and the correct answer <em>does not appear in the prediction set</em>. These predictions are bad, but not as bad as <code>num_ws</code>, because they indicate a second check might be needed. However, the issue is when the backup check can return an answer that is not there in the prediction set, which may cause confusion.</li>
+</ul>
+<p>Hmm <code>num_wu</code> indicates there is a fifth class of predictions:</p>
+<ul>
+<li><code>num_we</code> -> the model guessed wrongly, the prediction set size is greater than 1, but the correct answer exists in the prediction set. These predictions are weird, because the backup check will resolve the uncertainty, so why are they made in the first place? Why is the correct answer hiding in the prediction set instead of being the first guess?</li>
+</ul>
+<p>Let&rsquo;s look at the top 10 again with these five quantities:</p>
+<table>
+<thead>
+<tr>
+<th style=text-align:left>name</th>
+<th style=text-align:right>accuracy_rank</th>
+<th style=text-align:right>num_cs</th>
+<th style=text-align:right>num_cu</th>
+<th style=text-align:right>num_ws</th>
+<th style=text-align:right>num_wu</th>
+<th style=text-align:right>num_we</th>
+<th style=text-align:right>num_sum5</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style=text-align:left>ResNetStyle_58</td>
+<td style=text-align:right>4</td>
+<td style=text-align:right>49306</td>
+<td style=text-align:right>291</td>
+<td style=text-align:right>192</td>
+<td style=text-align:right>29</td>
+<td style=text-align:right>182</td>
+<td style=text-align:right>50000</td>
+</tr>
+<tr>
+<td style=text-align:left>ResNetStyle_56</td>
+<td style=text-align:right>3</td>
+<td style=text-align:right>49260</td>
+<td style=text-align:right>339</td>
+<td style=text-align:right>180</td>
+<td style=text-align:right>21</td>
+<td style=text-align:right>200</td>
+<td style=text-align:right>50000</td>
+</tr>
+<tr>
+<td style=text-align:left>ResNetStyle_71</td>
+<td style=text-align:right>2</td>
+<td style=text-align:right>49258</td>
+<td style=text-align:right>352</td>
+<td style=text-align:right>184</td>
+<td style=text-align:right>25</td>
+<td style=text-align:right>181</td>
+<td style=text-align:right>50000</td>
+</tr>
+<tr>
+<td style=text-align:left>ResNetStyle_85</td>
+<td style=text-align:right>1</td>
+<td style=text-align:right>49237</td>
+<td style=text-align:right>399</td>
+<td style=text-align:right>142</td>
+<td style=text-align:right>25</td>
+<td style=text-align:right>197</td>
+<td style=text-align:right>50000</td>
+</tr>
+<tr>
+<td style=text-align:left>ResNetStyle_81</td>
+<td style=text-align:right>6</td>
+<td style=text-align:right>49211</td>
+<td style=text-align:right>361</td>
+<td style=text-align:right>214</td>
+<td style=text-align:right>23</td>
+<td style=text-align:right>191</td>
+<td style=text-align:right>50000</td>
+</tr>
+<tr>
+<td style=text-align:left>Conv2dReLU_14</td>
+<td style=text-align:right>8</td>
+<td style=text-align:right>49181</td>
+<td style=text-align:right>377</td>
+<td style=text-align:right>202</td>
+<td style=text-align:right>29</td>
+<td style=text-align:right>211</td>
+<td style=text-align:right>50000</td>
+</tr>
+<tr>
+<td style=text-align:left>ResNetStyle_47</td>
+<td style=text-align:right>11</td>
+<td style=text-align:right>49128</td>
+<td style=text-align:right>413</td>
+<td style=text-align:right>209</td>
+<td style=text-align:right>32</td>
+<td style=text-align:right>218</td>
+<td style=text-align:right>50000</td>
+</tr>
+<tr>
+<td style=text-align:left>ResNetStyle_89</td>
+<td style=text-align:right>7</td>
+<td style=text-align:right>49127</td>
+<td style=text-align:right>442</td>
+<td style=text-align:right>194</td>
+<td style=text-align:right>23</td>
+<td style=text-align:right>214</td>
+<td style=text-align:right>50000</td>
+</tr>
+<tr>
+<td style=text-align:left>ResNetStyle_92</td>
+<td style=text-align:right>20</td>
+<td style=text-align:right>49090</td>
+<td style=text-align:right>436</td>
+<td style=text-align:right>182</td>
+<td style=text-align:right>37</td>
+<td style=text-align:right>255</td>
+<td style=text-align:right>50000</td>
+</tr>
+<tr>
+<td style=text-align:left>ResNetStyle_88</td>
+<td style=text-align:right>33</td>
+<td style=text-align:right>49087</td>
+<td style=text-align:right>410</td>
+<td style=text-align:right>232</td>
+<td style=text-align:right>36</td>
+<td style=text-align:right>235</td>
+<td style=text-align:right>50000</td>
+</tr>
+</tbody>
+</table>
+<p>How can we use the information about the models' less-than-ideal predictions
+(everything except <code>num_cs</code>) to find the best network? Keeping with the analogy,
+we can have negative marking, that nasty troll from <a href=https://www.quora.com/How-can-I-handle-negative-marking-in-competitive-exams-if-I-am-not-100-sure-about-the-answer>competitive
+exams</a>.
+First let&rsquo;s subtract a mark for each unsure or incorrect answer:</p>
+<table>
+<thead>
+<tr>
+<th style=text-align:left>name</th>
+<th style=text-align:right>accuracy_rank</th>
+<th style=text-align:right>cs - all</th>
+<th style=text-align:right>num_cs</th>
+<th style=text-align:right>num_cu</th>
+<th style=text-align:right>num_ws</th>
+<th style=text-align:right>num_wu</th>
+<th style=text-align:right>num_we</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style=text-align:left>ResNetStyle_58</td>
+<td style=text-align:right>4</td>
+<td style=text-align:right>48612</td>
+<td style=text-align:right>49306</td>
+<td style=text-align:right>291</td>
+<td style=text-align:right>192</td>
+<td style=text-align:right>29</td>
+<td style=text-align:right>182</td>
+</tr>
+<tr>
+<td style=text-align:left>ResNetStyle_56</td>
+<td style=text-align:right>3</td>
+<td style=text-align:right>48520</td>
+<td style=text-align:right>49260</td>
+<td style=text-align:right>339</td>
+<td style=text-align:right>180</td>
+<td style=text-align:right>21</td>
+<td style=text-align:right>200</td>
+</tr>
+<tr>
+<td style=text-align:left>ResNetStyle_71</td>
+<td style=text-align:right>2</td>
+<td style=text-align:right>48516</td>
+<td style=text-align:right>49258</td>
+<td style=text-align:right>352</td>
+<td style=text-align:right>184</td>
+<td style=text-align:right>25</td>
+<td style=text-align:right>181</td>
+</tr>
+<tr>
+<td style=text-align:left>ResNetStyle_85</td>
+<td style=text-align:right>1</td>
+<td style=text-align:right>48474</td>
+<td style=text-align:right>49237</td>
+<td style=text-align:right>399</td>
+<td style=text-align:right>142</td>
+<td style=text-align:right>25</td>
+<td style=text-align:right>197</td>
+</tr>
+<tr>
+<td style=text-align:left>ResNetStyle_81</td>
+<td style=text-align:right>6</td>
+<td style=text-align:right>48422</td>
+<td style=text-align:right>49211</td>
+<td style=text-align:right>361</td>
+<td style=text-align:right>214</td>
+<td style=text-align:right>23</td>
+<td style=text-align:right>191</td>
+</tr>
+<tr>
+<td style=text-align:left>Conv2dReLU_14</td>
+<td style=text-align:right>8</td>
+<td style=text-align:right>48362</td>
+<td style=text-align:right>49181</td>
+<td style=text-align:right>377</td>
+<td style=text-align:right>202</td>
+<td style=text-align:right>29</td>
+<td style=text-align:right>211</td>
+</tr>
+<tr>
+<td style=text-align:left>ResNetStyle_47</td>
+<td style=text-align:right>11</td>
+<td style=text-align:right>48256</td>
+<td style=text-align:right>49128</td>
+<td style=text-align:right>413</td>
+<td style=text-align:right>209</td>
+<td style=text-align:right>32</td>
+<td style=text-align:right>218</td>
+</tr>
+<tr>
+<td style=text-align:left>ResNetStyle_89</td>
+<td style=text-align:right>7</td>
+<td style=text-align:right>48254</td>
+<td style=text-align:right>49127</td>
+<td style=text-align:right>442</td>
+<td style=text-align:right>194</td>
+<td style=text-align:right>23</td>
+<td style=text-align:right>214</td>
+</tr>
+<tr>
+<td style=text-align:left>ResNetStyle_92</td>
+<td style=text-align:right>20</td>
+<td style=text-align:right>48180</td>
+<td style=text-align:right>49090</td>
+<td style=text-align:right>436</td>
+<td style=text-align:right>182</td>
+<td style=text-align:right>37</td>
+<td style=text-align:right>255</td>
+</tr>
+<tr>
+<td style=text-align:left>ResNetStyle_88</td>
+<td style=text-align:right>33</td>
+<td style=text-align:right>48174</td>
+<td style=text-align:right>49087</td>
+<td style=text-align:right>410</td>
+<td style=text-align:right>232</td>
+<td style=text-align:right>36</td>
+<td style=text-align:right>235</td>
+</tr>
+</tbody>
+</table>
+<p>That didn&rsquo;t change the order at all, so let&rsquo;s have weighted negative marking.</p>
+<ul>
+<li>Being sure about a wrong answer (<code>num_ws</code>) is clearly the worst thing to do, gets a weight of &mldr; let&rsquo;s say 12.</li>
+<li>Being unsure about a wrong answer but not considering the correct answer (<code>num_wu</code>) gets a weight of 9.</li>
+<li>Being unsure about a wrong answer but at least considering the correct answer (<code>num_we</code>) gets a weight of 8.</li>
+<li>Being unsure about a correct answer (<code>num_cu</code>) gets a weight of 6.</li>
+</ul>
+<p>Now let&rsquo;s see if the top 10 shift:</p>
+<table>
+<thead>
+<tr>
+<th style=text-align:left>name</th>
+<th style=text-align:right>accuracy_rank</th>
+<th style=text-align:right>cs - weighted</th>
+<th style=text-align:right>num_cs</th>
+<th style=text-align:right>num_cu</th>
+<th style=text-align:right>num_ws</th>
+<th style=text-align:right>num_wu</th>
+<th style=text-align:right>num_we</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style=text-align:left>ResNetStyle_58</td>
+<td style=text-align:right>4</td>
+<td style=text-align:right>43539</td>
+<td style=text-align:right>49306</td>
+<td style=text-align:right>291</td>
+<td style=text-align:right>192</td>
+<td style=text-align:right>29</td>
+<td style=text-align:right>182</td>
+</tr>
+<tr>
+<td style=text-align:left>ResNetStyle_85</td>
+<td style=text-align:right>1</td>
+<td style=text-align:right>43338</td>
+<td style=text-align:right>49237</td>
+<td style=text-align:right>399</td>
+<td style=text-align:right>142</td>
+<td style=text-align:right>25</td>
+<td style=text-align:right>197</td>
+</tr>
+<tr>
+<td style=text-align:left>ResNetStyle_56</td>
+<td style=text-align:right>3</td>
+<td style=text-align:right>43277</td>
+<td style=text-align:right>49260</td>
+<td style=text-align:right>339</td>
+<td style=text-align:right>180</td>
+<td style=text-align:right>21</td>
+<td style=text-align:right>200</td>
+</tr>
+<tr>
+<td style=text-align:left>ResNetStyle_71</td>
+<td style=text-align:right>2</td>
+<td style=text-align:right>43265</td>
+<td style=text-align:right>49258</td>
+<td style=text-align:right>352</td>
+<td style=text-align:right>184</td>
+<td style=text-align:right>25</td>
+<td style=text-align:right>181</td>
+</tr>
+<tr>
+<td style=text-align:left>ResNetStyle_81</td>
+<td style=text-align:right>6</td>
+<td style=text-align:right>42742</td>
+<td style=text-align:right>49211</td>
+<td style=text-align:right>361</td>
+<td style=text-align:right>214</td>
+<td style=text-align:right>23</td>
+<td style=text-align:right>191</td>
+</tr>
+<tr>
+<td style=text-align:left>Conv2dReLU_14</td>
+<td style=text-align:right>8</td>
+<td style=text-align:right>42546</td>
+<td style=text-align:right>49181</td>
+<td style=text-align:right>377</td>
+<td style=text-align:right>202</td>
+<td style=text-align:right>29</td>
+<td style=text-align:right>211</td>
+</tr>
+<tr>
+<td style=text-align:left>ResNetStyle_89</td>
+<td style=text-align:right>7</td>
+<td style=text-align:right>42228</td>
+<td style=text-align:right>49127</td>
+<td style=text-align:right>442</td>
+<td style=text-align:right>194</td>
+<td style=text-align:right>23</td>
+<td style=text-align:right>214</td>
+</tr>
+<tr>
+<td style=text-align:left>ResNetStyle_47</td>
+<td style=text-align:right>11</td>
+<td style=text-align:right>42110</td>
+<td style=text-align:right>49128</td>
+<td style=text-align:right>413</td>
+<td style=text-align:right>209</td>
+<td style=text-align:right>32</td>
+<td style=text-align:right>218</td>
+</tr>
+<tr>
+<td style=text-align:left>ResNetStyle_69</td>
+<td style=text-align:right>5</td>
+<td style=text-align:right>41998</td>
+<td style=text-align:right>49075</td>
+<td style=text-align:right>507</td>
+<td style=text-align:right>167</td>
+<td style=text-align:right>23</td>
+<td style=text-align:right>228</td>
+</tr>
+<tr>
+<td style=text-align:left>ResNetStyle_92</td>
+<td style=text-align:right>20</td>
+<td style=text-align:right>41917</td>
+<td style=text-align:right>49090</td>
+<td style=text-align:right>436</td>
+<td style=text-align:right>182</td>
+<td style=text-align:right>37</td>
+<td style=text-align:right>255</td>
+</tr>
+</tbody>
+</table>
+<p>Indeed they did: the overall rankings shifted, and a network from the original
+top 10 (<code>ResnetStyle_69</code>) sneaked back in because of the new scoring scale. Of
+course, the weights I picked were arbitrary, but the point is that the
+incorrect/unsure predictions also need to considered when trying to choose the
+best network.</p>
+<h2 id=closing-notes>Closing Notes</h2>
+<p>Regularized Adaptive Prediction Sets (RAPS) provide additional context when I
+need to choose the best network. Earlier, I could examine networks in terms of
+accuracy/weights/memory use/training time. Now, with surface-level information
+about the prediction sets (just set sizes), I can break down a raw accuracy
+score into 5 different components, and choose the best network for my use case
+by assigning weights for the types of errors I don&rsquo;t want. This can be useful in
+deployment: I am fine with networks on embedded devices having confidence issues
+about predictions (especially for incorrect predictions). But complex networks
+in the cloud should provide more confidence, because they are usually the last
+resort. I am not certain (!) about what should be done when the initial
+prediction is unsure, and the backup gives a different answer (the <code>num_wu</code>
+case) because that seems ripe for confusion.</p>
+<p>There are other interesting angles to examine. I want to see why that
+<code>Conv2dSELU_6</code> has so much confidence, and what means for the individual
+predictions it makes. The RAPS algorithm provides two hyperparameters, $k$ and
+$\lambda$ in addition to $\alpha$, and a wrapper to find the optimal $k$ and
+$\lambda$ for a given network during calibration. I used the same $k$ and
+$\lambda$ values throughout, so that leaves me to wonder how much the above
+tables are affected if I use the optimal values. I have also not used the
+calibrated scores or the generalized quantile values anywhere in the analysis.
+That&rsquo;s probably worth a separate round on AWS and another post.</p>
+</article>
+</main><footer id=footer>
+Copyright © 2022 Gautham Venkatasubramanian
+</footer>
+</body>
+</html>

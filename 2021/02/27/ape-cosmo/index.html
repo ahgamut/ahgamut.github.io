@@ -1,0 +1,131 @@
+<!doctype html><html><head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta name=description content="Gautham's Blog">
+<link rel=stylesheet href=/css/style.min.css>
+<title>Actually Portable Executables</title>
+</head>
+<body><header id=banner>
+<h2><a href=https://ahgamut.github.io>Blog Needs a Name</a></h2>
+<nav>
+<ul>
+<li>
+<a href=/about/ title=About>About</a>
+</li>
+</ul>
+</nav>
+</header>
+<main id=content>
+<article>
+<header id=post-header>
+<h1>Actually Portable Executables</h1>
+<div>
+<time>February 27, 2021</time>
+</div>
+</header><p>I came across <a href=https://github.com/jart/cosmopolitan>Cosmopolitan</a> on Hacker News, and I was initially
+confused, due to a few memories of cross-compilation nightmares: while it should
+be possible to compile for the same architecture regardless of operating system,
+wouldn&rsquo;t the OS get confused by the leading bytes of the executable? I read the
+<a href=https://justine.lol/ape.html>article</a> explaining how it works, but most of it went over my head.</p>
+<p>The example on the <a href=https://github.com/jart/cosmopolitan>Github README</a> used the following script for
+compilation:</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>gcc -g -O -static -nostdlib -nostdinc -fno-pie -no-pie -mno-red-zone <span class=se>\
+</span><span class=se></span>  -o hello.com.dbg hello.c -fuse-ld<span class=o>=</span>bfd -Wl,-T,ape.lds <span class=se>\
+</span><span class=se></span>  -include cosmopolitan.h crt.o ape.o cosmopolitan.a
+objcopy -S -O binary hello.com.dbg hello.com
+</code></pre></div><p>I converted it into a simple Makefile to run the compilation commands. I
+tried a bunch of simple C programs (basic arithmetic, reading and writing to
+files) on Linux+Windows (compiled on Linux), and all of them worked.</p>
+<h2 id=compiling-lua-with-cosmopolitan>Compiling Lua with Cosmopolitan</h2>
+<p>I decided to try compiling a high-level language built on C. I originally picked
+Python, but the Makefile for Python seemed too complicated to mess with, so I
+then picked <a href=https://www.lua.org/download.html>Lua</a>, which looked much simpler in comparison.</p>
+<p>I started out by blindly copy-pasting the flags and includes used in the sample
+compilation on Github. Ah, it would have been wonderful for my laziness if it
+compiled out of the box. Following is a play-by-play commentary of trying to
+compile Lua.</p>
+<p>First problem I ran into was header clashes: if I didn&rsquo;t put <code>-nostdlib -nostdinc</code> while compiling each object file, <code>-include cosmopolitan.h</code> would
+clash with the system headers. But blocking the system headers meant I would
+have to change every <code>#include</code> of a system header. I created a bunch of dummy
+headers with the same names as those in the <a href=https://en.cppreference.com/w/c/header>C stdlib</a> and and included
+to those instead.</p>
+<p>Naming clashes: some of the macros in <code>cosmopolitan.h</code> clashed with
+macro/function names in Lua: <code>reverse</code> and <code>isempty</code>. I changed the Lua source
+to avoid this.</p>
+<p>A macro <code>FIRST_RESERVED</code> was broken because <code>UCHAR_MAX</code> was missing. I
+thought <code>UCHAR_MAX</code> was supposed to be in <code>limits.h</code> &ndash; the <code>limits.h</code> part of
+<code>cosmopolitan.h</code> did not have <code>UCHAR_MAX</code> (It had <code>SCHAR_MAX</code>, though.) I added
+in a <code>#define</code> stating <code>UCHAR_MAX</code> as <code>__UINT8_MAX__</code> (ie 255).</p>
+<p>The default Lua Makefile attempts to use <code>_setjmp</code>/<code>_longjmp</code> in <code>ldo.c</code> when
+on Linux. I disabled the <code>LUA_USE_LINUX</code> flag for compiling the object files,
+but this caused an issue with <code>tmpnam</code> in <code>loslib.c</code> (<code>mkstemp</code> is available in
+Cosmopolitan). I changed the Lua source to use <code>setjmp</code>/<code>longjmp</code>. A similar
+issue showed in <code>lauxlib.c</code> for <code>sys/wait.h</code> (which is a no-op in non-POSIX
+systems, as per the Lua source code), and in <code>liolib</code> for <code>sys/types.h</code> so
+disabled <code>LUA_USE_POSIX</code> over there as well.</p>
+<p>The <code>localeconv()</code> function (part of <code>locale.h</code>) was not implemented in
+<code>cosmopolitan.h</code>, and this caused an error while compiling <code>lobject.c</code> (macro
+<code>lua_getlocaledecpoint()</code> depended on <code>localeconv()</code>). Changed the macro to
+just return <code>'.'</code>.</p>
+<p>The <code>panic</code> function in Lua <code>static int panic (lua_state*)</code> clashed with that
+in Cosmopolitan <code>void panic(void)</code>. Renamed the lua function to <code>lua_panic</code>.
+This triggered an error where the <code>panic</code> function was being called in
+<code>luaL_newstate</code>, so I changed the name there as well.</p>
+<p><code>luaL_loadfilex</code> caused a <em>frame size error</em> &ndash; I have never seen this before.
+A quick internet search shows that this is because a large buffer is allocated
+on stack when entering the function, and yes, <code>luaL_loadfilex</code> allocates a
+<code>loadF</code> object containing a <code>char</code> buffer of <code>BUFSIZ</code>. I reduced the size of
+the buffer to <code>BUFSIZ - 64</code>.</p>
+<p><code>loslib.c</code> requires the <code>setlocale()</code> and <code>LC_*</code> from <code>locale.h</code>, which is
+defined as an extern value in <code>cosmopolitan.h</code>, but that definition is somehow
+not enough.. screw it, I just disabled <code>os_setlocale</code> in <code>loslib.c</code>, and then it
+compiles.</p>
+<h2 id=linking-the-object-files>Linking the object files</h2>
+<p>Ok, time for linking &mldr;</p>
+<pre tabindex=0><code>gcc -std=gnu99 -o lua   lua.o liblua.a -lm -Wl,-E -ldl
+/usr/bin/ld: errno: TLS definition in //lib/x86_64-linux-gnu/libc.so.6 section
+.tbss mismatches non-TLS reference in liblua.a(lauxlib.o)
+/usr/bin/ld: //lib/x86_64-linux-gnu/libc.so.6: error adding symbols: bad value
+collect2: error: ld returned 1 exit status
+</code></pre><p>I forgot, I shouldn&rsquo;t <code>-lm</code> or <code>-ldl</code>. Ok, let&rsquo;s try with all the object files
+instead of <code>liblua.a</code>:</p>
+<pre tabindex=0><code>/usr/bin/ld.bfd: lvm.o: in function `l_strcmp':
+lvm.c:(.text+0x59): undefined reference to `strcoll'
+/usr/bin/ld.bfd: lmathlib.o: in function `math_tanh':
+lmathlib.c:(.text+0x21f): undefined reference to `tanh'
+/usr/bin/ld.bfd: lmathlib.o: in function `math_sinh':
+lmathlib.c:(.text+0x24f): undefined reference to `sinh'
+/usr/bin/ld.bfd: lmathlib.o: in function `math_cosh':
+lmathlib.c:(.text+0x27f): undefined reference to `cosh'
+collect2: error: ld returned 1 exit status
+</code></pre><p>Umm&mldr; okay, it looks like some of the functions defined in the cosmopolitan
+header are yet to be implemented in the static library. That&rsquo;s okay, I can just
+quickly fill in the math functions, and I&rsquo;ll comment out <code>strcoll</code> for now, just
+because I want to see it compile&mldr;. and it successfully compiles!! Let&rsquo;s run
+<code>objcopy</code> before trying it out on a system though.</p>
+<pre tabindex=0><code>$ objcopy -S -O binary lua lua.exe
+$ ls -al
+-rwxr-xr-x 1 1953720 Feb 27 01:33 lua
+-rwxr-xr-x 1 344064 Feb 27 01:39 lua.exe
+</code></pre><p>That size reduction seems a little too drastic, but let&rsquo;s see if it runs on
+Linux:</p>
+<p><img src=/images/linux_screen.png alt></p>
+<p>Awesome. How about Windows?</p>
+<p><img src=/images/windows_screen.png alt></p>
+<h2 id=summary-it-is-actually-portable>Summary: it <em>is</em> actually portable</h2>
+<p>This is pretty incredible: I just had to modify a few lines in a Makefile and
+some C source files, and I got a Lua executable that works both on Linux and
+Windows (and possibly others as well). Granted, there are still some details to
+be filled out (floating point calculation above prints a <code>g</code>), but Cosmopolitan
+is currently at release 0.2, so there is a lot of time. (<strong>Update:</strong> Lua is
+vendored as part of the Cosmopolitan repo since <a href=https://github.com/jart/cosmopolitan/issues/61#issuecomment-792359199>March 8 2021</a>, and
+is used for dynamic pages.)</p>
+<p>Hopefully this means that other languages that have source code completely in C
+can also be compiled once and run anywhere. <a href=/2021/07/13/ape-python/>Actually Portable
+Python</a> next, maybe?</p>
+</article>
+</main><footer id=footer>
+Copyright © 2022 Gautham Venkatasubramanian
+</footer>
+</body>
+</html>
