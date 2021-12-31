@@ -19,7 +19,7 @@ pygmentsCodeFences: true
 
 params:
   highlight: true
-  dark: "auto"
+  dark: "off"
   description: "Gautham's Blog"
   copyright: "Copyright © 2022 Gautham Venkatasubramanian"
 
