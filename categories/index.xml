@@ -701,8 +701,7 @@ $\lambda$ for a given network during calibration. I used the same $k$ and
 $\lambda$ values throughout, so that leaves me to wonder how much the above
 tables are affected if I use the optimal values. I have also not used the
 calibrated scores or the generalized quantile values anywhere in the analysis.
-That&amp;rsquo;s probably worth a separate round on AWS and another post.&lt;/p></description></item><item><title>Python is Actually Portable</title><link>https://ahgamut.github.io/2021/07/13/ape-python/</link><pubDate>Tue, 13 Jul 2021 00:00:00 +0000</pubDate><guid>https://ahgamut.github.io/2021/07/13/ape-python/</guid><description>&lt;blockquote>
-&lt;p>&lt;strong>Update (2022-07-27)&lt;/strong> : This post describes a proof-of-concept Python
+That&amp;rsquo;s probably worth a separate round on AWS and another post.&lt;/p></description></item><item><title>Python is Actually Portable</title><link>https://ahgamut.github.io/2021/07/13/ape-python/</link><pubDate>Tue, 13 Jul 2021 00:00:00 +0000</pubDate><guid>https://ahgamut.github.io/2021/07/13/ape-python/</guid><description>&lt;p>&lt;strong>Update (2022-07-27)&lt;/strong> : This post describes a proof-of-concept Python
 executable (2.7.18 and 3.6.14) built on &lt;a href="https://github.com/jart/cosmopolitan">Cosmopolitan
 Libc&lt;/a>, which allows it to run on six
 different operating systems (Linux, Mac, Windows, NetBSD, FreeBSD, OpenBSD).
@@ -719,8 +718,9 @@ out of date. Check out the history of APE Python
 &lt;a href="https://github.com/jart/cosmopolitan/issues/141">here&lt;/a>, build it via the
 Cosmopolitan monorepo, or download &lt;code>python.com&lt;/code> from
 &lt;a href="https://justine.lol/ftrace/python.com">here&lt;/a>. I&amp;rsquo;m also trying to port the newer
-versions of Python and some well-known Python packages like numpy.&lt;/p>
-&lt;/blockquote>
+versions of Python and some well-known Python packages like numpy. Join the
+discussion about Python and Cosmopolitan Libc in the
+redbean Discord server: &lt;a href="https://discord.gg/rGQja6kS">https://discord.gg/rGQja6kS&lt;/a>&lt;/p>
 &lt;p>Back in February, I put together &lt;a href="https://ahgamut.github.io/2021/02/27/ape-cosmo/">Lua 5.4&lt;/a> using &lt;a href="https://github.com/jart/cosmopolitan">Cosmopolitan
 Libc&lt;/a> as a quick proof-of-concept, and that led to Lua 5.4 being
 &lt;a href="https://github.com/jart/cosmopolitan/issues/61#issuecomment-792359199">vendored&lt;/a> as part of the Cosmopolitan repository on Github, along
