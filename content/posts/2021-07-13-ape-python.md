@@ -6,6 +6,20 @@ title: Python is Actually Portable
 aliases: "/c/2021/07/13/ape-python"
 ---
 
+**Update (2022-07-27)** : It's been more than a year since I put together this
+proof of concept executable, and now Python3.6 and its test sutie are part of
+the Cosmopolitan monorepo. There's been a LOT of work done to improve
+`python.com` over vanilla Python3.6 -- there's a custom `sys.meta_path` entry
+for faster loading, size reductions of the `unicodedata`, a `cosmo` module for
+    Cosmopolitan-specific goodies, a revamp of Python's build and testing
+    system, a superb REPL experience, backports from Python 3.7, and a lot more!
+    I'm also trying to port the newer versions of Python and some well-known
+    Python packages like numpy. Check out the history of APE Python
+    [here](https://github.com/jart/cosmopolitan/issues/141), build it via the
+    Cosmopolitan monorepo, or download `python.com` from
+    [here](https://justine.lol/ftrace/python.com).
+
+
 Back in February, I put together [Lua 5.4][lua_cosmo] using [Cosmopolitan
 Libc][ghcosmo] as a quick proof-of-concept, and that led to Lua 5.4 being
 [vendored][lua_vendor] as part of the Cosmopolitan repository on Github, along
