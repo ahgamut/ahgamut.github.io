@@ -701,20 +701,26 @@ $\lambda$ for a given network during calibration. I used the same $k$ and
 $\lambda$ values throughout, so that leaves me to wonder how much the above
 tables are affected if I use the optimal values. I have also not used the
 calibrated scores or the generalized quantile values anywhere in the analysis.
-That&amp;rsquo;s probably worth a separate round on AWS and another post.&lt;/p></description></item><item><title>Python is Actually Portable</title><link>https://ahgamut.github.io/2021/07/13/ape-python/</link><pubDate>Tue, 13 Jul 2021 00:00:00 +0000</pubDate><guid>https://ahgamut.github.io/2021/07/13/ape-python/</guid><description>&lt;p>&lt;strong>Update (2022-07-27)&lt;/strong> : It&amp;rsquo;s been more than a year since I put together this
-proof of concept executable, and now Python3.6 and its test suite are part of
-the &lt;a href="https://github.com/jart/cosmopolitan/pull/235">Cosmopolitan Libc monorepo&lt;/a>.
-There&amp;rsquo;s been a LOT of work done to improve &lt;code>python.com&lt;/code> over vanilla Python3.6
-&amp;ndash; a custom &lt;a href="https://github.com/jart/cosmopolitan/pull/425">&lt;code>sys.meta_path&lt;/code>
-entry&lt;/a> for faster loading, &lt;a href="https://justine.lol/sizetricks#dzd">size
-reductions&lt;/a> of the &lt;code>unicodedata&lt;/code>, a &lt;code>cosmo&lt;/code>
-module for Cosmopolitan-specific goodies, a revamp of Python&amp;rsquo;s build and testing
-system, a superb REPL experience, backports from Python 3.7, and a lot more!
-I&amp;rsquo;m also trying to port the newer versions of Python and some well-known Python
-packages like numpy. Check out the history of APE Python
+That&amp;rsquo;s probably worth a separate round on AWS and another post.&lt;/p></description></item><item><title>Python is Actually Portable</title><link>https://ahgamut.github.io/2021/07/13/ape-python/</link><pubDate>Tue, 13 Jul 2021 00:00:00 +0000</pubDate><guid>https://ahgamut.github.io/2021/07/13/ape-python/</guid><description>&lt;blockquote>
+&lt;p>&lt;strong>Update (2022-07-27)&lt;/strong> : This post describes a proof-of-concept Python
+executable (2.7.18 and 3.6.14) built on &lt;a href="https://github.com/jart/cosmopolitan">Cosmopolitan
+Libc&lt;/a>, which allows it to run on six
+different operating systems (Linux, Mac, Windows, NetBSD, FreeBSD, OpenBSD).
+It&amp;rsquo;s been more than a year since I put this together, and now Python3.6 and its
+test suite are part of the &lt;a href="https://github.com/jart/cosmopolitan/pull/235">Cosmopolitan Libc
+monorepo&lt;/a>. There&amp;rsquo;s been a LOT of
+work done to improve &lt;code>python.com&lt;/code> over vanilla Python3.6 &amp;ndash; a custom
+&lt;a href="https://github.com/jart/cosmopolitan/pull/425">&lt;code>sys.meta_path&lt;/code> entry&lt;/a> for
+faster loading, &lt;a href="https://justine.lol/sizetricks#dzd">size reductions&lt;/a> of the
+&lt;code>unicodedata&lt;/code>, a &lt;code>cosmo&lt;/code> module for Cosmopolitan-specific goodies, a revamp of
+Python&amp;rsquo;s build and testing system, a superb REPL experience, backports from
+Python 3.7, and a lot more! So some of the details in this blog post are likely
+out of date. Check out the history of APE Python
 &lt;a href="https://github.com/jart/cosmopolitan/issues/141">here&lt;/a>, build it via the
 Cosmopolitan monorepo, or download &lt;code>python.com&lt;/code> from
-&lt;a href="https://justine.lol/ftrace/python.com">here&lt;/a>.&lt;/p>
+&lt;a href="https://justine.lol/ftrace/python.com">here&lt;/a>. I&amp;rsquo;m also trying to port the newer
+versions of Python and some well-known Python packages like numpy.&lt;/p>
+&lt;/blockquote>
 &lt;p>Back in February, I put together &lt;a href="https://ahgamut.github.io/2021/02/27/ape-cosmo/">Lua 5.4&lt;/a> using &lt;a href="https://github.com/jart/cosmopolitan">Cosmopolitan
 Libc&lt;/a> as a quick proof-of-concept, and that led to Lua 5.4 being
 &lt;a href="https://github.com/jart/cosmopolitan/issues/61#issuecomment-792359199">vendored&lt;/a> as part of the Cosmopolitan repository on Github, along
@@ -725,11 +731,11 @@ system of high-quality codebases.&lt;/p>
 &lt;p>However, my initial plan with Cosmopolitan was not to compile Lua, it was to
 compile Python. Since February, I&amp;rsquo;ve been trying to understand how Cosmopolitan
 works, reading the repo code and submitting PRs occasionally, and finally I have
-an actually portable version of Python 2.7.18&lt;sup id="fnref:1">&lt;a href="#fn:1" class="footnote-ref" role="doc-noteref">1&lt;/a>&lt;/sup> &amp;ndash; you can build it
-from the repository &lt;a href="https://github.com/ahgamut/cpython/tree/cosmo_py27">here&lt;/a>. It&amp;rsquo;s not solid as Lua 5.4 because it
-currently passes only a third of the regression tests, but most of the parts are
-there. For example, here&amp;rsquo;s a GIF showing a simple &lt;a href="https://flask.palletsprojects.com/en/2.0.x/">Flask webapp&lt;/a> running
-via the &lt;code>python.com&lt;/code> APE.&lt;/p>
+an actually portable version of Python 2.7.18 (and 3.6.14&lt;sup id="fnref:1">&lt;a href="#fn:1" class="footnote-ref" role="doc-noteref">1&lt;/a>&lt;/sup>) &amp;ndash; you
+can build it from the repository &lt;a href="https://github.com/ahgamut/cpython/tree/cosmo_py27">here&lt;/a>. It&amp;rsquo;s not solid as Lua 5.4
+because it currently passes only a third of the regression tests, but most of
+the parts are there. For example, here&amp;rsquo;s a GIF showing a simple &lt;a href="https://flask.palletsprojects.com/en/2.0.x/">Flask
+webapp&lt;/a> running via the &lt;code>python.com&lt;/code> APE.&lt;/p>
 &lt;p>&lt;img src="https://ahgamut.github.io/images/ape-python.gif" alt="webapp">&lt;/p>
 &lt;p>It&amp;rsquo;s quite slow, but it works(tested on Debian Linux and Windows
 10&lt;sup id="fnref:2">&lt;a href="#fn:2" class="footnote-ref" role="doc-noteref">2&lt;/a>&lt;/sup>), and there&amp;rsquo;s a lot of room for improvement. This post
@@ -843,10 +849,11 @@ Linux/Windows/MacOS, but the techniques I have seen/used all have tradeoffs:
 either for the developer in terms of design, testing, and safety/consistency, or
 for the user in terms on application size and performance.&lt;/p>
 &lt;p>Cosmopolitan Libc does come with some tradeoffs as well (static compilation, C
-codebases, no multithreading), but I think it is amazing that I can send a
-&lt;code>python.com&lt;/code> executable of a few megabytes as a zip file to someone, have them
-run it without worrying about the OS, and provide them a simple webapp with a
-backend that works even without an internet connection.&lt;/p>
+codebases, no multithreading (&lt;strong>Update 2022-07-27:&lt;/strong>, no multithreading &lt;em>yet&lt;/em>,
+the pthreads API takes a while to fill)), but I think it is amazing that I can
+send a &lt;code>python.com&lt;/code> executable of a few megabytes as a zip file to someone, have
+them run it without worrying about the OS, and provide them a simple webapp with
+a backend that works even without an internet connection.&lt;/p>
 &lt;p>This successful &lt;code>python.com&lt;/code> experiment unlocks many interesting directions:&lt;/p>
 &lt;ul>
 &lt;li>
@@ -856,18 +863,25 @@ improvements would be nice because Python web frameworks are established and
 easy to use.&lt;/p>
 &lt;/li>
 &lt;li>
-&lt;p>Is there room for a custom build system to produce a single-file size-optimized
-&lt;code>python.com&lt;/code> APE webapp? We saw that it is possible to add C extensions, and
-even regular packages into the executable via &lt;code>zip&lt;/code>. If there is a
-dependency resolver that accounts for stdlib imports, which then produces a
-&lt;code>Modules/Setup&lt;/code> or some similar build script to compile extensions and add only
-the necessary libraries, that would be awesome&lt;sup id="fnref:10">&lt;a href="#fn:10" class="footnote-ref" role="doc-noteref">10&lt;/a>&lt;/sup>.&lt;/p>
+&lt;p>Is there room for a custom build system to produce a single-file
+size-optimized &lt;code>python.com&lt;/code> APE webapp? We saw that it is possible to add C
+extensions, and even regular packages into the executable via &lt;code>zip&lt;/code>. If there
+is a dependency resolver that accounts for stdlib imports, which then produces
+a &lt;code>Modules/Setup&lt;/code> or some similar build script to compile extensions and add
+only the necessary libraries, that would be awesome&lt;sup id="fnref:10">&lt;a href="#fn:10" class="footnote-ref" role="doc-noteref">10&lt;/a>&lt;/sup>. (&lt;strong>2022-07-27:&lt;/strong>
+now the Cosmopolitan monorepo builds &lt;code>python.com&lt;/code> via a
+&lt;a href="https://github.com/jart/cosmopolitan/blob/master/third_party/python/python.mk">Makefile&lt;/a>,
+checks import dependencies at link-time, runs the Python test suite, and adds
+all files to the APE internal ZIP store ready-to-use).&lt;/p>
 &lt;/li>
 &lt;li>
 &lt;p>Regarding python packages with C extensions, the build process for adding them
-to the APE is rather unwieldy because of all the manual changes involved. Is
-there a way to automatically patch the imports, or better yet, compile
-Python C extensions as shared libraries with Cosmopolitan?&lt;/p>
+to the APE is rather unwieldy (&lt;strong>2022-07-27&lt;/strong> adding C extensions to the APE
+is much more elegant now because of the Cosmopolitan monorepo, see
+&lt;a href="https://github.com/ahgamut/cosmopolitan/tree/import-mod-test">this&lt;/a>) because
+of all the manual changes involved. Is there a way to automatically patch the
+imports, or better yet, compile Python C extensions as shared libraries with
+Cosmopolitan?&lt;/p>
 &lt;/li>
 &lt;li>
 &lt;p>I&amp;rsquo;ve managed to compile Lua, QuickJS, and now Python2.7 and
