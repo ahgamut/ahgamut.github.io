@@ -22,7 +22,19 @@
 <div>
 <time>July 13, 2021</time>
 </div>
-</header><p>Back in February, I put together <a href=/2021/02/27/ape-cosmo/>Lua 5.4</a> using <a href=https://github.com/jart/cosmopolitan>Cosmopolitan
+</header><p><strong>Update (2022-07-27)</strong> : It&rsquo;s been more than a year since I put together this
+proof of concept executable, and now Python3.6 and its test sutie are part of
+the Cosmopolitan monorepo. There&rsquo;s been a LOT of work done to improve
+<code>python.com</code> over vanilla Python3.6 &ndash; there&rsquo;s a custom <code>sys.meta_path</code> entry
+for faster loading, size reductions of the <code>unicodedata</code>, a <code>cosmo</code> module for
+Cosmopolitan-specific goodies, a revamp of Python&rsquo;s build and testing
+system, a superb REPL experience, backports from Python 3.7, and a lot more!
+I&rsquo;m also trying to port the newer versions of Python and some well-known
+Python packages like numpy. Check out the history of APE Python
+<a href=https://github.com/jart/cosmopolitan/issues/141>here</a>, build it via the
+Cosmopolitan monorepo, or download <code>python.com</code> from
+<a href=https://justine.lol/ftrace/python.com>here</a>.</p>
+<p>Back in February, I put together <a href=/2021/02/27/ape-cosmo/>Lua 5.4</a> using <a href=https://github.com/jart/cosmopolitan>Cosmopolitan
 Libc</a> as a quick proof-of-concept, and that led to Lua 5.4 being
 <a href=https://github.com/jart/cosmopolitan/issues/61#issuecomment-792359199>vendored</a> as part of the Cosmopolitan repository on Github, along
 with many other interesting developments. It&rsquo;s pretty exciting to try and
