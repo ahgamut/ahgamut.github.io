@@ -6,7 +6,7 @@ title: Python is Actually Portable
 aliases: "/c/2021/07/13/ape-python"
 ---
 
-> **Update (2022-07-27)** : This post describes a proof-of-concept Python
+**Update (2022-07-27)** : This post describes a proof-of-concept Python
 executable (2.7.18 and 3.6.14) built on [Cosmopolitan
 Libc](https://github.com/jart/cosmopolitan), which allows it to run on six
 different operating systems (Linux, Mac, Windows, NetBSD, FreeBSD, OpenBSD).
@@ -23,7 +23,10 @@ out of date. Check out the history of APE Python
 [here](https://github.com/jart/cosmopolitan/issues/141), build it via the
 Cosmopolitan monorepo, or download `python.com` from
 [here](https://justine.lol/ftrace/python.com). I'm also trying to port the newer
-versions of Python and some well-known Python packages like numpy. 
+versions of Python and some well-known Python packages like numpy. Join the
+discussion about Python and Cosmopolitan Libc in the
+redbean Discord server: https://discord.gg/rGQja6kS 
+
 
 
 Back in February, I put together [Lua 5.4][lua_cosmo] using [Cosmopolitan
