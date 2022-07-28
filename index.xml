@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Blog Needs a Name</title><link>https://ahgamut.github.io/</link><description>Recent content on Blog Needs a Name</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Wed, 27 Jul 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://ahgamut.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>Actually Portable Executables with Rust and Cosmopolitan Libc</title><link>https://ahgamut.github.io/2022/07/27/ape-rust-example/</link><pubDate>Wed, 27 Jul 2022 00:00:00 +0000</pubDate><guid>https://ahgamut.github.io/2022/07/27/ape-rust-example/</guid><description>&lt;blockquote>
 &lt;p>aka &amp;ldquo;Rust is Actually Portable&amp;rdquo;, after &lt;a href="https://ahgamut.github.io/2021/02/27/ape-cosmo/">Lua&lt;/a> and &lt;a href="https://ahgamut.github.io/2021/07/13/ape-python/">Python&lt;/a>&lt;/p>
 &lt;/blockquote>
-&lt;p>I just built a &lt;a href="https://rust-lang.org">Rust&lt;/a> executable that runs on six operating systems. If
-you&amp;rsquo;d like to build it yourself, clone &lt;a href="https://github.com/ahgamut/rust-ape-example">this repo&lt;/a> and follow the README
-&amp;ndash; you&amp;rsquo;ll need a recent &lt;code>gcc&lt;/code>, &lt;code>ld.bfd&lt;/code>, &lt;code>objcopy&lt;/code>, &lt;code>bash&lt;/code>, and the latest
-(nightly) versions of &lt;code>cargo&lt;/code>, &lt;code>rustc&lt;/code>, and friends.&lt;/p>
+&lt;p>I just built a &lt;a href="https://rust-lang.org">Rust&lt;/a> executable that runs on six operating systems
+(Linux, Windows, MacOS, FreeBSD, NetBSD, OpenBSD). If you&amp;rsquo;d like to build it
+yourself, clone &lt;a href="https://github.com/ahgamut/rust-ape-example">this repo&lt;/a> and follow the README &amp;ndash; you&amp;rsquo;ll need a recent
+&lt;code>gcc&lt;/code>, &lt;code>ld.bfd&lt;/code>, &lt;code>objcopy&lt;/code>, &lt;code>bash&lt;/code>, and the latest (nightly) versions of
+&lt;code>cargo&lt;/code>, &lt;code>rustc&lt;/code>, and friends.&lt;/p>
 &lt;p>I&amp;rsquo;ve been recently getting into Rust, and it seems pretty cool! I&amp;rsquo;ve also gotten
 a bunch of software to run on &lt;a href="https://github.com/jart/cosmopolitan">Cosmopolitan Libc&lt;/a> over the last
 year&lt;sup id="fnref:1">&lt;a href="#fn:1" class="footnote-ref" role="doc-noteref">1&lt;/a>&lt;/sup>, so in June I thought combining Rust with Cosmopolitan Libc would
