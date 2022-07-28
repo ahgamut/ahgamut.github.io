@@ -1,0 +1,193 @@
+<!doctype html><html><head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta name=description content="Gautham's Blog">
+<link rel=stylesheet href=/css/style.min.css>
+<title>Actually Portable Executables with Rust and Cosmopolitan Libc</title>
+</head>
+<body><header id=banner>
+<h2><a href=https://ahgamut.github.io>Blog Needs a Name</a></h2>
+<nav>
+<ul>
+<li>
+<a href=/about/ title=About>About</a>
+</li>
+</ul>
+</nav>
+</header>
+<main id=content>
+<article>
+<header id=post-header>
+<h1>Actually Portable Executables with Rust and Cosmopolitan Libc</h1>
+<div>
+<time>July 27, 2022</time>
+</div>
+</header><blockquote>
+<p>aka &ldquo;Rust is Actually Portable&rdquo;, after <a href=/2021/02/27/ape-cosmo/>Lua</a> and <a href=/2021/07/13/ape-python/>Python</a></p>
+</blockquote>
+<p>I just built a <a href=https://rust-lang.org>Rust</a> executable that runs on six operating systems. If
+you&rsquo;d like to build it yourself, clone <a href=https://github.como/ahgamut/rust-ape-example>this repo</a> and follow the README
+&ndash; you&rsquo;ll need a recent <code>gcc</code>, <code>ld.bfd</code>, <code>objcopy</code>, <code>bash</code>, and the latest
+(nightly) versions of <code>cargo</code>, <code>rustc</code>, and friends.</p>
+<p>I&rsquo;ve been recently getting into Rust, and it seems pretty cool! I&rsquo;ve also gotten
+a bunch of software to run on <a href=https://github.com/jart/cosmopolitan>Cosmopolitan Libc</a> over the last
+year<sup id=fnref:1><a href=#fn:1 class=footnote-ref role=doc-noteref>1</a></sup>, so in June I thought combining Rust with Cosmopolitan Libc would
+be interesting. Here&rsquo;s how I got to a <code>hello world!</code> Actually Portable
+Executable with Rust.</p>
+<h2 id=a-minimal-executable>A minimal executable</h2>
+<p>A good thing about Rust was, unlike Python or Lua, no messing around with C
+headers. Just find a way to tell <code>cargo</code> to link with <code>cosmopolitan.a</code> at the
+very end, and you get an APE. I looked up the <a href=https://docs.rust-embedded.org/embedonomicon/preface.html>Rust
+Embedonomicon</a> and
+built a <code>no_std</code> example, but it wasn&rsquo;t that useful &ndash; the executable just
+crashed and I didn&rsquo;t know if it was on purpose. But the Embedonomicon also
+described how I could create a <a href=https://docs.rust-embedded.org/embedonomicon/custom-target.html>custom target for
+Rust</a>, based on
+the available targets. Jackpot!</p>
+<p>I created a custom target called <code>cosmo.json</code>, based on the existing
+<code>x86_64-linux-unknown-gnu</code> and <code>x86_64-linux-unknown-musl</code>. It took some trial
+and error (I set up my own <code>panic</code> handler, but then it clashed with
+<code>panic_abort</code>, but then it didn&rsquo;t when I changed the flags to cargo), but
+eventually I got this simple example below to compile (I took it from some
+online Rust discussion about the <code>libc</code> crate, I think the code was written by
+<a href=https://github.com/steveklabnik><code>steveklabnik</code></a>).</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-rust data-lang=rust><span class=cp>#![no_main]</span><span class=w>
+</span><span class=w></span><span class=cp>#![no_std]</span><span class=w>
+</span><span class=w></span><span class=cp>#![feature(rustc_private)]</span><span class=w>
+</span><span class=w></span><span class=k>extern</span><span class=w> </span><span class=k>crate</span><span class=w> </span><span class=n>libc</span><span class=p>;</span><span class=w>
+</span><span class=w>
+</span><span class=w></span><span class=cp>#[no_mangle]</span><span class=w>
+</span><span class=w></span><span class=k>pub</span><span class=w> </span><span class=k>extern</span><span class=w> </span><span class=s>&#34;C&#34;</span><span class=w> </span><span class=k>fn</span> <span class=nf>main</span><span class=p>(</span><span class=n>_argc</span>: <span class=kt>isize</span><span class=p>,</span><span class=w> </span><span class=n>_argv</span>: <span class=o>*</span><span class=k>const</span><span class=w> </span><span class=o>*</span><span class=k>const</span><span class=w> </span><span class=kt>u8</span><span class=p>)</span><span class=w> </span>-&gt; <span class=kt>isize</span> <span class=p>{</span><span class=w>
+</span><span class=w>    </span><span class=k>const</span><span class=w> </span><span class=n>HELLO</span>: <span class=kp>&amp;</span><span class=o>&#39;</span><span class=nb>static</span> <span class=kt>str</span> <span class=o>=</span><span class=w> </span><span class=s>&#34;Hello, world! %d + %d = %d\n\0&#34;</span><span class=p>;</span><span class=w>
+</span><span class=w>    </span><span class=kd>let</span><span class=w> </span><span class=n>x</span>: <span class=kt>i32</span> <span class=o>=</span><span class=w> </span><span class=mi>1</span><span class=p>;</span><span class=w>
+</span><span class=w>    </span><span class=kd>let</span><span class=w> </span><span class=n>y</span>: <span class=kt>i32</span> <span class=o>=</span><span class=w> </span><span class=mi>2</span><span class=p>;</span><span class=w>
+</span><span class=w>    </span><span class=k>unsafe</span><span class=w> </span><span class=p>{</span><span class=w>
+</span><span class=w>        </span><span class=n>libc</span>::<span class=n>printf</span><span class=p>(</span><span class=n>HELLO</span><span class=p>.</span><span class=n>as_ptr</span><span class=p>()</span><span class=w> </span><span class=k>as</span><span class=w> </span><span class=o>*</span><span class=k>const</span><span class=w> </span><span class=n>_</span><span class=p>,</span><span class=w> </span><span class=n>x</span><span class=p>,</span><span class=w> </span><span class=n>y</span><span class=p>,</span><span class=w> </span><span class=n>x</span><span class=o>+</span><span class=n>y</span><span class=p>);</span><span class=w>
+</span><span class=w>    </span><span class=p>}</span><span class=w>
+</span><span class=w>    </span><span class=mi>0</span><span class=w>
+</span><span class=w></span><span class=p>}</span><span class=w>
+</span><span class=w>
+</span><span class=w></span><span class=cp>#[panic_handler]</span><span class=w>
+</span><span class=w></span><span class=k>fn</span> <span class=nf>my_panic</span><span class=p>(</span><span class=n>_info</span>: <span class=kp>&amp;</span><span class=nc>core</span>::<span class=n>panic</span>::<span class=n>PanicInfo</span><span class=p>)</span><span class=w> </span>-&gt; <span class=o>!</span><span class=w> </span><span class=p>{</span><span class=w>
+</span><span class=w>    </span><span class=k>loop</span><span class=w> </span><span class=p>{}</span><span class=w>
+</span><span class=w></span><span class=p>}</span><span class=w>
+</span></code></pre></div><p>Once I got the <code>libc</code> crate to work, I could do a lot of things. I took a bunch
+of simple C programs, rewrote them in unsafe Rust with the <code>libc</code> crate, and
+generally checked if the build process was okay.</p>
+<h2 id=building-the-std-crate>Building the <code>std</code> crate</h2>
+<p>Now I had some simple Rust APEs, but I felt that saying &ldquo;Rust is Actually
+Portable&rdquo; and then showing a bunch of C-like programs with unsafe wouldn&rsquo;t cut
+it, so I went on another round of debugging to get the <code>std</code> crate to build.</p>
+<p>The <code>std</code> crate pulls in a lot of different crates! There&rsquo;s <code>core</code>, <code>libc</code>, and
+<code>alloc</code>, which I used for the above example, <code>panic_abort</code>, <code>panic_unwind</code>,
+<code>backtrace</code>, and <code>proc_macro</code>, and subcomponents of <code>std</code> itself. I got a tour
+of the code in the <code>std</code> crate by writing an incomplete target <code>cosmo.json</code>: I&rsquo;d
+change a configuration flag, some part of <code>std</code> would break because my flag was
+wrong, and I&rsquo;d learn something new about Rust and how <code>std</code> worked.</p>
+<p>Once I figured out the right flags in the target <code>cosmo.json</code>, most of the bugs
+with <code>std</code> went away. The few that remained deserve special mention because it
+took me a while to fix them.</p>
+<h2 id=weird-bugs-and-their-workarounds>Weird bugs and their workarounds</h2>
+<p>One of the weird bugs was internet-related code of <code>std</code> which called the <code>libc</code>
+crate (like <code>struct hostent</code> or something). I went through Cosmopolitan Libc
+source code, and everything seemed fine, so the mistake was elsewhere. I
+modified the <code>std</code> crate trying to figure out what was going on. After a bunch
+of different compiler errors and searching on the internet, I found the issue
+was with <em>the filename of my target JSON</em>. So some part of the code or build
+process uses the filename of the JSON, which was <code>cosmo.json</code> at that time, but
+it specifically needs a target name like <code>x86_64-linux-unknown-cosmo</code>, otherwise
+some <del>ifdef</del> <code>cfg_if</code> falls through and breaks a bunch of things. Why does the
+name of the JSON matter? I don&rsquo;t know, but I&rsquo;m happy that this bug doesn&rsquo;t
+bother me anymore.</p>
+<p>The next &ldquo;bug&rdquo; is more a comment about <code>cargo</code>, and is probably because I&rsquo;m
+still new to Rust. <code>cargo</code> is a wonderful package manager, and building
+projects is pretty smooth. But once it comes to building the <code>std</code> crate, some
+of the convenience disappears, and I&rsquo;d like a bit more flexibility in specifying
+what I want cargo to do. I&rsquo;m building a static executable, and I&rsquo;d like to say,
+&ldquo;okay <code>cargo</code> forget about linking <code>-lunwind</code> or <code>-lm</code> or whatever, just listen
+to me, <code>cosmopolitan.a</code> has everything you need for this&rdquo;, but I couldn&rsquo;t find
+any combination of flags to communicate this. Eventually I gave up and wrote a
+<code>bash</code> script which just filtered out all the linker arguments I didn&rsquo;t want
+before calling <code>gcc</code>.</p>
+<p>The last set of bugs were at the link stage &ndash; I had every crate compiling
+without error, but when linking the executable, I found that I was missing a few
+symbols. Some were easy to add, like <code>stat64</code> and <code>__xpg_strerror_r</code>, but the
+<code>std</code> crate required the pthreads key API (<code>pthread_key_create</code> etc.) to be
+implemented, which was weird because I thought I had specified single-threaded
+in <code>cosmo.json</code>. Another dependency of the <code>std</code> crate was
+<a href=https://github.com/rust-lang/backtrace-rs><code>backtrace</code></a>, which requires
+<a href=https://github.com/libunwind/libunwind><code>libunwind</code></a> in the default linux
+builds even though there is a <code>noop</code> crate that can be used for <code>std</code>. I
+couldn&rsquo;t figure out the right flags to avoid these linker errors, so I wrote
+<a href=https://github.com/ahgamut/rust-ape-example/blob/f6ae82160c39814fcc99e2301aa266357e082bb1/libcosmo/stubs.c>some dumb
+stubs</a>
+to just get by the linker. A couple of days later, <a href=https://github.com/jart>Justine
+Tunney</a> implemented the pthreads key API in
+Cosmopolitan Libc, and I asked Justine to add the <code>libunwind</code> stubs as well so
+<code>backtrace</code> wouldn&rsquo;t complain. I think there should be a <code>cargo</code> flag or
+something to choose using the <code>noop</code> crate in <code>backtrace</code> when compiling <code>std</code>.</p>
+<p>Anyway, once I got through these linker errors, I downloaded the latest
+<code>cosmopolitan.zip</code> amalgamation from
+<a href=https://justine.lol/cosmopolitan/cosmopolitan.zip>here</a>, and now I could build
+some Actually Portable Executables with Rust.</p>
+<h2 id=hello-world-and-a-few-examples><code>Hello World!</code> and a few examples</h2>
+<p>Rust is Actually Portable: here&rsquo;s the hello world program that uses Rust and
+Cosmopolitan Libc:</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-rust data-lang=rust><span class=k>fn</span> <span class=nf>main</span><span class=p>()</span><span class=w> </span><span class=p>{</span><span class=w>
+</span><span class=w>    </span><span class=fm>println!</span><span class=p>(</span><span class=s>&#34;Hello World! This is an APE built with Rust.&#34;</span><span class=p>);</span><span class=w>
+</span><span class=w></span><span class=p>}</span><span class=w>
+</span></code></pre></div><p>That&rsquo;s it. No unsafe, no changes to the Rust <code>std</code> source code. You just need to
+provide the right flags to <code>cargo</code>, and done. I also picked the first few
+examples from <a href=https://doc.rust-lang.org/rust-by-example/>Rust By Example</a> to
+build and try, and they all worked as expected. I&rsquo;ve not tried a lot of things,
+so there&rsquo;s room for experimentation and submitting PRs with Rust code (like with
+<code>backtrace</code>) and to Cosmopolitan Libc (implementing the <code>libunwind</code> stubs or
+filling out the pthreads API).</p>
+<h2 id=closing-notes>Closing Notes</h2>
+<p>I feel the package manager and documentation of Rust are big reasons why it is
+so popular. Being new to Rust, I was able to learn about safe vs unsafe, the
+<code>libc</code> crate, <code>cargo</code>, the <code>std</code> crate, <code>backtrace</code>, <code>panic</code>, <code>rustc</code>, and what
+Rust-generated assembly looked like, all over maybe a couple of weekend
+afternoons. Cosmopolitan Libc provided a unique angle to tour Rust, and it was a
+<em>lot of fun</em> to discover all of this.</p>
+<p>Last March, Lua was the first language to be ported to Cosmopolitan Libc. At
+that time, parts of the libc API were still missing; when porting Python I
+submitted PRs for <code>getnameinfo</code>, <code>struct servent</code> etc. so Python&rsquo;s <code>socket</code>
+library would work. But since that time a lot of work has been put into
+Cosmopolitan Libc, so that software built on it can be fun to develop and fast.
+The almost-complete libc API has made it so much easier to port software &ndash; Rust
+just needed a JSON file and some flags to <code>cargo</code>! I&rsquo;m pretty sure a lot of
+software can be built with Cosmopolitan Libc, it&rsquo;s just a matter of convincing
+the build system. If someone figures out a way to even partially automate this
+(say like <a href=https://www.freebsd.org/ports/>FreeBSD&rsquo;s ports</a>), that would be
+amazing.</p>
+<section class=footnotes role=doc-endnotes>
+<hr>
+<ol>
+<li id=fn:1 role=doc-endnote>
+<p>As of this writing (2022-07-27), I&rsquo;ve ported the following software to
+Cosmopolitan Libc: <a href=https://github.com/ahgamut/lua>Lua</a> and
+<a href=https://github.com/jart/cosmopolitan/pull/162>SQLite</a>, both of which are
+now vendored in the Cosmopolitan monorepo and part of
+<a href=https://justine.lol/redbean2><code>redbean</code></a>,
+<a href=https://github.com/ahgamut/cpython/tree/cosmo_py36>Python3.6</a>, and <a href=https://github.com/jart/cosmopolitan/pull/305>GNU
+Make</a>, both of which are part
+of the Cosmopolitan monorepo, <a href=https://github.com/ahgamut/janet>Janet</a>,
+<a href=https://github.com/ahgamut/cpython/tree/cosmo_py27>Python2.7</a>,
+<a href=https://github.com/ahgamut/php-src>PHP7.3</a>,
+<a href=https://github.com/ahgamut/tcl>tcl8.6</a>,
+<a href=https://github.com/ahgamut/LuaJIT-cosmo>LuaJIT</a>, QuickJS, OpenSSL1.1.1k,
+<code>zip/unzip</code>, <code>gzip</code>, <code>bzip2</code>, the <a href=https://github.com/ahgamut/blis>BLIS acceleration
+library</a> because I&rsquo;m trying to get numpy,
+and a bunch of CPython extensions like <code>greenlet</code> and <code>markupsafe</code>. I&rsquo;m sure
+I&rsquo;ve forgotten a couple, and I&rsquo;m not noting all the libraries that I haven&rsquo;t
+successfully built yet.&#160;<a href=#fnref:1 class=footnote-backref role=doc-backlink>&#8617;&#xfe0e;</a></p>
+</li>
+</ol>
+</section>
+</article>
+</main><footer id=footer>
+Copyright © 2022 Gautham Venkatasubramanian
+</footer>
+</body>
+</html>
