@@ -2,7 +2,7 @@
 &lt;p>aka &amp;ldquo;Rust is Actually Portable&amp;rdquo;, after &lt;a href="https://ahgamut.github.io/2021/02/27/ape-cosmo/">Lua&lt;/a> and &lt;a href="https://ahgamut.github.io/2021/07/13/ape-python/">Python&lt;/a>&lt;/p>
 &lt;/blockquote>
 &lt;p>I just built a &lt;a href="https://rust-lang.org">Rust&lt;/a> executable that runs on six operating systems. If
-you&amp;rsquo;d like to build it yourself, clone &lt;a href="https://github.como/ahgamut/rust-ape-example">this repo&lt;/a> and follow the README
+you&amp;rsquo;d like to build it yourself, clone &lt;a href="https://github.com/ahgamut/rust-ape-example">this repo&lt;/a> and follow the README
 &amp;ndash; you&amp;rsquo;ll need a recent &lt;code>gcc&lt;/code>, &lt;code>ld.bfd&lt;/code>, &lt;code>objcopy&lt;/code>, &lt;code>bash&lt;/code>, and the latest
 (nightly) versions of &lt;code>cargo&lt;/code>, &lt;code>rustc&lt;/code>, and friends.&lt;/p>
 &lt;p>I&amp;rsquo;ve been recently getting into Rust, and it seems pretty cool! I&amp;rsquo;ve also gotten
