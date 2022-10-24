@@ -51,6 +51,7 @@ find the entire code <a href=https://github.com/ahgamut/debug-cosmo-example>here
         <span class=n>res</span><span class=p>[</span><span class=n>i</span><span class=p>]</span> <span class=o>=</span> <span class=p>(</span><span class=kt>char</span><span class=p>)</span><span class=n>c</span><span class=p>;</span>
     <span class=p>}</span>
     <span class=n>res</span><span class=p>[</span><span class=n>i</span><span class=p>]</span> <span class=o>=</span> <span class=sc>&#39;\0&#39;</span><span class=p>;</span>
+    <span class=n>fclose</span><span class=p>(</span><span class=n>fp</span><span class=p>);</span>
     <span class=n>printf</span><span class=p>(</span><span class=s>&#34;</span><span class=se>\n</span><span class=s>%s</span><span class=se>\n</span><span class=s>&#34;</span><span class=p>,</span> <span class=n>res</span><span class=p>);</span>
 <span class=p>}</span>
 
@@ -242,6 +243,7 @@ an <code>-1 errno 2</code> if the file doesn&rsquo;t exist, so let&rsquo;s updat
         <span class=n>res</span><span class=p>[</span><span class=n>i</span><span class=p>]</span> <span class=o>=</span> <span class=p>(</span><span class=kt>char</span><span class=p>)</span><span class=n>c</span><span class=p>;</span>
     <span class=p>}</span>
     <span class=n>res</span><span class=p>[</span><span class=n>i</span><span class=p>]</span> <span class=o>=</span> <span class=sc>&#39;\0&#39;</span><span class=p>;</span>
+    <span class=n>fclose</span><span class=p>(</span><span class=n>fp</span><span class=p>);</span>
     <span class=n>printf</span><span class=p>(</span><span class=s>&#34;</span><span class=se>\n</span><span class=s>%s</span><span class=se>\n</span><span class=s>&#34;</span><span class=p>,</span> <span class=n>res</span><span class=p>);</span>
 <span class=p>}</span>
 
