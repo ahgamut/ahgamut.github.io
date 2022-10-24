@@ -358,17 +358,25 @@ You're backed into a corner. How do you debug this seemingly impervious
     to hapless passerby until the end of time or until the bug is found,
     whichever is earlier.
 
-2. You use Cosmopolitan Libc's [`kprintf`][kprintf].
+2. You use [Cosmopolitan Libc's `kprintf`][kprintf].
 
 [`kprintf`][kprintf] is the final tool in the Cosmopolitan Libc debugging
-arsenal. It's a lean implementation of `printf` designed to work _everywhere_ --
-it's what Cosmopolitan uses when the other functions want to write logs, even
-after the program has crashed. So it has to work at all times. You can even
-clone the Cosmopolitan Libc monorepo, add `kprintf` calls in Cosmopolitan Libc's
-internal functions, and test your code with your own debug-customized libc! When
-nothing else works, `kprintf` can get the job done, provided you use it
-<strike>judiciously</strike> to print the value of every variable after every
-statement in every function that your program has to call.
+arsenal. Look at the [`kprintf` source code][kprintf-src] -- It's a lean
+implementation of `printf` designed to work _everywhere_. It's what Cosmopolitan
+Libc uses when the other functions want to write logs, even after the program
+has crashed. So it has to work at all times. This is what happens if you try to
+print some weird memory location using `kprintf`:
+
+```c
+kprintf("%s\n", 31415);
+//!!7ab7
+```
+
+You can even clone the Cosmopolitan Libc monorepo, add `kprintf` calls in
+Cosmopolitan Libc's internal functions, and test your code with your own
+debug-customized libc! When all else fails, `kprintf` can get the job done,
+provided you use it <strike>judiciously</strike> to print the value of every
+variable after every statement in every function that your program has to call.
 
 ![bell curve meme with printf and kprintf](/images/debug-cosmo/kprintf.jpg)
 
@@ -456,7 +464,8 @@ enrich our understanding of the programs we write.
 [dabba]: https://github.com/ahgamut/cosmopolitan/tree/dabbajson/third_party/dabbajson
 [seriot]: https://github.com/nst/JSONTestSuite
 [heisenbug]: https://en.wikipedia.org/wiki/Heisenbug
-[kprintf]: https://github.com/jart/cosmopolitan/blob/ef9776755ee3646029624fe30de5d58a3c03f6f6/libc/intrin/kprintf.greg.c
+[kprintf-src]: https://github.com/jart/cosmopolitan/blob/ef9776755ee3646029624fe30de5d58a3c03f6f6/libc/intrin/kprintf.greg.c
+[kprintf]: https://justine.lol/cosmopolitan/documentation.html#kprintf
 [duck]: https://en.wikipedia.org/wiki/Rubber_duck_debugging
 [stk-pr]: https://github.com/jart/cosmopolitan/pull/606
 [py311-thread]: https://github.com/ahgamut/cpython/blob/cosmo_py311/threading_example.py
