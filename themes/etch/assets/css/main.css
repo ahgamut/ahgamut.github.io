@@ -273,7 +273,6 @@ main#content pre {
 main#content pre code {
     padding: 0;
     font-size: 0.96em;
-    padding: 0 5px;
     color: inherit;
     background-color: inherit
 }
