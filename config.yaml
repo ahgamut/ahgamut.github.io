@@ -23,6 +23,28 @@ params:
   description: "Gautham's Blog"
   copyright: "Copyright © 2022 Gautham Venkatasubramanian"
 
+markup:
+  goldmark:
+    extensions:
+      definitionList: true
+      footnote: true
+      linkify: true
+      linkifyProtocol: https
+      strikethrough: true
+      table: true
+      taskList: true
+      typographer: true
+    parser:
+      attribute:
+        block: false
+        title: true
+      autoHeadingID: true
+      autoHeadingIDType: github
+    renderer:
+      hardWraps: false
+      unsafe: true
+      xhtml: false
+
 menu:
   main:
     - identifier: "About"

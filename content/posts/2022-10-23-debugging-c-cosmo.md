@@ -143,7 +143,7 @@ the `hex16-backtrace.com.dbg` file being located in the same directory as
 `hex16-backtrace.com`, as it contains necessary debugging information.
 
 Just knowing the backtrace of a crash helps reduce the time needed to fix an
-error: when porting [make to Cosmopolitan Libc][make-pr], adding a
+error: when porting [`make` to Cosmopolitan Libc][make-pr], adding a
 `ShowCrashReports` showed that `make` had some large `alloca` calls which were
 causing a crash. The fix was to add a `STATIC_STACK_SIZE` call in the `main`
 function, and then `make` could build the entire Cosmopolitan Libc monorepo.
@@ -154,16 +154,18 @@ Sometimes a backtrace of the crash alone is not sufficient. Cosmopolitan Libc
 allows you to log _every function call_ over the program's execution -- just
 pass [`--ftrace`][ftrace] at the end of your program, like this:
 
-```
+```bash
 ./hex16.com ./missing.txt --ftrace
+```
+```
 # truncated example
-# FUN 257012     1'567'864        48 &main
-# FUN 257012     1'573'031       112   &hex16
-# FUN 257012     1'578'356       160     &fopen
-# FUN 257012     1'612'346       336     &printf
-# FUN 257012     1'720'829       144     &fgetc
-# FUN 257012     1'726'479       176       &fgetc_unlocked
-# Segmentation Fault
+FUN 257012     1'567'864        48 &main
+FUN 257012     1'573'031       112   &hex16
+FUN 257012     1'578'356       160     &fopen
+FUN 257012     1'612'346       336     &printf
+FUN 257012     1'720'829       144     &fgetc
+FUN 257012     1'726'479       176       &fgetc_unlocked
+Segmentation Fault
 ```
 
 * The first column indicates it is a function call
@@ -189,31 +191,33 @@ a = 1
 b = 2
 with cosmo.ftrace():
     c = a + b
-# &meth_dealloc
-# &PyFrame_BlockSetup 76
-# &object_dealloc 265
-#   &PyObject_Free 82
-#     &_PyObject_Free.isra.0 52
-# &PyDict_GetItem 333
-#   &lookdict_unicode_nodummy 157
-# &PyDict_GetItem 166
-#   &lookdict_unicode_nodummy 34
-# &PyNumber_Add 273
-#   &binary_op1 69
-#     &long_add 178
-#       &PyLong_FromLong 135
-# &PyDict_SetItem 273
-#   &insertdict 164
-#     &lookdict_unicode_nodummy 53
-# &PyFrame_BlockPop 320
-# &PyObject_CallFunctionObjArgs 249
-#   &object_vacall 40
-#     &_PyObject_FastCallDict 95
-#       &_PyCFunction_FastCallDict 53
-#         &_PyMethodDef_RawFastCallDict 86
-#           &_PyStack_AsTuple 61
-#             &PyTuple_New 121
-#           &FtracerObject_exit 199
+```
+```
+&meth_dealloc
+&PyFrame_BlockSetup 76
+&object_dealloc 265
+  &PyObject_Free 82
+    &_PyObject_Free.isra.0 52
+&PyDict_GetItem 333
+  &lookdict_unicode_nodummy 157
+&PyDict_GetItem 166
+  &lookdict_unicode_nodummy 34
+&PyNumber_Add 273
+  &binary_op1 69
+    &long_add 178
+      &PyLong_FromLong 135
+&PyDict_SetItem 273
+  &insertdict 164
+    &lookdict_unicode_nodummy 53
+&PyFrame_BlockPop 320
+&PyObject_CallFunctionObjArgs 249
+  &object_vacall 40
+    &_PyObject_FastCallDict 95
+      &_PyCFunction_FastCallDict 53
+        &_PyMethodDef_RawFastCallDict 86
+          &_PyStack_AsTuple 61
+            &PyTuple_New 121
+          &FtracerObject_exit 199
 ```
 
 The numbers on the right are an approximate measure of time each function takes,
@@ -231,11 +235,13 @@ a bunch of system calls, you can log them like functions, by passing
 
 ```bash
 ./hex16.com ./missing.txt --strace
-# SYS 257304  43'627 bell system five system call support 171 magnums loaded on gnu/systemd
-# SYS 257304  99'854 mmap(0x700000000000, 8'388'608, PROT_READ|PROT_WRITE, MAP_STACK|MAP_ANONYMOUS, -1, 0) → 0x700000000000 (8'388'608 bytes total)
-# SYS 257304 892'097 getenv("TERM") → "xterm-256color"
-# SYS 257304 908'170 openat(AT_FDCWD, "./missing.txt", 0, 0) → -1 errno= 2
-# SYS 257304 932'876 write(1, u"hex16.c -- reading file ./missing.txt◙", 38) → 38 errno= 2
+```
+```
+SYS 257304  43'627 bell system five system call support 171 magnums loaded on gnu/systemd
+SYS 257304  99'854 mmap(0x700000000000, 8'388'608, PROT_READ|PROT_WRITE, MAP_STACK|MAP_ANONYMOUS, -1, 0) → 0x700000000000 (8'388'608 bytes total)
+SYS 257304 892'097 getenv("TERM") → "xterm-256color"
+SYS 257304 908'170 openat(AT_FDCWD, "./missing.txt", 0, 0) → -1 errno= 2
+SYS 257304 932'876 write(1, u"hex16.c -- reading file ./missing.txt◙", 38) → 38 errno= 2
 ```
 
 * The first column indicates it is a system call
@@ -303,6 +309,8 @@ Libc's ASAN/UBSAN runtime and find out:
 make clean
 make MODE=dbg hex16-backtrace.com
 ./hex16-backtrace.com ./sample2.txt
+```
+```
 hex16-backtrace.c:16: ubsan error: 'int' index 16 into 'char [16]' out of bounds (tid 257624)
 0x0000000000480c00: __ubsan_handle_out_of_bounds at /home/jart/cosmo/libc/intrin/ubsan.c:289
 0x0000000000421658: hex16 at /home/gautham/stuff/cosmo/debug-cosmo-example/hex16-backtrace.c:16
@@ -383,9 +391,9 @@ where it starts going off the rails:
 Underneath all the libraries, syntax, abstractions, and optimizations, we still
 need to have some idea of what's going on. Writing programs is a lot more fun
 when we can understand what the computer is actually doing. Detailed feedback
-helps understand programs better, and quick feedback helps develop faster.
-Cosmopolitan Libc provides a set of debugging tools we can use to enrich our
-understanding of the programs we write.
+helps understand programs better, and quick feedback helps develop programs
+faster.  Cosmopolitan Libc provides a set of debugging tools we can use to
+enrich our understanding of the programs we write.
 
 [^pyfaster]: 
 
