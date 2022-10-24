@@ -1,4 +1,358 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Tags on Blog Needs a Name</title><link>https://ahgamut.github.io/tags/</link><description>Recent content in Tags on Blog Needs a Name</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><atom:link href="https://ahgamut.github.io/tags/index.xml" rel="self" type="application/rss+xml"/><item><title>Actually Portable Executables with Rust and Cosmopolitan Libc</title><link>https://ahgamut.github.io/2022/07/27/ape-rust-example/</link><pubDate>Wed, 27 Jul 2022 00:00:00 +0000</pubDate><guid>https://ahgamut.github.io/2022/07/27/ape-rust-example/</guid><description>&lt;blockquote>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Tags on Blog Needs a Name</title><link>https://ahgamut.github.io/tags/</link><description>Recent content in Tags on Blog Needs a Name</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><atom:link href="https://ahgamut.github.io/tags/index.xml" rel="self" type="application/rss+xml"/><item><title>Debugging C With Cosmopolitan Libc</title><link>https://ahgamut.github.io/2022/10/23/debugging-c-with-cosmo/</link><pubDate>Sun, 23 Oct 2022 00:00:00 +0000</pubDate><guid>https://ahgamut.github.io/2022/10/23/debugging-c-with-cosmo/</guid><description>&lt;p>&lt;a href="https://justine.lol/cosmopolitan">Cosmopolitan Libc&lt;/a> provides a suite of debugging features that enhance
+the C development experience: function call tracing, &lt;code>gdb&lt;/code> integration, an
+ASAN/UBSAN runtime, and more! A lot of fast and critical code is written in C &amp;ndash;
+If you&amp;rsquo;re using software written in C, interfacing with C libraries, fixing bugs
+in C code, or even rewriting C software in some other language, it helps to
+understand what your C code is doing. Debugging isn&amp;rsquo;t just a diaspora of
+&lt;code>printf&lt;/code> statements &amp;ndash; in this blog post, we&amp;rsquo;ll look at how Cosmopolitan Libc
+helps with debugging C, true and properly, using this &lt;a href="https://github.com/ahgamut/debug-cosmo-example">example repo&lt;/a>.&lt;/p>
+&lt;h2 id="an-example-program">An example program&lt;/h2>
+&lt;p>Consider &lt;a href="https://github.com/ahgamut/debug-cosmo-example/blob/main/hex16.c">&lt;code>hex16.c&lt;/code>&lt;/a>: the user specifies a file at the command
+line, the program opens the file, prints (up to) the first 16 bytes as
+hexadecimal values, and then prints the bytes read as an ASCII string. You can
+find the entire code &lt;a href="https://github.com/ahgamut/debug-cosmo-example">here&lt;/a>.&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-c" data-lang="c">&lt;span class="cp">#include&lt;/span> &lt;span class="cpf">&amp;lt;stdio.h&amp;gt;&lt;/span>&lt;span class="cp">
+&lt;/span>&lt;span class="cp">#define NUM_CHARS 16
+&lt;/span>&lt;span class="cp">&lt;/span>
+&lt;span class="kt">void&lt;/span> &lt;span class="nf">hex16&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="k">const&lt;/span> &lt;span class="kt">char&lt;/span> &lt;span class="o">*&lt;/span>&lt;span class="n">filename&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;span class="n">FILE&lt;/span> &lt;span class="o">*&lt;/span>&lt;span class="n">fp&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">fopen&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">filename&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s">&amp;#34;r&amp;#34;&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;span class="kt">char&lt;/span> &lt;span class="n">res&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">NUM_CHARS&lt;/span>&lt;span class="p">];&lt;/span>
+&lt;span class="kt">int&lt;/span> &lt;span class="n">i&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">c&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="n">printf&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">&amp;#34;hex16.c -- reading file %s&lt;/span>&lt;span class="se">\n&lt;/span>&lt;span class="s">&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">filename&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;span class="k">for&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">i&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="mi">0&lt;/span>&lt;span class="p">;&lt;/span> &lt;span class="n">i&lt;/span> &lt;span class="o">&amp;lt;&lt;/span> &lt;span class="n">NUM_CHARS&lt;/span>&lt;span class="p">;&lt;/span> &lt;span class="n">i&lt;/span>&lt;span class="o">++&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;span class="n">c&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">fgetc&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">fp&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;span class="k">if&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">feof&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">fp&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="o">||&lt;/span> &lt;span class="n">c&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="o">-&lt;/span>&lt;span class="mi">1&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="k">break&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="n">printf&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">&amp;#34;0x%02x &amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">c&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;span class="n">res&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">i&lt;/span>&lt;span class="p">]&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="kt">char&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="n">c&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="p">}&lt;/span>
+&lt;span class="n">res&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">i&lt;/span>&lt;span class="p">]&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="sc">&amp;#39;\0&amp;#39;&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="n">printf&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">&amp;#34;&lt;/span>&lt;span class="se">\n&lt;/span>&lt;span class="s">%s&lt;/span>&lt;span class="se">\n&lt;/span>&lt;span class="s">&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">res&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;span class="p">}&lt;/span>
+&lt;span class="kt">int&lt;/span> &lt;span class="nf">main&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="kt">int&lt;/span> &lt;span class="n">argc&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="kt">char&lt;/span> &lt;span class="o">**&lt;/span>&lt;span class="n">argv&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;span class="n">hex16&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">argv&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="mi">1&lt;/span>&lt;span class="p">]);&lt;/span>
+&lt;span class="k">return&lt;/span> &lt;span class="mi">0&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="p">}&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>Let&amp;rsquo;s build the above program with &lt;code>make&lt;/code> and test it on a sample file:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">make hex16.com
+./hex16.com ./sample1.txt
+&lt;span class="c1"># hex16.c -- reading file ./sample1.txt&lt;/span>
+&lt;span class="c1"># 0x63 0x6f 0x73 0x6d 0x6f 0x20 0x6c 0x69 0x62 0x63 0x0a &lt;/span>
+&lt;span class="c1"># cosmo libc&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>But what happens if you don&amp;rsquo;t provide a file or provide a nonexistent file?&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">./hex16.com
+&lt;span class="c1"># Segmentation fault&lt;/span>
+./hex16.com ./missing.txt
+&lt;span class="c1"># Segmentation fault&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>Hmm, &lt;code>Segmentation fault&lt;/code> is not quite informative &amp;ndash; some part of the program
+is causing a crash, but where?&lt;/p>
+&lt;h2 id="gdb-and-backtraces">&lt;code>gdb&lt;/code> and backtraces&lt;/h2>
+&lt;p>With Cosmopolitan Libc, you can have &lt;a href="https://www.sourceware.org/gdb/">&lt;code>gdb&lt;/code>&lt;/a> integration and detailed
+backtraces for your C program in just one line: add &lt;code>ShowCrashReports();&lt;/code> at the
+start of the &lt;code>main&lt;/code> function. Let&amp;rsquo;s build &lt;a href="https://github.com/ahgamut/debug-cosmo-example/blob/main/hex16-backtrace.c">&lt;code>hex16-backtrace.c&lt;/code>&lt;/a>
+which is just that:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">make hex16-backtrace.com
+&lt;span class="c1"># try with no arguments&lt;/span>
+./hex16-backtrace.com
+&lt;span class="c1"># or try with a nonexistent file&lt;/span>
+./hex16-backtrace.com ./missing.txt
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>Now if you have &lt;a href="https://www.sourceware.org/gdb/">&lt;code>gdb&lt;/code>&lt;/a> available on &lt;code>$PATH&lt;/code>, you would get a TUI (terminal
+user interace) showing the register contents and the backtrace of the crash,
+like the image below:&lt;/p>
+&lt;p>&lt;img src="https://ahgamut.github.io/images/debug-cosmo/gdb-cosmo.png" alt="a gdb tui showing register info and the location of the crash">&lt;/p>
+&lt;p>Type &lt;code>bt&lt;/code> and press &lt;code>Enter&lt;/code> to view the backtrace in &lt;code>gdb&lt;/code>, and exit by pressing
+&lt;code>Ctrl+D&lt;/code>. You can set up a config for &lt;code>gdb&lt;/code> from the Cosmopolitan Libc README
+&lt;a href="https://github.com/jart/cosmopolitan#gdb">here&lt;/a>.&lt;/p>
+&lt;p>If &lt;code>gdb&lt;/code> is not available, or if you&amp;rsquo;re running the program as part of a test
+script, you would get the backtrace in text, showing the register contents and
+the backtrace of the crash:&lt;/p>
+&lt;pre tabindex="0">&lt;code>error: Uncaught SIGSEGV (SEGV_MAPERR) on X550LD pid 256891 tid 256891
+./hex16-backtrace.com
+EUNKNOWN/0/No error information
+Linux #1 SMP Debian 5.10.106-1 (2022-03-17) X550LD 5.10.0-13-amd64
+RAX 0000000000000000 RBX 00007ffe5c5c9a70 RDI 000000000042dd48 ST(0) 0.0
+RCX 0000000000000000 RDX 0000000000000000 RSI 0000000000000240 ST(1) 0.0
+RBP 00007000007fff80 RSP 00007000007fff60 RIP 000000000040b698 ST(2) 0.0
+R8 0000000000000000 R9 0000000000000001 R10 0000000000000004 ST(3) 0.0
+R11 0000000000000293 R12 0000000000000000 R13 000000000042dd46 ST(4) 0.0
+R14 00007ffe5c5c9a80 R15 00007ffe5c5c9b90 VF PF ZF IF
+XMM0 00000000000000000000000000000000 XMM8 00000000000000000000000000000000
+XMM1 7865682f656c706d6178652d6f6d736f XMM9 00000000000000000000000000000000
+XMM2 632d67756265642f6f6d736f632f6666 XMM10 00000000000000000000000000000000
+XMM3 7574732f6d6168747561672f656d6f68 XMM11 00000000000000000000000000000000
+XMM4 6f632e65636172746b6361622d363178 XMM12 00000000000000000000000000000000
+XMM5 65682f656c706d6178652d6f6d736f63 XMM13 00000000000000000000000000000000
+XMM6 2d67756265642f6f6d736f632f666675 XMM14 00000000000000000000000000000000
+XMM7 74732f6d6168747561672f656d6f682f XMM15 00000000000000000000000000000000
+0x000000000040b697: fixpathname at /home/jart/cosmo/libc/stdio/fopen.c:26
+(inlined by) fopen at /home/jart/cosmo/libc/stdio/fopen.c:62
+0x00000000004098d0: hex16 at /home/gautham/stuff/cosmo/debug-cosmo-example/hex16-backtrace.c:5
+0x000000000040291e: main at /home/gautham/stuff/cosmo/debug-cosmo-example/hex16-backtrace.c:22
+0x00000000004029cb: cosmo at /home/jart/cosmo/libc/runtime/cosmo.S:77
+0x0000000000402503: _start at /home/jart/cosmo/libc/crt/crt.S:103
+10008004-10008004 rw-pa- 1x automap 64kB w/ 7872kB hole
+10008080-100080ff rw-pa- 128x automap 8192kB w/ 96tB hole
+6fe00004-6fe00004 rw-paF 1x g_fds 64kB
+70000000-7000007f rw-Sa- 128x stack 8192kB
+# 16mB total mapped memory
+./hex16-backtrace.com
+&lt;/code>&lt;/pre>&lt;p>From the backtrace, you now know that not providing a file causes a crash
+involving &lt;code>fopen&lt;/code>, and so update the program to check if the first parameter of
+&lt;code>fopen&lt;/code> (ie &lt;code>argv[1]&lt;/code>) is NULL or not. Note that backtrace generation depends on
+the &lt;code>hex16-backtrace.com.dbg&lt;/code> file being located in the same directory as
+&lt;code>hex16-backtrace.com&lt;/code>, as it contains necessary debugging information.&lt;/p>
+&lt;p>Just knowing the backtrace of a crash helps reduce the time needed to fix an
+error: when porting &lt;a href="https://github.com/jart/cosmopolitan/pull/305">make to Cosmopolitan Libc&lt;/a>, adding a
+&lt;code>ShowCrashReports&lt;/code> showed that &lt;code>make&lt;/code> had some large &lt;code>alloca&lt;/code> calls which were
+causing a crash. The fix was to add a &lt;code>STATIC_STACK_SIZE&lt;/code> call in the &lt;code>main&lt;/code>
+function, and then &lt;code>make&lt;/code> could build the entire Cosmopolitan Libc monorepo.&lt;/p>
+&lt;h2 id="function-call-tracing-with---ftrace">function call tracing with &lt;code>--ftrace&lt;/code>&lt;/h2>
+&lt;p>Sometimes a backtrace of the crash alone is not sufficient. Cosmopolitan Libc
+allows you to log &lt;em>every function call&lt;/em> over the program&amp;rsquo;s execution &amp;ndash; just
+pass &lt;a href="https://justine.lol/ftrace/">&lt;code>--ftrace&lt;/code>&lt;/a> at the end of your program, like this:&lt;/p>
+&lt;pre tabindex="0">&lt;code>./hex16.com ./missing.txt --ftrace
+# truncated example
+# FUN 257012 1'567'864 48 &amp;amp;main
+# FUN 257012 1'573'031 112 &amp;amp;hex16
+# FUN 257012 1'578'356 160 &amp;amp;fopen
+# FUN 257012 1'612'346 336 &amp;amp;printf
+# FUN 257012 1'720'829 144 &amp;amp;fgetc
+# FUN 257012 1'726'479 176 &amp;amp;fgetc_unlocked
+# Segmentation Fault
+&lt;/code>&lt;/pre>&lt;ul>
+&lt;li>The first column indicates it is a function call&lt;/li>
+&lt;li>the second column shows the process ID/thread ID calling the function&lt;/li>
+&lt;li>the third column shows the approximate timestamp from the start of program
+execution&lt;/li>
+&lt;li>the last column shows the name of the function that was called.&lt;/li>
+&lt;/ul>
+&lt;p>The &lt;code>ftrace&lt;/code> output gets printed to &lt;code>stderr&lt;/code> by default; it is useful to
+redirect it to a file for later analysis. &lt;code>ftrace&lt;/code> does not require
+&lt;code>ShowCrashReports()&lt;/code> at the start of the &lt;code>main&lt;/code> function, though it still
+requires the &lt;code>hex16.com.dbg&lt;/code> for &lt;code>hex16.com&lt;/code>. You can read more about how &lt;code>ftrace&lt;/code>
+works &lt;a href="https://justine.lol/ftrace/">here&lt;/a>.&lt;/p>
+&lt;p>&lt;code>ftrace&lt;/code> also provides insight into program performance. I wrote a &lt;a href="https://github.com/jart/cosmopolitan/pull/285">Python
+wrapper for &lt;code>ftrace&lt;/code>&lt;/a> so I could examine how the CPython3.6 runtime
+behaves. For example, here&amp;rsquo;s how many calls it takes to add two values in
+Python3.6 built with Cosmopolitan Libc:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="kn">import&lt;/span> &lt;span class="nn">cosmo&lt;/span>
+&lt;span class="n">a&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="mi">1&lt;/span>
+&lt;span class="n">b&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="mi">2&lt;/span>
+&lt;span class="k">with&lt;/span> &lt;span class="n">cosmo&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">ftrace&lt;/span>&lt;span class="p">():&lt;/span>
+&lt;span class="n">c&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">a&lt;/span> &lt;span class="o">+&lt;/span> &lt;span class="n">b&lt;/span>
+&lt;span class="c1"># &amp;amp;meth_dealloc&lt;/span>
+&lt;span class="c1"># &amp;amp;PyFrame_BlockSetup 76&lt;/span>
+&lt;span class="c1"># &amp;amp;object_dealloc 265&lt;/span>
+&lt;span class="c1"># &amp;amp;PyObject_Free 82&lt;/span>
+&lt;span class="c1"># &amp;amp;_PyObject_Free.isra.0 52&lt;/span>
+&lt;span class="c1"># &amp;amp;PyDict_GetItem 333&lt;/span>
+&lt;span class="c1"># &amp;amp;lookdict_unicode_nodummy 157&lt;/span>
+&lt;span class="c1"># &amp;amp;PyDict_GetItem 166&lt;/span>
+&lt;span class="c1"># &amp;amp;lookdict_unicode_nodummy 34&lt;/span>
+&lt;span class="c1"># &amp;amp;PyNumber_Add 273&lt;/span>
+&lt;span class="c1"># &amp;amp;binary_op1 69&lt;/span>
+&lt;span class="c1"># &amp;amp;long_add 178&lt;/span>
+&lt;span class="c1"># &amp;amp;PyLong_FromLong 135&lt;/span>
+&lt;span class="c1"># &amp;amp;PyDict_SetItem 273&lt;/span>
+&lt;span class="c1"># &amp;amp;insertdict 164&lt;/span>
+&lt;span class="c1"># &amp;amp;lookdict_unicode_nodummy 53&lt;/span>
+&lt;span class="c1"># &amp;amp;PyFrame_BlockPop 320&lt;/span>
+&lt;span class="c1"># &amp;amp;PyObject_CallFunctionObjArgs 249&lt;/span>
+&lt;span class="c1"># &amp;amp;object_vacall 40&lt;/span>
+&lt;span class="c1"># &amp;amp;_PyObject_FastCallDict 95&lt;/span>
+&lt;span class="c1"># &amp;amp;_PyCFunction_FastCallDict 53&lt;/span>
+&lt;span class="c1"># &amp;amp;_PyMethodDef_RawFastCallDict 86&lt;/span>
+&lt;span class="c1"># &amp;amp;_PyStack_AsTuple 61&lt;/span>
+&lt;span class="c1"># &amp;amp;PyTuple_New 121&lt;/span>
+&lt;span class="c1"># &amp;amp;FtracerObject_exit 199&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>The numbers on the right are an approximate measure of time each function takes,
+which is pretty useful for a &amp;ldquo;slow&amp;rdquo; language like Python3.6&lt;sup id="fnref:1">&lt;a href="#fn:1" class="footnote-ref" role="doc-noteref">1&lt;/a>&lt;/sup>. &lt;code>ftrace&lt;/code>
+helped write a &lt;a href="https://github.com/jart/cosmopolitan/pull/425">custom &lt;code>sys.meta_path&lt;/code> importer&lt;/a> for Python3.6 in
+Cosmopolitan Libc &amp;ndash; I just moved code from Python into C until the size of the
+ftrace logs stopped decreasing.&lt;/p>
+&lt;h2 id="system-call-tracing-with---strace">system call tracing with &lt;code>--strace&lt;/code>&lt;/h2>
+&lt;p>Sometimes tracing function calls is too much information, and you just want to
+narrow down the error region from some logging information. If your program uses
+a bunch of system calls, you can log them like functions, by passing
+&lt;code>--strace&lt;/code> at the end of your program invocation, like this:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">./hex16.com ./missing.txt --strace
+&lt;span class="c1"># SYS 257304 43&amp;#39;627 bell system five system call support 171 magnums loaded on gnu/systemd&lt;/span>
+&lt;span class="c1"># SYS 257304 99&amp;#39;854 mmap(0x700000000000, 8&amp;#39;388&amp;#39;608, PROT_READ|PROT_WRITE, MAP_STACK|MAP_ANONYMOUS, -1, 0) → 0x700000000000 (8&amp;#39;388&amp;#39;608 bytes total)&lt;/span>
+&lt;span class="c1"># SYS 257304 892&amp;#39;097 getenv(&amp;#34;TERM&amp;#34;) → &amp;#34;xterm-256color&amp;#34;&lt;/span>
+&lt;span class="c1"># SYS 257304 908&amp;#39;170 openat(AT_FDCWD, &amp;#34;./missing.txt&amp;#34;, 0, 0) → -1 errno= 2&lt;/span>
+&lt;span class="c1"># SYS 257304 932&amp;#39;876 write(1, u&amp;#34;hex16.c -- reading file ./missing.txt◙&amp;#34;, 38) → 38 errno= 2&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
+&lt;li>The first column indicates it is a system call&lt;/li>
+&lt;li>the second column shows the process ID/thread ID making the call&lt;/li>
+&lt;li>the third column shows the approximate timestamp from the start of program
+execution&lt;/li>
+&lt;li>the fourth column shows output of the system call along with errno values&lt;/li>
+&lt;/ul>
+&lt;p>Unlike &lt;code>ShowCrashReports&lt;/code> and &lt;code>ftrace&lt;/code>, the &lt;code>--strace&lt;/code> flag does not require the
+&lt;code>hex16.com.dbg&lt;/code> file to be present. Now you see that the &lt;code>openat&lt;/code> resulted in
+an &lt;code>-1 errno 2&lt;/code> if the file doesn&amp;rsquo;t exist, so let&amp;rsquo;s update the code to check the
+&lt;code>FILE *&lt;/code> pointer before calling &lt;code>fgetc&lt;/code>. Thus you get the fixed program
+&lt;a href="https://github.com/ahgamut/debug-cosmo-example/blob/main/hex16-fixed.c">&lt;code>hex16-fixed.c&lt;/code>&lt;/a> below:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-c" data-lang="c">&lt;span class="cp">#include&lt;/span> &lt;span class="cpf">&amp;lt;stdio.h&amp;gt;&lt;/span>&lt;span class="cp">
+&lt;/span>&lt;span class="cp">#define NUM_CHARS 16
+&lt;/span>&lt;span class="cp">&lt;/span>
+&lt;span class="kt">void&lt;/span> &lt;span class="nf">hex16&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="k">const&lt;/span> &lt;span class="kt">char&lt;/span> &lt;span class="o">*&lt;/span>&lt;span class="n">filename&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;span class="n">FILE&lt;/span> &lt;span class="o">*&lt;/span>&lt;span class="n">fp&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">fopen&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">filename&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s">&amp;#34;r&amp;#34;&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;span class="kt">char&lt;/span> &lt;span class="n">res&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">NUM_CHARS&lt;/span>&lt;span class="p">];&lt;/span>
+&lt;span class="kt">int&lt;/span> &lt;span class="n">i&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">c&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="k">if&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="o">!&lt;/span>&lt;span class="n">fp&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;span class="n">printf&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">&amp;#34;unable to read %s!&lt;/span>&lt;span class="se">\n&lt;/span>&lt;span class="s">&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">filename&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;span class="k">return&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="p">}&lt;/span>
+&lt;span class="n">printf&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">&amp;#34;hex16.c -- reading file %s&lt;/span>&lt;span class="se">\n&lt;/span>&lt;span class="s">&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">filename&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;span class="k">for&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">i&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="mi">0&lt;/span>&lt;span class="p">;&lt;/span> &lt;span class="n">i&lt;/span> &lt;span class="o">&amp;lt;&lt;/span> &lt;span class="n">NUM_CHARS&lt;/span>&lt;span class="p">;&lt;/span> &lt;span class="n">i&lt;/span>&lt;span class="o">++&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;span class="n">c&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">fgetc&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">fp&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;span class="k">if&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">feof&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">fp&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="o">||&lt;/span> &lt;span class="n">c&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="o">-&lt;/span>&lt;span class="mi">1&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="k">break&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="n">printf&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">&amp;#34;0x%02x &amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">c&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;span class="n">res&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">i&lt;/span>&lt;span class="p">]&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="kt">char&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="n">c&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="p">}&lt;/span>
+&lt;span class="n">res&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">i&lt;/span>&lt;span class="p">]&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="sc">&amp;#39;\0&amp;#39;&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="n">printf&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">&amp;#34;&lt;/span>&lt;span class="se">\n&lt;/span>&lt;span class="s">%s&lt;/span>&lt;span class="se">\n&lt;/span>&lt;span class="s">&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">res&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;span class="p">}&lt;/span>
+&lt;span class="kt">int&lt;/span> &lt;span class="nf">main&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="kt">int&lt;/span> &lt;span class="n">argc&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="kt">char&lt;/span> &lt;span class="o">**&lt;/span>&lt;span class="n">argv&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;span class="k">if&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">argc&lt;/span> &lt;span class="o">!=&lt;/span> &lt;span class="mi">2&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;span class="n">printf&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">&amp;#34;USAGE:&lt;/span>&lt;span class="se">\n\t&lt;/span>&lt;span class="s">%s FILENAME&lt;/span>&lt;span class="se">\n&lt;/span>&lt;span class="s">&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">argv&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="mi">0&lt;/span>&lt;span class="p">]);&lt;/span>
+&lt;span class="k">return&lt;/span> &lt;span class="mi">1&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="p">}&lt;/span>
+&lt;span class="n">hex16&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">argv&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="mi">1&lt;/span>&lt;span class="p">]);&lt;/span>
+&lt;span class="k">return&lt;/span> &lt;span class="mi">0&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="p">}&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="asanubsan">ASAN/UBSAN&lt;/h2>
+&lt;p>The two errors in &lt;code>hex16.com&lt;/code> have been fixed, so it&amp;rsquo;s time to try another
+testcase to see if there are any more. What happens if the input file contains
+16 or more characters?&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">./hex16.com ./sample2.txt
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;code>hex16.com&lt;/code> has inconsistent behavior with &lt;code>sample2.txt&lt;/code> &amp;ndash; sometimes it prints
+extra garbage characters. But there is a &lt;code>res[i] = '\0'&lt;/code> after the loop to
+terminate the string, so what&amp;rsquo;s going on? Let&amp;rsquo;s build with the Cosmopolitan
+Libc&amp;rsquo;s ASAN/UBSAN runtime and find out:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">make clean
+make &lt;span class="nv">MODE&lt;/span>&lt;span class="o">=&lt;/span>dbg hex16-backtrace.com
+./hex16-backtrace.com ./sample2.txt
+hex16-backtrace.c:16: ubsan error: &lt;span class="s1">&amp;#39;int&amp;#39;&lt;/span> index &lt;span class="m">16&lt;/span> into &lt;span class="s1">&amp;#39;char [16]&amp;#39;&lt;/span> out of bounds &lt;span class="o">(&lt;/span>tid 257624&lt;span class="o">)&lt;/span>
+0x0000000000480c00: __ubsan_handle_out_of_bounds at /home/jart/cosmo/libc/intrin/ubsan.c:289
+0x0000000000421658: hex16 at /home/gautham/stuff/cosmo/debug-cosmo-example/hex16-backtrace.c:16
+0x0000000000402bf1: main at /home/gautham/stuff/cosmo/debug-cosmo-example/hex16-backtrace.c:22
+0x0000000000402cfd: cosmo at /home/jart/cosmo/libc/runtime/cosmo.S:77
+0x0000000000402543: _start at /home/jart/cosmo/libc/crt/crt.S:103
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>Ah &amp;ndash; when the file has more than 16 characters, the null terminator is written
+&lt;em>outside&lt;/em> the buffer, causing a buffer overflow when the string is printed. Now
+you can change the buffer to have one extra character, to handle this case,
+leading to the now again-fixed &lt;a href="https://github.com/ahgamut/debug-cosmo-example/blob/main/hex16-ubsan.c">&lt;code>hex16-ubsan.c&lt;/code>&lt;/a>.&lt;/p>
+&lt;p>Cosmopolitan&amp;rsquo;s ASAN/UBSAN runtime adds a magical improvement to your C
+development workflow&lt;sup id="fnref:2">&lt;a href="#fn:2" class="footnote-ref" role="doc-noteref">2&lt;/a>&lt;/sup>, for a tiny cost. Your build times increase only
+marginally, you avoid any new arguments with the compiler, you still write your
+tests as usual, and your binaries have almost the same performance. And of
+course, your binaries will now have runtime memory safety.&lt;/p>
+&lt;h2 id="in-case-of-emergency-or-lack-of-patience">In case of emergency (or lack of patience)&lt;/h2>
+&lt;p>Sometimes you find an annoying bug that occurs only during a specific sequence
+of events, and you just haven&amp;rsquo;t figured it out. It&amp;rsquo;s &lt;!-- raw HTML omitted -->not related to
+ASAN/UBSAN&lt;!-- raw HTML omitted --> &amp;ndash; the runtime tells you some memory access is invalid, which is
+good to know, but you don&amp;rsquo;t know where it all started. The &lt;!-- raw HTML omitted -->system calls are
+not shining light into the issue&lt;!-- raw HTML omitted -->, because it isn&amp;rsquo;t related to how your
+program interacts with the OS. The &lt;!-- raw HTML omitted -->function call sequences are too many&lt;!-- raw HTML omitted -->,
+and mixed in due to multithreading, so it&amp;rsquo;s difficult for you to make sense of
+what&amp;rsquo;s going on. You &lt;!-- raw HTML omitted -->start &lt;code>gdb&lt;/code> and setup a dozen breakpoints&lt;!-- raw HTML omitted --> before
+running the program, but it&amp;rsquo;s too stop-start, and you don&amp;rsquo;t have enough
+experience or patience to poke at the right spots. In frustration, you reach for
+the good old &lt;code>printf&lt;/code> statements, but they don&amp;rsquo;t work either! You have no tools,
+because your tools haven&amp;rsquo;t set up enough for your tools, like that bug where
+Python hasn&amp;rsquo;t set up &lt;code>stdin&lt;/code> because the &lt;code>encodings&lt;/code> module hasn&amp;rsquo;t been
+loaded&lt;sup id="fnref:3">&lt;a href="#fn:3" class="footnote-ref" role="doc-noteref">3&lt;/a>&lt;/sup> or the one where Rust&amp;rsquo;s thread-local storage makes some
+seemingly weird memory requests from the libc on startup&lt;sup id="fnref:4">&lt;a href="#fn:4" class="footnote-ref" role="doc-noteref">4&lt;/a>&lt;/sup>.&lt;/p>
+&lt;p>You&amp;rsquo;re backed into a corner. How do you debug this seemingly impervious
+&lt;a href="https://en.wikipedia.org/wiki/Heisenbug">heisenbug&lt;/a>?&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>You imagine yourself as an &lt;code>x86_64&lt;/code> chip (complete with power supply, RAM,
+and peripherals) and start &lt;a href="https://en.wikipedia.org/wiki/Rubber_duck_debugging">rubberducking&lt;/a> each assembly instruction
+to hapless passerby until the end of time or until the bug is found,
+whichever is earlier.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>You use Cosmopolitan Libc&amp;rsquo;s &lt;a href="https://github.com/jart/cosmopolitan/blob/ef9776755ee3646029624fe30de5d58a3c03f6f6/libc/intrin/kprintf.greg.c">&lt;code>kprintf&lt;/code>&lt;/a>.&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;p>&lt;a href="https://github.com/jart/cosmopolitan/blob/ef9776755ee3646029624fe30de5d58a3c03f6f6/libc/intrin/kprintf.greg.c">&lt;code>kprintf&lt;/code>&lt;/a> is the final tool in the Cosmopolitan Libc debugging
+arsenal. It&amp;rsquo;s a lean implementation of &lt;code>printf&lt;/code> designed to work &lt;em>everywhere&lt;/em> &amp;ndash;
+it&amp;rsquo;s what Cosmopolitan uses when the other functions want to write logs, even
+after the program has crashed. So it has to work at all times. You can even
+clone the Cosmopolitan Libc monorepo, add &lt;code>kprintf&lt;/code> calls in Cosmopolitan Libc&amp;rsquo;s
+internal functions, and test your code with your own debug-customized libc! When
+nothing else works, &lt;code>kprintf&lt;/code> can get the job done, provided you use it
+&lt;!-- raw HTML omitted -->judiciously&lt;!-- raw HTML omitted --> to print the value of every variable after every
+statement in every function that your program has to call.&lt;/p>
+&lt;p>&lt;img src="https://ahgamut.github.io/images/debug-cosmo/kprintf.jpg" alt="bell curve meme with printf and kprintf">&lt;/p>
+&lt;h2 id="closing-notes">Closing Notes&lt;/h2>
+&lt;p>Nobody writes perfect code in one try. Many eyes make bugs scarce. With
+Cosmopolitan Libc, debugging becomes a game of Scotland Yard, instead of
+blind-man&amp;rsquo;s buff &amp;ndash; instead of stumbling around and stubbing your toes, you have
+&lt;strong>five&lt;/strong> different angles to understand what your program is doing and determine
+where it starts going off the rails:&lt;/p>
+&lt;ul>
+&lt;li>you can have a simple backtrace with the register contents&lt;/li>
+&lt;li>you can log all (or a subset of) the function calls to see which sequence possibly
+leads to a crash or a slowdown&lt;/li>
+&lt;li>you can log all the system calls and examine the interaction between your
+program and the OS&lt;/li>
+&lt;li>you can learn to use &lt;code>gdb&lt;/code> and dissect your program with an ever-increasing number
+of breakpoints or similar wizardry&lt;/li>
+&lt;li>when at your wit&amp;rsquo;s end, you can revert to old habits, only this time you use
+&lt;code>kprintf&lt;/code> instead of &lt;code>printf&lt;/code> and gain superpowers&lt;/li>
+&lt;/ul>
+&lt;p>Underneath all the libraries, syntax, abstractions, and optimizations, we still
+need to have some idea of what&amp;rsquo;s going on. Writing programs is a lot more fun
+when we can understand what the computer is actually doing. Detailed feedback
+helps understand programs better, and quick feedback helps develop faster.
+Cosmopolitan Libc provides a set of debugging tools we can use to enrich our
+understanding of the programs we write.&lt;/p>
+&lt;section class="footnotes" role="doc-endnotes">
+&lt;hr>
+&lt;ol>
+&lt;li id="fn:1" role="doc-endnote">
+&lt;p>Python is undergoing a lot of performance improvements nowadays &amp;ndash; On
+2022-08-05, CPython released &lt;a href="https://github.com/python/cpython/releases/tag/v3.11.0rc1">&lt;code>3.11.0rc1&lt;/code>&lt;/a>, and I ported that to
+Cosmopolitan Libc &lt;a href="https://github.com/ahgamut/cpython/tree/cosmo_py311">here&lt;/a>. The 3.11 port doesn&amp;rsquo;t have &lt;code>ftrace&lt;/code>
+or the other goodies yet; it&amp;rsquo;ll be interesting to see how &lt;code>ftrace&lt;/code> gives
+insight into CPython&amp;rsquo;s new &amp;ldquo;JIT-like&amp;rdquo; optimization tricks.&amp;#160;&lt;a href="#fnref:1" class="footnote-backref" role="doc-backlink">&amp;#x21a9;&amp;#xfe0e;&lt;/a>&lt;/p>
+&lt;/li>
+&lt;li id="fn:2" role="doc-endnote">
+&lt;p>A beautiful thing happens after a while developing with &lt;code>MODE=dbg&lt;/code>: you&amp;rsquo;re
+still as fast as before, but now you have a sixth sense, an intuition, or &lt;a href="https://books.google.com/books/about/A_Discipline_of_Programming.html?id=MsUmAAAAMAAJ">a
+discipline of programming&lt;/a> in C. Because the safety of UBSAN enforces
+only lenient bounds, you start writing UBSAN-tolerant code, but you also
+gain the confidence to gamble with performance tricks, knowing that UBSAN
+will save you if things go awry. I had never written a JSON parser before,
+but I wrote one in C, with &lt;a href="https://github.com/ahgamut/cosmopolitan/tree/dabbajson/third_party/dabbajson">NaN-boxing and pointer manipulation&lt;/a>, in
+a few afternoons. It passes around 90% of the &lt;a href="https://github.com/nst/JSONTestSuite">most comprehensive JSON Test
+suite&lt;/a>, on &lt;code>MODE=dbg&lt;/code> too.&amp;#160;&lt;a href="#fnref:2" class="footnote-backref" role="doc-backlink">&amp;#x21a9;&amp;#xfe0e;&lt;/a>&lt;/p>
+&lt;/li>
+&lt;li id="fn:3" role="doc-endnote">
+&lt;p>This was a nasty bug that happened if you didn&amp;rsquo;t provide a proper folder
+location for Python 3 to import its standard library. Here&amp;rsquo;s my limited
+recall: Python 3 is Unicode-by-default. But it&amp;rsquo;s not really Unicode when it
+starts up, it&amp;rsquo;s still mostly ASCII-ish. Python does some locale checking
+before attempting to import &lt;code>encodings.py&lt;/code>, and then sets up almost
+everything else. So if &lt;code>encodings.py&lt;/code> is not found, Python gets stuck in
+this limbo and aborts. I could not connect the error messages to
+&lt;code>encodings.py&lt;/code>, so I just &lt;code>kprintf&lt;/code>&amp;rsquo;d every call in the import sequence
+until I found the fix.&amp;#160;&lt;a href="#fnref:3" class="footnote-backref" role="doc-backlink">&amp;#x21a9;&amp;#xfe0e;&lt;/a>&lt;/p>
+&lt;/li>
+&lt;li id="fn:4" role="doc-endnote">
+&lt;p>Don&amp;rsquo;t &lt;code>panic!&lt;/code> I said &lt;em>seemingly&lt;/em>. There wasn&amp;rsquo;t anything weird with how Rust
+initialized thread-local storage, because the Rust examples I wrote still
+worked on &lt;code>glibc&lt;/code>. We eventually narrowed the bug down to a pointer
+initialization in &lt;code>pthread_create&lt;/code> in Cosmopolitan Libc, and the fix was a
+&lt;a href="https://github.com/jart/cosmopolitan/pull/606">single line&lt;/a>. Cosmopolitan Libc does have &lt;code>pthreads&lt;/code> support now,
+and it can run multithreaded &lt;a href="https://github.com/ahgamut/cpython/blob/cosmo_py311/threading_example.py">Python 3.11 scripts&lt;/a> and &lt;a href="https://github.com/ahgamut/rust-ape-example">Rust
+executables&lt;/a>.&amp;#160;&lt;a href="#fnref:4" class="footnote-backref" role="doc-backlink">&amp;#x21a9;&amp;#xfe0e;&lt;/a>&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;/section></description></item><item><title>Actually Portable Executables with Rust and Cosmopolitan Libc</title><link>https://ahgamut.github.io/2022/07/27/ape-rust-example/</link><pubDate>Wed, 27 Jul 2022 00:00:00 +0000</pubDate><guid>https://ahgamut.github.io/2022/07/27/ape-rust-example/</guid><description>&lt;blockquote>
 &lt;p>aka &amp;ldquo;Rust is Actually Portable&amp;rdquo;, after &lt;a href="https://ahgamut.github.io/2021/02/27/ape-cosmo/">Lua&lt;/a> and &lt;a href="https://ahgamut.github.io/2021/07/13/ape-python/">Python&lt;/a>&lt;/p>
 &lt;/blockquote>
 &lt;p>I just built a &lt;a href="https://rust-lang.org">Rust&lt;/a> executable that runs on six operating systems
