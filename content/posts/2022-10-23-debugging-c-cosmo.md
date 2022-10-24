@@ -39,6 +39,7 @@ void hex16(const char *filename) {
         res[i] = (char)c;
     }
     res[i] = '\0';
+    fclose(fp);
     printf("\n%s\n", res);
 }
 
@@ -277,6 +278,7 @@ void hex16(const char *filename) {
         res[i] = (char)c;
     }
     res[i] = '\0';
+    fclose(fp);
     printf("\n%s\n", res);
 }
 
