@@ -308,18 +308,22 @@ to hapless passerby until the end of time or until the bug is found,
 whichever is earlier.</p>
 </li>
 <li>
-<p>You use Cosmopolitan Libc&rsquo;s <a href=https://github.com/jart/cosmopolitan/blob/ef9776755ee3646029624fe30de5d58a3c03f6f6/libc/intrin/kprintf.greg.c><code>kprintf</code></a>.</p>
+<p>You use <a href=https://justine.lol/cosmopolitan/documentation.html#kprintf>Cosmopolitan Libc&rsquo;s <code>kprintf</code></a>.</p>
 </li>
 </ol>
-<p><a href=https://github.com/jart/cosmopolitan/blob/ef9776755ee3646029624fe30de5d58a3c03f6f6/libc/intrin/kprintf.greg.c><code>kprintf</code></a> is the final tool in the Cosmopolitan Libc debugging
-arsenal. It&rsquo;s a lean implementation of <code>printf</code> designed to work <em>everywhere</em> &ndash;
-it&rsquo;s what Cosmopolitan uses when the other functions want to write logs, even
-after the program has crashed. So it has to work at all times. You can even
-clone the Cosmopolitan Libc monorepo, add <code>kprintf</code> calls in Cosmopolitan Libc&rsquo;s
-internal functions, and test your code with your own debug-customized libc! When
-nothing else works, <code>kprintf</code> can get the job done, provided you use it
-<strike>judiciously</strike> to print the value of every variable after every
-statement in every function that your program has to call.</p>
+<p><a href=https://justine.lol/cosmopolitan/documentation.html#kprintf><code>kprintf</code></a> is the final tool in the Cosmopolitan Libc debugging
+arsenal. Look at the <a href=https://github.com/jart/cosmopolitan/blob/ef9776755ee3646029624fe30de5d58a3c03f6f6/libc/intrin/kprintf.greg.c><code>kprintf</code> source code</a> &ndash; It&rsquo;s a lean
+implementation of <code>printf</code> designed to work <em>everywhere</em>. It&rsquo;s what Cosmopolitan
+Libc uses when the other functions want to write logs, even after the program
+has crashed. So it has to work at all times. This is what happens if you try to
+print some weird memory location using <code>kprintf</code>:</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-c data-lang=c><span class=n>kprintf</span><span class=p>(</span><span class=s>&#34;%s</span><span class=se>\n</span><span class=s>&#34;</span><span class=p>,</span> <span class=mi>31415</span><span class=p>);</span>
+<span class=c1>//!!7ab7
+</span></code></pre></div><p>You can even clone the Cosmopolitan Libc monorepo, add <code>kprintf</code> calls in
+Cosmopolitan Libc&rsquo;s internal functions, and test your code with your own
+debug-customized libc! When all else fails, <code>kprintf</code> can get the job done,
+provided you use it <strike>judiciously</strike> to print the value of every
+variable after every statement in every function that your program has to call.</p>
 <p><img src=/images/debug-cosmo/kprintf.jpg alt="bell curve meme with printf and kprintf"></p>
 <h2 id=closing-notes>Closing Notes</h2>
 <p>Nobody writes perfect code in one try. Many eyes make bugs scarce. With
