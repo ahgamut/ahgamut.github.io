@@ -259,7 +259,16 @@ an <code>-1 errno 2</code> if the file doesn&rsquo;t exist, so let&rsquo;s updat
 <p>The two errors in <code>hex16.com</code> have been fixed, so it&rsquo;s time to try another
 testcase to see if there are any more. What happens if the input file contains
 16 or more characters?</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>./hex16.com ./sample2.txt
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>cat ./sample2.txt
+<span class=c1># cosmopolitan libc</span>
+./hex16.com ./sample2.txt
+<span class=c1># hex16.c -- reading file ./sample2.txt</span>
+<span class=c1># 0x63 0x6f 0x73 0x6d 0x6f 0x70 0x6f 0x6c 0x69 0x74 0x61 0x6e 0x20 0x6c 0x69 0x62 </span>
+<span class=c1># cosmopolitan lib2</span>
+./hex16.com ./sample2.txt
+<span class=c1># hex16.c -- reading file ./sample2.txt</span>
+<span class=c1># 0x63 0x6f 0x73 0x6d 0x6f 0x70 0x6f 0x6c 0x69 0x74 0x61 0x6e 0x20 0x6c 0x69 0x62 </span>
+<span class=c1># cosmopolitan lib3</span>
 </code></pre></div><p><code>hex16.com</code> has inconsistent behavior with <code>sample2.txt</code> &ndash; sometimes it prints
 extra garbage characters. But there is a <code>res[i] = '\0'</code> after the loop to
 terminate the string, so what&rsquo;s going on? Let&rsquo;s build with the Cosmopolitan

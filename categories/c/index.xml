@@ -227,7 +227,16 @@ an &lt;code>-1 errno 2&lt;/code> if the file doesn&amp;rsquo;t exist, so let&amp
 &lt;p>The two errors in &lt;code>hex16.com&lt;/code> have been fixed, so it&amp;rsquo;s time to try another
 testcase to see if there are any more. What happens if the input file contains
 16 or more characters?&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">./hex16.com ./sample2.txt
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">cat ./sample2.txt
+&lt;span class="c1"># cosmopolitan libc&lt;/span>
+./hex16.com ./sample2.txt
+&lt;span class="c1"># hex16.c -- reading file ./sample2.txt&lt;/span>
+&lt;span class="c1"># 0x63 0x6f 0x73 0x6d 0x6f 0x70 0x6f 0x6c 0x69 0x74 0x61 0x6e 0x20 0x6c 0x69 0x62 &lt;/span>
+&lt;span class="c1"># cosmopolitan lib2&lt;/span>
+./hex16.com ./sample2.txt
+&lt;span class="c1"># hex16.c -- reading file ./sample2.txt&lt;/span>
+&lt;span class="c1"># 0x63 0x6f 0x73 0x6d 0x6f 0x70 0x6f 0x6c 0x69 0x74 0x61 0x6e 0x20 0x6c 0x69 0x62 &lt;/span>
+&lt;span class="c1"># cosmopolitan lib3&lt;/span>
 &lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;code>hex16.com&lt;/code> has inconsistent behavior with &lt;code>sample2.txt&lt;/code> &amp;ndash; sometimes it prints
 extra garbage characters. But there is a &lt;code>res[i] = '\0'&lt;/code> after the loop to
 terminate the string, so what&amp;rsquo;s going on? Let&amp;rsquo;s build with the Cosmopolitan
