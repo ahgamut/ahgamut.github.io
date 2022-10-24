@@ -101,7 +101,7 @@ will follow the below template:</p>
         <span class=k>return</span> <span class=n>x</span>
 </code></pre></div><p>Having networks follow this template would save time when writing boilerplate code for train/validation/test
 cycles. Let&rsquo;s add another simplifying constraint: if the neural network DAG is forced to be a straight line,
-the function calls in the <code>forward</code> method can be in the same order as the declarations. How do I
+the function calls in the <code>forward</code> method can be in <u>the same order</u> as the declarations. How do I
 start designing such a template?</p>
 <h3 id=jinja2><code>Jinja2</code></h3>
 <p>From the <code>Jinja2</code> <a href=https://jinja.palletsprojects.com/en/2.11.x/>website</a> (emphasis mine):</p>

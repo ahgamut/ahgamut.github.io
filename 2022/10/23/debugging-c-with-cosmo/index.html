@@ -131,7 +131,7 @@ involving <code>fopen</code>, and so update the program to check if the first pa
 the <code>hex16-backtrace.com.dbg</code> file being located in the same directory as
 <code>hex16-backtrace.com</code>, as it contains necessary debugging information.</p>
 <p>Just knowing the backtrace of a crash helps reduce the time needed to fix an
-error: when porting <a href=https://github.com/jart/cosmopolitan/pull/305>make to Cosmopolitan Libc</a>, adding a
+error: when porting <a href=https://github.com/jart/cosmopolitan/pull/305><code>make</code> to Cosmopolitan Libc</a>, adding a
 <code>ShowCrashReports</code> showed that <code>make</code> had some large <code>alloca</code> calls which were
 causing a crash. The fix was to add a <code>STATIC_STACK_SIZE</code> call in the <code>main</code>
 function, and then <code>make</code> could build the entire Cosmopolitan Libc monorepo.</p>
@@ -139,15 +139,15 @@ function, and then <code>make</code> could build the entire Cosmopolitan Libc mo
 <p>Sometimes a backtrace of the crash alone is not sufficient. Cosmopolitan Libc
 allows you to log <em>every function call</em> over the program&rsquo;s execution &ndash; just
 pass <a href=https://justine.lol/ftrace/><code>--ftrace</code></a> at the end of your program, like this:</p>
-<pre tabindex=0><code>./hex16.com ./missing.txt --ftrace
-# truncated example
-# FUN 257012     1'567'864        48 &amp;main
-# FUN 257012     1'573'031       112   &amp;hex16
-# FUN 257012     1'578'356       160     &amp;fopen
-# FUN 257012     1'612'346       336     &amp;printf
-# FUN 257012     1'720'829       144     &amp;fgetc
-# FUN 257012     1'726'479       176       &amp;fgetc_unlocked
-# Segmentation Fault
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>./hex16.com ./missing.txt --ftrace
+</code></pre></div><pre tabindex=0><code># truncated example
+FUN 257012     1'567'864        48 &amp;main
+FUN 257012     1'573'031       112   &amp;hex16
+FUN 257012     1'578'356       160     &amp;fopen
+FUN 257012     1'612'346       336     &amp;printf
+FUN 257012     1'720'829       144     &amp;fgetc
+FUN 257012     1'726'479       176       &amp;fgetc_unlocked
+Segmentation Fault
 </code></pre><ul>
 <li>The first column indicates it is a function call</li>
 <li>the second column shows the process ID/thread ID calling the function</li>
@@ -169,32 +169,32 @@ Python3.6 built with Cosmopolitan Libc:</p>
 <span class=n>b</span> <span class=o>=</span> <span class=mi>2</span>
 <span class=k>with</span> <span class=n>cosmo</span><span class=o>.</span><span class=n>ftrace</span><span class=p>():</span>
     <span class=n>c</span> <span class=o>=</span> <span class=n>a</span> <span class=o>+</span> <span class=n>b</span>
-<span class=c1># &amp;meth_dealloc</span>
-<span class=c1># &amp;PyFrame_BlockSetup 76</span>
-<span class=c1># &amp;object_dealloc 265</span>
-<span class=c1>#   &amp;PyObject_Free 82</span>
-<span class=c1>#     &amp;_PyObject_Free.isra.0 52</span>
-<span class=c1># &amp;PyDict_GetItem 333</span>
-<span class=c1>#   &amp;lookdict_unicode_nodummy 157</span>
-<span class=c1># &amp;PyDict_GetItem 166</span>
-<span class=c1>#   &amp;lookdict_unicode_nodummy 34</span>
-<span class=c1># &amp;PyNumber_Add 273</span>
-<span class=c1>#   &amp;binary_op1 69</span>
-<span class=c1>#     &amp;long_add 178</span>
-<span class=c1>#       &amp;PyLong_FromLong 135</span>
-<span class=c1># &amp;PyDict_SetItem 273</span>
-<span class=c1>#   &amp;insertdict 164</span>
-<span class=c1>#     &amp;lookdict_unicode_nodummy 53</span>
-<span class=c1># &amp;PyFrame_BlockPop 320</span>
-<span class=c1># &amp;PyObject_CallFunctionObjArgs 249</span>
-<span class=c1>#   &amp;object_vacall 40</span>
-<span class=c1>#     &amp;_PyObject_FastCallDict 95</span>
-<span class=c1>#       &amp;_PyCFunction_FastCallDict 53</span>
-<span class=c1>#         &amp;_PyMethodDef_RawFastCallDict 86</span>
-<span class=c1>#           &amp;_PyStack_AsTuple 61</span>
-<span class=c1>#             &amp;PyTuple_New 121</span>
-<span class=c1>#           &amp;FtracerObject_exit 199</span>
-</code></pre></div><p>The numbers on the right are an approximate measure of time each function takes,
+</code></pre></div><pre tabindex=0><code>&amp;meth_dealloc
+&amp;PyFrame_BlockSetup 76
+&amp;object_dealloc 265
+  &amp;PyObject_Free 82
+    &amp;_PyObject_Free.isra.0 52
+&amp;PyDict_GetItem 333
+  &amp;lookdict_unicode_nodummy 157
+&amp;PyDict_GetItem 166
+  &amp;lookdict_unicode_nodummy 34
+&amp;PyNumber_Add 273
+  &amp;binary_op1 69
+    &amp;long_add 178
+      &amp;PyLong_FromLong 135
+&amp;PyDict_SetItem 273
+  &amp;insertdict 164
+    &amp;lookdict_unicode_nodummy 53
+&amp;PyFrame_BlockPop 320
+&amp;PyObject_CallFunctionObjArgs 249
+  &amp;object_vacall 40
+    &amp;_PyObject_FastCallDict 95
+      &amp;_PyCFunction_FastCallDict 53
+        &amp;_PyMethodDef_RawFastCallDict 86
+          &amp;_PyStack_AsTuple 61
+            &amp;PyTuple_New 121
+          &amp;FtracerObject_exit 199
+</code></pre><p>The numbers on the right are an approximate measure of time each function takes,
 which is pretty useful for a &ldquo;slow&rdquo; language like Python3.6<sup id=fnref:1><a href=#fn:1 class=footnote-ref role=doc-noteref>1</a></sup>. <code>ftrace</code>
 helped write a <a href=https://github.com/jart/cosmopolitan/pull/425>custom <code>sys.meta_path</code> importer</a> for Python3.6 in
 Cosmopolitan Libc &ndash; I just moved code from Python into C until the size of the
@@ -205,12 +205,12 @@ narrow down the error region from some logging information. If your program uses
 a bunch of system calls, you can log them like functions, by passing
 <code>--strace</code> at the end of your program invocation, like this:</p>
 <div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>./hex16.com ./missing.txt --strace
-<span class=c1># SYS 257304  43&#39;627 bell system five system call support 171 magnums loaded on gnu/systemd</span>
-<span class=c1># SYS 257304  99&#39;854 mmap(0x700000000000, 8&#39;388&#39;608, PROT_READ|PROT_WRITE, MAP_STACK|MAP_ANONYMOUS, -1, 0) → 0x700000000000 (8&#39;388&#39;608 bytes total)</span>
-<span class=c1># SYS 257304 892&#39;097 getenv(&#34;TERM&#34;) → &#34;xterm-256color&#34;</span>
-<span class=c1># SYS 257304 908&#39;170 openat(AT_FDCWD, &#34;./missing.txt&#34;, 0, 0) → -1 errno= 2</span>
-<span class=c1># SYS 257304 932&#39;876 write(1, u&#34;hex16.c -- reading file ./missing.txt◙&#34;, 38) → 38 errno= 2</span>
-</code></pre></div><ul>
+</code></pre></div><pre tabindex=0><code>SYS 257304  43'627 bell system five system call support 171 magnums loaded on gnu/systemd
+SYS 257304  99'854 mmap(0x700000000000, 8'388'608, PROT_READ|PROT_WRITE, MAP_STACK|MAP_ANONYMOUS, -1, 0) → 0x700000000000 (8'388'608 bytes total)
+SYS 257304 892'097 getenv(&quot;TERM&quot;) → &quot;xterm-256color&quot;
+SYS 257304 908'170 openat(AT_FDCWD, &quot;./missing.txt&quot;, 0, 0) → -1 errno= 2
+SYS 257304 932'876 write(1, u&quot;hex16.c -- reading file ./missing.txt◙&quot;, 38) → 38 errno= 2
+</code></pre><ul>
 <li>The first column indicates it is a system call</li>
 <li>the second column shows the process ID/thread ID making the call</li>
 <li>the third column shows the approximate timestamp from the start of program
@@ -265,13 +265,13 @@ Libc&rsquo;s ASAN/UBSAN runtime and find out:</p>
 <div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>make clean
 make <span class=nv>MODE</span><span class=o>=</span>dbg hex16-backtrace.com
 ./hex16-backtrace.com ./sample2.txt
-hex16-backtrace.c:16: ubsan error: <span class=s1>&#39;int&#39;</span> index <span class=m>16</span> into <span class=s1>&#39;char [16]&#39;</span> out of bounds <span class=o>(</span>tid 257624<span class=o>)</span>
+</code></pre></div><pre tabindex=0><code>hex16-backtrace.c:16: ubsan error: 'int' index 16 into 'char [16]' out of bounds (tid 257624)
 0x0000000000480c00: __ubsan_handle_out_of_bounds at /home/jart/cosmo/libc/intrin/ubsan.c:289
 0x0000000000421658: hex16 at /home/gautham/stuff/cosmo/debug-cosmo-example/hex16-backtrace.c:16
 0x0000000000402bf1: main at /home/gautham/stuff/cosmo/debug-cosmo-example/hex16-backtrace.c:22
 0x0000000000402cfd: cosmo at /home/jart/cosmo/libc/runtime/cosmo.S:77
 0x0000000000402543: _start at /home/jart/cosmo/libc/crt/crt.S:103
-</code></pre></div><p>Ah &ndash; when the file has more than 16 characters, the null terminator is written
+</code></pre><p>Ah &ndash; when the file has more than 16 characters, the null terminator is written
 <em>outside</em> the buffer, causing a buffer overflow when the string is printed. Now
 you can change the buffer to have one extra character, to handle this case,
 leading to the now again-fixed <a href=https://github.com/ahgamut/debug-cosmo-example/blob/main/hex16-ubsan.c><code>hex16-ubsan.c</code></a>.</p>
@@ -282,13 +282,13 @@ tests as usual, and your binaries have almost the same performance. And of
 course, your binaries will now have runtime memory safety.</p>
 <h2 id=in-case-of-emergency-or-lack-of-patience>In case of emergency (or lack of patience)</h2>
 <p>Sometimes you find an annoying bug that occurs only during a specific sequence
-of events, and you just haven&rsquo;t figured it out. It&rsquo;s not related to
-ASAN/UBSAN &ndash; the runtime tells you some memory access is invalid, which is
-good to know, but you don&rsquo;t know where it all started. The system calls are
-not shining light into the issue, because it isn&rsquo;t related to how your
-program interacts with the OS. The function call sequences are too many,
+of events, and you just haven&rsquo;t figured it out. It&rsquo;s <u>not related to
+ASAN/UBSAN</u> &ndash; the runtime tells you some memory access is invalid, which is
+good to know, but you don&rsquo;t know where it all started. The <u>system calls are
+not shining light into the issue</u>, because it isn&rsquo;t related to how your
+program interacts with the OS. The <u>function call sequences are too many</u>,
 and mixed in due to multithreading, so it&rsquo;s difficult for you to make sense of
-what&rsquo;s going on. You start <code>gdb</code> and setup a dozen breakpoints before
+what&rsquo;s going on. You <u>start <code>gdb</code> and setup a dozen breakpoints</u> before
 running the program, but it&rsquo;s too stop-start, and you don&rsquo;t have enough
 experience or patience to poke at the right spots. In frustration, you reach for
 the good old <code>printf</code> statements, but they don&rsquo;t work either! You have no tools,
@@ -316,7 +316,7 @@ after the program has crashed. So it has to work at all times. You can even
 clone the Cosmopolitan Libc monorepo, add <code>kprintf</code> calls in Cosmopolitan Libc&rsquo;s
 internal functions, and test your code with your own debug-customized libc! When
 nothing else works, <code>kprintf</code> can get the job done, provided you use it
-judiciously to print the value of every variable after every
+<strike>judiciously</strike> to print the value of every variable after every
 statement in every function that your program has to call.</p>
 <p><img src=/images/debug-cosmo/kprintf.jpg alt="bell curve meme with printf and kprintf"></p>
 <h2 id=closing-notes>Closing Notes</h2>
@@ -339,9 +339,9 @@ of breakpoints or similar wizardry</li>
 <p>Underneath all the libraries, syntax, abstractions, and optimizations, we still
 need to have some idea of what&rsquo;s going on. Writing programs is a lot more fun
 when we can understand what the computer is actually doing. Detailed feedback
-helps understand programs better, and quick feedback helps develop faster.
-Cosmopolitan Libc provides a set of debugging tools we can use to enrich our
-understanding of the programs we write.</p>
+helps understand programs better, and quick feedback helps develop programs
+faster. Cosmopolitan Libc provides a set of debugging tools we can use to
+enrich our understanding of the programs we write.</p>
 <section class=footnotes role=doc-endnotes>
 <hr>
 <ol>
