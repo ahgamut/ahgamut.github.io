@@ -1,17 +1,18 @@
 baseURL: https://ahgamut.github.io
 languageCode: 'en-us'
 title: 'Blog Needs a Name'
-theme: "etch"
+author: 'Gautham'
 
 frontmatter:
   date:
     - :filename
     - date
     - publishDate
+  sitename: 'Blog Needs a Name'
+  author: 'Gautham'
 
 permalinks:
   posts: /:year/:month/:day/:slug
-
 
 enableInlineShortcodes: true
 pygmentsUseClasses: true
@@ -21,7 +22,7 @@ params:
   highlight: true
   dark: "off"
   description: "Gautham's Blog"
-  copyright: "Copyright © 2022 Gautham Venkatasubramanian"
+  copyright: "Copyright © 2023 Gautham Venkatasubramanian"
 
 markup:
   goldmark:
