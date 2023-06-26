@@ -1,28 +1,4 @@
-<!doctype html><html><head>
-<meta charset=utf-8>
-<meta name=viewport content="width=device-width,initial-scale=1">
-<meta name=description content="Gautham's Blog">
-<link rel=stylesheet href=/css/style.min.css>
-<title>Python is Actually Portable</title>
-</head>
-<body><header id=banner>
-<h2><a href=https://ahgamut.github.io>Blog Needs a Name</a></h2>
-<nav>
-<ul>
-<li>
-<a href=/about/ title=About>About</a>
-</li>
-</ul>
-</nav>
-</header>
-<main id=content>
-<article>
-<header id=post-header>
-<h1>Python is Actually Portable</h1>
-<div>
-<time>July 13, 2021</time>
-</div>
-</header><p><strong>Update (2022-07-27)</strong> : This post describes a proof-of-concept Python
+<!doctype html><html lang=en><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1"><meta name=author content="https://ahgamut.github.io"><title>Python is Actually Portable | Blog Needs a Name</title><meta name=description content="Gautham's Blog"><style>*,:after,:before{box-sizing:border-box;padding:0}body{font:1.25rem/1.5 Mukta,-apple-system,BlinkMacSystemFont,avenir next,avenir,helvetica,helvetica neue,ubuntu,roboto,noto,segoe ui,arial,sans-serif;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;padding:2rem;background:#f5f5f5;color:#000}.skip-link{position:absolute;top:-40px;left:0;background:#eee;z-index:100}.skip-link:focus{top:0}h1,h2,h3,h4,h5,strong,b{font-size:inherit;font-weight:600}header{line-height:2;padding-bottom:1.5rem}.link{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-decoration:none}.time{font-variant-numeric:tabular-nums;white-space:nowrap}blockquote{border-left:5px solid #ddd;padding-left:1rem;margin:0;font-style:italic}a,a:visited{color:inherit}a:hover,a.heading-link{text-decoration:none}ul{list-style-type:square}ul,ol{padding-left:1.2rem}.list{line-height:2;list-style-type:none;padding-left:0}.list li{padding-bottom:.1rem}.meta{color:#777}.content{max-width:70ch;margin:0 auto}header{line-height:2;display:flex;justify-content:space-between;padding-bottom:1rem}header a{text-decoration:none}header ul{list-style-type:none;padding:0}header li,header a{display:inline}h2.post{padding-top:.5rem}header ul a:first-child{padding-left:1rem}.nav{height:1px;background:#000;content:'';max-width:10%}.list li{display:flex;align-items:baseline}.list li time{flex:initial}.hr-list{margin-top:0;margin-bottom:0;margin-right:.5rem;margin-left:.5rem;height:1px;border:0;border-bottom:2px solid #ccc;flex:1 0 1rem}.m,hr{border:2px solid;margin:3rem 0}img{max-width:100%;height:auto;margin-left:auto;margin-right:auto;display:block}footer{display:table;text-align:center;margin-left:auto;margin-right:auto}table{margin-bottom:1rem;width:100%;border:1px solid #e5e5e5;border-collapse:collapse}td,th{padding:.25rem .5rem;border:1px solid #e5e5e5}pre{display:block;padding:.5rem;overflow:auto;overflow-x:scroll;overflow-wrap:normal;font-size:normal;font-size:small;white-space:pre;margin:20px 0;padding:1.5rem;line-height:1.4;color:#010101;background-color:#d8d8d8}pre code{padding:0;color:inherit;background-color:inherit}code,pre{font-family:San Francisco Mono,Monaco,consolas,lucida console,dejavu sans mono,bitstream vera sans mono,monospace;font-size:normal;font-size:small}code{padding:.25em .5em;padding:0 5px;color:#bf616a;border-radius:3px;background-color:#d8d8d8}.chroma{background-color:#d8d8d8}.chroma .lntd{vertical-align:top;padding:0;margin:0;border:0}.chroma .lntable{border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block}.chroma .hl{display:block;width:100%;background-color:#ffc}.chroma .lnt{margin-right:.4em;padding:0 .4em;color:#7f7f7f}.chroma .ln{margin-right:.4em;padding:0 .4em;color:#7f7f7f}.chroma .k{color:#00f}.chroma .kc{color:#00f}.chroma .kd{color:#00f}.chroma .kn{color:#00f}.chroma .kp{color:#00f}.chroma .kr{color:#00f}.chroma .kt{color:#00f}.chroma .nc{color:#007575}.chroma .nd{color:#cc00a3}.chroma .nf{color:#c34e00}.chroma .s{color:#009c00}.chroma .sa{color:#009c00}.chroma .sb{color:#009c00}.chroma .sc{color:#009c00}.chroma .dl{color:#009c00}.chroma .sd{color:#009c00}.chroma .s2{color:#009c00}.chroma .se{color:#009c00}.chroma .sh{color:#009c00}.chroma .si{color:#009c00}.chroma .sx{color:#009c00}.chroma .sr{color:#009c00}.chroma .s1{color:#009c00}.chroma .ss{color:#009c00}.chroma .c{color:red;font-style:italic}.chroma .ch{color:red;font-style:italic}.chroma .cm{color:red;font-style:italic}.chroma .c1{color:red;font-style:italic}.chroma .cs{color:red;font-style:italic}.chroma .cp{color:red;font-style:italic}.chroma .cpf{color:red;font-style:italic}</style></head><body><a class=skip-link href=#main>Skip to main</a><main id=main><div class=content><header><p style=padding:0;margin:0><a href=/><b>Blog Needs a Name</b></a></p><ul style=padding:0;margin:0><li><a href=/>Home</a></li><li><a href=/about>About</a></li></ul></header><hr class=hr-list style=padding:0;margin:0><h2 class=post>Python is Actually Portable</h2><p><strong>Update (2022-07-27)</strong> : This post describes a proof-of-concept Python
 executable (2.7.18 and 3.6.14) built on <a href=https://github.com/jart/cosmopolitan>Cosmopolitan
 Libc</a>, which allows it to run on six
 different operating systems (Linux, Mac, Windows, NetBSD, FreeBSD, OpenBSD).
@@ -41,156 +17,120 @@ Cosmopolitan monorepo, or download <code>python.com</code> from
 <a href=https://justine.lol/ftrace/python.com>here</a>. I&rsquo;m also trying to port the newer
 versions of Python and some well-known Python packages like numpy. Join the
 discussion about Python and Cosmopolitan Libc in the
-redbean Discord server: <a href=https://discord.gg/rGQja6kS>https://discord.gg/rGQja6kS</a></p>
-<p>Back in February, I put together <a href=/2021/02/27/ape-cosmo/>Lua 5.4</a> using <a href=https://github.com/jart/cosmopolitan>Cosmopolitan
+redbean Discord server: <a href=https://discord.gg/rGQja6kS>https://discord.gg/rGQja6kS</a></p><p>Back in February, I put together <a href=/2021/02/27/ape-cosmo/>Lua 5.4</a> using <a href=https://github.com/jart/cosmopolitan>Cosmopolitan
 Libc</a> as a quick proof-of-concept, and that led to Lua 5.4 being
 <a href=https://github.com/jart/cosmopolitan/issues/61#issuecomment-792359199>vendored</a> as part of the Cosmopolitan repository on Github, along
 with many other interesting developments. It&rsquo;s pretty exciting to try and
 compile well-known C projects using Cosmopolitan; the portability reward is
 great motivation, and I get to observe the design, coding style, and build
-system of high-quality codebases.</p>
-<p>However, my initial plan with Cosmopolitan was not to compile Lua, it was to
+system of high-quality codebases.</p><p>However, my initial plan with Cosmopolitan was not to compile Lua, it was to
 compile Python. Since February, I&rsquo;ve been trying to understand how Cosmopolitan
 works, reading the repo code and submitting PRs occasionally, and finally I have
 an actually portable version of Python 2.7.18 (and 3.6.14<sup id=fnref:1><a href=#fn:1 class=footnote-ref role=doc-noteref>1</a></sup>) &ndash; you
 can build it from the repository <a href=https://github.com/ahgamut/cpython/tree/cosmo_py27>here</a>. It&rsquo;s not solid as Lua 5.4
 because it currently passes only a third of the regression tests, but most of
 the parts are there. For example, here&rsquo;s a GIF showing a simple <a href=https://flask.palletsprojects.com/en/2.0.x/>Flask
-webapp</a> running via the <code>python.com</code> APE.</p>
-<p><img src=/images/ape-python.gif alt=webapp></p>
-<p>It&rsquo;s quite slow, but it works(tested on Debian Linux and Windows
+webapp</a> running via the <code>python.com</code> APE.</p><p><img src=/images/ape-python.gif alt=webapp loading=lazy decoding=async width height class=full-width></p><p>It&rsquo;s quite slow, but it works(tested on Debian Linux and Windows
 10<sup id=fnref:2><a href=#fn:2 class=footnote-ref role=doc-noteref>2</a></sup>), and there&rsquo;s a lot of room for improvement. This post
-describes the kinds of changes I made to get Python to work.</p>
-<h2 id=getting-python-to-compile>Getting Python to compile</h2>
-<p>Python 2.7.18 is built via the <a href=https://en.wikipedia.org/wiki/Configure_script><code>configure</code> idiom</a>: the tarball
+describes the kinds of changes I made to get Python to work.</p><h2 id=getting-python-to-compile>Getting Python to compile</h2><p>Python 2.7.18 is built via the <a href=https://en.wikipedia.org/wiki/Configure_script><code>configure</code> idiom</a>: the tarball
 provides a <code>configure</code> shell script which runs the necessary compatibility tests
 for the host system/compiler. which then creates the Makefile for the actual
 build, and fills <code>pyconfig.h</code> with the necessary <code>#define</code>s related to the
-features available in the host system.</p>
-<p>I added dummy headers like for Lua, and wrote a <code>superconfigure</code> script which
+features available in the host system.</p><p>I added dummy headers like for Lua, and wrote a <code>superconfigure</code> script which
 called <code>configure</code> with the flags for the Cosmopolitan
-<a href=https://github.com/jart/cosmopolitan#getting-started>amalgamation</a>, like below:</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-sh data-lang=sh>./configure --disable-shared <span class=se>\
-</span><span class=se></span>    --without-threads --disable-ipv6 <span class=se>\
-</span><span class=se></span>    <span class=nv>CFLAGS</span><span class=o>=</span><span class=s2>&#34;</span><span class=nv>$COSMO_CFLAGS</span><span class=s2>&#34;</span> <span class=se>\
-</span><span class=se></span>    <span class=nv>LDFLAGS</span><span class=o>=</span><span class=s2>&#34;</span><span class=nv>$COSMO_LDFLAGS</span><span class=s2>&#34;</span> <span class=se>\
-</span><span class=se></span>    <span class=nv>LIBS</span><span class=o>=</span><span class=s2>&#34;cosmopolitan.a&#34;</span>
-make -j4
-</code></pre></div><p>This started the build, but almost every source file had complaints about
+<a href=https://github.com/jart/cosmopolitan#getting-started>amalgamation</a>, like below:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-sh data-lang=sh><span class=line><span class=cl>./configure --disable-shared <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>    --without-threads --disable-ipv6 <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>    <span class=nv>CFLAGS</span><span class=o>=</span><span class=s2>&#34;</span><span class=nv>$COSMO_CFLAGS</span><span class=s2>&#34;</span> <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>    <span class=nv>LDFLAGS</span><span class=o>=</span><span class=s2>&#34;</span><span class=nv>$COSMO_LDFLAGS</span><span class=s2>&#34;</span> <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>    <span class=nv>LIBS</span><span class=o>=</span><span class=s2>&#34;cosmopolitan.a&#34;</span>
+</span></span><span class=line><span class=cl>make -j4
+</span></span></code></pre></div><p>This started the build, but almost every source file had complaints about
 functions being re-declared. For example, the Makefile assumed that <code>sinh</code> was
 not available, and wrongly had <code>#define HAVE_SINH 0</code>, which caused it to use
-Python&rsquo;s backup implementation.</p>
-<p>It turns out that the <code>CFLAGS</code> provided for the cosmopolitan amalgamation
+Python&rsquo;s backup implementation.</p><p>It turns out that the <code>CFLAGS</code> provided for the cosmopolitan amalgamation
 clashed with <a href=https://www.gnu.org/software/autoconf/manual/autoconf-2.69/html_node/Generic-Functions.html><code>AC_CHECK_FUNC</code></a>, which is what <code>configure</code> scripts use
 to check if the host provides a particular function. At the time, the simplest
 fix was to edit the <code>AC_CHECK_FUNC</code> part of <code>configure</code> script to make it play
-well, and it just worked<sup id=fnref:3><a href=#fn:3 class=footnote-ref role=doc-noteref>3</a></sup>.</p>
-<p>After that, fixing the remaining errors was mostly straightforward: add a few
+well, and it just worked<sup id=fnref:3><a href=#fn:3 class=footnote-ref role=doc-noteref>3</a></sup>.</p><p>After that, fixing the remaining errors was mostly straightforward: add a few
 <code>#define</code>s or <code>#undef</code>s to avoid missing functions, ensure the Makefile
 performed the linking correctly, find-and-replace for name
-clashes<sup id=fnref:4><a href=#fn:4 class=footnote-ref role=doc-noteref>4</a></sup>, and so on.</p>
-<h2 id=running-the-base-interpreter>Running the base interpreter</h2>
-<p>I tried running the <code>python.com</code> APE within the build directory, and it worked
+clashes<sup id=fnref:4><a href=#fn:4 class=footnote-ref role=doc-noteref>4</a></sup>, and so on.</p><h2 id=running-the-base-interpreter>Running the base interpreter</h2><p>I tried running the <code>python.com</code> APE within the build directory, and it worked
 without a hitch. But when I moved the executable somewhere, the interpreter
 would start up and then exit with a failure <code>unable to import site</code>: Python
 checks for <code>site.py</code> in <code>sys.path</code> at startup, which sets up the import context
 for the rest of the standard library (stuff like which OS the APE is on for
 <code>os.py</code>). Running <code>python.com -S</code> fixed the issue<sup id=fnref:5><a href=#fn:5 class=footnote-ref role=doc-noteref>5</a></sup>, and later I
 added a few relative folder paths to <code>sys.path</code> so that Python could search
-there at startup.</p>
-<p>One annoying issue I faced with the <code>python.com</code> REPL on Linux was I had to
+there at startup.</p><p>One annoying issue I faced with the <code>python.com</code> REPL on Linux was I had to
 press <code>Return</code> twice when I wanted to enter an empty line to the REPL. By
 running <code>python.com -u</code> I found out this this was related to input buffering and
 <a href=https://en.cppreference.com/w/c/io/setvbuf><code>setvbuf</code></a>: the interpreter was following Cosmopolitan&rsquo;s choice of
-buffering IO, so I added a couple of lines to use unbuffered input by default.</p>
-<p>When I tried <code>python.com -S</code> on Windows, the interpreter would start, but then
+buffering IO, so I added a couple of lines to use unbuffered input by default.</p><p>When I tried <code>python.com -S</code> on Windows, the interpreter would start, but then
 every line I entered at the REPL would cause a syntax error. I thought this was
 also related to <code>setvbuf</code>, but this was because Windows <a href=https://github.com/jart/cosmopolitan/issues/141#issuecomment-812918670><code>cmd.exe</code> sends
 CRLF</a> on pressing <code>Return</code>, and the interpreter expects only LF, so the CR
-was read as incorrect syntax. It was straightforward to change the parser logic.</p>
-<h2 id=adding-standard-library-modules>Adding standard library modules</h2>
-<p>When the Makefile finishes building <code>python</code>, it immediately tries to call a
+was read as incorrect syntax. It was straightforward to change the parser logic.</p><h2 id=adding-standard-library-modules>Adding standard library modules</h2><p>When the Makefile finishes building <code>python</code>, it immediately tries to call a
 <code>setup.py</code> to build C extensions for the standard library. This was pretty
 stupid: <code>setup.py</code> tries to build and link a bunch of shared objects to the
 interpreter even though I&rsquo;ve specified a static build (<code>--disable-shared</code>). I
 found out it was doing this after I saw a successful build on the screen,
-followed a deluge of (<code>unable to link</code>/<code>no dlopen</code>/<code>Rdynamic specified but also static</code>) errors.</p>
-<p>There is a nice way to compile C extensions into Python statically: via
+followed a deluge of (<code>unable to link</code>/<code>no dlopen</code>/<code>Rdynamic specified but also static</code>) errors.</p><p>There is a nice way to compile C extensions into Python statically: via
 <code>Modules/Setup</code>. This file follows a simple syntax to specify extensions and
 their requirements, so that you can compile extensions before <code>setup.py</code> is
-called.</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-sh data-lang=sh>*static*
-
-<span class=c1># &lt;name of extension&gt; &lt;source files in Modules folder&gt; &lt;includes&gt; &lt;links&gt; -DSOME_FLAG</span>
-math mathmodule.c _math.c <span class=c1># -lm</span>
-array arraymodule.c
-
-</code></pre></div><p>Calling <code>make</code> after changing <code>Modules/Setup</code> rebuilds the Makefile with the
+called.</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-sh data-lang=sh><span class=line><span class=cl>*static*
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1># &lt;name of extension&gt; &lt;source files in Modules folder&gt; &lt;includes&gt; &lt;links&gt; -DSOME_FLAG</span>
+</span></span><span class=line><span class=cl>math mathmodule.c _math.c <span class=c1># -lm</span>
+</span></span><span class=line><span class=cl>array arraymodule.c
+</span></span></code></pre></div><p>Calling <code>make</code> after changing <code>Modules/Setup</code> rebuilds the Makefile with the
 necessary recipes for the specified extensions. You can read about
 <a href=https://github.com/ahgamut/cpython/blob/cosmo_py27/Modules/Setup><code>Modules/Setup</code> here</a>. One nasty aspect of this is if the syntax
 in <code>Modules/Setup</code> is wrong, the Makefile will be wrong, so you can&rsquo;t run <code>make</code>
-even after you&rsquo;ve fixed the error.</p>
-<p>I was able to compile a lot of modules into APE using <code>Modules/Setup</code>: basic
+even after you&rsquo;ve fixed the error.</p><p>I was able to compile a lot of modules into APE using <code>Modules/Setup</code>: basic
 modules like <code>cPickle</code>, <code>zlib</code> etc., modules that required external libraries
 like <code>_sqlite</code>, <code>_bz2</code>, <code>readline</code>, <code>_ctypes</code><sup id=fnref:6><a href=#fn:6 class=footnote-ref role=doc-noteref>6</a></sup> etc., and even
 <strong>external packages</strong> that depend on simple C extensions, like
 <a href=https://github.com/python-greenlet/greenlet/><code>greenlet</code></a>. It all boils down to writing the correct recipe in
 <code>Modules/Setup</code>, ensuring the necessary static libraries are available, and
-checking that the glue code around the imports works correctly<sup id=fnref:7><a href=#fn:7 class=footnote-ref role=doc-noteref>7</a></sup>.</p>
-<p>The final annoyance with the stdlib python files was that I had to copy the
+checking that the glue code around the imports works correctly<sup id=fnref:7><a href=#fn:7 class=footnote-ref role=doc-noteref>7</a></sup>.</p><p>The final annoyance with the stdlib python files was that I had to copy the
 folder containing them alongside <code>python.com</code>, but this got solved because
 Cosmopolitan allows the APE to be used as a valid ZIP file. I just zipped up
 <code>Lib/</code> into the APE, <em>added <code>python.com</code> itself as an entry in <code>sys.path</code></em>, and
-Python&rsquo;s own <a href=https://docs.python.org/2.7/library/zipimport.html><code>zipimport</code> package</a> handled the rest.</p>
-<h2 id=using-pip-and-external-packages>Using <code>pip</code> and external packages</h2>
-<p>After compiling most of the standard library packages, I still couldn&rsquo;t get
+Python&rsquo;s own <a href=https://docs.python.org/2.7/library/zipimport.html><code>zipimport</code> package</a> handled the rest.</p><h2 id=using-pip-and-external-packages>Using <code>pip</code> and external packages</h2><p>After compiling most of the standard library packages, I still couldn&rsquo;t get
 <code>ensurepip</code> to work, because it relied on threads, and the standard <code>threading</code>
 module in Python would just raise an <code>ImportError</code> if it could not find the
 <code>_thread</code> C extension. The fix was present within the stdlib: there is a module
 called <code>_dummy_thread</code>, which spoofs <code>_thread</code> so that <code>threading</code> doesn&rsquo;t
 complain<sup id=fnref:8><a href=#fn:8 class=footnote-ref role=doc-noteref>8</a></sup>. After this, I was able to run <code>ensurepip</code> to install
-<code>pip</code> and <code>setuptools</code> in <code>Lib/site-packages</code>.</p>
-<p>However, running <code>python.com -m pip install</code> doesn&rsquo;t work because the Python APE
+<code>pip</code> and <code>setuptools</code> in <code>Lib/site-packages</code>.</p><p>However, running <code>python.com -m pip install</code> doesn&rsquo;t work because the Python APE
 doe not currently have SSL support. I tried providing <code>http://pypi.org/simple</code>
-as the index URL but <code>pip</code> was adamant in not letting me get my way.</p>
-<p>I didn&rsquo;t want to figure out how to add SSL support to the APE (I expect it
+as the index URL but <code>pip</code> was adamant in not letting me get my way.</p><p>I didn&rsquo;t want to figure out how to add SSL support to the APE (I expect it
 should be possible<sup id=fnref:9><a href=#fn:9 class=footnote-ref role=doc-noteref>9</a></sup>), so I just cheated and downloaded the
-packages manually. The arrangement to add packages works like this:</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-sh data-lang=sh>mkdir -p Lib/site-packages
-
-<span class=c1># specify python version to pip if necessary</span>
-/usr/bin/python2 -m pip download flask -t .
-
-<span class=c1># wheels are just ZIPs, use unzip if pip complains</span>
-./python.com -m pip install flask*.whl -t ./Lib/site-packages
-
-zip -qr ./python.com ./Lib/site-packages/
-rm -rf ./*.whl ./Lib/site-packages/
-
-./python.com -m flask --version
-</code></pre></div><p>Of course, you would have recompile the APE if you wanted to add any C
-extensions.</p>
-<h2 id=closing-notes>Closing Notes</h2>
-<p>It is really convenient to have the same application work on
+packages manually. The arrangement to add packages works like this:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-sh data-lang=sh><span class=line><span class=cl>mkdir -p Lib/site-packages
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1># specify python version to pip if necessary</span>
+</span></span><span class=line><span class=cl>/usr/bin/python2 -m pip download flask -t .
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1># wheels are just ZIPs, use unzip if pip complains</span>
+</span></span><span class=line><span class=cl>./python.com -m pip install flask*.whl -t ./Lib/site-packages
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>zip -qr ./python.com ./Lib/site-packages/
+</span></span><span class=line><span class=cl>rm -rf ./*.whl ./Lib/site-packages/
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>./python.com -m flask --version
+</span></span></code></pre></div><p>Of course, you would have recompile the APE if you wanted to add any C
+extensions.</p><h2 id=closing-notes>Closing Notes</h2><p>It is really convenient to have the same application work on
 Linux/Windows/MacOS, but the techniques I have seen/used all have tradeoffs:
 either for the developer in terms of design, testing, and safety/consistency, or
-for the user in terms on application size and performance.</p>
-<p>Cosmopolitan Libc does come with some tradeoffs as well (static compilation, C
+for the user in terms on application size and performance.</p><p>Cosmopolitan Libc does come with some tradeoffs as well (static compilation, C
 codebases, no multithreading (<strong>Update 2022-07-27:</strong>, no multithreading <em>yet</em>,
 the pthreads API takes a while to fill)), but I think it is amazing that I can
 send a <code>python.com</code> executable of a few megabytes as a zip file to someone, have
 them run it without worrying about the OS, and provide them a simple webapp with
-a backend that works even without an internet connection.</p>
-<p>This successful <code>python.com</code> experiment unlocks many interesting directions:</p>
-<ul>
-<li>
-<p>Is it possible to tune the performance of the <code>python.com</code> APE? I don&rsquo;t expect
+a backend that works even without an internet connection.</p><p>This successful <code>python.com</code> experiment unlocks many interesting directions:</p><ul><li><p>Is it possible to tune the performance of the <code>python.com</code> APE? I don&rsquo;t expect
 it to get anywhere close to <a href=https://redbean.dev/><code>redbean</code></a>, but some speed
 improvements would be nice because Python web frameworks are established and
-easy to use.</p>
-</li>
-<li>
-<p>Is there room for a custom build system to produce a single-file
+easy to use.</p></li><li><p>Is there room for a custom build system to produce a single-file
 size-optimized <code>python.com</code> APE webapp? We saw that it is possible to add C
 extensions, and even regular packages into the executable via <code>zip</code>. If there
 is a dependency resolver that accounts for stdlib imports, which then produces
@@ -199,116 +139,64 @@ only the necessary libraries, that would be awesome<sup id=fnref:10><a href=#fn:
 now the Cosmopolitan monorepo builds <code>python.com</code> via a
 <a href=https://github.com/jart/cosmopolitan/blob/master/third_party/python/python.mk>Makefile</a>,
 checks import dependencies at link-time, runs the Python test suite, and adds
-all files to the APE internal ZIP store ready-to-use).</p>
-</li>
-<li>
-<p>Regarding python packages with C extensions, the build process for adding them
+all files to the APE internal ZIP store ready-to-use).</p></li><li><p>Regarding python packages with C extensions, the build process for adding them
 to the APE is rather unwieldy (<strong>2022-07-27</strong> adding C extensions to the APE
 is much more elegant now because of the Cosmopolitan monorepo, see
 <a href=https://github.com/ahgamut/cosmopolitan/tree/import-mod-test>this</a>) because
 of all the manual changes involved. Is there a way to automatically patch the
 imports, or better yet, compile Python C extensions as shared libraries with
-Cosmopolitan?</p>
-</li>
-<li>
-<p>I&rsquo;ve managed to compile Lua, QuickJS, and now Python2.7 and
+Cosmopolitan?</p></li><li><p>I&rsquo;ve managed to compile Lua, QuickJS, and now Python2.7 and
 <a href=https://github.com/ahgamut/cpython/tree/cosmo_py36>Python3.6</a>. Are there web-friendly languages that would benefit
 more from a Cosmopolitan build? Maybe PHP, or Ruby, or even Go if the details
-work out? Remains to be seen.</p>
-</li>
-</ul>
-<section class=footnotes role=doc-endnotes>
-<hr>
-<ol>
-<li id=fn:1 role=doc-endnote>
-<p>Did you click on this before reading the remainder of the post because you
+work out? Remains to be seen.</p></li></ul><div class=footnotes role=doc-endnotes><hr><ol><li id=fn:1><p>Did you click on this before reading the remainder of the post because you
 were wondering about Python 3? I know Python 2.7 reached EOL last year, but
 the Python 2.7 codebase was easier to read, change, and debug, so I was able
 to get a better idea of where I had to make changes. I put together a Python
 3.6.14 APE (build it from the repo <a href=https://github.com/ahgamut/cpython/tree/cosmo_py36>here</a>), and it took much
-less time and experimentation because I knew exactly where to look.&#160;<a href=#fnref:1 class=footnote-backref role=doc-backlink>&#8617;&#xfe0e;</a></p>
-</li>
-<li id=fn:2 role=doc-endnote>
-<p>I originally uploaded this post like twelve hours, in the excitement of
+less time and experimentation because I knew exactly where to look.&#160;<a href=#fnref:1 class=footnote-backref role=doc-backlink>&#8617;&#xfe0e;</a></p></li><li id=fn:2><p>I originally uploaded this post like twelve hours, in the excitement of
 seeing a Flask webapp work on the APE. Unfortunately, I forgot to test
 on Windows before putting the post out, and Windows, true to its nature
 caused several annoyances which together took a couple of hours to sort
-out. However, I think it ought to work now.&#160;<a href=#fnref:2 class=footnote-backref role=doc-backlink>&#8617;&#xfe0e;</a></p>
-</li>
-<li id=fn:3 role=doc-endnote>
-<p>I originally tried the complicated solution of writing a new configure
+out. However, I think it ought to work now.&#160;<a href=#fnref:2 class=footnote-backref role=doc-backlink>&#8617;&#xfe0e;</a></p></li><li id=fn:3><p>I originally tried the complicated solution of writing a new configure
 script from scratch, but I got lost in the docs for <code>autoconf</code>, and resorted
 to the simpler fix of just editing the shell script. This issue only
 happened because I used dummy headers with the amalgamation; if you have the
 Cosmopolitan repo nearby, you can use <code>-isystem cosmopolitan/libc/isystem</code>
 instead of <code>-I dummy_headers -include cosmopolitan.h</code>, which would avoid
-confusing <code>configure</code>.&#160;<a href=#fnref:3 class=footnote-backref role=doc-backlink>&#8617;&#xfe0e;</a></p>
-</li>
-<li id=fn:4 role=doc-endnote>
-<p>I remembered this a few days back: if a name in your C file
-clashes with a header name somewhere, you can do something like:</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-c data-lang=c>
-<span class=cp>#ifdef name
-</span><span class=cp>#define name __name
-</span><span class=cp>#undef name
-</span><span class=cp></span>    
-</code></pre></div><p>and avoid the name clash instead of doing a find-and-replace.&#160;<a href=#fnref:4 class=footnote-backref role=doc-backlink>&#8617;&#xfe0e;</a></p>
-</li>
-<li id=fn:5 role=doc-endnote>
-<p>Over the course of getting the APE to work, my muscle memory is to call
+confusing <code>configure</code>.&#160;<a href=#fnref:3 class=footnote-backref role=doc-backlink>&#8617;&#xfe0e;</a></p></li><li id=fn:4><p>I remembered this a few days back: if a name in your C file
+clashes with a header name somewhere, you can do something like:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-c data-lang=c><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=cp>#ifdef name
+</span></span></span><span class=line><span class=cl><span class=cp>#define name __name
+</span></span></span><span class=line><span class=cl><span class=cp>#undef name
+</span></span></span><span class=line><span class=cl><span class=cp></span>    
+</span></span></code></pre></div><p>and avoid the name clash instead of doing a find-and-replace.&#160;<a href=#fnref:4 class=footnote-backref role=doc-backlink>&#8617;&#xfe0e;</a></p></li><li id=fn:5><p>Over the course of getting the APE to work, my muscle memory is to call
 <code>python -BESsuv</code>, which avoids a bunch of normal startup stuff and adds
 stderr information about imports. This is super useful when building python,
 but one time I was running a local script and couldn&rsquo;t figure out why it was
 failing before I saw that I had typed <code>python -BESsuv script.py</code> every
-single time.&#160;<a href=#fnref:5 class=footnote-backref role=doc-backlink>&#8617;&#xfe0e;</a></p>
-</li>
-<li id=fn:6 role=doc-endnote>
-<p>I was pleasantly surprised to find out that <code>_sqlite</code> and <code>_bz2</code> could be
+single time.&#160;<a href=#fnref:5 class=footnote-backref role=doc-backlink>&#8617;&#xfe0e;</a></p></li><li id=fn:6><p>I was pleasantly surprised to find out that <code>_sqlite</code> and <code>_bz2</code> could be
 compiled, because I didn&rsquo;t expect SQLite or libbz2 would be easy to compile
 from source with Cosmopolitan. SQLite is now <a href=https://github.com/jart/cosmopolitan/pull/162>vendored in the Cosmopolitan
-repo</a>.</p>
-<p>On the other hand, I wanted <code>readline</code> because I like to have the
+repo</a>.</p><p>On the other hand, I wanted <code>readline</code> because I like to have the
 (press-Up-arrow-for-previously-typed-line) in the REPL, but I didn&rsquo;t know
 how <code>terminfo</code> worked. <code>_ctypes</code> was also a disappointment because I had to
-compile <code>libffi</code> from source, and then I saw most of <code>_ctypes</code>' use comes
-from having <code>dlopen</code>.&#160;<a href=#fnref:6 class=footnote-backref role=doc-backlink>&#8617;&#xfe0e;</a></p>
-</li>
-<li id=fn:7 role=doc-endnote>
-<p>for example, <code>greenlet</code> contains a C extension called <code>_greenlet</code> which it
-refers to by doing things like the following in <code>__init__.py</code>:</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python>    
-<span class=kn>from</span> <span class=nn>._greenlet</span> <span class=kn>import</span> <span class=n>foo</span>
-<span class=kn>from</span> <span class=nn>greenlet._greenlet</span> <span class=kn>import</span> <span class=n>bar</span>
-    
-</code></pre></div><p>now <code>__init__.py</code> expects <code>_greenlet.so</code> to be present in the same
+compile <code>libffi</code> from source, and then I saw most of <code>_ctypes</code>&rsquo; use comes
+from having <code>dlopen</code>.&#160;<a href=#fnref:6 class=footnote-backref role=doc-backlink>&#8617;&#xfe0e;</a></p></li><li id=fn:7><p>for example, <code>greenlet</code> contains a C extension called <code>_greenlet</code> which it
+refers to by doing things like the following in <code>__init__.py</code>:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl>    
+</span></span><span class=line><span class=cl><span class=kn>from</span> <span class=nn>._greenlet</span> <span class=kn>import</span> <span class=n>foo</span>
+</span></span><span class=line><span class=cl><span class=kn>from</span> <span class=nn>greenlet._greenlet</span> <span class=kn>import</span> <span class=n>bar</span>
+</span></span><span class=line><span class=cl>    
+</span></span></code></pre></div><p>now <code>__init__.py</code> expects <code>_greenlet.so</code> to be present in the same
 directory, but that is not possible because the extension is compiled into
 the interpreter statically. So I had to manually change this to use <code>from _greenlet</code> without the dot. This also means I have to change the extension
 name in the <code>PyModuleDef</code> part of the C source code: it&rsquo;s not
-<code>greenlet._greenlet</code> anymore, it&rsquo;s just <code>_greenlet</code>.&#160;<a href=#fnref:7 class=footnote-backref role=doc-backlink>&#8617;&#xfe0e;</a></p>
-</li>
-<li id=fn:8 role=doc-endnote>
-<p>This works because most libraries use only the high-level <code>threading</code> API to
+<code>greenlet._greenlet</code> anymore, it&rsquo;s just <code>_greenlet</code>.&#160;<a href=#fnref:7 class=footnote-backref role=doc-backlink>&#8617;&#xfe0e;</a></p></li><li id=fn:8><p>This works because most libraries use only the high-level <code>threading</code> API to
 handle their threads. A notable counter-example is <a href=https://www.djangoproject.com/>Django</a>: I tried
 getting Django to work before figuring out how <code>_greenlet</code> could be
-compiled, but Django imports the low-level <code>_thread</code> API to handle things.&#160;<a href=#fnref:8 class=footnote-backref role=doc-backlink>&#8617;&#xfe0e;</a></p>
-</li>
-<li id=fn:9 role=doc-endnote>
-<p>It is possible to have SSL support: you just have to build OpenSSL with
+compiled, but Django imports the low-level <code>_thread</code> API to handle things.&#160;<a href=#fnref:8 class=footnote-backref role=doc-backlink>&#8617;&#xfe0e;</a></p></li><li id=fn:9><p>It is possible to have SSL support: you just have to build OpenSSL with
 Cosmopolitan Libc. I was able to build <code>libssl.a</code>, link it with <code>python.com</code>
 via <code>Modules/Setup</code>, and <code>pip</code> worked. However, I have not tested it with
-the OpenSSL test suite.&#160;<a href=#fnref:9 class=footnote-backref role=doc-backlink>&#8617;&#xfe0e;</a></p>
-</li>
-<li id=fn:10 role=doc-endnote>
-<p>The Cosmopolitan repo builds <code>python.com</code> using <a href=https://github.com/jart/cosmopolitan/blob/master/third_party/python/pyobj.c><code>PYOBJ.COM</code></a>, a
+the OpenSSL test suite.&#160;<a href=#fnref:9 class=footnote-backref role=doc-backlink>&#8617;&#xfe0e;</a></p></li><li id=fn:10><p>The Cosmopolitan repo builds <code>python.com</code> using <a href=https://github.com/jart/cosmopolitan/blob/master/third_party/python/pyobj.c><code>PYOBJ.COM</code></a>, a
 minimal Python executable that creates <code>.pyc</code> files and symbols for the
-linker to resolve dependencies.&#160;<a href=#fnref:10 class=footnote-backref role=doc-backlink>&#8617;&#xfe0e;</a></p>
-</li>
-</ol>
-</section>
-</article>
-</main><footer id=footer>
-Copyright © 2022 Gautham Venkatasubramanian
-<img src="https://ipv4.games/claim?name=ahgamut">
-</footer>
-</body>
-</html>
+linker to resolve dependencies.&#160;<a href=#fnref:10 class=footnote-backref role=doc-backlink>&#8617;&#xfe0e;</a></p></li></ol></div><hr style="border:1px solid"></div></main><footer>Copyright © 2023 Gautham Venkatasubramanian
+<img style=visibility:hidden src="https://ipv4.games/claim?name=ahgamut"></footer></body></html>
