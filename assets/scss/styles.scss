@@ -323,13 +323,13 @@ code {
 /* Operator */ .chroma .o {  }
 /* OperatorWord */ .chroma .ow {  }
 /* Punctuation */ .chroma .p {  }
-/* Comment */ .chroma .c { color: #ff0000; font-style: italic }
-/* CommentHashbang */ .chroma .ch { color: #ff0000; font-style: italic }
-/* CommentMultiline */ .chroma .cm { color: #ff0000; font-style: italic }
-/* CommentSingle */ .chroma .c1 { color: #ff0000; font-style: italic }
-/* CommentSpecial */ .chroma .cs { color: #ff0000; font-style: italic }
-/* CommentPreproc */ .chroma .cp { color: #ff0000; font-style: italic }
-/* CommentPreprocFile */ .chroma .cpf { color: #ff0000; font-style: italic }
+/* Comment */ .chroma .c { color: #e72f88; font-style: italic }
+/* CommentHashbang */ .chroma .ch { color: #e72f88; font-style: italic }
+/* CommentMultiline */ .chroma .cm { color: #e72f88; font-style: italic }
+/* CommentSingle */ .chroma .c1 { color: #e72f88; font-style: italic }
+/* CommentSpecial */ .chroma .cs { color: #e72f88; font-style: italic }
+/* CommentPreproc */ .chroma .cp { color: #007f87; }
+/* CommentPreprocFile */ .chroma .cpf { color: #007f87; }
 /* Generic */ .chroma .g {  }
 /* GenericDeleted */ .chroma .gd {  }
 /* GenericEmph */ .chroma .ge {  }
