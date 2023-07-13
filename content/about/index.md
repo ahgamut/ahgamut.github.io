@@ -8,8 +8,8 @@ practice writing. I am currently a graduate student in the Statistics program at
 
 My username on Github is [`ahgamut`](https://github.com/ahgamut). If you're at
 this page, either you know me already or you got here via my blog posts. You can
-contact me at `github-username <at> gmail <dot> com`. I am looking for work in
-the winter. 
+contact me at `github-username <at> gmail <dot> com`. I am looking for
+internships in the winter/summer.
 
 A while back I was at [Maya Labs](https://mayalabs.io) ([YC
 S22](https://www.ycombinator.com/companies/maya-labs)), working on program
