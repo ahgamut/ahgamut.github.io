@@ -3,28 +3,9 @@ Actually Portable Executables with <a href=https://github.com/jart/cosmopolitan>
 popular software such as <code>bash</code>, <code>curl</code>, <code>git</code>, <code>ninja</code>, and even <code>gcc</code> itself,
 with Cosmopolitan Libc via the <code>./configure</code> or <code>cmake</code> build system, without
 having to change source code, and the built executables should run on Linux,
-FreeBSD, MacOS, OpenBSD, NetBSD, and in some cases even Windows too<sup id=fnref:1><a href=#fn:1 class=footnote-ref role=doc-noteref>1</a></sup>.
-Here&rsquo;s how you can port your own software to Cosmopolitan Libc now:</p><ol><li>Clone the <a href=https://github.com/jart/cosmopolitan>Cosmopolitan Libc repo</a>, and set up the <code>/opt/cosmo</code> and
-<code>/opt/cosmos</code> directories as per the README.</li><li>Set the necessary environment variables:</li></ol><div class=highlight><pre tabindex=0 class=chroma><code class=language-sh data-lang=sh><span class=line><span class=cl><span class=nb>export</span> <span class=nv>COSMO</span><span class=o>=</span>/opt/cosmo
-</span></span><span class=line><span class=cl><span class=nb>export</span> <span class=nv>COSMOS</span><span class=o>=</span>/opt/cosmos
-</span></span><span class=line><span class=cl><span class=nb>export</span> <span class=nv>CC</span><span class=o>=</span><span class=nv>$COSMO</span>/tool/scripts/cosmocc 
-</span></span><span class=line><span class=cl><span class=nb>export</span> <span class=nv>CXX</span><span class=o>=</span><span class=nv>$COSMO</span>/tool/scripts/cosmoc++
-</span></span><span class=line><span class=cl><span class=nb>export</span> <span class=nv>LD</span><span class=o>=</span><span class=nv>$COSMO</span>/tool/scripts/cosmoc++
-</span></span></code></pre></div><ol start=3><li><em>(Optional)</em>: here are my forks of <a href=https://github.com/ahgamut/gcc/tree/portcosmo-11.2><code>gcc</code></a> and
-<a href=https://github.com/ahgamut/musl-cross-make><code>musl-cross-make</code></a>, which you can use to build <code>gcc</code> with the
-latest version of my patch. If you do this, remember to edit <code>cosmocc</code> and
-<code>cosmoc++</code> accordingly.</li><li>Let&rsquo;s try a simple <code>hello world</code> example first:</li></ol><div class=highlight><pre tabindex=0 class=chroma><code class=language-c data-lang=c><span class=line><span class=cl><span class=cp>#include</span> <span class=cpf>&lt;stdio.h&gt;</span><span class=cp>
-</span></span></span><span class=line><span class=cl><span class=cp></span>
-</span></span><span class=line><span class=cl><span class=kt>int</span> <span class=nf>main</span><span class=p>()</span> <span class=p>{</span>
-</span></span><span class=line><span class=cl>    <span class=nf>printf</span><span class=p>(</span><span class=s>&#34;Actually Portable Executable built via cosmocc</span><span class=se>\n</span><span class=s>&#34;</span><span class=p>);</span>
-</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=mi>0</span><span class=p>;</span>
-</span></span><span class=line><span class=cl><span class=p>}</span>
-</span></span></code></pre></div><p>To build the APE for a single file, you can just</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-sh data-lang=sh><span class=line><span class=cl>cosmocc -o hello.com hello.c
-</span></span></code></pre></div><ol start=5><li><p>to build software that <a href=https://github.com/ahgamut/superconfigure>uses <code>./configure</code></a> or <code>cmake</code>, export the
-above environment variables, and then run the necessary build steps to get a
-static debug executable that runs on Linux</p></li><li><p>to get an Actually Portable Executable, run</p></li></ol><div class=highlight><pre tabindex=0 class=chroma><code class=language-sh data-lang=sh><span class=line><span class=cl>objcopy -SO binary your-software your-software.com
-</span></span><span class=line><span class=cl><span class=nv>$COSMO</span>/o/tool/scripts/zipcopy.com your-software your-software.com
-</span></span></code></pre></div><p>When Cosmopolitan Libc burst onto the scene with the <a href="https://news.ycombinator.com/item?id=26271117">Hacker News post about the
+FreeBSD, MacOS, OpenBSD, NetBSD, and Windows too<sup id=fnref:1><a href=#fn:1 class=footnote-ref role=doc-noteref>1</a></sup>. You can download
+the binaries built using Github Actions here:
+<a href=https://github.com/ahgamut/superconfigure/releases>https://github.com/ahgamut/superconfigure/releases</a></p><p>When Cosmopolitan Libc burst onto the scene with the <a href="https://news.ycombinator.com/item?id=26271117">Hacker News post about the
 <code>redbean</code> webserver</a> in 2021, an immediate question was how existing
 C software would run on it. The best way to test a new libc is to build more
 code on top, and <a href=https://github.com/jart/cosmopolitan/tree/master/third_party>many codebases have been ported</a> to use cosmo. The
