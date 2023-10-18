@@ -14,7 +14,7 @@ internships in the winter/summer.
 A while back I was at [Maya Labs](https://mayalabs.io) ([YC
 S22](https://www.ycombinator.com/companies/maya-labs)), working on program
 synthesis. I graduated from [BITS
-Pilani](https://bits-pilani.ac.in/Pilani/index.aspx) in 2019 with degrees in
+Pilani](https://wwww.bits-pilani.ac.in/pilani) in 2019 with degrees in
 Mathematics and Computer Science.
 
 All opinions on this blog are my own.

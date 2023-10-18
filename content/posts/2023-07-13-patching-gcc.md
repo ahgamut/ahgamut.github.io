@@ -10,52 +10,9 @@ Actually Portable Executables with [Cosmopolitan Libc][cosmo]. Now you can build
 popular software such as `bash`, `curl`, `git`, `ninja`, and even `gcc` itself,
 with Cosmopolitan Libc via the `./configure` or `cmake` build system, without
 having to change source code, and the built executables should run on Linux,
-FreeBSD, MacOS, OpenBSD, NetBSD, and in some cases even Windows too[^windowspls].
-Here's how you can port your own software to Cosmopolitan Libc now:
-
-1. Clone the [Cosmopolitan Libc repo][cosmo], and set up the `/opt/cosmo` and
-   `/opt/cosmos` directories as per the README.
-2. Set the necessary environment variables:
-
-```sh
-export COSMO=/opt/cosmo
-export COSMOS=/opt/cosmos
-export CC=$COSMO/tool/scripts/cosmocc 
-export CXX=$COSMO/tool/scripts/cosmoc++
-export LD=$COSMO/tool/scripts/cosmoc++
-```
-
-3. _(Optional)_: here are my forks of [`gcc`][patch] and
-   [`musl-cross-make`][buildpatch], which you can use to build `gcc` with the
-   latest version of my patch. If you do this, remember to edit `cosmocc` and
-   `cosmoc++` accordingly.
-4. Let's try a simple `hello world` example first:
-
-```c
-#include <stdio.h>
-
-int main() {
-    printf("Actually Portable Executable built via cosmocc\n");
-    return 0;
-}
-```
-
-To build the APE for a single file, you can just
-
-```sh
-cosmocc -o hello.com hello.c
-```
-
-5. to build software that [uses `./configure`][superconf] or `cmake`, export the
-above environment variables, and then run the necessary build steps to get a
-static debug executable that runs on Linux
-
-6. to get an Actually Portable Executable, run 
-
-```sh
-objcopy -SO binary your-software your-software.com
-$COSMO/o/tool/scripts/zipcopy.com your-software your-software.com
-```
+FreeBSD, MacOS, OpenBSD, NetBSD, and Windows too[^windowspls]. You can download
+the binaries built using Github Actions here:
+https://github.com/ahgamut/superconfigure/releases
 
 When Cosmopolitan Libc burst onto the scene with the [Hacker News post about the
 `redbean` webserver][redbeanhn] in 2021, an immediate question was how existing
