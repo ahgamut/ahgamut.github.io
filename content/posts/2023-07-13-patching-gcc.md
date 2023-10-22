@@ -218,8 +218,8 @@ example:
 switch(errval) {
     case 0:
         break;
-    case SIGILL:
-        printf("you got a SIGILL\n");
+    case SIGTERM:
+        printf("you got a SIGTERM\n");
         break;
     default:
         printf("unknown error\n");
@@ -232,7 +232,7 @@ But:
 examples/ex1_modded.c: In function ‘exam_func’:
 examples/ex1_modded.c:25:5: 
    error: case label does not reduce to an integer constant
-   25 |     case SIGILL:
+   25 |     case SIGTERM:
       |     ^~~~
 ```
 
@@ -248,7 +248,7 @@ activate? I check the AST with `debug_tree`, and `case 0:` was there:
      stmt <break_stmt type <void_type void>>
 ```
 
-But `case SIGILL:`?
+But `case SIGTERM:`?
 
 ```html
      stmt <call_expr type <integer_type int>
@@ -258,7 +258,7 @@ But `case SIGILL:`?
          arg:0 <nop_expr type <pointer_type>
            arg:0 <addr_expr type <pointer_type>
              arg:0 <string_cst type <array_type>
-                readonly constant static "you got a SIGILL\012\000">>>
+                readonly constant static "you got a SIGTERM\012\000">>>
      stmt <break_stmt type <void_type void>>
 ```
  
@@ -378,39 +378,10 @@ by `gcc` right before invoking other plugin callbacks.
 **2023-06-05:** At this stage, the patched `gcc` was passing all the test cases
 I had written for the plugin earlier, and new binaries were added into the
 Cosmopolitan Libc monorepo.  This allowed for compiling a lot more code, leading
-to fixes and improvements. Building `lua` was now straightforward, and for
-`python3.11` I added some changes to access the ZIP store within the executable.
-I found out where `g++` raised the `case constant` error so `ninja` could build.
-Then I tried building `busybox`, but my brain had a segfault with the [below
-code][busyboxpls]:
-
-```c
-static const char signals[][7] ALIGN1 = {
-	[0] = "EXIT",
-#ifdef SIGHUP
-	[SIGHUP   ] = "HUP",
-#endif
-#ifdef SIGINT
-	[SIGINT   ] = "INT",
-#endif
-#ifdef SIGQUIT
-	[SIGQUIT  ] = "QUIT",
-#endif
-#ifdef SIGILL
-	[SIGILL   ] = "ILL",
-#endif
-#ifdef SIGTRAP
-	[SIGTRAP  ] = "TRAP",
-#endif
-```
-
-That's an array of strings, _index-initialized by the signal constants_, used as
-a lookup table, just to convert signal values to strings and back.  <strike>Why?
-Why not just use a switch statement? What if one of the constants turns out to
-be 400000, does <code>gcc</code> allocate a large array with empty
-space?</strike> Yeah... my patch can't handle that, and I don't want it to.
-Anyway, I wanted [Python3.11][cpy311] to have `ncurses`, so I tried building
-that next.  `ncurses` had [something interesting][ncurseswow]:
+to fixes and improvements. Building `lua` was now straightforward, and I found
+out where `g++` raised the `case constant` error so `ninja` could build.  I
+wanted [Python3.11][cpy311] to have `ncurses`, so I tried building that next.
+`ncurses` had [something interesting][ncurseswow]:
 
 ```c
 typedef struct {
@@ -455,11 +426,11 @@ _arbitrary expressions_, which means you can compile things like:
 
 ```c
  // C does NOT allow this, but with -fportcosmo...
-case (foo(SIGTERM) + bar(SIGILL)):
+case (foo(SIGTERM) + bar(SIGTERM)):
     break;
 
 struct toy t = 
-    {.status = (foo(SIGILL) + bar(ENOSYS)), value = 22};
+    {.status = (foo(SIGTERM) + bar(ENOSYS)), value = 22};
 ```
 
 With that, `ncurses` built without a complaint. Note that the C standard allows
@@ -480,12 +451,12 @@ something to Cosmopolitan Libc?" I am glad to find out that the answer is less
 than ten lines in most cases, and could even be zero.
 
 Of course, my patch isn't perfect. It can't handle some anonymous structs,
-`enum`s, `const int`s, or amazing things like using `SIGILL` as an array index
-within an initializer.  Rare compiler crashes may still occur in some weird
-`static` initializations, or if you try stuffing `SIGTERM` into a `static const
-int8_t`. But I've spent a good chunk of time removing obvious counterexamples,
-and a lot of popular software builds seamlessly. A stringent testing setup will
-reveal more things to improve.
+`enum`s, `const int`s, or amazing things like [using `SIGTERM` as an array index
+within an initializer][busyboxpls].  Rare compiler crashes may still occur in
+some weird `static` initializations, or if you try stuffing `SIGTERM` into a
+`static const int8_t`. But I've spent a good chunk of time removing obvious
+counterexamples, and a lot of popular software builds seamlessly. A stringent
+testing setup will reveal more things to improve.
 
 If you prefer, you can still rewrite the `switch` statements and `struct`
 initializers by hand, but for many cases the compiler can do it for you, and all
