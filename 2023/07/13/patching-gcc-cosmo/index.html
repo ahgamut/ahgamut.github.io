@@ -145,8 +145,8 @@ to rewrite. Simple enough, seemed like it would work, so I tried the below
 example:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-c data-lang=c><span class=line><span class=cl><span class=k>switch</span><span class=p>(</span><span class=n>errval</span><span class=p>)</span> <span class=p>{</span>
 </span></span><span class=line><span class=cl>    <span class=k>case</span> <span class=mi>0</span><span class=o>:</span>
 </span></span><span class=line><span class=cl>        <span class=k>break</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>    <span class=k>case</span> <span class=nl>SIGILL</span><span class=p>:</span>
-</span></span><span class=line><span class=cl>        <span class=nf>printf</span><span class=p>(</span><span class=s>&#34;you got a SIGILL</span><span class=se>\n</span><span class=s>&#34;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=k>case</span> <span class=nl>SIGTERM</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>        <span class=nf>printf</span><span class=p>(</span><span class=s>&#34;you got a SIGTERM</span><span class=se>\n</span><span class=s>&#34;</span><span class=p>);</span>
 </span></span><span class=line><span class=cl>        <span class=k>break</span><span class=p>;</span>
 </span></span><span class=line><span class=cl>    <span class=k>default</span><span class=o>:</span>
 </span></span><span class=line><span class=cl>        <span class=nf>printf</span><span class=p>(</span><span class=s>&#34;unknown error</span><span class=se>\n</span><span class=s>&#34;</span><span class=p>);</span>
@@ -154,7 +154,7 @@ example:</p><div class=highlight><pre tabindex=0 class=chroma><code class=langua
 </span></span></code></pre></div><p>But:</p><pre tabindex=0><code class=language-gcc data-lang=gcc>examples/ex1_modded.c: In function ‘exam_func’:
 examples/ex1_modded.c:25:5: 
    error: case label does not reduce to an integer constant
-   25 |     case SIGILL:
+   25 |     case SIGTERM:
       |     ^~~~
 </code></pre><p><code>gcc</code> is still raising an error due to the <code>case</code> label? Why does the plugin not
 activate? I check the AST with <code>debug_tree</code>, and <code>case 0:</code> was there:</p><pre tabindex=0><code>&lt;switch_stmt
@@ -163,14 +163,14 @@ activate? I check the AST with <code>debug_tree</code>, and <code>case 0:</code>
      stmt &lt;case_label_expr type &lt;void_type void&gt;
          arg:0 &lt;integer_cst constant 0&gt; arg:2 &lt;label_decl D.2390&gt;&gt;
      stmt &lt;break_stmt type &lt;void_type void&gt;&gt;
-</code></pre><p>But <code>case SIGILL:</code>?</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-html data-lang=html><span class=line><span class=cl>     stmt <span class=p>&lt;</span><span class=nt>call_expr</span> <span class=na>type</span> <span class=err>&lt;</span><span class=na>integer_type</span> <span class=na>int</span><span class=p>&gt;</span>
+</code></pre><p>But <code>case SIGTERM:</code>?</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-html data-lang=html><span class=line><span class=cl>     stmt <span class=p>&lt;</span><span class=nt>call_expr</span> <span class=na>type</span> <span class=err>&lt;</span><span class=na>integer_type</span> <span class=na>int</span><span class=p>&gt;</span>
 </span></span><span class=line><span class=cl>         side-effects
 </span></span><span class=line><span class=cl>         fn <span class=p>&lt;</span><span class=nt>addr_expr</span> <span class=na>type</span> <span class=err>&lt;</span><span class=na>pointer_type</span><span class=p>&gt;</span>
 </span></span><span class=line><span class=cl>             constant arg:0 <span class=p>&lt;</span><span class=nt>function_decl</span> <span class=na>printf</span><span class=p>&gt;</span>&gt;
 </span></span><span class=line><span class=cl>         arg:0 <span class=p>&lt;</span><span class=nt>nop_expr</span> <span class=na>type</span> <span class=err>&lt;</span><span class=na>pointer_type</span><span class=p>&gt;</span>
 </span></span><span class=line><span class=cl>           arg:0 <span class=p>&lt;</span><span class=nt>addr_expr</span> <span class=na>type</span> <span class=err>&lt;</span><span class=na>pointer_type</span><span class=p>&gt;</span>
 </span></span><span class=line><span class=cl>             arg:0 <span class=p>&lt;</span><span class=nt>string_cst</span> <span class=na>type</span> <span class=err>&lt;</span><span class=na>array_type</span><span class=p>&gt;</span>
-</span></span><span class=line><span class=cl>                readonly constant static &#34;you got a SIGILL\012\000&#34;&gt;&gt;&gt;
+</span></span><span class=line><span class=cl>                readonly constant static &#34;you got a SIGTERM\012\000&#34;&gt;&gt;&gt;
 </span></span><span class=line><span class=cl>     stmt <span class=p>&lt;</span><span class=nt>break_stmt</span> <span class=na>type</span> <span class=err>&lt;</span><span class=na>void_type</span> <span class=na>void</span><span class=p>&gt;</span>&gt;
 </span></span></code></pre></div><p>There was no <code>case</code> label to rewrite! I checked my code and all of the build
 config for building the plugin, but I always got an invalid AST, and a <code>switch</code>
@@ -243,34 +243,10 @@ The AST rewriting code was a copy-paste from the plugin, and it was executed
 by <code>gcc</code> right before invoking other plugin callbacks.</p><h2 id=porting-software-with-the-patched-gcc>Porting software with the patched <code>gcc</code></h2><p><strong>2023-06-05:</strong> At this stage, the patched <code>gcc</code> was passing all the test cases
 I had written for the plugin earlier, and new binaries were added into the
 Cosmopolitan Libc monorepo. This allowed for compiling a lot more code, leading
-to fixes and improvements. Building <code>lua</code> was now straightforward, and for
-<code>python3.11</code> I added some changes to access the ZIP store within the executable.
-I found out where <code>g++</code> raised the <code>case constant</code> error so <code>ninja</code> could build.
-Then I tried building <code>busybox</code>, but my brain had a segfault with the <a href=https://github.com/mirror/busybox/blob/2d4a3d9e6c1493a9520b907e07a41aca90cdfd94/libbb/u_signal_names.c#L88>below
-code</a>:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-c data-lang=c><span class=line><span class=cl><span class=k>static</span> <span class=k>const</span> <span class=kt>char</span> <span class=n>signals</span><span class=p>[][</span><span class=mi>7</span><span class=p>]</span> <span class=n>ALIGN1</span> <span class=o>=</span> <span class=p>{</span>
-</span></span><span class=line><span class=cl>	<span class=p>[</span><span class=mi>0</span><span class=p>]</span> <span class=o>=</span> <span class=s>&#34;EXIT&#34;</span><span class=p>,</span>
-</span></span><span class=line><span class=cl><span class=cp>#ifdef SIGHUP
-</span></span></span><span class=line><span class=cl><span class=cp></span>	<span class=p>[</span><span class=n>SIGHUP</span>   <span class=p>]</span> <span class=o>=</span> <span class=s>&#34;HUP&#34;</span><span class=p>,</span>
-</span></span><span class=line><span class=cl><span class=cp>#endif
-</span></span></span><span class=line><span class=cl><span class=cp>#ifdef SIGINT
-</span></span></span><span class=line><span class=cl><span class=cp></span>	<span class=p>[</span><span class=n>SIGINT</span>   <span class=p>]</span> <span class=o>=</span> <span class=s>&#34;INT&#34;</span><span class=p>,</span>
-</span></span><span class=line><span class=cl><span class=cp>#endif
-</span></span></span><span class=line><span class=cl><span class=cp>#ifdef SIGQUIT
-</span></span></span><span class=line><span class=cl><span class=cp></span>	<span class=p>[</span><span class=n>SIGQUIT</span>  <span class=p>]</span> <span class=o>=</span> <span class=s>&#34;QUIT&#34;</span><span class=p>,</span>
-</span></span><span class=line><span class=cl><span class=cp>#endif
-</span></span></span><span class=line><span class=cl><span class=cp>#ifdef SIGILL
-</span></span></span><span class=line><span class=cl><span class=cp></span>	<span class=p>[</span><span class=n>SIGILL</span>   <span class=p>]</span> <span class=o>=</span> <span class=s>&#34;ILL&#34;</span><span class=p>,</span>
-</span></span><span class=line><span class=cl><span class=cp>#endif
-</span></span></span><span class=line><span class=cl><span class=cp>#ifdef SIGTRAP
-</span></span></span><span class=line><span class=cl><span class=cp></span>	<span class=p>[</span><span class=n>SIGTRAP</span>  <span class=p>]</span> <span class=o>=</span> <span class=s>&#34;TRAP&#34;</span><span class=p>,</span>
-</span></span><span class=line><span class=cl><span class=cp>#endif
-</span></span></span></code></pre></div><p>That&rsquo;s an array of strings, <em>index-initialized by the signal constants</em>, used as
-a lookup table, just to convert signal values to strings and back. <strike>Why?
-Why not just use a switch statement? What if one of the constants turns out to
-be 400000, does <code>gcc</code> allocate a large array with empty
-space?</strike> Yeah&mldr; my patch can&rsquo;t handle that, and I don&rsquo;t want it to.
-Anyway, I wanted <a href=https://github.com/ahgamut/cpython/tree/portcosmo>Python3.11</a> to have <code>ncurses</code>, so I tried building
-that next. <code>ncurses</code> had <a href=https://github.com/mirror/ncurses/blob/master/ncurses/trace/lib_tracebits.c#L151>something interesting</a>:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-c data-lang=c><span class=line><span class=cl><span class=k>typedef</span> <span class=k>struct</span> <span class=p>{</span>
+to fixes and improvements. Building <code>lua</code> was now straightforward, and I found
+out where <code>g++</code> raised the <code>case constant</code> error so <code>ninja</code> could build. I
+wanted <a href=https://github.com/ahgamut/cpython/tree/portcosmo>Python3.11</a> to have <code>ncurses</code>, so I tried building that next.
+<code>ncurses</code> had <a href=https://github.com/mirror/ncurses/blob/master/ncurses/trace/lib_tracebits.c#L151>something interesting</a>:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-c data-lang=c><span class=line><span class=cl><span class=k>typedef</span> <span class=k>struct</span> <span class=p>{</span>
 </span></span><span class=line><span class=cl>    <span class=kt>unsigned</span> <span class=kt>int</span> <span class=n>val</span><span class=p>;</span>
 </span></span><span class=line><span class=cl>    <span class=k>const</span> <span class=kt>char</span> <span class=n>name</span><span class=p>[</span><span class=n>BITNAMELEN</span><span class=p>];</span>
 </span></span><span class=line><span class=cl><span class=p>}</span> <span class=n>BITNAMES</span><span class=p>;</span>
@@ -302,11 +278,11 @@ for a while, and decided situations like this would occur frequently enough
 where it would be convenient to handle them automatically. I added a change
 allowing <code>case</code> labels and <code>struct</code> initializer elements in C<sup id=fnref:7><a href=#fn:7 class=footnote-ref role=doc-noteref>7</a></sup> to be
 <em>arbitrary expressions</em>, which means you can compile things like:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-c data-lang=c><span class=line><span class=cl> <span class=c1>// C does NOT allow this, but with -fportcosmo...
-</span></span></span><span class=line><span class=cl><span class=c1></span><span class=k>case</span> <span class=p>(</span><span class=nf>foo</span><span class=p>(</span><span class=n>SIGTERM</span><span class=p>)</span> <span class=o>+</span> <span class=nf>bar</span><span class=p>(</span><span class=n>SIGILL</span><span class=p>))</span><span class=o>:</span>
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=k>case</span> <span class=p>(</span><span class=nf>foo</span><span class=p>(</span><span class=n>SIGTERM</span><span class=p>)</span> <span class=o>+</span> <span class=nf>bar</span><span class=p>(</span><span class=n>SIGTERM</span><span class=p>))</span><span class=o>:</span>
 </span></span><span class=line><span class=cl>    <span class=k>break</span><span class=p>;</span>
 </span></span><span class=line><span class=cl>
 </span></span><span class=line><span class=cl><span class=k>struct</span> <span class=n>toy</span> <span class=n>t</span> <span class=o>=</span> 
-</span></span><span class=line><span class=cl>    <span class=p>{.</span><span class=n>status</span> <span class=o>=</span> <span class=p>(</span><span class=nf>foo</span><span class=p>(</span><span class=n>SIGILL</span><span class=p>)</span> <span class=o>+</span> <span class=nf>bar</span><span class=p>(</span><span class=n>ENOSYS</span><span class=p>)),</span> <span class=n>value</span> <span class=o>=</span> <span class=mi>22</span><span class=p>};</span>
+</span></span><span class=line><span class=cl>    <span class=p>{.</span><span class=n>status</span> <span class=o>=</span> <span class=p>(</span><span class=nf>foo</span><span class=p>(</span><span class=n>SIGTERM</span><span class=p>)</span> <span class=o>+</span> <span class=nf>bar</span><span class=p>(</span><span class=n>ENOSYS</span><span class=p>)),</span> <span class=n>value</span> <span class=o>=</span> <span class=mi>22</span><span class=p>};</span>
 </span></span></code></pre></div><p>With that, <code>ncurses</code> built without a complaint. Note that the C standard allows
 <code>case</code> labels to only be compile-time constants, and my patched compiler will
 still raise a warning when you do something like this, but otherwise&mldr;</p><p><img src=/images/patch-gcc/portal_gun.webp alt loading=lazy decoding=async width height class=full-width></p><p class=caption><code>./configure</code> flags, run <code>make</code> and ... you got it! you f****** got it!</p><h2 id=closing-notes>Closing Notes</h2><p><strong>2023-07-13:</strong> To port software to Cosmopolitan Libc, you just need to convince
@@ -316,11 +292,12 @@ motivations for this experiment was to find an answer to the question &ldquo;wha
 the minimum amount of source code that would need to change in order to port
 something to Cosmopolitan Libc?&rdquo; I am glad to find out that the answer is less
 than ten lines in most cases, and could even be zero.</p><p>Of course, my patch isn&rsquo;t perfect. It can&rsquo;t handle some anonymous structs,
-<code>enum</code>s, <code>const int</code>s, or amazing things like using <code>SIGILL</code> as an array index
-within an initializer. Rare compiler crashes may still occur in some weird
-<code>static</code> initializations, or if you try stuffing <code>SIGTERM</code> into a <code>static const int8_t</code>. But I&rsquo;ve spent a good chunk of time removing obvious counterexamples,
-and a lot of popular software builds seamlessly. A stringent testing setup will
-reveal more things to improve.</p><p>If you prefer, you can still rewrite the <code>switch</code> statements and <code>struct</code>
+<code>enum</code>s, <code>const int</code>s, or amazing things like <a href=https://github.com/mirror/busybox/blob/2d4a3d9e6c1493a9520b907e07a41aca90cdfd94/libbb/u_signal_names.c#L88>using <code>SIGTERM</code> as an array index
+within an initializer</a>. Rare compiler crashes may still occur in
+some weird <code>static</code> initializations, or if you try stuffing <code>SIGTERM</code> into a
+<code>static const int8_t</code>. But I&rsquo;ve spent a good chunk of time removing obvious
+counterexamples, and a lot of popular software builds seamlessly. A stringent
+testing setup will reveal more things to improve.</p><p>If you prefer, you can still rewrite the <code>switch</code> statements and <code>struct</code>
 initializers by hand, but for many cases the compiler can do it for you, and all
 that is necessary for a port is to specify the right flags to <code>./configure</code> or
 <code>cmake</code>. If you can build your C software statically (bonus points if it builds
