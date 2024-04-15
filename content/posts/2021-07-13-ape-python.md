@@ -6,6 +6,17 @@ title: Python is Actually Portable
 aliases: "/c/2021/07/13/ape-python"
 ---
 
+**Update (2024-04-15)**: The Python executable build process described in this
+post is from **2021**, and both [Cosmopolitan Libc](https://justine.lol/cosmo3)
+and the surrounding tooling have improved since 2021. The build process is much
+simpler now, you can download Python 3.11.4 Actually Portable Executables built
+via Github Actions at https://github.com/ahgamut/superconfigure -- one of the
+[Python binaries](https://github.com/ahgamut/superconfigure/releases/download/z0.0.36/datasette.zip)
+downloaded from that repo has [`datasette`](https://github.com/simonw/datasette)
+which runs like this:
+
+![webapp](/images/ape-datasette.gif)
+
 **Update (2022-07-27)** : This post describes a proof-of-concept Python
 executable (2.7.18 and 3.6.14) built on [Cosmopolitan
 Libc](https://github.com/jart/cosmopolitan), which allows it to run on six
